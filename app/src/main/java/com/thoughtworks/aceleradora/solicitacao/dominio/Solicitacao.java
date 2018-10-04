@@ -1,8 +1,5 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
