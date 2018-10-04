@@ -1,4 +1,4 @@
-# Esqueleto Ambulante
+# Hospebem
 
 Uma aplicação mínima em Spring Boot.
 
