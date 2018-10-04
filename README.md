@@ -10,15 +10,8 @@ Uma aplicação mínima em Spring Boot.
 - Postgres
 - Node/npm
 
+
 ## Configuração inicial
-
-Após instalar todas as dependências, execute as migrações do banco de dados:
-
-```bash
-./gradlew flywayMigrate -i
-```
-
-## Comandos
 
 Cria um container com postgres
 
@@ -36,6 +29,12 @@ Acessa o banco
 
 ```sh
 ./banco console
+```
+
+Após instalar todas as dependências, execute as migrações do banco de dados:
+
+```bash
+./gradlew flywayMigrate -i
 ```
 
 Para executar a aplicação:
