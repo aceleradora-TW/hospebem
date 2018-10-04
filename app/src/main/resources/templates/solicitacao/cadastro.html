@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-wrapper container">
+                <span>
+                    HOSPEBEM
+                </span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <h1> Dados do paciente</h1>
+                <div class="col s12">
+                    <span>Nome Completo:</span>
+                    <input type="text">
+                </div>
+                <form action="#">
+                    <label class="col s1">
+                        <input name="group1" type="radio" />
+                        <span>F</span>
+                    </label>
+                    <label class="col s1">
+                        <input name="group1" type="radio" />
+                        <span>M</span>
+                    </label>
+                </form>
+
+                <p class="col s12 sessao">Data de nascimento</p>
+
+                <div class="col s4">
+                    <span>Dia</span>
+                    <select>
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="1">05</option>
+                        <option value="2">06</option>
+                        <option value="3">07</option>
+                        <option value="4">08</option>
+                        <option value="1">09</option>
+                        <option value="2">10</option>
+                        <option value="3">11</option>
+                        <option value="4">12</option>
+                        <option value="1">13</option>
+                        <option value="2">14</option>
+                        <option value="3">15</option>
+                        <option value="4">16</option>
+                        <option value="1">17</option>
+                        <option value="2">18</option>
+                        <option value="3">19</option>
+                        <option value="4">20</option>
+                        <option value="1">21</option>
+                        <option value="2">22</option>
+                        <option value="3">23</option>
+                        <option value="4">24</option>
+                        <option value="1">25</option>
+                        <option value="2">26</option>
+                        <option value="3">27</option>
+                        <option value="4">28</option>
+                        <option value="3">29</option>
+                        <option value="4">30</option>
+                        <option value="4">31</option>
+                    </select>
+                </div>
+                <div class="col s4">
+                    <span>Mês</span>
+                    <select>
+                        <option value="janeiro">Janeiro</option>
+                        <option value="fevereiro">Fevereiro</option>
+                        <option value="marco">Março</option>
+                        <option value="abril">Abril</option>
+                        <option value="janeiro">Maio</option>
+                        <option value="fevereiro">Junho</option>
+                        <option value="marco">Julho</option>
+                        <option value="abril">Agosto</option>
+                        <option value="janeiro">Setempro</option>
+                        <option value="fevereiro">Outubro</option>
+                        <option value="marco">Novembro</option>
+                        <option value="abril">Dezembro</option>
+                    </select>
+                </div>
+                <div class="col s4">
+                    <span>Ano</span>
+                    <select>
+                        <option value="1999">1999</option>
+                        <option value="1998">1998</option>
+                        <option value="1997">1997</option>
+                        <option value="1996">1996</option>
+                    </select>
+                </div>
+
+                <form action="#">
+                    <label class="col s4">
+                        <input name="group1" type="radio" />
+                        <span>Pré-transplante</span>
+                    </label>
+                    <label class="col s4">
+                        <input name="group1" type="radio" />
+                        <span>Pós-transplante</span>
+                    </label>
+                </form>
+
+                <div class="col s12 sessao">
+                    <span>Necessidade Especial: </span>
+                    <select>
+                        <option value="nao">Não</option>
+                        <option value="Outro">Outro</option>
+                        <option value="Cadeirante">Cadeirante</option>
+                    </select>
+
+                </div>
+                <div class="col s12">
+                    <span>Órgão</span>
+                    <select>
+                        <option value="Coracao">Coração</option>
+                        <option value="Figado">Figado</option>
+                        <option value="Pancreas">Pâncreas</option>
+                        <option value="Pulmao">Pulmão</option>
+                        <option value="Rim">Rim</option>
+                        <option value="Tecidos">Tecidos (córnea, medula, pele)</option>
+                    </select>
+                </div>
+
+                <h2 class="col s12">Endereço</h2>
+                <div class="col s9">
+                    <span>Rua</span>
+                    <input type="text">
+                </div>
+                <div class="col s3">
+                    <span>n°</span>
+                    <input type="text">
+                </div>
+                <div class="col s5">
+                    <span>Cidade</span>
+                    <input type="text">
+                </div>
+                <div class="col s5">
+                    <span>Bairro</span>
+                    <input type="text">
+                </div>
+                <div class="col s2">
+                    <span>UF</span>
+                    <input type="text">
+                </div>
+
+                <h2 class="col s12"> Dados Acompanhante </h2>
+                <h3 class="col s12"> Acompanhante 1:</h3>
+                <div class="col s12">
+                    <span>Nome Completo:</span>
+                    <input type="text">
+                </div>
+
+                <form action="#">
+                    <label class="col s1">
+                        <input name="group1" type="radio" />
+                        <span>F</span>
+                    </label>
+                    <label class="col s1">
+                        <input name="group1" type="radio" />
+                        <span>M</span>
+                    </label>
+                </form>
+                <p class="col s12">Data de nascimento</p>
+
+                <div class="col s4">
+                    <span>Dia</span>
+                    <select>
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="1">05</option>
+                        <option value="2">06</option>
+                        <option value="3">07</option>
+                        <option value="4">08</option>
+                        <option value="1">09</option>
+                        <option value="2">10</option>
+                        <option value="3">11</option>
+                        <option value="4">12</option>
+                        <option value="1">13</option>
+                        <option value="2">14</option>
+                        <option value="3">15</option>
+                        <option value="4">16</option>
+                        <option value="1">17</option>
+                        <option value="2">18</option>
+                        <option value="3">19</option>
+                        <option value="4">20</option>
+                        <option value="1">21</option>
+                        <option value="2">22</option>
+                        <option value="3">23</option>
+                        <option value="4">24</option>
+                        <option value="1">25</option>
+                        <option value="2">26</option>
+                        <option value="3">27</option>
+                        <option value="4">28</option>
+                        <option value="3">29</option>
+                        <option value="4">30</option>
+                        <option value="4">31</option>
+                    </select>
+                </div>
+                <div class="col s4">
+                    <span>Mês</span>
+                    <select>
+                        <option value="janeiro">Janeiro</option>
+                        <option value="fevereiro">Fevereiro</option>
+                        <option value="marco">Março</option>
+                        <option value="abril">Abril</option>
+                        <option value="janeiro">Maio</option>
+                        <option value="fevereiro">Junho</option>
+                        <option value="marco">Julho</option>
+                        <option value="abril">Agosto</option>
+                        <option value="janeiro">Setempro</option>
+                        <option value="fevereiro">Outubro</option>
+                        <option value="marco">Novembro</option>
+                        <option value="abril">Dezembro</option>
+                    </select>
+                </div>
+                <div class="col s4">
+                    <span>Ano</span>
+                    <select>
+                        <option value="1999">1999</option>
+                        <option value="1998">1998</option>
+                        <option value="1997">1997</option>
+                        <option value="1996">1996</option>
+                    </select>
+                </div>
+
+                <h3 class="col s12"> Acompanhante 2:</h3>
+                <div class="col s12">
+                    <span>Nome Completo:</span>
+                    <input type="text">
+                </div>
+                <form action="#">
+                    <label class="col s1">
+                        <input name="group1" type="radio" />
+                        <span>F</span>
+                    </label>
+                    <label class="col s1">
+                        <input name="group1" type="radio" />
+                        <span>M</span>
+                    </label>
+                </form>
+                <p class="col s12">Data de nascimento</p>
+
+                <div class="col s4">
+                    <span>Dia</span>
+                    <select>
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="1">05</option>
+                        <option value="2">06</option>
+                        <option value="3">07</option>
+                        <option value="4">08</option>
+                        <option value="1">09</option>
+                        <option value="2">10</option>
+                        <option value="3">11</option>
+                        <option value="4">12</option>
+                        <option value="1">13</option>
+                        <option value="2">14</option>
+                        <option value="3">15</option>
+                        <option value="4">16</option>
+                        <option value="1">17</option>
+                        <option value="2">18</option>
+                        <option value="3">19</option>
+                        <option value="4">20</option>
+                        <option value="1">21</option>
+                        <option value="2">22</option>
+                        <option value="3">23</option>
+                        <option value="4">24</option>
+                        <option value="1">25</option>
+                        <option value="2">26</option>
+                        <option value="3">27</option>
+                        <option value="4">28</option>
+                        <option value="3">29</option>
+                        <option value="4">30</option>
+                        <option value="4">31</option>
+                    </select>
+                </div>
+                <div class="col s4">
+                    <span>Mês</span>
+                    <select>
+                        <option value="janeiro">Janeiro</option>
+                        <option value="fevereiro">Fevereiro</option>
+                        <option value="marco">Março</option>
+                        <option value="abril">Abril</option>
+                        <option value="janeiro">Maio</option>
+                        <option value="fevereiro">Junho</option>
+                        <option value="marco">Julho</option>
+                        <option value="abril">Agosto</option>
+                        <option value="janeiro">Setempro</option>
+                        <option value="fevereiro">Outubro</option>
+                        <option value="marco">Novembro</option>
+                        <option value="abril">Dezembro</option>
+                    </select>
+                </div>
+                <div class="col s4">
+                    <span>Ano</span>
+                    <select>
+                        <option value="1999">1999</option>
+                        <option value="1998">1998</option>
+                        <option value="1997">1997</option>
+                        <option value="1996">1996</option>
+                    </select>
+                </div>
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light right" onclick="alert('Olar')" type="submit" name="action">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let elems = document.querySelectorAll('select');
+        let instances = M.FormSelect.init(elems, {});
+    })
+</script>
+
+</html>
