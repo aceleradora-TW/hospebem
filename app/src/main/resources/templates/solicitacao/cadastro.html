@@ -29,7 +29,10 @@
                     <div class="col s12">
                         <span>Nome Completo:</span>
                         <input name="nome" type="text">
-
+                    </div>
+                    <div class="col s12">
+                        <span>Data de nascimento:</span>
+                        <input name="dataNascimento" type="text" class="datepicker">
                     </div>
                     <div class="col s12">
                         <button type="submit">Salvar</button>
@@ -41,6 +44,14 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.datepicker');
+        var instances = M.Datepicker.init(elems, {
+            format: 'dd/mm/yyyy'
+        });
+    });
+</script>
 
 
 </html>

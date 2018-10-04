@@ -1,4 +1,5 @@
- create table solicitacao(
-  id serial primary key,
-  nome varchar(255)
+ CREATE TABLE solicitacao(
+  id serial PRIMARY KEY,
+  nome VARCHAR (255),
+  data_nascimento DATE
 );
