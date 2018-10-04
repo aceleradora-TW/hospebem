@@ -20,23 +20,6 @@ Após instalar todas as dependências, execute as migrações do banco de dados:
 
 ## Comandos
 
-Para executar a aplicação:
-
-```sh
-./gradlew bootRun
-```
-
-Executando os testes:
-
-```sh
-./gradlew test
-```
-
-Demais comandos disponíveis:
-
-```sh
-./gradlew tasks
-```
 Cria um container com postgres
 
 ```sh
@@ -53,6 +36,24 @@ Acessa o banco
 
 ```sh
 ./banco console
+```
+
+Para executar a aplicação:
+
+```sh
+./gradlew bootRun
+```
+
+Executando os testes:
+
+```sh
+./gradlew test
+```
+
+Demais comandos disponíveis:
+
+```sh
+./gradlew tasks
 ```
 
 
