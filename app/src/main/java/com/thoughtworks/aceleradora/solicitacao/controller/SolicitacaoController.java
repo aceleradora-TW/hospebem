@@ -4,6 +4,7 @@ import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +27,12 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/cadastro")
-    @ResponseBody
-    public String salvaSolicitacao(Solicitacao solicitacao) {
+    public String salvaSolicitacao(Model model, Solicitacao solicitacao) {
         repositorio.save(solicitacao);
 
-        return "salvou:" + solicitacao.getNome();
+        model.addAttribute("solicitacoes", repositorio.findAll());
+
+        return "solicitacao/lista";
     }
 
 }
