@@ -37,6 +37,24 @@ Demais comandos disponíveis:
 ```sh
 ./gradlew tasks
 ```
+Criar um container com postgres
+
+```sh
+./banco run
+```
+
+Cria um banco
+
+```sh
+./banco create
+```
+
+Acessa o banco
+
+```sh
+./banco run
+```
+
 
 ## Ferramentas
 
