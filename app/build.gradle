@@ -58,4 +58,8 @@ flyway {
     password = System.getenv("ESQUELETO_DB_PASSWORD") ?: 'esqueleto'
 }
 
+bootRun {
+    sourceResources sourceSets.main
+}
+
 build.mustRunAfter('clean')

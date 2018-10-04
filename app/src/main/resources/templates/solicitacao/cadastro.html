@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -24,15 +24,33 @@
     <main>
         <div class="container">
             <div class="row">
-                <h1> Dados do paciente</h1>
+
+                <h1> Nova Solicitação</h1>
+
                 <form action="/solicitacao/cadastro" method="post">
-                    <div class="col s12">
+                    <div class="section">
+                        <h3>Paciente</h3>
+
                         <span>Nome Completo:</span>
                         <input name="nome" type="text">
 
                     </div>
+
+                    <div class="section">
+                    <h3>Endereço</h3>
+                        <div class="col s9">
+                            <span>Rua:</span>
+                            <input name="endereco.rua" type="text">
+                        </div>
+                        <div class="col s3">
+                            <span>Número:</span>
+                            <input name="endereco.numero" type="number">
+                        </div>
+
+                    </div>
+                    
                     <div class="col s12">
-                        <button type="submit">Salvar</button>
+                        <button class="btn waves-effect waves-light" type="submit">Salvar</button>
                     </div>
                 </form>
             </div>
