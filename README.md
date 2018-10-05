@@ -40,6 +40,7 @@ Nomeação do arquivo SQL :
 Prefixo : V para migrações com versão, U para desfazer migrações, R para migrações repetíveis
 
 EXMPLO:
+
                 R__My_view; 
 
                 U1_1__Fix_indexes;
