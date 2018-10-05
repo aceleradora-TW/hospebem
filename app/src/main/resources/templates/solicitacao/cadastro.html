@@ -11,33 +11,80 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-wrapper container">
+<header>
+    <nav class="navbar">
+        <div class="nav-wrapper container">
                 <span>
                     HOSPEBEM
                 </span>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="row">
-                <h1> Dados do paciente</h1>
-                <form action="/solicitacao/cadastro" method="post">
-                    <div class="col s12">
-                        <span>Nome Completo:</span>
-                        <input name="nome" type="text">
-
-                    </div>
-                    <div class="col s12">
-                        <button type="submit">Salvar</button>
-                    </div>
-                </form>
-            </div>
         </div>
-    </main>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <h1> Dados do paciente</h1>
+            <form action="/solicitacao/cadastro" method="post">
+                <div class="col s12">
+                    <span>Nome Completo:</span>
+                    <input name="nome" type="text">
+
+                </div>
+
+                <h2 class="col s12">Endereço</h2>
+                <div class="col s9">
+                    <span>Rua</span>
+                    <input name="rua" type="text">
+                </div>
+                <div class="col s3">
+                    <span>n°</span>
+                    <input name="numero" type="text">
+                </div>
+                <div class="col s5">
+                    <span>Cidade</span>
+                    <input name="cidade" type="text">
+                </div>
+                <div class="col s5">
+                    <span>Bairro</span>
+                    <input name="bairro" type="text">
+                </div>
+                <div class="col s2">
+                    <span>UF</span>
+                    <input name="uf" type="text">
+                </div>
+
+                <h2 class="col s12"> Dados Acompanhante </h2>
+                <h3 class="col s12"> Acompanhante 1:</h3>
+                <div class="col s12">
+                    <span>Nome Completo:</span>
+                    <input name="nomeAcompanhante1" type="text">
+                </div>
+
+                <h3 class="col s12"> Acompanhante 2:</h3>
+                <div class="col s12">
+                    <span>Nome Completo:</span>
+                    <input name="nomeAcompanhante2" type="text">
+                </div>
+                <div>
+                    <label class="col s1">
+                        <input name="group1" type="radio" value="f">
+                        <span>F</span>
+                    </label>
+                    <label class="col s1">
+                        <input name="group1" type="radio" value="m">
+                        <span>M</span>
+                    </label>
+                </div>
+
+
+                <div class="col s12">
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

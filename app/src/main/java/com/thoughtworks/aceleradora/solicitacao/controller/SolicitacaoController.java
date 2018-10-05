@@ -22,6 +22,7 @@ public class SolicitacaoController {
 
     @GetMapping("/cadastro")
     public String formularioCadastro() {
+
         return "solicitacao/cadastro";
     }
 
