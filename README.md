@@ -31,7 +31,21 @@ Acessa o banco
 ./banco console
 ```
 
-Após instalar todas as dependências, execute as migrações do banco de dados:
+Para adicionar tabelas ao B.D. a medida que a aplicação vai evoluindo utilizamos o Flyway que realiza migrações de versões de tabelas
+a partir do Intellij. As migrações são escritas em SQL, dentro do pacote "migrates" no Intellij.
+DOCUMENTAÇÃO COMPLETA FLYWAY ->https://flywaydb.org/documentation/migrations#repeatable-migrations
+
+RESUMO:
+Nomeação do arquivo SQL :
+Prefixo : V para migrações com versão, U para desfazer migrações, R para migrações repetíveis
+
+EXMPLO:
+             ```R__My_view
+                U1_1__Fix_indexes
+                V1__Inicial_versão
+                V1_1__Fix_indexes```
+             
+Para adicionar as tabelas ao B.D. execute as migrações do banco de dados:
 
 ```bash
 ./gradlew flywayMigrate -i
