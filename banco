@@ -1,10 +1,14 @@
 case $1 in
   run)
-    docker run --rm --name esqueleto-db -p 5432:5432 -e POSTGRES_PASSWORD=esqueleto -d postgres
+    docker run --rm --name esqueleto-db -p 5432:5432 -e POSTGRES_PASSWORD=esqueleto -d postgres 
+  ;;
+
+  start)
+    docker container start esqueleto-db 2> /dev/null || echo "Erro: Execute run antes de start"
   ;;
 
   create)
-  docker exec -it esqueleto-db psql -U postgres -c 'CREATE DATABASE esqueleto'
+    docker exec -it esqueleto-db psql -U postgres -c 'CREATE DATABASE esqueleto'
   ;;
 
   console)
