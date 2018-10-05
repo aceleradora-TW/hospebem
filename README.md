@@ -40,10 +40,10 @@ Nomeação do arquivo SQL :
 Prefixo : V para migrações com versão, U para desfazer migrações, R para migrações repetíveis
 
 EXMPLO:
-             ```R__My_view
+                R__My_view
                 U1_1__Fix_indexes
                 V1__Inicial_versão
-                V1_1__Fix_indexes```
+                V1_1__Fix_indexes
              
 Para adicionar as tabelas ao B.D. execute as migrações do banco de dados:
 
