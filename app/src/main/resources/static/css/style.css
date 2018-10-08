@@ -19,3 +19,8 @@ body{
 .sessao {
     margin-top: 30px;
 }
+
+.centralizar{
+    display: flex;
+    justify-content: center;
+}
