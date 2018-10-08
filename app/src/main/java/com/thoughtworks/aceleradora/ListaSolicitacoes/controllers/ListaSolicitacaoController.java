@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class ListaController {
+public class ListaSolicitacaoController {
 
     private ListaSolicitacaoRepository repositorio;
 
     @Autowired
-    public ListaController(ListaSolicitacaoRepository repositorio) {
+    public ListaSolicitacaoController(ListaSolicitacaoRepository repositorio) {
         this.repositorio = repositorio;
     }
 
