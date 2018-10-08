@@ -1,0 +1,1 @@
+alter table acompanhante add column solicitacao_id integer;

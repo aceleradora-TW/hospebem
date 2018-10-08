@@ -2,7 +2,6 @@ package com.thoughtworks.aceleradora.solicitacao.dominio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -16,15 +15,15 @@ public class Acompanhante {
 
     private String nome;
 
-    private String sexo;
+    private String genero;
 
-    private Acompanhante() {
+    public Acompanhante() {
 
     }
 
-    public Acompanhante(String nome, String sexo) {
+    public Acompanhante(String nome, String genero) {
         this.nome = nome;
-        this.sexo = sexo;
+        this.genero = genero;
     }
 
     public String getNome() {
@@ -35,11 +34,11 @@ public class Acompanhante {
         this.nome = nome;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 }

@@ -1,0 +1,1 @@
+alter table solicitacao drop column acompanhante_id;
