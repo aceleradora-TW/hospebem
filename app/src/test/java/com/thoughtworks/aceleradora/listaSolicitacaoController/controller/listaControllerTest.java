@@ -3,6 +3,8 @@ package com.thoughtworks.aceleradora.listaSolicitacaoController.controller;
 import com.thoughtworks.aceleradora.ListaSolicitacoes.controllers.ListaSolicitacaoController;
 import com.thoughtworks.aceleradora.ListaSolicitacoes.dominio.ListaSolicitacaoRepository;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.ui.Model;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +19,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class listaControllerTest {
 
     @Mock
@@ -39,7 +42,7 @@ public class listaControllerTest {
         String paginaRenderizada = controller.listaSolicitacao(model);
 
         verify(model).addAttribute("solicitacoes", solicitacoesCadastradas);
-        assertThat(paginaRenderizada, is("/lista"));
+        assertThat(paginaRenderizada, is("listaSolicitacao/lista"));
 
     }
 }
