@@ -15,7 +15,7 @@
         </div>
     </nav>
 </header>
-<h1>Lista de Solicitações:</h1>
+<h1>Lista de Solicitações Casa:</h1>
 <br>
     <table>
         <tr>
@@ -27,7 +27,7 @@
             <td>Negar</td>
         </tr>
 
-        <tr th:each="solicitacao : ${solicitacoes}">
+        <tr th:each="solicitacao : ${solicitacoesCasa}">
             <td>19-8-2013</td>
 
             <td th:text="${solicitacao.nome}"></td>

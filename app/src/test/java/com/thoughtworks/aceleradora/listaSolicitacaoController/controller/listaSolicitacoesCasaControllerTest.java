@@ -1,7 +1,7 @@
 package com.thoughtworks.aceleradora.listaSolicitacaoController.controller;
 
-import com.thoughtworks.aceleradora.ListaSolicitacoes.controllers.ListaSolicitacaoController;
-import com.thoughtworks.aceleradora.ListaSolicitacoes.dominio.ListaSolicitacaoRepository;
+import com.thoughtworks.aceleradora.listaSolicitacoesCasa.controllers.ListaSolicitacaoCasaController;
+import com.thoughtworks.aceleradora.listaSolicitacoesCasa.dominio.ListaSolicitacaoCasaRepository;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -20,29 +20,29 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class listaControllerTest {
+public class listaSolicitacoesCasaControllerTest {
 
     @Mock
-    private ListaSolicitacaoRepository repository;
-    private ListaSolicitacaoController controller;
+    private ListaSolicitacaoCasaRepository repository;
+    private ListaSolicitacaoCasaController controller;
 
     @Before
     public void setUp() {
-        controller = new ListaSolicitacaoController(repository);
+        controller = new ListaSolicitacaoCasaController(repository);
     }
 
     @Test
-    public void renderizaListaDeSolicitacoesCadastradasNoBanco() {
-        List<Solicitacao> solicitacoesCadastradas = asList(
+    public void renderizaListaDeSolicitacoesDaCasaCadastradasNoBanco() {
+        List<Solicitacao> solicitacoesCasaCadastradas = asList(
                 new Solicitacao("Amanda"),
                 new Solicitacao("Aline"));
         Model model = mock(Model.class);
-        when(repository.findAll()).thenReturn(solicitacoesCadastradas);
+        when(repository.findAll()).thenReturn(solicitacoesCasaCadastradas);
 
         String paginaRenderizada = controller.listaSolicitacao(model);
 
-        verify(model).addAttribute("solicitacoes", solicitacoesCadastradas);
-        assertThat(paginaRenderizada, is("listaSolicitacao/lista"));
+        verify(model).addAttribute("solicitacoesCasa", solicitacoesCasaCadastradas);
+        assertThat(paginaRenderizada, is("listaSolicitacaoCasa/listaSolicitacaoCasa"));
 
     }
 }
