@@ -1,0 +1,1 @@
+alter table solicitacao add column generoAcomp1 varchar;

@@ -14,9 +14,9 @@
 <header>
     <nav class="navbar">
         <div class="nav-wrapper container">
-                <span>
-                    HOSPEBEM
-                </span>
+                <h1>
+                    Solicitar Vaga
+                </h1>
         </div>
     </nav>
 </header>
@@ -24,14 +24,36 @@
 <main>
     <div class="container">
         <div class="row">
-            <h1> Dados do paciente</h1>
+            <h2> Dados do paciente</h2>
             <form action="/solicitacao/cadastro" method="post">
                 <div class="col s12">
                     <span>Nome Completo:</span>
                     <input name="nome" type="text">
-
                 </div>
-                <h1>Endereço:</h1>
+
+                <div class="col s12">
+                    <label>
+                    <input name="genero" type="radio" value ="F" >
+                    <span>F</span>
+                    </label>
+                    <label>
+                        <input name="genero" type="radio" value ="M">
+                    <span>M</span>
+                    </label>
+                </div>
+
+                <div class="col s12">
+                    <label>
+                        <input name="situacao" type="radio" value ="pre" >
+                        <span>Pré-transplantado</span>
+                    </label>
+                    <label>
+                        <input name="situacao" type="radio" value ="pos">
+                        <span>Pós-transplantado</span>
+                    </label>
+                </div>
+
+                <h3>Endereço:</h3>
                 <div class="col s12">
                     <span>Rua:</span>
                     <input name ="endereco.rua" type="text">
@@ -57,6 +79,41 @@
                     <input name="endereco.uf" type="text">
                 </div>
 
+                <h4>Dados do Acompanhante</h4>
+                <div class="col s12">
+                    <h5>Acompanhante 1:</h5>
+                    <span>Nome Completo:</span>
+                    <input name="acompanhante" type="text">
+                </div>
+
+                <div class="col s12">
+                    <label>
+                        <input name="generoAcomp1" type="radio" value ="F" >
+                        <span>F</span>
+                    </label>
+                    <label>
+                        <input name="generoAcomp1" type="radio" value ="M">
+                        <span>M</span>
+                    </label>
+                </div>
+
+
+                <div class="col s12">
+                    <h5>Acompanhante 2:</h5>
+                    <span>Nome Completo:</span>
+                    <input name="acompanhante" type="text">
+                </div>
+
+                <div class="col s12">
+                    <label>
+                        <input name="generoAcomp2" type="radio" value ="F" >
+                        <span>F</span>
+                    </label>
+                    <label>
+                        <input name="generoAcomp2" type="radio" value ="M">
+                        <span>M</span>
+                    </label>
+                </div>
 
                 <div class="col s12">
                     <button type="submit">Salvar</button>
