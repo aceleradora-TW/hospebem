@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .container {
+        padding: 15%;
+    }
+
+</style>
+
+<body>
+
+<header class="cabecalho">
+    <h1>Esqueleto Ambulante</h1>
+</header>
+
+<nav class="navegacao">
+    <ul>
+        <a href="/">
+            <li>Início</li>
+        </a>
+        <a href="/pessoa/lista">
+            <li>Pessoas</li>
+        </a>
+        <a href="/pessoa/cadastro">
+            <li>Cadastrar Pessoa</li>
+        </a>
+    </ul>
+</nav>
+
+<div class="container">
+    <h1>Lista de Pessoas:</h1>
+    <br>
+    <table>
+        <tr>
+            <td>Nome</td>
+            <td>Nascimento</td>
+        </tr>
+        <tr th:each="solicitacao : ${solicitacoes}">
+            <td th:text="${solicitacao.nome}"></td>
+            <td th:text="${{solicitacao.dataNascimento}}"></td>
+        </tr>
+    </table>
+
+</div>
+
+
+</body>
+</html>
