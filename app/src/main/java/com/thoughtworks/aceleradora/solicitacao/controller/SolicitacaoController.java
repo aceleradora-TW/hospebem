@@ -17,11 +17,13 @@ public class SolicitacaoController {
 
     @Autowired
     public SolicitacaoController(SolicitacaoRepository repositorio) {
+
         this.repositorio = repositorio;
     }
 
     @GetMapping("/cadastro")
     public String formularioCadastro() {
+
         return "solicitacao/cadastro";
     }
 

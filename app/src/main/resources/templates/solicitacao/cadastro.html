@@ -25,15 +25,53 @@
         <div class="container">
             <div class="row">
                 <h1> Dados do paciente</h1>
-                <form action="/solicitacao/cadastro" method="post">
+                <form name="form" action="/solicitacao/cadastro" method="post" onsubmit="return valida_form(this)">
                     <div class="col s12">
+
+
                         <span>Nome Completo:</span>
-                        <input name="nome" type="text">
+                        <input name="nome" id="nome" type="text">
+
+
 
                     </div>
                     <div class="col s12">
-                        <button type="submit">Salvar</button>
+                        <button type="submit" >Salvar</button>
+
                     </div>
+
+                    <p>
+                        <label>
+                            <input id="s" type="checkbox" class="filled-in"  />
+                            <span>Filled in</span>
+                        </label>
+
+
+
+
+                        <label>Browser Select</label>
+                        <select id="s2" class="browser-default">
+                            <option value="" selected></option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+
+                    <p>
+                        <label>
+                            <input name="group1" type="radio" value="1" >
+                            <span>Red</span>
+                        </label>
+                    <label>
+                            <input name="group1" type="radio"  value="2">
+                            <span>vermelho</span>
+                        </label>
+                    </p>
+
+                    <div>
+                        Data de Nascimento <input type="date" id="nascimento" name="data">
+                    </div>
+
+
                 </form>
             </div>
         </div>
@@ -42,5 +80,37 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+<script language="javascript" type="text/javascript">
+    function valida_form () {
+        // if (document.getElementById("nome").value.length < 1) {
+        //     alert('Por favor, preencha o campo nome');
+        //     document.getElementById("nome").focus();
+        //     return false
+        // }
+        // var check = document.getElementById("s");
+        // if (check.checked == false) {
+        //     alert("marque um campo");
+        //     return false
+        // }
+
+/*        var selecionado = document.getElementById("s2");
+        if (selecionado.options[selecionado.selectedIndex].value == "") {
+            alert("selecione um campo");
+            return false
+        }*/
+
+        // if (document.form.group1[0].checked == false
+        //     && document.form.group1[1].checked == false) {
+        //     alert('Por favor, selecione seu sexo.');
+        //     return false;
+        // }
+        if (document.getElementById("nascimento").value.length <1) {
+            alert('Por favor, preencha o nascimento');
+            document.getElementById("nascimento").focus();
+            return false
+        }
+
+    }
+</script>
 
 </html>

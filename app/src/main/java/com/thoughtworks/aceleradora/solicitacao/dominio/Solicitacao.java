@@ -17,6 +17,7 @@ public class Solicitacao {
     }
 
     public Solicitacao(String nome) {
+
         this.nome = nome;
     }
 
