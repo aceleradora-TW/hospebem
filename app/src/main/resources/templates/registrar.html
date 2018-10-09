@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospebem Registrar</title>
+</head>
+<body>
+    <h1>Formulário de Registro do Hospebem</h1>
+    <form action="#" th:action="@{/registrar}" th:object="${formUsuario}" method="post">
+        <div th:if="${#fields.hasAnyErrors()}">
+            <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
+        </div>
+
+        <p>Usuario: <input type="text" th:field="*{usuario}"></p>
+        <p>Senha: <input type="password" th:field="*{senha}"></p>
+        <p><input type="submit" value="Enviar"></p>
+    </form>
+</body>
+</html>

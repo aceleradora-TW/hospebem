@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Login do Hospebem</h1>
+    <form th:action="@{/login}" method="post">
+        <input type="text" name="usuario" placeholder="Usuário">
+        <input type="password" name="senha" placeholder="senha">
+        <input type="submit" value="LOGAR!">
+    </form>
+</body>
+</html>

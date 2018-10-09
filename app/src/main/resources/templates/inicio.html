@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,14 @@
     <div class="agrupadora">
         <header class="cabecalho">
             <h1>Hospebem</h1>
+            <div sec:authorize="isAuthenticated()">
+                <div>
+                    Autenticado graças a deux!
+                </div>
+                <div>
+                    Logado como: <span sec:authentication="name"></span>
+                </div>
+            </div>
         </header>
 
         <nav class="navegacao">
@@ -16,6 +24,15 @@
                 <a href="/"><li>Início</li></a>
                 <a href="/pessoa/lista"><li>Pessoas</li></a>
                 <a href="/pessoa/cadastro"><li>Cadastrar Pessoa</li></a>
+                <div sec:authorize="!isAuthenticated()">
+                    <a href="/login"><li>Logar</li></a>
+                    <a href="/registrar"><li>Registrar</li></a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <form action="#" th:action="@{/logout}" method="post">
+                        <input type="submit" value="Logout!">
+                    </form>
+                </div>
             </ul>
         </nav>
     </div>
