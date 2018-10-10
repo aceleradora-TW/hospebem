@@ -2,6 +2,7 @@ package com.thoughtworks.aceleradora.solicitacao.dominio;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.IDENTITY;
@@ -12,32 +13,42 @@ public class Solicitacao {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+
     private String nome;
+
     private String genero;
+
     private String situacao;
+
     @OneToOne(cascade=ALL)
     private Endereco endereco;
 
-    private ArrayList<Acompanhante>acompanhante = new ArrayList<>();
+    @OneToMany(cascade = ALL)
+    @JoinColumn(name = "solicitacao_id")
+    private List<Acompanhante> acompanhantes = new ArrayList<>();
 
     public Solicitacao() {
     }
 
-    public Solicitacao(String nome, Endereco endereco, String genero, String situacao, ArrayList<Acompanhante>acompanhante) {
+    public Solicitacao(String nome, Endereco endereco, String genero, String situacao, List<Acompanhante> acompanhantes) {
         this.nome = nome;
         this.endereco = endereco;
         this.genero = genero;
         this.situacao = situacao;
-        this.acompanhante = acompanhante;
+        this.acompanhantes = acompanhantes;
 
     }
 
-    public ArrayList<Acompanhante> getAcompanhante() {
-        return acompanhante;
+    public Solicitacao(List<Acompanhante> acompanhantes) {
+        this.acompanhantes = acompanhantes;
     }
 
-    public void setAcompanhante(ArrayList<Acompanhante> acompanhante) {
-        this.acompanhante = acompanhante;
+    public List<Acompanhante> getAcompanhantes() {
+        return acompanhantes;
+    }
+
+    public void setAcompanhantes(List<Acompanhante> acompanhantes) {
+        this.acompanhantes = acompanhantes;
     }
 
     public void setNome(String nome) {

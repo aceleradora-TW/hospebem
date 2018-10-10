@@ -1,1 +1,1 @@
-alter table acompanhante add column solicitacao_id integer;
+alter table acompanhante add column solicitacao_id integer not null;

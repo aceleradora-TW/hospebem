@@ -1,8 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -21,11 +19,6 @@ public class Acompanhante {
 
     }
 
-    public Acompanhante(String nome, String genero) {
-        this.nome = nome;
-        this.genero = genero;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -34,11 +27,16 @@ public class Acompanhante {
         this.nome = nome;
     }
 
-    public String getGenero() {
+    public String getGenero1() {
         return genero;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setGenero1(String genero1) {
+        this.genero = genero1;
+    }
+
+    public Acompanhante(String nome, String genero1) {
+        this.nome = nome;
+        this.genero = genero1;
     }
 }
