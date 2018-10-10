@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -25,15 +25,14 @@
         <div class="container">
             <div class="row">
                 <h1> Dados do paciente</h1>
-                <form action="/solicitacao/cadastro" method="post">
-                    <div class="col s12">
-                        <span>Nome Completo:</span>
-                        <input name="nome" type="text">
+                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
+                    <p>Nome: <input type="text" th:field="*{nome}"></p>
+                    <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
+                       <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>: <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}"></p>
+                       <p>Genero acompanhante <span th:text="${acompIndex.index + 1}"></span>: <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].genero}"></p>
+                    </div>
 
-                    </div>
-                    <div class="col s12">
-                        <button type="submit">Salvar</button>
-                    </div>
+                    <input type="submit" value="Salvar!">
                 </form>
             </div>
         </div>
