@@ -40,7 +40,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .usernameParameter("usuario")
                     .passwordParameter("senha")
-                    .defaultSuccessUrl("/")
+                    .defaultSuccessUrl("/bemvindo")
                     .and()
                 .logout()
                     .logoutSuccessUrl("/")
