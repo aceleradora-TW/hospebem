@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,7 +13,7 @@
                 Autenticado graças a deux!
             </div>
             <div>
-                Logado como: <span sec:authentication="user"></span>
+                Logado como: <span sec:authentication="name"></span>
             </div>
         </div>
     </header>

@@ -30,7 +30,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
-                .antMatchers("/", "/registrar")
+                .antMatchers("/", "/registrar", "/static/**", "/**.js") // O problema estava aqui, temos que autorizar receber css e arquivos JS mesmo sem estar autenticado
                 .permitAll()
                 .anyRequest()
                 .authenticated()

@@ -24,7 +24,7 @@ public class UsuarioValidador implements Validator {
         if(usuarioRepository.findByUsuario(usuario.getUsuario()) != null){
             erros.rejectValue("usuario", "Usuario.usuarioForm.usuarioDuplicado");
         }
-        if(usuarioRepository.findByUsuario(usuario.getUsuario()) == null){
+        if(usuario.getUsuario() == null){
             erros.rejectValue("usuario", "Usuario.usuarioForm.usuarioVazio");
         }
     }
