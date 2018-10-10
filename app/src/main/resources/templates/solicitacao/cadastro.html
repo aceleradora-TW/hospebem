@@ -11,104 +11,157 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-wrapper container">
-                <span>
-                    HOSPEBEM
-                </span>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="row">
-                <h1> Dados do paciente</h1>
-                <form name="form" action="/solicitacao/cadastro" method="post" onsubmit="return valida_form(this)">
-                    <div class="col s12">
-
-
-                        <span>Nome Completo:</span>
-                        <input name="nome" id="nome" type="text">
-
-
-
-                    </div>
-                    <div class="col s12">
-                        <button type="submit" >Salvar</button>
-
-                    </div>
-
-                    <p>
-                        <label>
-                            <input id="s" type="checkbox" class="filled-in"  />
-                            <span>Filled in</span>
-                        </label>
-
-
-
-
-                        <label>Browser Select</label>
-                        <select id="s2" class="browser-default">
-                            <option value="" selected></option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-
-                    <p>
-                        <label>
-                            <input name="group1" type="radio" value="1" >
-                            <span>Red</span>
-                        </label>
-                    <label>
-                            <input name="group1" type="radio"  value="2">
-                            <span>vermelho</span>
-                        </label>
-                    </p>
-
-                    <div>
-                        Data de Nascimento <input type="date" id="nascimento" name="data">
-                    </div>
-
-
-                </form>
-            </div>
+<header>
+    <nav class="navbar">
+        <div class="nav-wrapper container">
+            <h1>
+                Solicitar Vaga
+            </h1>
         </div>
-    </main>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <h2> Dados do paciente</h2>
+
+            <form name="form" action="/solicitacao/cadastro" method="post" onsubmit="return valida_form(this)">
+
+                <div class="col s12">
+                    <span>Nome Completo:</span>
+                    <input name="nome" type="text" id="nome">
+                </div>
+
+                <div class="col s12">
+                    <label>
+                        <input name="genero" id="genero" type="radio" value ="F">
+                        <span>F</span>
+                    </label>
+                    <label>
+                        <input name="genero" id="genero" type="radio" value ="M">
+                        <span>M</span>
+                    </label>
+                </div>
+
+                <div class="col s12">
+                    <label>
+                        <input name="situacao" id="situacao" type="radio" value ="pre">
+                        <span>Pré-transplantado</span>
+                    </label>
+                    <label>
+                        <input name="situacao" id="situacao" type="radio" value ="pos">
+                        <span>Pós-transplantado</span>
+                    </label>
+                </div>
+
+                <h3>Endereço:</h3>
+
+                <div class="col s12">
+                    <span>Cidade:</span>
+                    <input name="endereco.cidade" type="text">
+                </div>
+
+                <div class="col s12">
+                    <span>Uf:</span>
+                    <input name="endereco.uf" type="text">
+                </div>
+
+                <h4>Dados do Acompanhante</h4>
+                <div class="col s12">
+                    <h5>Acompanhante 1:</h5>
+                    <span>Nome Completo:</span>
+                    <input name="acompanhante.nome"  type="text" id="acompanhante.nome">
+                </div>
+
+                <div class="col s12">
+                    <label>
+                        <input name="acompanhante.genero1" id="acompanhantegenero1" type="radio" value ="F" >
+                        <span>F</span>
+                    </label>
+                    <label>
+                        <input name="acompanhante.genero1" id="acompanhantegenero1" type="radio" value ="M">
+                        <span>M</span>
+                    </label>
+                </div>
+
+
+                <div class="col s12">
+                    <h5>Acompanhante 2:</h5>
+                    <span>Nome Completo:</span>
+                    <input name="acompanhante.nome" type="text">
+                </div>
+
+                <div class="col s12">
+                    <label>
+                        <input name="acompanhante.genero2" type="radio" value ="F" >
+                        <span>F</span>
+                    </label>
+                    <label>
+                        <input name="acompanhante.genero2" type="radio" value ="M">
+                        <span>M</span>
+                    </label>
+                </div>
+
+                <div class="col s12">
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <script language="javascript" type="text/javascript">
     function valida_form () {
-        // if (document.getElementById("nome").value.length < 1) {
-        //     alert('Por favor, preencha o campo nome');
-        //     document.getElementById("nome").focus();
-        //     return false
-        // }
-        // var check = document.getElementById("s");
-        // if (check.checked == false) {
-        //     alert("marque um campo");
-        //     return false
-        // }
 
-/*        var selecionado = document.getElementById("s2");
-        if (selecionado.options[selecionado.selectedIndex].value == "") {
-            alert("selecione um campo");
-            return false
-        }*/
 
-        // if (document.form.group1[0].checked == false
-        //     && document.form.group1[1].checked == false) {
-        //     alert('Por favor, selecione seu sexo.');
-        //     return false;
-        // }
-        if (document.getElementById("nascimento").value.length <1) {
+                if (document.getElementById("nome").value.length < 1) {
+                    alert('Por favor, preencha o campo nome');
+                    document.getElementById("nome").focus();
+                    return false
+                }
+                if (document.form.genero[0].checked == false
+                    && document.form.genero[1].checked == false) {
+                    alert('Por favor, selecione seu sexo.');
+                    return false;
+                }
+                if (document.form.situacao[0].checked == false
+                    && document.form.situacao[1].checked == false) {
+                    alert('Por favor, selecione a situacao do transplante.');
+                    return false;
+                }
+                if (document.getElementById("acompanhante.nome").value.length < 1) {
+                    alert('Por favor, preencha o campo nome do acompanhante');
+                    document.getElementById("acompanhante.nome").focus();
+                    return false
+                }
+                if (document.form.acompanhantegenero1[0].checked == false
+                    && document.form.acompanhantegenero1[1].checked == false) {
+                    alert('Por favor, selecione o sexo do acompanhante.');
+                    return false;
+                }
+                /*if (document.getElementById("nascimento").value.length <1) {
             alert('Por favor, preencha o nascimento');
             document.getElementById("nascimento").focus();
             return false
-        }
+             }*/
+
+                /*var check = document.getElementById("ckebox");
+             if (check.checked == false) {
+            alert("Por favor, selecione um genero");
+
+            return false
+            }*/
+                /*   var selecionado = document.getElementById("s");
+            if (selecionado.options[selecionado.selectedIndex].value == "") {
+               alert("selecione um campo");
+
+               return false
+            }*/
+
 
     }
 </script>
