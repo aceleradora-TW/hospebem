@@ -31,7 +31,7 @@ jobs:
 
       - run: gradle assemble
 
-      - run: echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+      #- run: echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
 
       - run: docker build -f ci-runner.docker -t aceleradoratw/esqueleto-ci-runner .
 
@@ -90,7 +90,7 @@ jobs:
         - run:
             name: Deploy para o ambiente de integracao
             command: |
-              #git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_INTEGRATION_APP_NAME.git master
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_INTEGRATION_APP_NAME.git master
 
 workflows:
   version: 2
