@@ -43,6 +43,11 @@
                 </div>
 
                 <div class="col s12">
+                    <span>Data de nascimento:</span>
+                    <input name="dataNascimento" type="text" class="datepicker">
+                </div>
+
+                <div class="col s12">
                     <label>
                         <input name="situacao" type="radio" value ="pre" >
                         <span>Pré-transplantado</span>
@@ -97,6 +102,13 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let elems = document.querySelectorAll('.datepicker');
+        let instances = M.Datepicker.init(elems, {
+            format: 'dd/mm/yyyy'
+        });
+    });
+</script>
 
 </html>

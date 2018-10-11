@@ -1,6 +1,7 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,50 +21,35 @@ public class Solicitacao {
 
     private String situacao;
 
+    @Column(name = "data_nascimento")
+    private LocalDate dataNascimento;
+
     @OneToOne(cascade=ALL)
     private Endereco endereco;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "solicitacao")
     private List<Acompanhante> acompanhantes;
 
+
     public Solicitacao() {
     }
 
-    public Solicitacao(String nome, Endereco endereco, String genero, String situacao, List<Acompanhante> acompanhantes) {
+    public Solicitacao(String nome, String genero, String situacao, LocalDate dataNascimento, Endereco endereco, List<Acompanhante> acompanhantes) {
         this.nome = nome;
-        this.endereco = endereco;
         this.genero = genero;
         this.situacao = situacao;
-        this.acompanhantes = acompanhantes;
-
-    }
-
-    public Solicitacao(List<Acompanhante> acompanhantes) {
-        this.acompanhantes = acompanhantes;
-    }
-
-    public List<Acompanhante> getAcompanhantes() {
-        return acompanhantes;
-    }
-
-    public void setAcompanhantes(List<Acompanhante> acompanhantes) {
-        this.acompanhantes = acompanhantes;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setEndereco(Endereco endereco) {
+        this.dataNascimento = dataNascimento;
         this.endereco = endereco;
-    }
+        this.acompanhantes = acompanhantes;
 
-    public Endereco getEndereco() {
-        return endereco;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getGenero() {
@@ -80,5 +66,29 @@ public class Solicitacao {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public List<Acompanhante> getAcompanhantes() {
+        return acompanhantes;
+    }
+
+    public void setAcompanhantes(List<Acompanhante> acompanhantes) {
+        this.acompanhantes = acompanhantes;
     }
 }

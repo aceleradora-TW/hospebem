@@ -32,11 +32,12 @@ public class SolicitacaoController {
 
     @PostMapping("/cadastro")
     @ResponseBody
-    public String salvaSolicitacao(@ModelAttribute("solicitacao") Solicitacao solicitacao) {
+    public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
         solicitacaoRepository.save(solicitacao);
 
+        model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
         return "salvou:" + solicitacao.getNome();
     }
 
