@@ -1,4 +1,4 @@
-# Hospebem
+run# Hospebem
 
 Uma aplicação mínima em Spring Boot.
 
