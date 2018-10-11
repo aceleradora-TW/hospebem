@@ -1,4 +1,4 @@
- create table usuarios(
+ create table nome(
   id serial primary key,
   nome varchar(100),
   tipo varchar(100),

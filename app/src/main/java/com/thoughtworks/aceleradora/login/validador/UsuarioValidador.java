@@ -9,8 +9,12 @@ import org.springframework.validation.Validator;
 
 @Component
 public class UsuarioValidador implements Validator {
-    @Autowired
-    UsuarioRepository usuarioRepository;
+
+    private UsuarioRepository usuarioRepository;
+
+    public UsuarioValidador(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
 
     @Override
     public boolean supports(Class<?> clazz){
@@ -21,11 +25,12 @@ public class UsuarioValidador implements Validator {
     public void validate(Object objeto, Errors erros){
         Usuario usuario = (Usuario) objeto;
 
-        if(usuarioRepository.findByUsuario(usuario.getUsuario()) != null){
-            erros.rejectValue("usuario", "Usuario.usuarioForm.usuarioDuplicado");
+        if(usuarioRepository.findByNome(usuario.getNome()) != null) {
+            erros.rejectValue("nome", "Usuario.usuarioForm.usuarioDuplicado");
         }
-        if(usuario.getUsuario() == null){
-            erros.rejectValue("usuario", "Usuario.usuarioForm.usuarioVazio");
+
+        if(usuario.getNome() == null) {
+            erros.rejectValue("nome", "Usuario.usuarioForm.usuarioVazio");
         }
     }
 }

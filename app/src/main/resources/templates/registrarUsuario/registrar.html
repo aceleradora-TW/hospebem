@@ -12,7 +12,7 @@
         <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
     </div>
 
-    <p>Usuario: <input type="text" th:field="*{usuario}"></p>
+    <p>Usuario: <input type="text" th:field="*{nome}"></p>
     <p>Senha: <input type="password" th:field="*{senha}"></p>
     <p><input type="submit" value="Enviar"></p>
 </form>

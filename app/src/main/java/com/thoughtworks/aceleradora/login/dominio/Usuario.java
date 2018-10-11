@@ -3,7 +3,6 @@ package com.thoughtworks.aceleradora.login.dominio;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "usuarios")
 public class Usuario {
 
     @Id
@@ -11,15 +10,16 @@ public class Usuario {
     private Long id;
 
     @Column(unique = true)
-    private String usuario;
+    private String nome;
+
     private String senha;
 
     public Usuario(){
 
     }
 
-    public Usuario(String usuario, String senha){
-        this.usuario = usuario;
+    public Usuario(String nome, String senha){
+        this.nome = nome;
         this.senha = senha;
     }
 
@@ -27,12 +27,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getNome() {
+        return nome;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getSenha() {
