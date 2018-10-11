@@ -23,9 +23,8 @@ public class Solicitacao {
     @OneToOne(cascade=ALL)
     private Endereco endereco;
 
-    @OneToMany(cascade = ALL)
-    @JoinColumn(name = "solicitacao_id")
-    private List<Acompanhante> acompanhantes = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "solicitacao")
+    private List<Acompanhante> acompanhantes;
 
     public Solicitacao() {
     }

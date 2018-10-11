@@ -5,6 +5,7 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+@Table(name = "acompanhante")
 public class Acompanhante {
 
     @Id
@@ -15,8 +16,21 @@ public class Acompanhante {
 
     private String genero;
 
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "solicitacao_id")
+    private Solicitacao solicitacao;
+
     public Acompanhante() {
 
+    }
+
+    public Solicitacao getSolicitacao() {
+        return solicitacao;
+    }
+
+    public void setSolicitacao(Solicitacao solicitacao) {
+        this.solicitacao = solicitacao;
     }
 
     public String getNome() {
@@ -27,16 +41,17 @@ public class Acompanhante {
         this.nome = nome;
     }
 
-    public String getGenero1() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero1(String genero1) {
-        this.genero = genero1;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
-    public Acompanhante(String nome, String genero1) {
+    public Acompanhante(String nome, String genero, Solicitacao solicitacao) {
         this.nome = nome;
-        this.genero = genero1;
+        this.genero = genero;
+        this.solicitacao = solicitacao;
     }
 }

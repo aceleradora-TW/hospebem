@@ -14,28 +14,28 @@ import java.util.Arrays;
 @RequestMapping("/solicitacao")
 public class SolicitacaoController {
 
-    private SolicitacaoRepository repositorio;
+    private SolicitacaoRepository solicitacaoRepository;
 
 
     @Autowired
     public SolicitacaoController(SolicitacaoRepository repositorio) {
-        this.repositorio = repositorio;
+        this.solicitacaoRepository = repositorio;
     }
 
     @GetMapping("/cadastro")
     public String formularioCadastro(Solicitacao solicitacao, Model model) {
-
-
+        Solicitacao novaSolicitacao = new Solicitacao();
+        novaSolicitacao.setAcompanhantes(Arrays.asList(new Acompanhante(), new Acompanhante()));
+        model.addAttribute("solicitacao", novaSolicitacao);
         return "solicitacao/cadastro";
     }
 
     @PostMapping("/cadastro")
     @ResponseBody
-    public String salvaSolicitacao(Solicitacao solicitacao) {
+    public String salvaSolicitacao(@ModelAttribute("solicitacao") Solicitacao solicitacao) {
+        solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
-        System.out.println(solicitacao.getAcompanhantes().size());
-
-        repositorio.save(solicitacao);
+        solicitacaoRepository.save(solicitacao);
 
         return "salvou:" + solicitacao.getNome();
     }
