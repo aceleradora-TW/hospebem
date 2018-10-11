@@ -32,5 +32,4 @@ public class SolicitacaoController {
 
         return "salvou:" + solicitacao.getNome();
     }
-
 }

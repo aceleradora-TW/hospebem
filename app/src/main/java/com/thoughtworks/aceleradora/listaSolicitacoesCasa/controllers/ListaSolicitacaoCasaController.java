@@ -26,6 +26,5 @@ public class ListaSolicitacaoCasaController {
         model.addAttribute("solicitacoesCasa", repositorio.findAll());
 
         return "listaSolicitacaoCasa/listaSolicitacaoCasa";
-
     }
 }
