@@ -25,15 +25,17 @@
     <div class="container">
         <div class="row">
             <h2> Dados do paciente</h2>
+            <p>Os campos marcados com * são de preenchimento obrigatório.</p>
 
             <form name="form" action="/solicitacao/cadastro" method="post" onsubmit="return valida_form(this)">
 
                 <div class="col s12">
-                    <span>Nome Completo:</span>
+                    <span>*Nome Completo:</span>
                     <input name="nome" type="text" id="nome">
                 </div>
 
                 <div class="col s12">
+                    <span>*Gênero: </span>
                     <label>
                         <input name="genero" id="genero" type="radio" value ="F">
                         <span>F</span>
@@ -45,6 +47,7 @@
                 </div>
 
                 <div class="col s12">
+                    <span>*Situação: </span>
                     <label>
                         <input name="situacao" id="situacao" type="radio" value ="pre">
                         <span>Pré-transplantado</span>
@@ -70,11 +73,12 @@
                 <h4>Dados do Acompanhante</h4>
                 <div class="col s12">
                     <h5>Acompanhante 1:</h5>
-                    <span>Nome Completo:</span>
+                    <span>*Nome Completo:</span>
                     <input name="acompanhante.nome"  type="text" id="acompanhante.nome">
                 </div>
 
                 <div class="col s12">
+                    <span>*Gênero Acompanhante:</span>
                     <label>
                         <input name="acompanhante.genero1" id="acompanhantegenero1" type="radio" value ="F" >
                         <span>F</span>
@@ -93,6 +97,7 @@
                 </div>
 
                 <div class="col s12">
+                    <span>Gênero Acompanhante:</span>
                     <label>
                         <input name="acompanhante.genero2" type="radio" value ="F" >
                         <span>F</span>
@@ -125,7 +130,7 @@
                 }
                 if (document.form.genero[0].checked == false
                     && document.form.genero[1].checked == false) {
-                    alert('Por favor, selecione seu sexo.');
+                    alert('Por favor, selecione o gênero do paciente.');
                     return false;
                 }
                 if (document.form.situacao[0].checked == false
@@ -140,7 +145,7 @@
                 }
                 if (document.form.acompanhantegenero1[0].checked == false
                     && document.form.acompanhantegenero1[1].checked == false) {
-                    alert('Por favor, selecione o sexo do acompanhante.');
+                    alert('Por favor, selecione o gênero do acompanhante.');
                     return false;
                 }
                 /*if (document.getElementById("nascimento").value.length <1) {
