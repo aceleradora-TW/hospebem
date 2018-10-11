@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "acompanhante")
 public class Acompanhante {
 
     @Id

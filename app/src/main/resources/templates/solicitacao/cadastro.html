@@ -103,9 +103,19 @@
                     </div>
 
                 <div class="col s12">
-                    <button type="submit">Salvar</button>
+                    <button type="submit" onclick="alert('Solicitacao enviada')">Salvar</button>
                 </div>
             </form>
+
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Modal Header</h4>
+                    <p>A bunch of text</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
         </div>
     </div>
 </main>
@@ -118,6 +128,12 @@
         let instances = M.Datepicker.init(elems, {
             format: 'dd/mm/yyyy'
         });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        let elems = document.querySelectorAll('.modal');
+        let instances = M.Modal.init(elems, options);
     });
 </script>
 

@@ -38,7 +38,7 @@ public class SolicitacaoController {
         solicitacaoRepository.save(solicitacao);
 
         model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
-        return "salvou:" + solicitacao.getNome();
+        return "solicitacao/cadastro";
     }
 
 }
