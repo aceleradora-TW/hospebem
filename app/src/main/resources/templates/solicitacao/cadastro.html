@@ -88,9 +88,22 @@
 
 
                     <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
-                        <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>: <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}"></p>
-                        <p>Genero acompanhante <span th:text="${acompIndex.index + 1}"></span>: <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].genero}"></p>
+                        <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                            <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                        </p>
+                        <p>Genero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                            <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                        </p>
+
+                        <div class="col s12">
+                            <p> Data de nascimento<span th:text="${acompIndex.index + 1}" ></span>:
+                            <input type="text" class="datepicker" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}">
+                            </p>
+                        </div>
                     </div>
+
+
+
 
                 <div class="col s12">
                     <button type="submit">Salvar</button>
