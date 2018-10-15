@@ -3,6 +3,7 @@ package com.thoughtworks.aceleradora.login.dominio;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
 
     @Id
@@ -21,10 +22,6 @@ public class Usuario {
     public Usuario(String nome, String senha){
         this.nome = nome;
         this.senha = senha;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {

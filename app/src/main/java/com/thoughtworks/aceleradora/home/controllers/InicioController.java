@@ -10,4 +10,9 @@ public class InicioController {
     public String renderizaPaginaInicial() {
         return "inicio";
     }
+
+    @GetMapping(value = "/bemvindo")
+    public String bemVindo(){
+        return "bemvindo";
+    }
 }

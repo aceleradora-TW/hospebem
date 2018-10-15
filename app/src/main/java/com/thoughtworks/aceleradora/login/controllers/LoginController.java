@@ -24,6 +24,7 @@ public class LoginController {
     @GetMapping(value = "/registrar")
     public String registrar(Model model){
         model.addAttribute("formUsuario", new Usuario());
+
         return "registrarUsuario/registrar";
     }
 
@@ -43,10 +44,5 @@ public class LoginController {
     @GetMapping(value = "/login")
     public String login(){
         return "login/login";
-    }
-
-    @GetMapping(value = "/bemvindo")
-    public String bemVindo(){
-        return "bemvindo";
     }
 }
