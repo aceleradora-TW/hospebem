@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -92,12 +92,21 @@
                             <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                         </p>
                         <p>Genero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                            <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                            <label>
+                            <input type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                            <span>F</span>
+                            </label>
+                            <label>
+                            <input type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                            <span> M</span>
+                            </label>
+                        </p>
                         </p>
 
                         <div class="col s12">
-                            <p> Data de nascimento<span th:text="${acompIndex.index + 1}" ></span>:
-                            <input type="text" class="datepicker" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}">
+                            <p> Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
+                            <input  placeholder="Clique para selecionar uma data" class = "datepicker" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
+
                             </p>
                         </div>
                     </div>
@@ -123,18 +132,15 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+
+   document.addEventListener('DOMContentLoaded', () => {
         let elems = document.querySelectorAll('.datepicker');
         let instances = M.Datepicker.init(elems, {
-            format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy'
         });
-    });
+    })
 
 
-    document.addEventListener('DOMContentLoaded', () => {
-        let elems = document.querySelectorAll('.modal');
-        let instances = M.Modal.init(elems, options);
-    });
 </script>
 
 </html>
