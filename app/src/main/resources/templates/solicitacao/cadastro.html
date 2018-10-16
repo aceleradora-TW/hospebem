@@ -23,6 +23,9 @@
 
 <main>
     <div class="container">
+        <div class = "col s12">
+            <button><a href="/">Voltar</a> </button>
+        </div>
         <div class="row">
             <h2> Dados do paciente</h2>
             <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
@@ -115,7 +118,7 @@
                     <button type="submit" onclick="alert('Solicitacao enviada')">Salvar</button>
                 </div>
                 <div class = "col s12">
-                    <input type="reset" value="Cancelar" onclick="window.location.href='#'"/>
+                    <input type="reset" value="Cancelar"/>
                 </div>
             </form>
 
