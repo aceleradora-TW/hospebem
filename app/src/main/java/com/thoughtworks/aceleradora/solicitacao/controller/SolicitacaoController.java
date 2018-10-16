@@ -21,11 +21,14 @@ public class SolicitacaoController {
     private ListaSolicitacaoHospitalRepository repositorioHospital;
 
     @Autowired
-    public SolicitacaoController(SolicitacaoRepository repositorioSolicitacao) {
+    public SolicitacaoController(SolicitacaoRepository repositorioSolicitacao, ListaSolicitacaoCasaRepository repositorioCasa, ListaSolicitacaoHospitalRepository repositorioHospital) {
 
         this.repositorioSolicitacao = repositorioSolicitacao;
         this.repositorioCasa = repositorioCasa;
         this.repositorioHospital = repositorioHospital;
+    }
+
+    public SolicitacaoController() {
     }
 
     @GetMapping("/cadastro")
