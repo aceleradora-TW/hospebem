@@ -2,32 +2,31 @@ case $1 in
 
   # Cria o container com a imagem do postgres
   run)
-    docker run --name hospebem-img -p 5432:5432 -e POSTGRES_PASSWORD=hospebempass -d postgres
+    docker run --name hospebem-db -p 5432:5432 -e POSTGRES_PASSWORD=hospebempass -d postgres
   ;;
 
   # Se o banco estiver em estado de 'stop', utilize este comando (Nao e uma boa pratica)
   start)
-    docker container start hospebem-img 2> /dev/null || ./banco run
+    docker container start hospebem-db 2> /dev/null || ./banco run
   ;;
 
-  # Cria uma instancia do banco local
+  # Cria um novo banco dentro do container docker
   create)
-    docker exec -it hospebem-img psql -U postgres -c 'CREATE DATABASE hospebemdb'
+    docker exec -it hospebem-db psql -U postgres -c 'CREATE DATABASE hospebemdb'
   ;;
 
   # Abre console do banco no terminal
   console)
-    docker exec -it hospebem-img psql -U postgres -d hospebemdb
+    docker exec -it hospebem-db psql -U postgres -d hospebemdb
   ;;
 
-  # Parar a imagem  do container do banco
+  # Parar o container que o banco está rodando
   stop)
-     docker stop hospebem-img
+     docker stop hospebem-db
   ;;
 
-  # Remove todos os containers
   remove)
-    docker rm $(docker ps -qa)
+    docker rm hospebem-db
   ;;
 
   *)
