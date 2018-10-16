@@ -1,10 +1,26 @@
-nav{
+#cabecalho{
     background-color: rgb(26,188,156);
 }
-.container{
-    margin-top: 10%;
+
+h1, p, .botao, #email{
+    text-align: center;
+    padding: 10px;
 }
 
-h1{
-    font-size: 42px;
+p{
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.botao{
+    margin-top: 4%;
+}
+
+#button:hover{
+    background-color: rgb(0,209,178);
+}
+
+#email{
+    width: 50%;
+
 }
