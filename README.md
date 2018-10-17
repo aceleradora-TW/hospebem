@@ -33,6 +33,7 @@ Acessa o banco
              
 Para adicionar as tabelas ao B.D. execute as migrações do banco de dados:
 
+
 ```sh
 ./gradlew flywayMigrate -i
 ```
