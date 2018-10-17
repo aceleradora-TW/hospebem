@@ -1,46 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="UTF-8">
-        <title>Hospebem</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    </head>
-    <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-wrapper container">
-                    <span>
-                        HOSPEBEM
-                    </span>
-            </div>
-        </nav>
-    </header>
-    <h1>Lista de Solicitações Hospital:</h1>
-    <br>
-    <table>
-        <tr>
-            <td>Nome</td>
-            <td>Última Atualização</td>
-            <td>Status</td>
-            <td>Editar</td>
-            <td>Apagar</td>
-        </tr>
+<head>
+    <meta charset="UTF-8">
+    <title>Hospebem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
 
-        <tr th:each="solicitacao : ${solicitacoesHospital}">
-            <td th:text="${solicitacao.nome}"></td>
-            <td>11-11-2018</td>
-            <td>Pendente</td>
-            <td>
-                <a href="/listaHospital">
-                    <li>✔</li>
-                </a>
-            </td>
-            <td>
-                <a href="/listaHospital">
-                    <li>X</li>
-                </a>
-            </td>
-        </tr>
-    </table>
-    </body>
+<body>
+
+<header>
+    <nav class="navbar is-fixed-top is-info centralizar" aria-label="main navigation">
+
+                    <label>
+                        HOSPEBEM
+                    </label>
+    </nav>
+</header>
+<main>
+    <div class="container">
+
+        <div class="columns is-mobile is-centered">
+            <div class="column">
+                <h1 class="title is-half centralizar espacamento">Lista de Solicitações</h1>
+
+                <form action="/solicitacao/cadastro">
+                    <div class="is-centered is-half centralizar espacamento">
+                        <input type="submit" class="button is-info" value="Solicitar Vaga" />
+                    </div>
+                </form>
+
+                <div class="columns is-mobile is-centered">
+                        <table class="table centralizar">
+                            <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Última Atualização</th>
+                                <th>Status</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="solicitacao : ${solicitacoesHospital}">
+                                <td th:text="${solicitacao.nome}"></td>
+                                <td>11-11-2018</td>
+                                <td>Pendente</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
 </html>
