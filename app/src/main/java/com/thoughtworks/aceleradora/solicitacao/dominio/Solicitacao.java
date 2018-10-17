@@ -21,6 +21,13 @@ public class Solicitacao {
 
     private String situacao;
 
+    private String telefone;
+
+    private String cadeirante;
+
+    private float peso;
+
+
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -34,14 +41,16 @@ public class Solicitacao {
     public Solicitacao() {
     }
 
-    public Solicitacao(String nome, String genero, String situacao, LocalDate dataNascimento, Endereco endereco, List<Acompanhante> acompanhantes) {
+    public Solicitacao(String nome, String genero, String situacao, String telefone, String cadeirante, float peso, LocalDate dataNascimento, Endereco endereco, List<Acompanhante> acompanhantes) {
         this.nome = nome;
         this.genero = genero;
         this.situacao = situacao;
+        this.telefone = telefone;
+        this.cadeirante = cadeirante;
+        this.peso = peso;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.acompanhantes = acompanhantes;
-
     }
 
     public String getNome() {
@@ -84,11 +93,33 @@ public class Solicitacao {
         this.endereco = endereco;
     }
 
+    public String getTelefone() {return telefone;
+    }
+
+    public void setTelefone(String telefone) {this.telefone = telefone;
+    }
+
+    public String getCadeirante() {return cadeirante;
+    }
+
+    public void setCadeirante(String cadeirante) {this.cadeirante = cadeirante;
+    }
+
+    public float getPeso() {return peso;
+    }
+
+    public void setPeso(float peso) {this.peso = peso;
+    }
+
+
     public List<Acompanhante> getAcompanhantes() {
         return acompanhantes;
     }
 
+
     public void setAcompanhantes(List<Acompanhante> acompanhantes) {
         this.acompanhantes = acompanhantes;
     }
+
+
 }
