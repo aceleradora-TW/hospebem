@@ -7,19 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulario</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+
 </head>
 
 <body>
 <header>
-    <div class = "col s12">
-        <button><a href="/">Voltar</a> </button>
+    <div class ="">
+        <a class="button is-primary is-outlined" href="/">Voltar</a>
     </div>
     <nav class="navbar">
         <div class="nav-wrapper container">
-                <h1>
-                    Solicitar Vaga
-                </h1>
+                <h1 class="title is-1">Solicitar Vagas</h1>
         </div>
     </nav>
 </header>
@@ -28,17 +27,17 @@
     <div class="container">
 
         <div class="row">
-            <h2> Dados do paciente</h2>
+            <h2 class="title is-2"> Dados do paciente</h2>
             <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
                 <div class="col s12">
                     <span>Nome Completo:</span>
-                    <input name="nome" type="text">
+                    <input class="input is-primary" name="nome" type="text">
                 </div>
 
                 <div class="col s12">
                     <span>Sexo:</span>
                     <label>
-                    <input name="genero" type="radio" value ="F" >
+                    <input class="is-checkradio is-success" name="genero" type="radio" value ="F" >
                     <span>F</span>
                     </label>
                     <label>
@@ -65,7 +64,7 @@
 
                     <div>
                         <span>Caso o paciente seja cadeirante, informe o seu peso:</span>
-                        <input name="peso" type="text">
+                        <input class="input is-primary" name="peso" type="text">
                     </div>
                 </div>
 
@@ -85,40 +84,40 @@
 
                 <div class="col s12">
                     <span>Telefone para Contato:</span>
-                    <input name="telefone" type="text">
+                    <input class="input is-primary" name="telefone" type="text">
                 </div>
 
-                <h3>Endereço:</h3>
+                <h3 class="title is-3">Endereço:</h3>
                 <div class="col s12">
                     <span>Rua:</span>
-                    <input name ="endereco.rua" type="text">
+                    <input class="input is-primary" name ="endereco.rua" type="text">
                 </div>
 
                 <div class="col s12">
                     <span>Número:</span>
-                    <input name="endereco.numero" type="text">
+                    <input class="input is-primary" name="endereco.numero" type="text">
                 </div>
 
                 <div class="col s12">
                     <span>Cidade:</span>
-                    <input name="endereco.cidade" type="text">
+                    <input class="input is-primary" name="endereco.cidade" type="text">
                 </div>
 
                 <div class="col s12">
                     <span>Bairro:</span>
-                    <input name="endereco.bairro" type="text">
+                    <input class="input is-primary" name="endereco.bairro" type="text">
                 </div>
 
                 <div class="col s12">
                     <span>Uf:</span>
-                    <input name="endereco.uf" type="text">
+                    <input class="input is-primary" name="endereco.uf" type="text">
                 </div>
 
-                <h4>Dados do Acompanhante</h4>
+                <h4 class="title is-4">Dados do Acompanhante</h4>
 
                     <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
                         <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                            <input type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                            <input class="input is-primary" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                         </p>
                         <p>Genero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
                             <label>
@@ -141,11 +140,11 @@
                     </div>
 
                 <div class="col s6">
-                    <button type="submit" onclick="alert('Solicitacao enviada')">Enviar Solicitação</button>
+                    <button class="button is-success is-focused" type="submit" onclick="alert('Solicitacao enviada')">Enviar Solicitação</button>
                 </div>
 
                 <div class = "col s6">
-                    <input type="reset" value="Limpar Formulário"/>
+                    <input class="button is-primary is-focused" type="reset" value="Limpar Formulário">
                 </div>
             </form>
         </div>
@@ -153,7 +152,6 @@
 </main>
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
 
    document.addEventListener('DOMContentLoaded', () => {
