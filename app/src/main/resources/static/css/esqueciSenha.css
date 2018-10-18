@@ -22,5 +22,12 @@ p{
 
 #email{
     width: 50%;
+}
 
+#logo:hover{
+    text-decoration: underline;
+}
+
+#subtitulo{
+    padding: 3%;
 }

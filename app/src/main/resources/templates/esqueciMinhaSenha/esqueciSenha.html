@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Esqueci Minha Senha</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../../static/css/esqueciSenha.css">
+    <link rel="stylesheet" href="css/esqueciSenha.css">
 </head>
 <body>
 <header>
     <nav class="navbar" role="navigation" id="cabecalho" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <p>HospeBEM</p>
+            <a class="navbar-item" href="/">
+                <p id="logo">HospeBEM</p>
             </a>
         </div>
 
@@ -19,7 +19,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
+                        <a class="button is-primary" href="/">
                             <strong>Logar</strong>
                         </a>
                     </div>
@@ -32,7 +32,7 @@
 <div class="container card-content valign center">
     <form>
         <h1 class="title is-1" id="titulo">Problemas para se conectar?</h1>
-        <p class="subtitle is-5">Digite seu endereço de e-mail cadastrado e enviaremos instruções de ajuda.</p>
+        <p id="subtitulo" class="subtitle is-5">Digite seu endereço de e-mail cadastrado e enviaremos instruções de ajuda.</p>
         <div class="columns is-mobile is-centered">
             <input class="input is-medium" type="email" id="email" placeholder="Email">
             <span class="icon is-left">

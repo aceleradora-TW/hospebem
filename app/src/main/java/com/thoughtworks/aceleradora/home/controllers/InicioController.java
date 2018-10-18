@@ -10,4 +10,9 @@ public class InicioController {
     public String renderizaPaginaInicial() {
         return "inicio";
     }
+
+    @GetMapping("/esqueci-minha-senha")
+    public String esqueci(){
+        return "esqueciMinhaSenha/esqueciSenha";
+    }
 }
