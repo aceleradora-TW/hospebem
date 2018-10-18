@@ -3,8 +3,24 @@ body {
     font-size: 17px;
 }
 
-.espacamento {
-    margin: 70px;
+.padding-bottom {
+    padding-bottom: 10px;
+}
+
+.icons-color {
+    color: rgba(135, 206, 235, 1);
+}
+
+.nav-style {
+    background-color: rgba(135, 206, 235, 1);
+    height: 60px;
+    font-size: 18px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
 }
 
 .input.input-fancy{
