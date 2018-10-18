@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulario</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,152 +16,179 @@
     <div class ="">
         <a class="button is-primary is-outlined" href="/">Voltar</a>
     </div>
-    <nav class="navbar">
-        <div class="nav-wrapper container">
-                <h1 class="title is-1">Solicitar Vagas</h1>
-        </div>
-    </nav>
+
 </header>
 
-<main>
+<div>
+
     <div class="container">
 
-        <div class="row">
-            <h2 class="title is-2"> Dados do paciente</h2>
-            <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
-                <div class="col s12">
-                    <span>Nome Completo:</span>
-                    <input class="input is-primary" name="nome" type="text">
-                </div>
-
-                <div class="col s12">
-                    <span>Sexo:</span>
-                    <label>
-                    <input class="is-checkradio is-success" name="genero" type="radio" value ="F" >
-                    <span>F</span>
-                    </label>
-                    <label>
-                        <input name="genero" type="radio" value ="M">
-                    <span>M</span>
-                    </label>
-                </div>
-
-                <div class="col s12">
-                    <span>Data de nascimento:</span>
-                    <input  placeholder="Clique para selecionar uma data" name="dataNascimento" type="text" class="datepicker" onkeypress="return false;">
-                </div>
-
-                <div class="col s12">
-                    <span>O paciente é cadeirante?</span>
-                    <label>
-                        <input name="cadeirante" type="radio" value ="sim" >
-                        <span>Sim</span>
-                    </label>
-                    <label>
-                        <input name="cadeirante" type="radio" value ="nao">
-                        <span>Não</span>
-                    </label>
-
-                    <div>
-                        <span>Caso o paciente seja cadeirante, informe o seu peso:</span>
-                        <input class="input is-primary" name="peso" type="text">
-                    </div>
-                </div>
+        <div class="columns is-mobile is-centered">
+            <div class="column">
+                <h1 class="title is-1 is-half centralizar espacamento">Solicitação de Vaga</h1>
 
 
-
-                <div class="col s12">
-                    <span>Situação do Paciente:</span>
-                    <label>
-                        <input name="situacao" type="radio" value ="pre" >
-                        <span>Pré-transplantado</span>
-                    </label>
-                    <label>
-                        <input name="situacao" type="radio" value ="pos">
-                        <span>Pós-transplantado</span>
-                    </label>
-                </div>
-
-                <div class="col s12">
-                    <span>Telefone para Contato:</span>
-                    <input class="input is-primary" name="telefone" type="text">
-                </div>
-
-                <h3 class="title is-3">Endereço:</h3>
-                <div class="col s12">
-                    <span>Rua:</span>
-                    <input class="input is-primary" name ="endereco.rua" type="text">
-                </div>
-
-                <div class="col s12">
-                    <span>Número:</span>
-                    <input class="input is-primary" name="endereco.numero" type="text">
-                </div>
-
-                <div class="col s12">
-                    <span>Cidade:</span>
-                    <input class="input is-primary" name="endereco.cidade" type="text">
-                </div>
-
-                <div class="col s12">
-                    <span>Bairro:</span>
-                    <input class="input is-primary" name="endereco.bairro" type="text">
-                </div>
-
-                <div class="col s12">
-                    <span>Uf:</span>
-                    <input class="input is-primary" name="endereco.uf" type="text">
-                </div>
-
-                <h4 class="title is-4">Dados do Acompanhante</h4>
-
-                    <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
-                        <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                            <input class="input is-primary" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
-                        </p>
-                        <p>Genero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                            <label>
-                            <input type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
-                            <span>F</span>
-                            </label>
-                            <label>
-                            <input type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
-                            <span> M</span>
-                            </label>
-                        </p>
-                        </p>
-
-                        <div class="col s12">
-                            <p> Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
-                            <input  placeholder="Clique para selecionar uma data" class = "datepicker" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
-
-                            </p>
+                <h2 class="subtitle is-2"> Dados do paciente</h2>
+                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
+                    <div class="field">
+                        <div class="control">
+                            <span>Nome Completo:</span>
+                            <input class="input input-fancy" name="nome" type="text">
                         </div>
                     </div>
 
-                <div class="col s6">
-                    <button class="button is-success is-focused" type="submit" onclick="alert('Solicitacao enviada')">Enviar Solicitação</button>
-                </div>
+                    <div class="field">
+                        <div class="control">
+                            <span>Sexo:</span>
+                            <label>
+                                <input class="is-checkradio is-success" name="genero" type="radio" value ="F" >
+                                <span>F</span>
+                            </label>
+                            <label>
+                                <input name="genero" type="radio" value ="M">
+                                <span>M</span>
+                            </label>
+                        </div>
+                    </div>
 
-                <div class = "col s6">
-                    <input class="button is-primary is-focused" type="reset" value="Limpar Formulário">
-                </div>
-            </form>
+                    <div class="field">
+                        <div class="control">
+                            <span>Data de nascimento:</span>
+                            <input  name="dataPaci" id="dataNascimento" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
+                                    onkeypress="return false;">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <span>O paciente é cadeirante?</span>
+                            <label>
+                                <input name="cadeirante" type="radio" value ="sim" >
+                                <span>Sim</span>
+                            </label>
+                            <label>
+                                <input name="cadeirante" type="radio" value ="nao">
+                                <span>Não</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <span>Caso o paciente seja cadeirante, informe o seu peso:</span>
+                            <input class="input input-fancy" name="peso" type="text">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <span>Situação do Paciente:</span>
+                            <label>
+                                <input name="situacao" type="radio" value ="pre" >
+                                <span>Pré-transplantado</span>
+                            </label>
+                            <label>
+                                <input name="situacao" type="radio" value ="pos">
+                                <span>Pós-transplantado</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <span>Telefone para Contato:</span>
+                            <input class="input input-fancy" name="telefone" type="text">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <h3 class="subtitle is-3">Endereço</h3>
+
+                            <span>Rua:</span>
+                            <input class="input input-fancy" name ="endereco.rua" type="text">
+                        </div>
+                    </div>
+
+
+                    <div class="field">
+                        <div class="control">
+                            <span>Número:</span>
+                            <input class="input input-fancy" name="endereco.numero" type="text">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <span>Cidade:</span>
+                            <input class="input input-fancy" name="endereco.cidade" type="text">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <span>Bairro:</span>
+                            <input class="input input-fancy" name="endereco.bairro" type="text">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <span>Uf:</span>
+                            <input class="input input-fancy" name="endereco.uf" type="text">
+                        </div>
+                    </div>
+
+
+                    <h4 class="subtitle is-3">Dados do Acompanhante</h4>
+
+
+                    <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
+                        <div class="field">
+                            <div class="control">
+                                <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                    <input class="input input-fancy" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <p>Genero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                    <label>
+
+                                        <input type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                        <span>F</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                        <span> M</span>
+                                    </label>
+                                </p>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <p> Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
+                                    <input name="dataNascimentoAcomp" id="dataNascimentoAcomp" placeholder="Clique para selecionar uma data" class="input input-fancy datepicker" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
+
+                                </p>
+
+                            </div>
+                        </div>
+
+                </form>
+
+                <button class="button is-success is-focused" type="submit" onclick="alert('Solicitacao enviada')">Enviar Solicitação</button>
+
+                <input class="button" type="reset" value="Limpar Formulário">
+
+            </div>
         </div>
     </div>
-</main>
+
+    </main>
 </body>
 
-<script>
-
-   document.addEventListener('DOMContentLoaded', () => {
-        let elems = document.querySelectorAll('.datepicker');
-        let instances = M.Datepicker.init(elems, {
-        format: 'dd/mm/yyyy'
-        });
-    })
-
-
-</script>
 
 </html>
