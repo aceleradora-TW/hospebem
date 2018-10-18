@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospebem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.26/css/bulma.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+
+<header>
+    <nav class="navbar is-fixed-top is-info has-text-centered nav-style" aria-label="main navigation">
+        <label class="" >
+            HOSPEBEM
+        </label>
+    </nav>
+</header>
+
+<div class="panel-block is-mobile">
+    <h1 class="padding-bottom">Lista de Solicitações Casa:</h1>
+    <table class="table pricing__table">
+        <tr class="columns">
+            <td class="column has-text-centered">Data</td>
+            <td class="column has-text-centered">Nome</td>
+            <td class="column has-text-centered">Idade</td>
+            <td class="column has-text-centered">Informações</td>
+            <td class="column has-text-centered">Aceitar</td>
+            <td class="column has-text-centered">Negar</td>
+        </tr>
+        <tr class="columns" th:each="solicitacao : ${solicitacoesCasa}">
+            <td class="column has-text-centered">19-8-2013</td>
+            <td class="column has-text-centered" th:text="${solicitacao.nome}"></td>
+            <td class="column has-text-centered">24</td>
+
+            <td class="column has-text-centered">
+                <a href="/">
+                    <i class="fas fa-eye icons-color"></i>
+                </a>
+            </td>
+
+            <td class="column has-text-centered">
+
+                    <i class="fas fa-check icons-color"></i>
+
+            </td>
+            <td class="column has-text-centered">
+
+                    <i class="fas fa-times icons-color"></i>
+
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
