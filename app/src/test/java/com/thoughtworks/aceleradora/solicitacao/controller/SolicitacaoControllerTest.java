@@ -24,12 +24,14 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SolicitacaoControllerTest {
-
+    @Mock
     private SolicitacaoController controller;
 
     @Mock
     private SolicitacaoRepository repositorioSolicitacao;
+    @Mock
     private ListaSolicitacaoCasaRepository repositorioCasa;
+    @Mock
     private ListaSolicitacaoHospitalRepository repositorioHospital;
 
     @Before
