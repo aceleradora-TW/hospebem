@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LoginController {
-    @Autowired
+
+    private UsuarioValidador usuarioValidador;
     private UsuarioService usuarioService;
 
     @Autowired
-    private UsuarioValidador usuarioValidador;
+    public LoginController(UsuarioValidador usuarioValidador, UsuarioService usuarioService) {
+        this.usuarioValidador = usuarioValidador;
+        this.usuarioService = usuarioService;
+    }
 
     @GetMapping(value = "/registrar")
     public String registrar(Model model){
