@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Esqueci Minha Senha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar" role="navigation" id="cabecalho" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <p>HospeBEM</p>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Logar</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container card-content valign center">
+    <form>
+        <h1 class="title is-1" id="titulo">Problemas para se conectar?</h1>
+        <p class="subtitle is-5">Digite seu endereço de e-mail cadastrado e enviaremos instruções de ajuda.</p>
+        <div class="columns is-mobile is-centered">
+            <input class="input is-medium" type="email" id="email" placeholder="Email">
+            <span class="icon is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+
+            <span class="icon is-right">
+                 <i class="fas fa-check"></i>
+            </span>
+        </div>
+        <div class="botao">
+            <input type="submit" id="button" class="button is-primary is-active" value="Recuperar Senha">
+        </div>
+    </form>
+</div>
+</body>
+</html>
