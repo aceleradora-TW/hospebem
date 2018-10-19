@@ -17,15 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class SolicitacaoController {
 
     private SolicitacaoRepository repositorioSolicitacao;
-    private ListaSolicitacaoCasaRepository repositorioCasa;
-    private ListaSolicitacaoHospitalRepository repositorioHospital;
+
 
     @Autowired
-    public SolicitacaoController(SolicitacaoRepository repositorioSolicitacao, ListaSolicitacaoCasaRepository repositorioCasa, ListaSolicitacaoHospitalRepository repositorioHospital) {
+    public SolicitacaoController(SolicitacaoRepository repositorioSolicitacao ) {
 
         this.repositorioSolicitacao = repositorioSolicitacao;
-        this.repositorioCasa = repositorioCasa;
-        this.repositorioHospital = repositorioHospital;
+
     }
 
     public SolicitacaoController() {
@@ -39,8 +37,8 @@ public class SolicitacaoController {
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
 
-        System.out.println(repositorioCasa.findAll());
-        model.addAttribute("solicitacoesCasa", repositorioCasa.findAll());
+        System.out.println(repositorioSolicitacao.findAll());
+        model.addAttribute("solicitacoesCasa", repositorioSolicitacao.findAll());
 
         return "listaSolicitacao/listaSolicitacaoCasa";
     }
@@ -48,8 +46,8 @@ public class SolicitacaoController {
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
 
-        System.out.println(repositorioHospital.findAll());
-        model.addAttribute("solicitacoesHospital", repositorioHospital.findAll());
+        System.out.println(repositorioSolicitacao.findAll());
+        model.addAttribute("solicitacoesHospital", repositorioSolicitacao.findAll());
 
         return "listaSolicitacao/listaSolicitacaoHospital";
     }
