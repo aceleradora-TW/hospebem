@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/solicitacao")
 public class SolicitacaoController {
@@ -36,8 +39,7 @@ public class SolicitacaoController {
 
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
-
-        System.out.println(repositorioSolicitacao.findAll());
+        
         model.addAttribute("solicitacoesCasa", repositorioSolicitacao.findAll());
 
         return "listaSolicitacao/listaSolicitacaoCasa";
@@ -46,7 +48,6 @@ public class SolicitacaoController {
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
 
-        System.out.println(repositorioSolicitacao.findAll());
         model.addAttribute("solicitacoesHospital", repositorioSolicitacao.findAll());
 
         return "listaSolicitacao/listaSolicitacaoHospital";
