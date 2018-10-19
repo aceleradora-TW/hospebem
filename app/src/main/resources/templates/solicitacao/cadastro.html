@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulario</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.26/css/bulma.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <link href="/css/style.css" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -45,7 +45,7 @@
 
                     <div class="field">
                         <div class="control">
-                            <span>Sexo:</span>
+                            <span>Gênero:</span>
                             <label>
                                 <input class="is-checkradio is-success" name="genero" type="radio" value ="F" >
                                 <span>F</span>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="field">
                             <div class="control">
-                                <p>Genero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                <p>Gênero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
                                     <label>
 
                                         <input type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
@@ -172,7 +172,6 @@
                                 </p>
                             </div>
                         </div>
-
                         <div class="field">
                             <div class="control">
                                 <p> Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
@@ -193,14 +192,17 @@
         </div>
     </div>
 
+
     </main>
 </body>
 
 <script type="text/javascript">
 
     document.addEventListener('DOMContentLoaded', function() {
-        var seletorDataIda = seletorDeData('#dataNascimento');
+        var seletor_DataNascimento = seletorDeData('#dataNascimento')
+        var seletor_NascimentoAcomp = seletorDeData('#dataNascimentoAcomp')
     })
+
 </script>
 
 </html>

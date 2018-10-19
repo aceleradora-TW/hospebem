@@ -66,4 +66,15 @@ public class Acompanhante {
     public void setSolicitacao(Solicitacao solicitacao) {
         this.solicitacao = solicitacao;
     }
+
+    @Override
+    public String toString() {
+        return "Acompanhante{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", genero='" + genero + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", solicitacao=" + solicitacao +
+                '}';
+    }
 }

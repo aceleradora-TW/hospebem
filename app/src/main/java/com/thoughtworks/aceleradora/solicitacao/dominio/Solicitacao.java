@@ -27,7 +27,6 @@ public class Solicitacao {
 
     private float peso;
 
-
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -121,5 +120,19 @@ public class Solicitacao {
         this.acompanhantes = acompanhantes;
     }
 
-
+    @Override
+    public String toString() {
+        return "Solicitacao{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", genero='" + genero + '\'' +
+                ", situacao='" + situacao + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", cadeirante='" + cadeirante + '\'' +
+                ", peso=" + peso +
+                ", dataNascimento=" + dataNascimento +
+                ", endereco=" + endereco +
+                ", acompanhantes=" + acompanhantes +
+                '}';
+    }
 }
