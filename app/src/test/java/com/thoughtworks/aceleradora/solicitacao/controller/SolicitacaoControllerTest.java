@@ -1,7 +1,7 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
-import com.thoughtworks.aceleradora.solicitacao.dominio.ListaSolicitacaoCasaRepository;
-import com.thoughtworks.aceleradora.solicitacao.dominio.ListaSolicitacaoHospitalRepository;
+//import com.thoughtworks.aceleradora.solicitacao.dominio.ListaSolicitacaoCasaRepository;
+//import com.thoughtworks.aceleradora.solicitacao.dominio.ListaSolicitacaoHospitalRepository;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.junit.Assert;
@@ -24,19 +24,16 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SolicitacaoControllerTest {
+     
+     private SolicitacaoController controller;
 
-    private SolicitacaoController controller;
-
-
+    @Mock
     private SolicitacaoRepository repositorioSolicitacao;
 
-    private ListaSolicitacaoCasaRepository repositorioCasa;
-
-    private ListaSolicitacaoHospitalRepository repositorioHospital;
 
     @Before
     public void setUp() {
-        controller = new SolicitacaoController(repositorioSolicitacao, repositorioCasa, repositorioHospital);
+        controller = new SolicitacaoController(repositorioSolicitacao);
     }
 
     @Test
@@ -63,7 +60,7 @@ public class SolicitacaoControllerTest {
                 new Solicitacao("Amanda"),
                 new Solicitacao("Aline"));
         Model model = mock(Model.class);
-        when(repositorioCasa.findAll()).thenReturn(solicitacoesCasaCadastradas);
+        when(repositorioSolicitacao.findAll()).thenReturn(solicitacoesCasaCadastradas);
 
         String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
 
@@ -77,7 +74,7 @@ public class SolicitacaoControllerTest {
                 new Solicitacao("Olimar"),
                 new Solicitacao("Yasser"));
         Model model = mock(Model.class);
-        when(repositorioHospital.findAll()).thenReturn(solicitacoesCasaCadastradas);
+        when(repositorioSolicitacao.findAll()).thenReturn(solicitacoesCasaCadastradas);
 
         String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
 
