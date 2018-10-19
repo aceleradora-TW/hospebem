@@ -6,55 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../../static/css/style.css" />
-    <script src="main.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/loginEstilo.css">
+
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-wrapper container">
-                <span>
-                    HOSPEBEM
-                </span>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <div class="container card-content valign center">
-            <h1>HospeBem</h1>
-            <form th:action="@{/login}" method="POST">
-                <div class="row">
-                    <div class="input-field col s6 offset-s3">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="first_name" type="text" name="nome" class="validate">
-                        <label for="first_name">Usuário</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s6 offset-s3">
-                        <i class="material-icons prefix">lock</i>
-                        <input id="password" type="password" name="senha" class="validate">
-                        <label for="password">Senha</label>
-                    </div>
-                </div>
-
-                <button class="btn waves-effect waves-light" type="submit" name="action">Logar
-                    <i class="material-icons right"></i>
-                </button>
-
-                <div class="recuperar">
-                    <p><a href="#">Esqueci minha senha</a></p>
-                </div>
-            </form>
+<header>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <p >HospeBem</p>
+            </a>
         </div>
-    </main>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="/">
+                            <strong>Esqueci minha senha</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container card-content valign center has-text-centered">
+        <form th:action="@{/login}" method="POST">
+            <h1 class="title is-1">HospeBem</h1>
+
+            <div class="columns">
+                <div class="column is-half">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="validate input is-primary is-rounded" id = "first_name" type="text" name="nome" placeholder="Usuário">
+                        <span class="icon is-small is-left">
+                              <i class="fas fa-user"></i>
+                        </span>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class = "column is-half">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="validate input is-primary is-rounded" id="password" type="password" name="senha" placeholder="Senha">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                         </span>
+                    </p>
+                </div>
+            </div>
+
+            <button class="button is-primary is-medium is-rounded" type="submit" name="action">Entrar </button>
+
+            <div class="recuperar">
+                <p><a href="#">Esqueci minha senha</a></p>
+            </div>
+        </form>
+    </div>
+</main>
 
 </body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </html>
