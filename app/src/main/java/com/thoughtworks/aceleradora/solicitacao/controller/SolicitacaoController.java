@@ -35,9 +35,7 @@ public class SolicitacaoController {
 
         repositorio.save(solicitacao);
 
-        model.addAttribute("solicitacoes", repositorio.findAll());
-
-        return "solicitacao/cadastro";
+        return "redirect:/" ;
     }
 
 }
