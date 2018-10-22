@@ -54,16 +54,18 @@ button {
 }
 
 .footer{
-    padding: 20px;
-    background-color: rgb(70, 178, 235);
-    color: rgb(255,255,255);
-    position:absolute;
+    padding: 15px;
+    background-color: rgba(222, 222, 222, 1);
+    color: rgba(121, 121, 121, 1);
+    border-top: 1px solid rgba(121, 121, 121, 1);
+    position: fixed;
     bottom:0;
     width:100%;
 }
 .navbar {
     background-color: rgb(70, 178, 235);
-
+    position: relative;
+    width:100%;
 }
 
 .navbar-item {
@@ -72,6 +74,10 @@ button {
 
 .navbar-item:hover p {
     color: rgb(255,255,255);
+}
+
+.is-active {
+    background-color: rgb(70, 178, 235);
 }
 
 .recuperar {
