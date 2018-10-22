@@ -14,16 +14,11 @@ import java.util.Arrays;
 @RequestMapping("/solicitacao")
 public class SolicitacaoController {
 
-    private SolicitacaoRepository solicitacaoRepository;
-
-
-    public SolicitacaoController() {
-
-    }
+    private SolicitacaoRepository repositorio;
 
     @Autowired
     public SolicitacaoController(SolicitacaoRepository repositorio) {
-        this.solicitacaoRepository = repositorio;
+        this.repositorio = repositorio;
     }
 
     @GetMapping("/cadastro")
@@ -35,13 +30,12 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/cadastro")
-    @ResponseBody
     public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
-        solicitacaoRepository.save(solicitacao);
+        repositorio.save(solicitacao);
 
-        model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
+        model.addAttribute("solicitacoes", repositorio.findAll());
 
         return "solicitacao/cadastro";
     }
