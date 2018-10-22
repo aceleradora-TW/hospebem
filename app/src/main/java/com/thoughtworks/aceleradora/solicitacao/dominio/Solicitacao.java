@@ -36,7 +36,6 @@ public class Solicitacao {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "solicitacao")
     private List<Acompanhante> acompanhantes;
 
-
     public Solicitacao() {
     }
 
@@ -76,6 +75,30 @@ public class Solicitacao {
         this.situacao = situacao;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCadeirante() {
+        return cadeirante;
+    }
+
+    public void setCadeirante(String cadeirante) {
+        this.cadeirante = cadeirante;
+    }
+
+    public float getPeso() {
+        return peso;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
@@ -91,25 +114,6 @@ public class Solicitacao {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
-    public String getTelefone() {return telefone;
-    }
-
-    public void setTelefone(String telefone) {this.telefone = telefone;
-    }
-
-    public String getCadeirante() {return cadeirante;
-    }
-
-    public void setCadeirante(String cadeirante) {this.cadeirante = cadeirante;
-    }
-
-    public float getPeso() {return peso;
-    }
-
-    public void setPeso(float peso) {this.peso = peso;
-    }
-
 
     public List<Acompanhante> getAcompanhantes() {
         return acompanhantes;

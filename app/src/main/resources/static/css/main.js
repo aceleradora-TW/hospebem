@@ -1,7 +1,7 @@
 
 function seletorDeData(elemento) {
     return new Pikaday({
-        field: document.querySelector(elemento),
+        field: elemento,
         format: 'DD/MM/YYYY',
         i18n: {
             previousMonth : 'Mês Anterior',

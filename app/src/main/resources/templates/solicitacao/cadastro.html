@@ -35,11 +35,15 @@
 
 
                 <h2 class="subtitle is-2"> Dados do paciente</h2>
-                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
+
+
+                <form th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
                     <div class="field">
                         <div class="control">
                             <span>Nome Completo:</span>
-                            <input class="input input-fancy" name="nome" type="text">
+                            <input class="input input-fancy" name="nome" type="text"
+
+                                   th:text="${solicitacao.nome}">
                         </div>
                     </div>
 
@@ -60,8 +64,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Data de nascimento:</span>
-                            <input  name="dataPaci" id="dataNascimento" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
-                                    onkeypress="return false;">
+                            <input  name="dataPaci" id="dataNascimento" placeholder="Clique para selecionar uma data" class="input input-fancy datepicker">
                         </div>
                     </div>
 
@@ -175,12 +178,14 @@
                         <div class="field">
                             <div class="control">
                                 <p> Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
-                                    <input name="dataNascimentoAcomp" id="dataNascimentoAcomp" placeholder="Clique para selecionar uma data" class="input input-fancy datepicker" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
+                                    <input placeholder="Clique para selecionar uma data" class="input input-fancy datepicker"
+                                           th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
 
                                 </p>
 
                             </div>
                         </div>
+                    </div>
 
                 </form>
 
@@ -199,8 +204,11 @@
 <script type="text/javascript">
 
     document.addEventListener('DOMContentLoaded', function() {
-        var seletor_DataNascimento = seletorDeData('#dataNascimento')
-        var seletor_NascimentoAcomp = seletorDeData('#dataNascimentoAcomp')
+        var datepickerFields = document.getElementsByClassName('datepicker');
+
+        for(var i = 0; i < datepickerFields.length; i++) {
+            seletorDeData(datepickerFields[i]);
+        }
     })
 
 </script>

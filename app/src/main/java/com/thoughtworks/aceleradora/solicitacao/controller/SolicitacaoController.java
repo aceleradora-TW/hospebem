@@ -35,22 +35,11 @@ public class SolicitacaoController {
     public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
+
+
         solicitacaoRepository.save(solicitacao);
 
         model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
-
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println(solicitacao.getDataNascimento().toString());
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        Acompanhante a = new Acompanhante();
-        System.out.println(a.getDataNascimento().toString());
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
         return "solicitacao/cadastro";
     }
