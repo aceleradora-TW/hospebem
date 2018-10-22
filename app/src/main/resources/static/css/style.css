@@ -1,5 +1,6 @@
 body {
     font-family: arial, sans-serif;
+    font-size: 17px;
 }
 
 .espacamento {
@@ -62,6 +63,7 @@ button {
 }
 .navbar {
     background-color: rgb(70, 178, 235);
+
 }
 
 .navbar-item {
@@ -81,5 +83,9 @@ button {
 }
 
 .titulo-nav{
-    font-size: 172%;
+    font-size: 1.5rem;
+}
+
+.titulo-h1 {
+    font-size: 2rem;
 }
