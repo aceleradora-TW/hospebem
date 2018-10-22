@@ -49,10 +49,9 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/cadastro")
-    @ResponseBody
     public String salvaSolicitacao(Solicitacao solicitacao) {
         repositorioSolicitacao.save(solicitacao);
 
-        return "redirect:/inicio" ;
+        return "redirect:/" ;
     }
 }

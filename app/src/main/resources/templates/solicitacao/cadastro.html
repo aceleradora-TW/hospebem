@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <h1> Dados do paciente</h1>
-                <form action="/solicitacao/cadastro" method="post">
+                <form th:action="@{/solicitacao/cadastro}" method="post">
                     <div class="col s12">
                         <span>Nome Completo:</span>
                         <input name="nome" type="text">
