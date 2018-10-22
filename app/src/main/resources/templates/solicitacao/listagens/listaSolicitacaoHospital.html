@@ -5,70 +5,60 @@
     <title>Hospebem</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link href="/css/style.css" rel="stylesheet">
 </head>
-
 <body>
 
-<header>
-    <nav class="navbar is-fixed-top is-info centralizar" aria-label="main navigation">
-        <label>
-            HOSPEBEM
-        </label>
-    </nav>
-</header>
+<div th:include="partials/cabecalhoHospital"/>
+
 <main>
     <div class="container">
-        <div class="is-mobile">
-            <div>
+        <div class="columns is-mobile is-centered">
+            <div class="column">
                 <h1 class="title is-half centralizar espacamento">Lista de Solicitações</h1>
-                <form th:action="@{/solicitacao/cadastro}" method="GET">
+                <form action="/solicitacao/cadastro">
                     <div class="is-centered is-half centralizar espacamento">
-                        <input type="submit" class="button is-info" value="Solicitar Vaga" />
+                        <input type="submit" class="button is-info" value=" + Solicitar Vaga" />
                     </div>
                 </form>
-                <div class="is-mobile is-centered">
-                    <table class="table pricing__table">
+                <div class="columns is-mobile is-centered">
 
-
-                        <div class="is-mobile is-centered">
-                        </div>
+                    <ul th:object="${formata}">
                         <table class="table centralizar">
-
                             <tr>
-                                <th>Nome </th>
-                                <th>Última atualização</th>
+                                <th>Nome</th>
+                                <th>Última Atualização</th>
                                 <th>Status</th>
-                                <th>Editar</th>
-                                <th>Excluir</th>
+                                <th></th>
+                                <th></th>
                             </tr>
-
-                            </thead>
-
-
                             <tr th:each="solicitacao : ${solicitacoesHospital}">
-                                <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
-                                <td class="has-text-centered">11-11-2018</td>
-                                <td class="has-text-centered">Pendente</td>
-                                <td class="column has-text-centered">
-                                    <a href="/">
-                                        <button class="button" type="submit">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                                <td>
-                                    <form method="post">
-                                        <button class="button" type="submit">
-                                            <input type="hidden" name="id">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
+                                <div th:if="${solicitacao.cancelamento == false}">
+                                    <td th:text="${solicitacao.nome}"></td>
+                                    <td th:text="${solicitacao.dataAtualizacao.format(formata)}"></td>
+                                    <td th:text="${solicitacao.status}"></td>
+                                    <td>
+                                        <form th:action="@{/solicitacao/editar}" method="POST">
+                                            <input type="hidden" name="id" th:value="${solicitacao.id}">
+                                            <button class="button" type="submit">
+                                                <i class="fas fa-pencil-alt icons-color"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form th:action="@{/solicitacao/cancelar}" method="POST">
+                                            <input type="hidden" name="id" th:value="${solicitacao.id}">
+                                            <button class="button" type="submit">
+                                                <i class="fas fa-trash-alt icons-color"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </div>
                             </tr>
                         </table>
+                    </ul>
                 </div>
             </div>
         </div>
