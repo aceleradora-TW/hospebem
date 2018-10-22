@@ -20,6 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SolicitacaoControllerTest {
@@ -67,6 +68,35 @@ public class SolicitacaoControllerTest {
         String mensagem = controller.salvaSolicitacao(model, solicitacao);
 
         verify(repositorio).save(solicitacao);
-        assertThat(mensagem, equalTo("solicitacao/cadastro"));
+        assertThat(mensagem, equalTo("redirect:/"));
+    }
+
+    @Test
+    public void renderizaListaDeSolicitacoesDaCasaCadastradasNoBanco() {
+        List<Solicitacao> solicitacoesCasaCadastradas = asList(
+                new Solicitacao("Amanda"),
+                new Solicitacao("Aline"));
+        Model model = mock(Model.class);
+        when(repositorio.findAll()).thenReturn(solicitacoesCasaCadastradas);
+
+        String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
+
+        verify(model).addAttribute("solicitacoesCasa", solicitacoesCasaCadastradas);
+        Assert.assertThat(paginaRenderizada, is("listaSolicitacao/listaSolicitacaoCasa"));
+    }
+
+    @Test
+    public void renderizaListaDeSolicitacoesDoHospitalCadastradasNoBanco() {
+        List<Solicitacao> solicitacoesCasaCadastradas = asList(
+                new Solicitacao("Olimar"),
+                new Solicitacao("Yasser"));
+        Model model = mock(Model.class);
+        when(repositorio.findAll()).thenReturn(solicitacoesCasaCadastradas);
+
+        String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
+
+        verify(model).addAttribute("solicitacoesHospital", solicitacoesCasaCadastradas);
+        Assert.assertThat(paginaRenderizada, is("listaSolicitacao/listaSolicitacaoHospital"));
+
     }
 }

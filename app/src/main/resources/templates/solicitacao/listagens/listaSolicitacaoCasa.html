@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospebem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="nav-wrapper container">
+                <span>
+                    HOSPEBEM
+                </span>
+        </div>
+    </nav>
+</header>
+<h1>Lista de Solicitações Casa:</h1>
+<br>
+    <table>
+        <tr>
+            <td>Data</td>
+            <td>Nome</td>
+            <td>Idade</td>
+            <td>Informações</td>
+            <td>Aceitar</td>
+            <td>Negar</td>
+        </tr>
+
+        <tr th:each="solicitacao : ${solicitacoesCasa}">
+            <td>19-8-2013</td>
+
+            <td th:text="${solicitacao.nome}"></td>
+            <td>24</td>
+            <td>
+                <a href="/">
+                    <li>Olhar</li>
+                </a>
+            </td>
+            <td>
+                <a href="/">
+                    <li>✔</li>
+                </a>
+            </td>
+            <td>
+                <a href="/">
+                    <li>X</li>
+                </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
