@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Hospebem</title>
@@ -39,14 +39,23 @@
                 </a>
             </td>
 
-            <td class="column has-text-centered">
-
-                    <i class="fas fa-check icons-color"></i>
-
+            <td>
+                <form th:action="@{/solicitacao/aceitar}" method="post">
+                    <input type="hidden" name="id" th:value="${solicitacao.id}">
+                    <button type="submit">
+                        <i class="fas fa-check icons-color"></i>
+                    </button>
+                </form>
             </td>
-            <td class="column has-text-centered">
 
-                    <i class="fas fa-times icons-color"></i>
+            <td>
+                <form th:action="@{/solicitacao/negar}" method="post">
+                    <input type="hidden" name="id" th:value="${solicitacao.id}">
+                    <button type="submit">
+                        <i class="fas fa-times icons-color"></i>
+                    </button>
+                </form>
+
 
             </td>
         </tr>

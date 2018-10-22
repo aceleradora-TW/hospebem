@@ -27,6 +27,7 @@ public class Solicitacao {
 
     private float peso;
 
+    private String status;
 
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
@@ -58,10 +59,12 @@ public class Solicitacao {
                        LocalDate dataNascimento,
                        LocalDate dataEntrada,
                        LocalDate dataSaida,
-                       LocalDate dataTransplante,
+                       LocalDate dataTransplante
                        Endereco endereco,
-                       List<Acompanhante> acompanhantes)
-    {
+                       List<Acompanhante> acompanhantes,
+                       String status) {
+
+
         this.nome = nome;
         this.genero = genero;
         this.situacao = situacao;
@@ -71,11 +74,12 @@ public class Solicitacao {
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.acompanhantes = acompanhantes;
-        this.dataEntrada = dataEntrada;
-        this.dataSaida = dataSaida;
-        this.dataTransplante = dataTransplante;
+        this.status = status;
     }
 
+    public Long getId() {
+         return id;
+        }
     public String getNome() {
         return nome;
     }
@@ -164,10 +168,18 @@ public class Solicitacao {
         this.acompanhantes = acompanhantes;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     @Override
     public String toString() {
         return "Solicitacao{" +
-                "nome='" + nome + '\'' +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
                 ", genero='" + genero + '\'' +
                 ", situacao='" + situacao + '\'' +
                 ", telefone='" + telefone + '\'' +
