@@ -2,20 +2,84 @@ body {
     font-family: arial, sans-serif;
 }
 
-.centralizar{
-    text-align: center;
+.espacamento {
+    margin: 70px;
+}
+
+.input.input-fancy{
+    border-color: rgb(131, 186, 255);
+}
+
+button {
+    align-items: center;
+}
+
+.centralizar {
+    display: flex;
+    justify-content: center;
+}
+
+.columns {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    padding-top: 12%;
+}
+
+.dados-paciente{
+    text-align: justify;
+}
+
+.dados-paciente {
+    text-align: justify;
+}
+
+.dados-paciente * {
+    margin-bottom: 16px;
+}
+
+.botao-esqueci-senha {
+    color: rgba(70, 178, 235, 1);
 }
 
 .espacamento {
     margin: 70px;
 }
 
-.input.input-fancy{
-
-    border-color: rgb(131, 186, 255);
-
+.espaco-linhas * {
+    padding-bottom: 3vh;
 }
-.centralizar{
-    display: flex;
-    justify-content: center;
+
+.footer{
+    padding: 20px;
+    background-color: rgb(70, 178, 235);
+    color: rgb(255,255,255);
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+.navbar {
+    background-color: rgb(70, 178, 235);
+}
+
+.navbar-item {
+    color: rgb(255,255,255);
+}
+
+.navbar-item:hover p {
+    color: rgb(255,255,255);
+}
+
+.recuperar {
+    padding-top: 2%;
+}
+
+.sessao, .espaco-titulo{
+    margin-top: 30px;
+}
+
+.titulo-nav{
+    font-size: 172%;
 }

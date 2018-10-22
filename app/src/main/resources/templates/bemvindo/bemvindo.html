@@ -2,38 +2,66 @@
 <html lang="en" xmlns:sec="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hospebem - Inicio </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="agrupadora">
-    <header class="cabecalho">
-        <h1>Hospebem</h1>
-        <div sec:authorize="isAuthenticated()">
-            <div>
-                Autenticado graças a deux!
-            </div>
-            <div>
-                Logado como: <span sec:authentication="name"></span>
+<header>
+    <nav class="navbar is-mobile" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <p class="titulo-nav">HospeBem</p>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/bemvindo">Inicio</a>
+
+                <a class="navbar-item">
+                    Documentation
+                </a>
+
             </div>
         </div>
-    </header>
-
-    <nav class="navegacao">
-        <ul>
-            <a href="/"><li>Início</li></a>
-            <a href="/pessoa/lista"><li>Pessoas</li></a>
-            <a href="/pessoa/cadastro"><li>Cadastrar Pessoa</li></a>
-            <div sec:authorize="!isAuthenticated()">
-                <a href="/login"><li>Logar</li></a>
-                <a href="/registrar"><li>Registrar</li></a>
-            </div>
-            <div sec:authorize="isAuthenticated()">
-                <form action="#" th:action="@{/logout}" method="post">
-                    <input type="submit" value="Logout!">
-                </form>
-            </div>
-        </ul>
     </nav>
-</div>
+</header>
+<main class="espaco-linhas">
+    <div class="agrupadora has-text-centered">
+
+        <h1 class="title is-1 espaco-titulo">Hospebem</h1>
+        <p>Sistema de agendamento entre hospitais e pousada <a href="https://www.viavida.org.br/" target="_blank">ViaVida</a>.</h6>
+
+    <div class="columns">
+        <img src="/css/img/hospebem.png" alt="Logo viaVida">
+    </div>
+
+        <div sec:authorize="isAuthenticated()">
+            <div>
+                Logado como: <strong><span sec:authentication="name"></span></strong>
+            </div>
+        </div>
+
+        <div sec:authorize="!isAuthenticated()">
+            <a href="/login"><div>Logar</div></a>
+            <a href="/registrar"><div>Registrar</div></a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <form action="#" th:action="@{/logout}" method="post">
+                <input type="submit" class="button is-medium is-outlined" value="Deslogar">
+            </form>
+        </div>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p> HospeBem © 2018</p>
+    </div>
+</footer>
 </body>
 </html>
