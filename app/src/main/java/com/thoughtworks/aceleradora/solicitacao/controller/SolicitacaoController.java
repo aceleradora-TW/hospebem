@@ -61,7 +61,7 @@ public class SolicitacaoController {
 
         if(solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacao.setStatus("Aceito: " + solicitacao.getNome());
+            solicitacao.setStatus("Aceito");
             repositorioSolicitacao.save(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
@@ -76,13 +76,20 @@ public class SolicitacaoController {
 
         if(solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacao.setStatus("Negado: " + solicitacao.getNome());
+            solicitacao.setStatus("Negado");
             repositorioSolicitacao.save(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
         }
 
         return "404";
+    }
+
+
+    @GetMapping("/aceitar")
+    public String aceitaSolicitacaoCasa(Model model){
+        model.addAttribute("status", repositorioSolicitacao.findAll());
+        return "solicitacao/aceitar/hospital/lista";
     }
 
 
