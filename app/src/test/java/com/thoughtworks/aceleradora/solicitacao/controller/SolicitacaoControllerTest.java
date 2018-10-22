@@ -17,6 +17,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -96,7 +97,7 @@ public class SolicitacaoControllerTest {
         String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
 
         verify(model).addAttribute("solicitacoesHospital", solicitacoesCasaCadastradas);
-        Assert.assertThat(paginaRenderizada, is("listaSolicitacao/listaSolicitacaoHospital"));
+        assertThat(paginaRenderizada, is("listaSolicitacao/listaSolicitacaoHospital"));
 
     }
 }
