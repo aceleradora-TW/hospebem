@@ -1,33 +1,27 @@
 case $1 in
+    run)
+    docker run --name esqueleto-db -p 5432:5432 -e POSTGRES_PASSWORD=esqueleto -d postgres
+    ;;
 
-  # Cria o container com a imagem do postgres
-  run)
-    docker run --name hospebem-db -p 5432:5432 -e POSTGRES_PASSWORD=hospebempass -d postgres
-  ;;
+    start)
+    docker container start esqueleto-db 2> /dev/null || ./banco run
+    ;;
 
-  # Se o banco estiver em estado de 'stop', utilize este comando (Nao e uma boa pratica)
-  start)
-    docker container start hospebem-db 2> /dev/null || ./banco run
-  ;;
+    create)
+    docker exec -it esqueleto-db psql -U postgres -c 'CREATE DATABASE esqueleto'
+    ;;
 
-  # Cria um novo banco dentro do container docker
-  create)
-    docker exec -it hospebem-db psql -U postgres -c 'CREATE DATABASE hospebemdb'
-  ;;
+    console)
+      docker exec -it esqueleto-db psql -U postgres -d esqueleto
+    ;;
 
-  # Abre console do banco no terminal
-  console)
-    docker exec -it hospebem-db psql -U postgres -d hospebemdb
-  ;;
+    stop)
+        docker stop esqueleto-db
+      ;;
 
-  # Parar o container que o banco está rodando
-  stop)
-     docker stop hospebem-db
-  ;;
-
-  remove)
-    docker rm hospebem-db
-  ;;
+    rm)
+        docker rm $(docker ps -a)
+      ;;
 
   *)
     echo "nope"
