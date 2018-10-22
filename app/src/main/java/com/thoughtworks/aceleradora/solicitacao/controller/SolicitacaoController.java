@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/solicitacao")
@@ -63,6 +65,43 @@ public class SolicitacaoController {
         return "solicitacao/cadastro";
     }
 
+    @PostMapping("/cadastro")
+    public String salvaSolicitacao(Solicitacao solicitacao) {
+        solicitacaoRepository.save(solicitacao);
+
+        return "redirect:/" ;
+    }
+
+    @PostMapping("/aceitar")
+    public String aceitaSolicitacao(Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()) {
+            Solicitacao solicitacao = solicitacaoOptional.get();
+            solicitacao.setStatus("Aceito: " + solicitacao.getNome());
+            solicitacaoRepository.save(solicitacao);
+
+            return "redirect:/solicitacao/casa/lista";
+        }
+
+        return "404";
+    }
+
+    @PostMapping("/negar")
+    public String negaSolicitacao(Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()) {
+            Solicitacao solicitacao = solicitacaoOptional.get();
+            solicitacao.setStatus("Negado: " + solicitacao.getNome());
+            solicitacaoRepository.save(solicitacao);
+
+            return "redirect:/solicitacao/casa/lista";
+        }
+
+        return "404";
+    }
+
     @GetMapping("/gerenciaHospede/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
 
@@ -70,4 +109,5 @@ public class SolicitacaoController {
 
         return "solicitacao/listaHospede/listaGerenciamentoHospede";
     }
+
 }

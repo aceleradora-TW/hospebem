@@ -50,7 +50,6 @@ public class Solicitacao {
     public Solicitacao() {
     }
 
-
     public Solicitacao(String nome,
                        String genero,
                        String situacao,
