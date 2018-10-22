@@ -1,14 +1,19 @@
 
-body {
-    font-family: arial, sans-serif;
+body{
+    font-family: sans-serif;
 }
 
-.centralizar{
+.navbar{
+    background-color: rgb(113, 112, 116);
     text-align: center;
+    font-size: 172%;
 }
 
-.espacamento {
-    margin: 70px;
+.dados-paciente{
+    text-align: justify;
+}
+.dados-paciente *{
+    margin-bottom: 16px;
 }
 
 .sessao {
@@ -19,4 +24,3 @@ body {
     display: flex;
     justify-content: center;
 }
-

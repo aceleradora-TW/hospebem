@@ -55,13 +55,13 @@ task stopRunningJar(type: Exec) {
 
 flyway {
 
-    def host = System.getenv("HOSPEBEM_DB_HOST") ?: 'localhost'
-    def port = System.getenv("HOSPEBEM_DB_PORT") ?: 5432
-    def name = System.getenv("HOSPEBEM_DB_NAME") ?: 'hospebemdb'
+    def host = System.getenv("ESQUELETO_DB_HOST") ?: 'localhost'
+    def port = System.getenv("ESQUELETO_DB_PORT") ?: 5432
+    def name = System.getenv("ESQUELETO_DB_NAME") ?: 'esqueleto'
 
     url = "jdbc:postgresql://$host:$port/$name"
-    user = System.getenv("HOSPEBEM_DB_USER") ?: 'postgres'
-    password = System.getenv("HOSPEBEM_DB_PASSWORD") ?: 'hospebempass'
+    user = System.getenv("ESQUELETO_DB_USER") ?: 'postgres'
+    password = System.getenv("ESQUELETO_DB_PASSWORD") ?: 'esqueleto'
 }
 
 bootRun {

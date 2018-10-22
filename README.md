@@ -2,7 +2,7 @@
 
 Uma aplicação mínima em Spring Boot.
 
-[![CircleCI](https://circleci.com/gh/aceleradora-TW/hospebem/tree/master.svg?style=svg)](https://circleci.com/gh/aceleradora-TW/hospebem/tree/master)
+[![CircleCI](https://circleci.com/gh/aceleradora-TW/esqueleto-ambulante/tree/master.svg?style=svg)](https://circleci.com/gh/aceleradora-TW/esqueleto-ambulante/tree/master)
 
 ## Dependências
 
