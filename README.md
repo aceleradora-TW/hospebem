@@ -59,7 +59,7 @@ Demais comandos disponíveis:
 
 ## Ferramentas
 
-- [Circle CI](https://circleci.com/gh/aceleradora-TW/esqueleto-ambulante)
+- [Circle CI](https://circleci.com/gh/aceleradora-TW/hospebem)
 
 
 ## Ambientes
