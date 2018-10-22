@@ -53,6 +53,6 @@ public class SolicitacaoController {
     public String salvaSolicitacao(Solicitacao solicitacao) {
         repositorioSolicitacao.save(solicitacao);
 
-        return "inicio.html" ;
+        return "redirect:/inicio" ;
     }
 }
