@@ -1,0 +1,27 @@
+.navbar{
+    background-color: rgb(26,188,156);
+}
+
+.navbar-item{
+    color: rgb(255,255,255);
+}
+
+.navbar-item:hover p{
+    color: rgb(255,255,255);
+}
+
+button {
+    align-items: center;
+}
+.columns{
+    display: flex;
+    justify-content: center;
+}
+
+.recuperar {
+    padding-top: 2%;
+}
+
+.container{
+    padding-top: 12%;
+}

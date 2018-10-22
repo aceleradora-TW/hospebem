@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+.#!/bin/bash -eu
 
 readonly MAX_STARTUP_CHECK_ATTEMPTS="60"
 

@@ -1,4 +1,4 @@
-rootProject.name = 'esqueleto-ambulante'
+rootProject.name = 'hospebem'
 
 include 'app'
 include 'testes-funcionais'
