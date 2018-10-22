@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
@@ -23,10 +24,10 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(HttpSecurity http) throws Exception{
+    public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/registrar", "/static/**", "/**.js")
+                .antMatchers("/", "/registrar", "/js/**", "/css/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -39,13 +40,13 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/bemvindo")
                     .and()
                 .logout()
-                    .logoutSuccessUrl("/")
-                    .clearAuthentication(true)
-                    .permitAll();
+                .logoutSuccessUrl("/")
+                .clearAuthentication(true)
+                .permitAll();
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 }
