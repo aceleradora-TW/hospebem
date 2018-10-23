@@ -102,6 +102,12 @@ public class SolicitacaoController {
         return "404";
     }
 
+
+    @GetMapping("/aceitar")
+    public String aceitaSolicitacaoCasa(Model model){
+        model.addAttribute("status", solicitacaoRepository.findAll());
+        return "solicitacao/aceitar/hospital/lista";
+    }
     @GetMapping("/gerenciaHospede/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
 
