@@ -17,6 +17,10 @@ public class SolicitacaoController {
     private SolicitacaoRepository solicitacaoRepository;
 
 
+    public SolicitacaoController() {
+
+    }
+
     @Autowired
     public SolicitacaoController(SolicitacaoRepository repositorio) {
         this.solicitacaoRepository = repositorio;
@@ -34,8 +38,6 @@ public class SolicitacaoController {
     @ResponseBody
     public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
-
-
 
         solicitacaoRepository.save(solicitacao);
 
