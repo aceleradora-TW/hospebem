@@ -37,10 +37,8 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/cadastro")
-    @ResponseBody
     public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
-
         solicitacaoRepository.save(solicitacao);
 
         model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
@@ -50,19 +48,19 @@ public class SolicitacaoController {
 
     @PostMapping("/cadastro")
     public String salvaSolicitacao(Solicitacao solicitacao) {
-        repositorioSolicitacao.save(solicitacao);
+        solicitacaoRepository.save(solicitacao);
 
         return "redirect:/" ;
     }
 
     @PostMapping("/aceitar")
     public String aceitaSolicitacao(Long id) {
-        Optional<Solicitacao> solicitacaoOptional = repositorioSolicitacao.findById(id);
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if(solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
             solicitacao.setStatus("Aceito");
-            repositorioSolicitacao.save(solicitacao);
+            solicitacaoRepository.save(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
         }
@@ -72,12 +70,12 @@ public class SolicitacaoController {
 
     @PostMapping("/negar")
     public String negaSolicitacao(Long id) {
-        Optional<Solicitacao> solicitacaoOptional = repositorioSolicitacao.findById(id);
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if(solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
             solicitacao.setStatus("Negado");
-            repositorioSolicitacao.save(solicitacao);
+            solicitacaoRepository.save(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
         }
@@ -88,7 +86,7 @@ public class SolicitacaoController {
 
     @GetMapping("/aceitar")
     public String aceitaSolicitacaoCasa(Model model){
-        model.addAttribute("status", repositorioSolicitacao.findAll());
+        model.addAttribute("status", solicitacaoRepository.findAll());
         return "solicitacao/aceitar/hospital/lista";
     }
 
