@@ -1,22 +1,22 @@
 case $1 in
     run)
-    docker run --name esqueleto-db -p 5432:5432 -e POSTGRES_PASSWORD=esqueleto -d postgres
+    docker run --name hospebem-db -p 5432:5432 -e POSTGRES_PASSWORD=hospebem -d postgres
     ;;
 
     start)
-    docker container start esqueleto-db 2> /dev/null || ./banco run
+    docker container start hospebem-db 2> /dev/null || ./banco run
     ;;
 
     create)
-    docker exec -it esqueleto-db psql -U postgres -c 'CREATE DATABASE esqueleto'
+    docker exec -it hospebem-db psql -U postgres -c 'CREATE DATABASE hospebem'
     ;;
 
     console)
-      docker exec -it esqueleto-db psql -U postgres -d esqueleto
+      docker exec -it hospebem-db psql -U postgres -d hospebem
     ;;
 
     stop)
-        docker stop esqueleto-db
+        docker stop hospebem-db
       ;;
 
     rm)
