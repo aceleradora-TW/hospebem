@@ -102,6 +102,30 @@
 
                     <div class="field">
                         <div class="control">
+                            <span>Data do transplante:</span>
+                            <input  name="datatransplante" id="dataTransplante" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
+                                    th:field="*{dataTransplante}" onkeypress="return false;">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <span>Data de entrada requerida:</span>
+                            <input  name="dataentrada" id="dataEntrada" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
+                                    th:field="*{dataEntrada}" onkeypress="return false;">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
+                            <span>Data de saída (previsão):</span>
+                            <input  name="datasaida" id="dataSaida" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
+                                    th:field="*{dataSaida}" onkeypress="return false;">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="control">
                             <span>Telefone para Contato:</span>
                             <input class="input input-fancy" name="telefone" type="text">
                         </div>

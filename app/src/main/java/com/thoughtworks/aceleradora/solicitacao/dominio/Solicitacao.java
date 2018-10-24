@@ -27,8 +27,18 @@ public class Solicitacao {
 
     private float peso;
 
+
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
+
+    @Column(name="data_entrada")
+    private LocalDate dataEntrada;
+
+    @Column(name="data_saida")
+    private LocalDate dataSaida;
+
+    @Column(name="data_transplante")
+    private LocalDate dataTransplante;
 
     @OneToOne(cascade=ALL)
     private Endereco endereco;
@@ -39,7 +49,7 @@ public class Solicitacao {
     public Solicitacao() {
     }
 
-    public Solicitacao(String nome, String genero, String situacao, String telefone, String cadeirante, float peso, LocalDate dataNascimento, Endereco endereco, List<Acompanhante> acompanhantes) {
+    public Solicitacao(String nome, String genero, String situacao, String telefone, String cadeirante, float peso, LocalDate dataNascimento, LocalDate dataEntrada, LocalDate dataSaida, LocalDate dataTransplante, Endereco endereco, List<Acompanhante> acompanhantes) {
         this.nome = nome;
         this.genero = genero;
         this.situacao = situacao;
@@ -49,6 +59,9 @@ public class Solicitacao {
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.acompanhantes = acompanhantes;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+        this.dataTransplante = dataTransplante;
     }
 
     public String getNome() {
@@ -115,10 +128,25 @@ public class Solicitacao {
         this.endereco = endereco;
     }
 
+    public LocalDate getDataSaida() { return dataSaida; }
+
+    public void setDataSaida(LocalDate dataSaida) { this.dataSaida = dataSaida; }
+
+    public LocalDate getDataTransplante() { return dataTransplante; }
+
+    public void setDataTransplante(LocalDate dataTransplante) { this.dataTransplante = dataTransplante; }
+
     public List<Acompanhante> getAcompanhantes() {
         return acompanhantes;
     }
 
+    public LocalDate getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(LocalDate dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
 
     public void setAcompanhantes(List<Acompanhante> acompanhantes) {
         this.acompanhantes = acompanhantes;
@@ -127,14 +155,16 @@ public class Solicitacao {
     @Override
     public String toString() {
         return "Solicitacao{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
+                "nome='" + nome + '\'' +
                 ", genero='" + genero + '\'' +
                 ", situacao='" + situacao + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", cadeirante='" + cadeirante + '\'' +
                 ", peso=" + peso +
                 ", dataNascimento=" + dataNascimento +
+                ", dataEntrada=" + dataEntrada +
+                ", dataSaida=" + dataSaida +
+                ", dataTransplante=" + dataTransplante +
                 ", endereco=" + endereco +
                 ", acompanhantes=" + acompanhantes +
                 '}';
