@@ -28,7 +28,7 @@ public class Solicitacao {
     private float peso;
 
     private String status;
-    
+
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -59,7 +59,7 @@ public class Solicitacao {
                        LocalDate dataNascimento,
                        LocalDate dataEntrada,
                        LocalDate dataSaida,
-                       LocalDate dataTransplante
+                       LocalDate dataTransplante,
                        Endereco endereco,
                        List<Acompanhante> acompanhantes,
                        String status) {
@@ -72,6 +72,9 @@ public class Solicitacao {
         this.cadeirante = cadeirante;
         this.peso = peso;
         this.dataNascimento = dataNascimento;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+        this.dataTransplante = dataTransplante;
         this.endereco = endereco;
         this.acompanhantes = acompanhantes;
         this.status = status;
@@ -80,8 +83,8 @@ public class Solicitacao {
 
 
     public Long getId() {
-         return id;
-        }
+        return id;
+    }
     public String getNome() {
         return nome;
     }

@@ -48,6 +48,7 @@ public class SolicitacaoController {
         return "solicitacao/cadastro";
     }
 
+     
 
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
