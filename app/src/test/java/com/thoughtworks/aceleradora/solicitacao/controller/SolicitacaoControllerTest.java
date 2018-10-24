@@ -54,13 +54,16 @@ public class SolicitacaoControllerTest {
 
         Solicitacao soli = mock(Solicitacao.class);
         LocalDate dataNascimento = LocalDate.of(2010, 3, 7);
+        LocalDate dataEntrada= LocalDate.of(2010, 3, 7);
+        LocalDate dataSaida= LocalDate.of(2010, 3, 7);
+        LocalDate dataTransplante= LocalDate.of(2010, 3, 7);
 
         Endereco end = new Endereco("A", "B", "C", "D", "E");
 
         List<Acompanhante> acompanhantes = asList(
                 new Acompanhante("Amanda", "F", dataNascimento, soli),
                 new Acompanhante("Aline","F", dataNascimento, soli));
-        Solicitacao solicitacao = new Solicitacao("Abc", "F", "Pendente", "1234", "sim", 1, dataNascimento, end, acompanhantes);
+        Solicitacao solicitacao = new Solicitacao("Abc", "F", "Pendente", "1234", "sim", 1, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, acompanhantes);
 
 
 
