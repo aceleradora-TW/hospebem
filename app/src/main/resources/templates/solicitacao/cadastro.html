@@ -230,7 +230,6 @@
                 <h2 class="subtitle is-2 v center has-text-centered"> Dados do paciente</h2>
             </div>
 
-
             <div class="columns is-mobile card-content">
                 <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
                     <div class="column">
@@ -269,15 +268,11 @@
                     <div class="column">
                         <div class="field">
                             <div class="control">
-                                <span>O paciente é cadeirante?</span>
                                 <label>
-                                    <input name="cadeirante" type="radio" value="sim">
-                                    <span>Sim</span>
+                                    <input name="cadeirante" type="checkbox" value="sim">
+                                    <span>Hóspede cadeirante</span>
                                 </label>
-                                <label>
-                                    <input name="cadeirante" type="radio" value="nao">
-                                    <span>Não</span>
-                                </label>
+                                
                             </div>
                         </div>
                     </div>
@@ -396,6 +391,7 @@
             <input class="button" type="reset" value="Limpar Formulário">
 
 
+<<<<<<< 288b6d4ff7bd0475079d58260672ba190032c1ac
         </div>
     </div>
 </div>
@@ -405,6 +401,8 @@
 </body>
 
 =======
+=======
+>>>>>>> <@marcos012, @laurascclaro> troca campo de cadeirante para checkbox
                     <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
                         <div class="column">
                             <div class="field">
@@ -446,14 +444,12 @@
                         </div>
                 </form>
 
-
                 <div class="column">
                 <button class="button is-info" type="submit" onclick="alert('Solicitacao enviada')">Enviar
-                    Solicitação</button>
-
+                    Solicitação
+                </button>
                 <input class="button" type="reset" value="Limpar Formulário">
                 </div>
-
             </div>
 
         </div>
