@@ -1,4 +1,4 @@
-package com.thoughtworks.aceleradora.pessoa.controllers;
+package com.thoughtworks.aceleradora.home.controllers;
 
 import com.thoughtworks.aceleradora.home.controllers.InicioController;
 import org.junit.Test;
