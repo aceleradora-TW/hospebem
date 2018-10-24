@@ -46,12 +46,7 @@ public class SolicitacaoController {
         return "solicitacao/cadastro";
     }
 
-    @PostMapping("/cadastro")
-    public String salvaSolicitacao(Solicitacao solicitacao) {
-        solicitacaoRepository.save(solicitacao);
-
-        return "redirect:/" ;
-    }
+   
 
     @PostMapping("/aceitar")
     public String aceitaSolicitacao(Long id) {
