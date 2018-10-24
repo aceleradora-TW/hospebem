@@ -49,7 +49,19 @@ public class Solicitacao {
     public Solicitacao() {
     }
 
-    public Solicitacao(String nome, String genero, String situacao, String telefone, String cadeirante, float peso, LocalDate dataNascimento, LocalDate dataEntrada, LocalDate dataSaida, LocalDate dataTransplante, Endereco endereco, List<Acompanhante> acompanhantes) {
+    public Solicitacao(String nome,
+                       String genero,
+                       String situacao,
+                       String telefone,
+                       String cadeirante,
+                       float peso,
+                       LocalDate dataNascimento,
+                       LocalDate dataEntrada,
+                       LocalDate dataSaida,
+                       LocalDate dataTransplante,
+                       Endereco endereco,
+                       List<Acompanhante> acompanhantes)
+    {
         this.nome = nome;
         this.genero = genero;
         this.situacao = situacao;
