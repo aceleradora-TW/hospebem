@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospebem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar is-fixed-top is-info centralizar" aria-label="main navigation">
+        <label>
+            HOSPEBEM
+        </label>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="is-mobile">
+            <div>
+                <h1 class="title is-half centralizar espacamento">Lista de Solicitações</h1>
+                <form th:action="@{/solicitacao/cadastro}" method="GET">
+                    <div class="is-centered is-half centralizar espacamento">
+                        <input type="submit" class="button is-info" value="Solicitar Vaga" />
+                    </div>
+                </form>
+                <div class="is-mobile is-centered">
+                    <table class="table pricing__table">
+
+
+                        <div class="is-mobile is-centered">
+                            <table class="table centralizar">
+                                <thead>
+                                <tr>
+                                    <th>Nome </th>
+                                    <th>Data de inclusão</th>
+                                    <th>Orgão</th>
+                                </tr>
+                                <tr>
+                                    <td>Shirley</td>
+                                    <td>12.05.2018</td>
+                                    <td>Coração</td>
+                                </tr>
+                                <tr>
+                                    <td>Shirley</td>
+                                    <td>12.05.2018</td>
+                                    <td>Coração</td>
+                                </tr>
+
+                                </thead>
+                            </table>
+                        </div>
+
+                        <tr>
+                            <td class="has-text-centered">Nome</td>
+                            <td class="has-text-centered">Última Atualização</td>
+                            <td class="has-text-centered">Status</td>
+                            <td class="has-text-centered">editar</td>
+                            <td class="has-text-centered">excluir</td>
+                        </tr>
+                        <tr th:each="solicitacao : ${solicitacoesHospital}">
+                            <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
+                            <td class="has-text-centered">11-11-2018</td>
+                            <td class="has-text-centered">Pendente</td>
+                            <td class="column has-text-centered">
+                                <a href="/">
+                                    <button class="button" type="submit">
+                                        <i class="fas fa-eye icons-color"></i>
+                                    </button>
+                                </a>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="id">
+                                    <button class="button " type="submit">
+                                        <i class="fas fa-check icons-color"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
