@@ -12,7 +12,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://unpkg.com/pikaday@1.7.0/pikaday.js"></script>
-    <script src="/css/main.js"></script>
+    <script src="/js/validaIdade.js"></script>
+    <script src="/js/calender.js"></script>
+    <script src="/js/validaCadastroSolicitacao.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/pikaday@1.7.0/css/pikaday.css">
 
 </head>
@@ -35,11 +37,11 @@
 
 
                 <h2 class="subtitle is-2"> Dados do paciente</h2>
-                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
+                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="POST" onsubmit="return validaCadastroSolicitacao(this)" id="formSolicitacao">
                     <div class="field">
                         <div class="control">
                             <span>Nome Completo:</span>
-                            <input class="input input-fancy" name="nome" type="text">
+                            <input class="input input-fancy" name="nome" type="text" id="nome">
                         </div>
                     </div>
 
@@ -47,11 +49,11 @@
                         <div class="control">
                             <span>Gênero:</span>
                             <label>
-                                <input class="is-checkradio is-success" name="genero" type="radio" value ="F" >
+                                <input class="is-checkradio is-success" name="genero" type="radio" value ="F" id="genero1">
                                 <span>F</span>
                             </label>
                             <label>
-                                <input name="genero" type="radio" value ="M">
+                                <input name="genero" type="radio" value ="M" id="genero2">
                                 <span>M</span>
                             </label>
                         </div>
@@ -70,11 +72,11 @@
                         <div class="control">
                             <span>O paciente é cadeirante?</span>
                             <label>
-                                <input name="cadeirante" type="radio" value ="sim" >
+                                <input name="cadeirante" type="radio" value ="sim" id="cadeirante.sim">
                                 <span>Sim</span>
                             </label>
                             <label>
-                                <input name="cadeirante" type="radio" value ="nao">
+                                <input name="cadeirante" type="radio" value ="nao" id="cadeirante.nao">
                                 <span>Não</span>
                             </label>
                         </div>
@@ -82,7 +84,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Caso o paciente seja cadeirante, informe o seu peso:</span>
-                            <input class="input input-fancy" name="peso" type="text">
+                            <input class="input input-fancy" name="peso" type="text" id="peso">
                         </div>
                     </div>
 
@@ -90,11 +92,11 @@
                         <div class="control">
                             <span>Situação do Paciente:</span>
                             <label>
-                                <input name="situacao" type="radio" value ="pre" >
+                                <input name="situacao" type="radio" value ="pre" id="situacao.pre">
                                 <span>Pré-transplantado</span>
                             </label>
                             <label>
-                                <input name="situacao" type="radio" value ="pos">
+                                <input name="situacao" type="radio" value ="pos" id="situacao.pos">
                                 <span>Pós-transplantado</span>
                             </label>
                         </div>
@@ -103,7 +105,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Data do transplante:</span>
-                            <input  name="datatransplante" id="dataTransplante" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
+                            <input  name="datas" id="dataTransplante" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
                                     th:field="*{dataTransplante}" onkeypress="return false;">
                         </div>
                     </div>
@@ -111,7 +113,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Data de entrada requerida:</span>
-                            <input  name="dataentrada" id="dataEntrada" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
+                            <input  name="datas" id="dataEntrada" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
                                     th:field="*{dataEntrada}" onkeypress="return false;">
                         </div>
                     </div>
@@ -119,7 +121,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Data de saída (previsão):</span>
-                            <input  name="datasaida" id="dataSaida" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
+                            <input  name="datas" id="dataSaida" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker"
                                     th:field="*{dataSaida}" onkeypress="return false;">
                         </div>
                     </div>
@@ -205,7 +207,7 @@
 
                             </div>
                         </div>
-                        
+
                 </form>
 
                 <button class="button is-success is-focused" type="submit" onclick="alert('Solicitacao enviada')">Enviar Solicitação</button>
@@ -219,17 +221,4 @@
 
     </main>
 </body>
-
-<script type="text/javascript">
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var datepickerFields = document.getElementsByClassName('datepicker');
-
-        for(var i = 0; i < datepickerFields.length; i++) {
-            seletorDeData(datepickerFields[i]);
-        }
-    })
-
-</script>
-
 </html>
