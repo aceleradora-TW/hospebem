@@ -2,7 +2,7 @@ package com.thoughtworks.aceleradora.login.dominio;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "usuarios")
 public class Usuario {
 
     @Id
