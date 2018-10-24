@@ -25,20 +25,13 @@ button {
     justify-content: center;
 }
 
-.container {
-    padding-top: 12%;
-}
-
 .dados-paciente{
     text-align: justify;
 }
 
 .dados-paciente {
     text-align: justify;
-}
-
-.dados-paciente * {
-    margin-bottom: 16px;
+    padding-top: 5vh; 
 }
 
 .botao-esqueci-senha {

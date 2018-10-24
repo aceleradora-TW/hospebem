@@ -20,6 +20,7 @@
 </head>
 
 <body>
+<<<<<<< c5d1e60898fc447d919531897d145e76b27bebbf
 <header>
     <div class ="">
         <a class="button is-primary is-outlined" href="/">Voltar</a>
@@ -207,9 +208,191 @@
 
             </form>
 
+=======
+    <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <p class="titulo-nav">HospeBem</p>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h1 class="title is-1 center dados-paciente has-text-centered">Solicitação de Vaga</h1>
+                </div>
+            </div>
+
+            <div class="column">
+                <h2 class="subtitle is-2 v center has-text-centered"> Dados do paciente</h2>
+            </div>
+
+
+            <div class="columns is-mobile card-content">
+                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post">
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Nome Completo:</span>
+                                <input class="input input-fancy" name="nome" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Gênero:</span>
+                                <label>
+                                    <input class="is-checkradio is-success" name="genero" type="radio" value="F">
+                                    <span>F</span>
+                                </label>
+                                <label>
+                                    <input name="genero" type="radio" value="M">
+                                    <span>M</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Data de nascimento:</span>
+                                <input name="dataPaci" id="dataNascimento" placeholder="Clique para selecionar uma data"
+                                    type="text" class="input input-fancy datepicker" th:field="*{dataNascimento}"
+                                    onkeypress="return false;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>O paciente é cadeirante?</span>
+                                <label>
+                                    <input name="cadeirante" type="radio" value="sim">
+                                    <span>Sim</span>
+                                </label>
+                                <label>
+                                    <input name="cadeirante" type="radio" value="nao">
+                                    <span>Não</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Caso o paciente seja cadeirante, informe o seu peso:</span>
+                                <input class="input input-fancy" name="peso" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Situação do Paciente:</span>
+                                <label>
+                                    <input name="situacao" type="radio" value="pre">
+                                    <span>Pré-transplantado</span>
+                                </label>
+                                <label>
+                                    <input name="situacao" type="radio" value="pos">
+                                    <span>Pós-transplantado</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Data do transplante:</span>
+                                <input name="datatransplante" id="dataTransplante" placeholder="Clique para selecionar uma data"
+                                    type="text" class="input input-fancy datepicker" th:field="*{dataTransplante}"
+                                    onkeypress="return false;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Data de entrada requerida:</span>
+                                <input name="dataentrada" id="dataEntrada" placeholder="Clique para selecionar uma data"
+                                    type="text" class="input input-fancy datepicker" th:field="*{dataEntrada}"
+                                    onkeypress="return false;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Data de saída (previsão):</span>
+                                <input name="datasaida" id="dataSaida" placeholder="Clique para selecionar uma data"
+                                    type="text" class="input input-fancy datepicker" th:field="*{dataSaida}" onkeypress="return false;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Telefone para Contato:</span>
+                                <input class="input input-fancy" name="telefone" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <h3 class="subtitle is-3">Endereço</h3>
+
+                                <span>Rua:</span>
+                                <input class="input input-fancy" name="endereco.rua" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Número:</span>
+                                <input class="input input-fancy" name="endereco.numero" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Cidade:</span>
+                                <input class="input input-fancy" name="endereco.cidade" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Bairro:</span>
+                                <input class="input input-fancy" name="endereco.bairro" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Uf:</span>
+                                <input class="input input-fancy" name="endereco.uf" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <h4 class="subtitle is-3">Dados do Acompanhante</h4>
+                    </div>
+>>>>>>> <@marcos012, @laurascclaro> arruma css formulario cadastro
 
             <button class="button is-success is-focused" value="Enviar Solicitação" type="submit" >Enviar Solicitação</button>
 
+<<<<<<< c5d1e60898fc447d919531897d145e76b27bebbf
             <input class="button" type="reset" value="Limpar Formulário">
 
 
@@ -221,4 +404,73 @@
 </main>
 </body>
 
+=======
+                    <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                        <input class="input input-fancy" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <p>Gênero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                        <label>
+
+                                            <input type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                            <span>F</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                            <span> M</span>
+                                        </label>
+                                    </p>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <p> Data de nascimento <span th:text="${acompIndex.index + 1}"></span>:
+                                        <input placeholder="Clique para selecionar uma data" class="input input-fancy datepicker"
+                                            th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}"
+                                            onkeypress="return false;">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+
+
+                <div class="column">
+                <button class="button is-info" type="submit" onclick="alert('Solicitacao enviada')">Enviar
+                    Solicitação</button>
+
+                <input class="button" type="reset" value="Limpar Formulário">
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+</body>
+
+<script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var datepickerFields = document.getElementsByClassName('datepicker');
+
+        for (var i = 0; i < datepickerFields.length; i++) {
+            seletorDeData(datepickerFields[i]);
+        }
+    })
+
+</script>
+
+>>>>>>> <@marcos012, @laurascclaro> arruma css formulario cadastro
 </html>
