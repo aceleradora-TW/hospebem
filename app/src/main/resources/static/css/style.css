@@ -1,9 +1,6 @@
 body {
     font-family: arial, sans-serif;
-}
-
-.centralizar{
-    text-align: center;
+    font-size: 17px;
 }
 
 .espacamento {
@@ -11,11 +8,90 @@ body {
 }
 
 .input.input-fancy{
-
     border-color: rgb(131, 186, 255);
-
 }
-.centralizar{
+
+button {
+    align-items: center;
+}
+
+.centralizar {
     display: flex;
     justify-content: center;
+}
+
+.columns {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    padding-top: 12%;
+}
+
+.dados-paciente{
+    text-align: justify;
+}
+
+.dados-paciente {
+    text-align: justify;
+}
+
+.dados-paciente * {
+    margin-bottom: 16px;
+}
+
+.botao-esqueci-senha {
+    color: rgba(70, 178, 235, 1);
+}
+
+.espacamento {
+    margin: 70px;
+}
+
+.espaco-linhas * {
+    padding-bottom: 3vh;
+}
+
+.footer{
+    padding: 15px;
+    background-color: rgba(222, 222, 222, 1);
+    color: rgba(121, 121, 121, 1);
+    border-top: 1px solid rgba(121, 121, 121, 1);
+    position: fixed;
+    bottom:0;
+    width:100%;
+}
+.navbar {
+    background-color: rgb(70, 178, 235);
+    position: relative;
+    width:100%;
+}
+
+.navbar-item {
+    color: rgb(255,255,255);
+}
+
+.navbar-item:hover p {
+    color: rgb(255,255,255);
+}
+
+.is-active {
+    background-color: rgb(70, 178, 235);
+}
+
+.recuperar {
+    padding-top: 2%;
+}
+
+.sessao, .espaco-titulo{
+    margin-top: 30px;
+}
+
+.titulo-nav{
+    font-size: 1.5rem;
+}
+
+.titulo-h1 {
+    font-size: 2rem;
 }

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/loginEstilo.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -17,20 +17,8 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <p >HospeBem</p>
+                <p class="titulo-nav">HospeBem</p>
             </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary" href="/">
-                            <strong>Esqueci minha senha</strong>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </nav>
 </header>
@@ -42,7 +30,7 @@
             <div class="columns">
                 <div class="column is-half">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="validate input is-primary is-rounded" id = "first_name" type="text" name="nome" placeholder="Usuário">
+                        <input class="validate input is-info is-rounded" id = "first_name" type="text" name="nome" placeholder="Usuário">
                         <span class="icon is-small is-left">
                               <i class="fas fa-user"></i>
                         </span>
@@ -52,7 +40,7 @@
             <div class="columns">
                 <div class = "column is-half">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="validate input is-primary is-rounded" id="password" type="password" name="senha" placeholder="Senha">
+                        <input class="validate input is-info is-rounded" id="password" type="password" name="senha" placeholder="Senha">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
                          </span>
@@ -60,7 +48,7 @@
                 </div>
             </div>
 
-            <button class="button is-primary is-medium is-rounded" type="submit" name="action">Entrar </button>
+            <button class="button is-info is-medium is-rounded" type="submit" name="action">Entrar </button>
 
             <div class="recuperar">
                 <p><a href="#">Esqueci minha senha</a></p>
