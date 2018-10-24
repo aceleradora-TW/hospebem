@@ -1,0 +1,1 @@
+ALTER TABLE acompanhante RENAME TO acompanhantes;

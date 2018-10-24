@@ -1,0 +1,1 @@
+ALTER TABLE solicitacao RENAME TO solicitacoes;

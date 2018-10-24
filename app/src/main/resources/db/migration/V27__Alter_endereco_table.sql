@@ -1,0 +1,1 @@
+ALTER TABLE endereco RENAME TO enderecos;

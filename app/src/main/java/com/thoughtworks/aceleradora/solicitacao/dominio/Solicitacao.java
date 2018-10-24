@@ -8,7 +8,7 @@ import java.util.List;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
+@Entity(name = "solicitacoes")
 public class Solicitacao {
 
     @Id
