@@ -20,7 +20,7 @@ case $1 in
       ;;
 
     rm)
-        docker rm $(docker ps -a)
+        docker rm hospebem-db
       ;;
 
   *)
