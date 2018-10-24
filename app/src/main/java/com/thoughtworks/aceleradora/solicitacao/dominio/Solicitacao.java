@@ -28,7 +28,7 @@ public class Solicitacao {
     private float peso;
 
     private String status;
-
+    
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -76,6 +76,8 @@ public class Solicitacao {
         this.acompanhantes = acompanhantes;
         this.status = status;
     }
+
+
 
     public Long getId() {
          return id;
