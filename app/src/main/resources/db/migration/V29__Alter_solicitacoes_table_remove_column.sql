@@ -1,0 +1,1 @@
+ALTER TABLE solicitacoes DROP COLUMN acompanhante_id;
