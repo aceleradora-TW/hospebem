@@ -59,7 +59,7 @@ flyway {
     def port = System.getenv("HOSPEBEM_DB_PORT") ?: 5432
     def name = System.getenv("HOSPEBEM_DB_NAME") ?: 'hospebem'
 
-    url = "postgres://gogwdmoefhpmpn:414a8fa4deb0196f2c96a03918f3da0e8d0e35ef63e91d9271236fd1de61087a@ec2-184-73-222-192.compute-1.amazonaws.com:5432/d4blq8a0ehm41q"
+    url = System.getenv("SPRING_DATASOURCE_URL") ?: 'jdbc:postgres://gogwdmoefhpmpn:414a8fa4deb0196f2c96a03918f3da0e8d0e35ef63e91d9271236fd1de61087a@ec2-184-73-222-192.compute-1.amazonaws.com:5432/d4blq8a0ehm41q'
     user = System.getenv("HOSPEBEM_DB_USER") ?: 'postgres'
     password = System.getenv("HOSPEBEM_DB_PASSWORD") ?: 'hospebem'
 }
