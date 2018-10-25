@@ -60,8 +60,8 @@ flyway {
     def name = System.getenv("HOSPEBEM_DB_NAME") ?: 'hospebem'
 
     url = System.getenv("SPRING_DATASOURCE_URL")
-    user = System.getenv("HOSPEBEM_DB_USER")
-    password = System.getenv("HOSPEBEM_DB_PASSWORD")
+    user = System.getenv("SPRING_DATASOURCE_USERNAME")
+    password = System.getenv("SPRING_DATASOURCE_PASSWORD")
 }
 
 bootRun {
