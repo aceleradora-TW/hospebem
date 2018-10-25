@@ -25,9 +25,11 @@ public class Solicitacao {
 
     private String cadeirante;
 
+    private float peso;
+
     private String status;
 
-    private float peso;
+    private boolean cancelamento;
 
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
@@ -77,11 +79,14 @@ public class Solicitacao {
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.dataTransplante = dataTransplante;
+        this.cancelamento = cancelamento;
     }
 
+
+
     public Long getId() {
-         return id;
-        }
+        return id;
+    }
     public String getNome() {
         return nome;
     }
@@ -174,10 +179,17 @@ public class Solicitacao {
         return status;
     }
 
+    public boolean getCancelamento() {
+        return cancelamento;
+    }
+
+    public void setCancelamento(boolean cancelamento) {
+        this.cancelamento = cancelamento;
+    }
+
     public void setStatus(String status) {
         this.status = status;
     }
-
     @Override
     public String toString() {
         return "Solicitacao{" +
@@ -192,6 +204,7 @@ public class Solicitacao {
                 ", dataEntrada=" + dataEntrada +
                 ", dataSaida=" + dataSaida +
                 ", dataTransplante=" + dataTransplante +
+                ", cancelamento=" + cancelamento +
                 ", endereco=" + endereco +
                 ", status=" + status +
                 ", acompanhantes=" + acompanhantes +

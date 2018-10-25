@@ -39,32 +39,17 @@ public class SolicitacaoController {
         return "solicitacao/cadastro";
     }
 
-    @GetMapping("/casa/lista")
-    public String listaSolicitacoesDaCasa(Model model) {
-
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAll());
-
-        return "solicitacao/listagens/listaSolicitacaoCasa";
-    }
-
-    @GetMapping("/hospital/lista")
-    public String listaSolicitacoesDoHospital(Model model) {
-
-        model.addAttribute("solicitacoesHospital", solicitacaoRepository.findAll());
-
-        return "solicitacao/listagens/listaSolicitacaoHospital";
-    }
-
     @PostMapping("/cadastro")
     @ResponseBody
     public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
-
+        solicitacao.setCancelamento(false);
+        solicitacao.setStatus("Pendente");
         solicitacaoRepository.save(solicitacao);
 
         model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
 
-        return "solicitacao/cadastro";
+        return "redirect:/";
     }
 
      
@@ -122,6 +107,20 @@ public class SolicitacaoController {
         model.addAttribute("status", solicitacaoRepository.findAll());
         return "solicitacao/aceitar/hospital/lista";
     }
+
+    @PostMapping("/cancelar")
+    public String cancelarSolicitacao(Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()) {
+            Solicitacao solicitacao = solicitacaoOptional.get();
+            solicitacao.setCancelamento(true);
+            solicitacaoRepository.save(solicitacao);
+
+            return "redirect:/solicitacao/hospital/lista";
+        }
+        return "404";
+    }
     @GetMapping("/gerenciaHospede/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
 
@@ -129,5 +128,4 @@ public class SolicitacaoController {
 
         return "solicitacao/listaHospede/listaGerenciamentoHospede";
     }
-
 }
