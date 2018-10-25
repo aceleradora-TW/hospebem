@@ -4,9 +4,9 @@ server:
 
   spring:
     datasource:
-      url: ${SPRING_DATASOURCE_URL:postgres://gogwdmoefhpmpn:414a8fa4deb0196f2c96a03918f3da0e8d0e35ef63e91d9271236fd1de61087a@ec2-184-73-222-192.compute-1.amazonaws.com:5432/d4blq8a0ehm41q}
-      username: ${SPRING_DATASOURCE_USERNAME:postgres}
-      password: ${SPRING_DATASOURCE_PASSWORD:hospebem}
+      url: ${SPRING_DATASOURCE_URL}
+      username: ${SPRING_DATASOURCE_USERNAME}
+      password: ${SPRING_DATASOURCE_PASSWORD}
       driver-class-name: org.postgresql.Driver
 
   jpa:
