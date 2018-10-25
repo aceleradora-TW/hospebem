@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GerenciarHospedeRepository
         extends CrudRepository<Solicitacao,Long> {
+    Solicitacao findBySituacao(String title);
 
 }

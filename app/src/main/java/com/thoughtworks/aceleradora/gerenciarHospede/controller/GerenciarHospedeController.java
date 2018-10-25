@@ -27,7 +27,7 @@ public class GerenciarHospedeController {
     @GetMapping("/listagenHospede")
     public String listaSolicitacoesDaCasa(Model model) {
 
-        model.addAttribute("solicitacoesCasa", gerenciarHospedeRepository.findAll());
+        model.addAttribute("solicitacoesCasa", gerenciarHospedeRepository.findBySituacao("pre"));
 
         return "listaHospede/listaGerenciamentoHospede";
     }
