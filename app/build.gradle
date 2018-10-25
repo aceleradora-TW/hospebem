@@ -66,6 +66,9 @@ flyway {
 
 bootRun {
     sourceResources sourceSets.main
+    jvmArgs = [
+      '-Dspring.profiles.active=dev'
+    ]
 }
 
 build.mustRunAfter('clean')
