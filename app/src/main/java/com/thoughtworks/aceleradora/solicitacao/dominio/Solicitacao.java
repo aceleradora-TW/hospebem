@@ -29,6 +29,8 @@ public class Solicitacao {
 
     private String status;
 
+    private boolean cancelamento;
+
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -60,6 +62,7 @@ public class Solicitacao {
                        LocalDate dataEntrada,
                        LocalDate dataSaida,
                        LocalDate dataTransplante,
+                       boolean cancelamento,
                        Endereco endereco,
                        List<Acompanhante> acompanhantes,
                        String status) {
@@ -75,6 +78,7 @@ public class Solicitacao {
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.dataTransplante = dataTransplante;
+        this.cancelamento = cancelamento;
         this.endereco = endereco;
         this.acompanhantes = acompanhantes;
         this.status = status;
@@ -177,6 +181,14 @@ public class Solicitacao {
         return status;
     }
 
+    public boolean getCancelamento() {
+        return cancelamento;
+    }
+
+    public void setCancelamento(boolean cancelamento) {
+        this.cancelamento = cancelamento;
+    }
+
     public void setStatus(String status) {
         this.status = status;
     }
@@ -194,6 +206,7 @@ public class Solicitacao {
                 ", dataEntrada=" + dataEntrada +
                 ", dataSaida=" + dataSaida +
                 ", dataTransplante=" + dataTransplante +
+                ", cancelamento=" + cancelamento +
                 ", endereco=" + endereco +
                 ", acompanhantes=" + acompanhantes +
                 '}';

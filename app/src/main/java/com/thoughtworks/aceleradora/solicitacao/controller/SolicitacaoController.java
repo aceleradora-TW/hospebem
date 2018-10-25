@@ -41,14 +41,15 @@ public class SolicitacaoController {
     @PostMapping("/cadastro")
     public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
+        solicitacao.setCancelamento(false);
+        solicitacao.setStatus("Pendente");
         solicitacaoRepository.save(solicitacao);
 
         model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
 
-        return "solicitacao/cadastro";
+        return "redirect:/";
     }
 
-     
 
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
@@ -78,7 +79,6 @@ public class SolicitacaoController {
 
             return "redirect:/solicitacao/casa/lista";
         }
-
         return "404";
     }
 
@@ -93,15 +93,27 @@ public class SolicitacaoController {
 
             return "redirect:/solicitacao/casa/lista";
         }
-
         return "404";
     }
-
 
     @GetMapping("/aceitar")
     public String aceitaSolicitacaoCasa(Model model){
         model.addAttribute("status", solicitacaoRepository.findAll());
         return "solicitacao/aceitar/hospital/lista";
+    }
+
+    @PostMapping("/cancelar")
+    public String cancelarSolicitacao(Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()) {
+            Solicitacao solicitacao = solicitacaoOptional.get();
+            solicitacao.setCancelamento(true);
+            solicitacaoRepository.save(solicitacao);
+
+            return "redirect:/solicitacao/hospital/lista";
+        }
+        return "404";
     }
 
 
