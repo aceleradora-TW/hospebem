@@ -3,12 +3,15 @@ package com.thoughtworks.aceleradora.solicitacao.controller;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import org.postgresql.core.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import javax.persistence.EntityManager;
 import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping("/solicitacao")
@@ -61,5 +64,4 @@ public class SolicitacaoController {
 
         return "solicitacao/cadastro";
     }
-
 }
