@@ -1,11 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let datepickerFields = document.getElementsByClassName('datepicker');
+    var  datepickerRetroativo = document.getElementsByClassName('datepicker-retroativo');
+    var  datepickerFuturo = document.getElementsByClassName('datepicker-futuro');
 
-    for(let i = 0; i < datepickerFields.length; i++) {
+    for(var i = 0; i < datepickerRetroativo.length; i++) {
         if (document.getElementById("formSolicitacao") != null) {
-            seletorDataNascimento(datepickerFields[i]);
+            seletorDataNascimento(datepickerRetroativo[i]);
+        }
+
+    }
+    for(var i = 0; i < datepickerFuturo.length; i++) {
+        if (document.getElementById("formSolicitacao") != null) {
+            seletorData(datepickerFuturo[i]);
         }
     }
+
 })
 
 function seletorDataNascimento(elemento) {
@@ -25,14 +33,16 @@ function seletorDataNascimento(elemento) {
 
 function seletorData(elemento) {
     return new Pikaday({
+        minDate: new Date(),
         yearRange: [1990, 2048],
         field: elemento,
         format: 'DD/MM/YYYY',
         i18n: {
-            previousMonth : 'Mês Anterior',
-            months        : ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-            weekdays      : ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-            weekdaysShort : ['Dom','Seg','Ter','Qua','Qui','Sex','Sab']
+            previousMonth: 'Mês Anterior',
+            months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            weekdays: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']
         }
     });
+
 }

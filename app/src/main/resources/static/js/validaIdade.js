@@ -1,7 +1,7 @@
 function mostra_idade() {
-    let hoje = new Date();
-    let dataNascimento = new Date((document.getElementById("dataNascimento").value).split("/").reverse());
-    let idade = hoje.getFullYear() - dataNascimento.getFullYear();
+    var hoje = new Date();
+    var dataNascimento = new Date((document.getElementById("dataNascimento").value).split("/").reverse());
+    var idade = hoje.getFullYear() - dataNascimento.getFullYear();
 
     if (hoje.getMonth() < dataNascimento.getMonth() && hoje.getDay() < dataNascimento.getDay()){
         idade--;
