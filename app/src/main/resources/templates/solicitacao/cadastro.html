@@ -40,14 +40,14 @@
                 <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="POST" onsubmit="return validaCadastroSolicitacao(this)" id="formSolicitacao">
                     <div class="field">
                         <div class="control">
-                            <span>Nome Completo:</span>
+                            <span>*Nome Completo:</span>
                             <input class="input input-fancy" name="nome" type="text" id="nome">
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="control">
-                            <span>Gênero:</span>
+                            <span>*Gênero:</span>
                             <label>
                                 <input class="is-checkradio is-success" name="genero" type="radio" value ="F" id="genero1">
                                 <span>F</span>
@@ -61,7 +61,7 @@
 
                     <div class="field">
                         <div class="control">
-                            <span>Data de nascimento:</span>
+                            <span>*Data de nascimento:</span>
                             <input  name="dataPaci" id="dataNascimento" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker-retroativo "
                                     th:field="*{dataNascimento}"
                                     onkeypress="return false;">
@@ -102,9 +102,9 @@
                         </div>
                     </div>
 
+                    <!--validar com PO se terá data de translpante a ser feito ou data de transplante já realizado (ou os dois)-->
                     <div class="field">
                         <div class="control">
-                            //validar com PO se terá data de translpante a ser feito ou data de transplante já realizado (ou os dois)
                             <span>Data do transplante:</span>
                             <input name="datas" id="dataTransplante" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker-retroativo"
                                     th:field="*{dataTransplante}" onkeypress="return false;">
@@ -113,7 +113,7 @@
 
                     <div class="field">
                         <div class="control">
-                            <span>Data de entrada requerida:</span>
+                            <span>*Data de entrada requerida:</span>
                             <input name="datas" id="dataEntrada" placeholder="Clique para selecionar uma data" type="text" class="input input-fancy datepicker-futuro"
                                     th:field="*{dataEntrada}" onkeypress="return false;">
                         </div>
@@ -179,14 +179,14 @@
                     <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
                         <div class="field">
                             <div class="control">
-                                <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                <p>*Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
                                     <input class="input input-fancy" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                                 </p>
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
-                                <p>Gênero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                <p>*Gênero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
                                     <label>
 
                                         <input type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
@@ -202,7 +202,7 @@
                         </div>
                         <div class="field">
                             <div class="control">
-                                <p> Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
+                                <p>*Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
                                     <input  placeholder="Clique para selecionar uma data" class="input input-fancy datepicker-retroativo" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
                                 </p>
 
@@ -211,9 +211,11 @@
 
                 </form>
 
-                <button class="button is-success is-focused" type="submit" onclick="alert('Solicitacao enviada')">Enviar Solicitação</button>
+
+                <button class="button is-success is-focused" value="Enviar Solicitação" type="submit" onclick="alert('Solicitacao enviada')">Enviar Solicitação</button>
 
                 <input class="button" type="reset" value="Limpar Formulário">
+
 
             </div>
         </div>
