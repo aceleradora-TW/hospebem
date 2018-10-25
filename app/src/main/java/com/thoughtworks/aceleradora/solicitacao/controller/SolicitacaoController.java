@@ -52,7 +52,13 @@ public class SolicitacaoController {
         return "redirect:/";
     }
 
-     
+    @GetMapping("/dados/id")
+    public String mostraDadosPaciente(Model model, @RequestParam("id") Long id, Solicitacao solicitacao) {
+        model.addAttribute("solicitacao", solicitacaoRepository.findById(id));
+        solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
+
+        return "/solicitacao/a";
+    }
 
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
@@ -100,7 +106,6 @@ public class SolicitacaoController {
 
         return "404";
     }
-
 
     @GetMapping("/aceitar")
     public String aceitaSolicitacaoCasa(Model model){
