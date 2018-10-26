@@ -43,24 +43,24 @@ function campos_paciente() {
         document.getElementById("dataEntrada").focus();
         return false;
     }
-
- }
+}
 
  function campos_acompanhantes(){
-     if (document.querySelector("nome").value == false) {
+     if (document.querySelector(".nome").value == false) {
          alert('Por favor, preencha o campo nome do acompanhante 1');
-         document.querySelector("nome").focus();
+         document.querySelector(".nome").focus();
          return false;
      }
-     if (document.querySelector("genero").checked == false &&
-        document.querySelector("genero").checked == false) {
+     if (document.querySelectorAll(".genero")[0].checked == false &&
+        document.querySelectorAll(".genero")[1].checked == false) {
          alert('Por favor, selecione o gênero do acompanhante 1');
          return false;
      }
-     if(document.querySelector("data").value == false){
+     if(document.querySelector(".data").value == false){
          alert('Por favor, preencha a data de nascimento do acompanhante');
-         document.querySelector("data").focus();
+         document.querySelector(".data").focus();
          return false;
      }
 }
+
 
