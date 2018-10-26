@@ -1,7 +1,7 @@
-function validaCadastroSolicitacao() {
+function validaCadastroSolicitacao(evento) {
+    evento.preventDefault();
     campos_paciente();
-    campos_acompanhante_um();
-    campos_acompanhante_dois();
+    campos_acompanhantes();
     return false;
 }
 
@@ -46,36 +46,21 @@ function campos_paciente() {
 
  }
 
- function campos_acompanhante_um(){
-     if (document.getElementById("acompanhantes0.nome").value == false) {
+ function campos_acompanhantes(){
+     if (document.querySelector("nome").value == false) {
          alert('Por favor, preencha o campo nome do acompanhante 1');
-         document.getElementById("acompanhantes0.nome").focus();
+         document.querySelector("nome").focus();
          return false;
      }
-     if (document.getElementById("acompanhantes0.genero1").checked == false &&
-        document.getElementById("acompanhantes0.genero2").checked == false) {
+     if (document.querySelector("genero").checked == false &&
+        document.querySelector("genero").checked == false) {
          alert('Por favor, selecione o gênero do acompanhante 1');
          return false;
      }
-     if(document.getElementById("acompanhantes0.dataNascimento").value == false){
+     if(document.querySelector("data").value == false){
          alert('Por favor, preencha a data de nascimento do acompanhante');
-         document.getElementById("acompanhantes0.dataNascimento").focus();
-         return false;
-     }
- }
-
- function campos_acompanhante_dois(){
-     if (document.getElementById("acompanhantes1.nome").value != false) {
-         if (document.getElementById("acompanhantes1.genero1").checked == false &&
-             document.getElementById("acompanhantes1.genero2").checked == false) {
-             alert('Por favor, selecione o gênero do acompanhante 2');
-             return false;
-         }
-     }
-
-     if (document.getElementById("acompanhantes1.dataNascimento").value == false) {
-         alert('Por favor, preencha a data de nascimento do acompanhante 2');
-         document.getElementById("acompanhantes1.dataNascimento").focus();
+         document.querySelector("data").focus();
          return false;
      }
 }
+

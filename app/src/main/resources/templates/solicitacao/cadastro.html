@@ -37,7 +37,7 @@
 
 
                 <h2 class="subtitle is-2"> Dados do paciente</h2>
-                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="POST" onsubmit="return validaCadastroSolicitacao(this)" id="formSolicitacao">
+                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="POST" onsubmit="return validaCadastroSolicitacao(event)" id="formSolicitacao">
                     <div class="field">
                         <div class="control">
                             <span>*Nome Completo:</span>
@@ -180,7 +180,7 @@
                         <div class="field">
                             <div class="control">
                                 <p>*Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                                    <input class="input input-fancy" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                                    <input class="nome input input-fancy" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                                 </p>
                             </div>
                         </div>
@@ -189,11 +189,11 @@
                                 <p>*Gênero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
                                     <label>
 
-                                        <input type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                        <input class ="genero" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
                                         <span>F</span>
                                     </label>
                                     <label>
-                                        <input type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                        <input class ="genero" type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
                                         <span> M</span>
                                     </label>
                                 </p>
@@ -203,7 +203,7 @@
                         <div class="field">
                             <div class="control">
                                 <p>*Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
-                                    <input  placeholder="Clique para selecionar uma data" class="input input-fancy datepicker-retroativo" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
+                                    <input  placeholder="Clique para selecionar uma data" class=" data input input-fancy datepicker-retroativo" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
                                 </p>
 
                             </div>
