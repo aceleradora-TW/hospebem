@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<div th:include="/partials/cabecalho"/>
+
+<main class="has-text-centered">
+
+    <table>
+        <ul th:object="${solicitante}">
+            <p th:text="${solicitante.get().getNome()}"></p>
+            <p th:text="${solicitante.get().getCadeirante()}"></p>
+            <p th:text="${solicitante.get().getPeso()}"></p>
+            <div th:each="acomp : ${solicitante.get().getAcompanhantes()}">
+                <p th:text="${acomp.nome}"></p>
+                <p th:text="${acomp.genero}"></p>
+            </div>
+        </ul>
+    </table>
+
+    <a class="button is-info" href="/solicitacao/casa/lista">Voltar</a>
+</main>
+
+</body>
+</html>

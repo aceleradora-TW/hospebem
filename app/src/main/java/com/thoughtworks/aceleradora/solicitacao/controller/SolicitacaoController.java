@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
-import javax.validation.constraints.NotNull;
 import java.util.Optional;
 
 @Controller
@@ -50,12 +49,16 @@ public class SolicitacaoController {
         return "redirect:/";
     }
 
-    @GetMapping("/dados/id")
-    public String mostraDadosPaciente(Model model, @RequestParam("id") Long id, Solicitacao solicitacao) {
-        model.addAttribute("solicitacao", solicitacaoRepository.findById(id));
-        solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
+    @GetMapping("/dados")
+    public String mostraDadosPaciente(Model model, Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
-        return "/solicitacao/a";
+        if(solicitacaoOptional.isPresent()) {
+            model.addAttribute("solicitante", solicitacaoOptional);
+
+            return "solicitacao/dadosSolicitante";
+        }
+        return "404";
     }
 
     @GetMapping("/casa/lista")
