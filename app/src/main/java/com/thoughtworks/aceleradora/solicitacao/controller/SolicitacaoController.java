@@ -76,6 +76,13 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
 
+    @GetMapping("/casa/lista/aceitos")
+    public String gerenciarHospedesAceitos(Model model) {
+
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAll());
+
+        return "solicitacao/listagens/GerenciarHospedesAceitos";
+    }
 
     @PostMapping("/aceitar")
     public String aceitaSolicitacao(Long id) {
