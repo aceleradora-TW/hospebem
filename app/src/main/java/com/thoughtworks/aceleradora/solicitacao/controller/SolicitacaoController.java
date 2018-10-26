@@ -1,15 +1,23 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Endereco;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.postgresql.core.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.CascadeType;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 
@@ -64,4 +72,11 @@ public class SolicitacaoController {
 
         return "solicitacao/cadastro";
     }
+
+    @GetMapping("/excluir")
+    public String deleteSolictacao(Long id){
+        solicitacaoRepository.deleteById(id);
+        return "redirect:/solicitacao/hospital/lista";
+    }
+
 }

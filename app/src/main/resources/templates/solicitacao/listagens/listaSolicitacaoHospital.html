@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:spring="http://java.sun.com/xml/ns/javaee">
 <head>
     <meta charset="UTF-8">
     <title>Hospebem</title>
@@ -69,13 +69,16 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <form action="#" th:action ="@{../solicitacao/solicitacaoController}" method="post"></form>
-                                    <button class="button" type="hidden" onclick="deleteRow(this.parentNode.parentNode.rowIndex)">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    <form th:action="@{/solicitacao/excluir}" method="delete">
+                                        <input type="hidden" name="id" th:value="${solicitacao.id}">
+                                        <button class="button " type="submit">
+                                            <i class="fas fa-trash icons-color"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         </table>
+                    </table>
                 </div>
             </div>
         </div>
