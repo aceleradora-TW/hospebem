@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospebem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link href="/css/style.css" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <p class="titulo-nav">HospeBem</p>
+            </a>
+        </div>
+    </nav>
+</header>
+<body>
+<div class="columns is-mobile is-centered">
+    <div class="container">
+        <h1 class="title is-half centralizar">Lista de solicitações aceitas</h1>
+        <table class="table centralizar">
+            <thead>
+            <tr>
+                <th class="has-text-centered">Nome</th>
+                <th class="has-text-centered">Idade</th>
+                <th class="has-text-centered">Data</th>
+                <th class="has-text-centered">Informações</th>
+                <th class="has-text-centered">Vincular ao quarto</th>
+            </tr>
+            <tr>
+                <td class="has-text-centered">aaaaaaaaaaaaaa</td>
+                <td class="has-text-centered">45</td>
+                <td class="has-text-centered">11.03.2018</td>
+                <td class="has-text-centered">
+                    <button class="button " type="submit">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </td>
+                <td class="has-text-centered">
+                    <button class="button " type="submit">
+                        <i class="fas fa-bed"></i>
+                    </button>
+                </td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="solicitacao : ${solicitacoesHospital}">
+                <td th:text="${solicitacao.nome}"></td>
+                <td>11-11-2018</td>
+                <td th:text="${soliticao.status}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

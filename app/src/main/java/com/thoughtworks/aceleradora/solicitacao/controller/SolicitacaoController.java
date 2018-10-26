@@ -81,8 +81,9 @@ public class SolicitacaoController {
 
         model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAll());
 
-        return "solicitacao/listagens/GerenciarHospedesAceitos";
+        return "solicitacao/GerenciarHospedeAceitos";
     }
+
 
     @PostMapping("/aceitar")
     public String aceitaSolicitacao(Long id) {
@@ -109,6 +110,7 @@ public class SolicitacaoController {
             solicitacaoRepository.save(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
+
         }
 
         return "404";
