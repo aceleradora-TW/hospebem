@@ -3,28 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <link rel="stylesheet" href="/css/style.css">
-
 </head>
 <body>
+
 <div th:include="/partials/cabecalho"/>
 
-<main class="has-text-centered">
+<main>
 
-    <table>
-        <ul th:object="${solicitante}">
-            <p th:text="${solicitante.get().getNome()}"></p>
-            <p th:text="${solicitante.get().getCadeirante()}"></p>
-            <p th:text="${solicitante.get().getPeso()}"></p>
-            <div th:each="acomp : ${solicitante.get().getAcompanhantes()}">
-                <p th:text="${acomp.nome}"></p>
-                <p th:text="${acomp.genero}"></p>
-            </div>
-        </ul>
-    </table>
+    <div class="card-content valign center has-text-centered">
 
-    <a class="button is-info" href="/solicitacao/casa/lista">Voltar</a>
+        <div class="columns ">
+            <ul th:object="${solicitante}">
+
+                <h2 class="title is-2">Dados Paciente</h2>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Nome </label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getNome()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Gênero</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getGenero()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Status</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getStatus()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Situação</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getSituacao()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Data de Nascimento</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getDataNascimento()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Telefone</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getTelefone()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Peso</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getPeso()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Data de Entrada</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getDataEntrada()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Data de Saída</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getDataSaida()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="title is-2">Endereço</h2>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Rua</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getEndereco().getRua()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Número</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getEndereco().getNumero()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Cidade</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getEndereco().getCidade()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Bairro</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getEndereco().getBairro()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">UF</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getEndereco().getUf()}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="title is-2">Dados Acompanhante</h2>
+
+                <div th:each="acomp, index : ${solicitante.get().getAcompanhantes()}">
+
+                    <h5 class="title is-5">Acompanhante <span th:text="${index.index + 1}"></span>:</h5>
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Nome</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="nome" th:placeholder="${acomp.nome}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Data de Nascimento</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="nome" th:placeholder="${acomp.dataNascimento}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </ul>
+        </div>
+
+        <a class="button is-info" href="/solicitacao/casa/lista">Voltar</a>
+    </div>
 </main>
 
 </body>
