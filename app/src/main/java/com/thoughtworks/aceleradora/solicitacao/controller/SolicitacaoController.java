@@ -62,4 +62,11 @@ public class SolicitacaoController {
         return "solicitacao/cadastro";
     }
 
+    @GetMapping("/gerenciaHospede/listagemHospede")
+    public String listaGerenciamentoHospede(Model model) {
+
+        model.addAttribute("gerenciaHospede", solicitacaoRepository.findAllByStatus("aceito"));
+
+        return "solicitacao/listaHospede/listaGerenciamentoHospede";
+    }
 }

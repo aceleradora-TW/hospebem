@@ -24,11 +24,7 @@
         <div class="is-mobile">
             <div>
                 <h1 class="title is-half centralizar espacamento">Lista de Gerenciamento de Hospede</h1>
-                <form th:action="@{/solicitacao/cadastro}" method="GET">
-                    <div class="is-centered is-half centralizar espacamento">
-                        <input type="submit" class="button is-info" value="Solicitar Vaga" />
-                    </div>
-                </form>
+
                 <div class="is-mobile is-centered">
                     <table class="table pricing__table">
 
@@ -39,33 +35,14 @@
 
                             <tr>
                                 <th>Nome </th>
-                                <th>Última atualização</th>
-                                <th>Status</th>
-                                <th>Editar</th>
-                                <th>Excluir</th>
                             </tr>
 
                             </thead>
 
 
-                            <tr th:each="solicitacao : ${solicitacoesHospital}">
+                            <tr th:each="solicitacao : ${gerenciaHospede}">
                                 <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
-                                <td class="has-text-centered">11-11-2018</td>
-                                <td class="has-text-centered">Pendente</td>
-                                <td class="column has-text-centered">
-                                    <a href="/">
-                                        <button class="button" type="submit">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                                <td>
-                                    <form method="post">
-                                        <button class="button" type="submit">
-                                            <input type="hidden" name="id">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+
                                 </td>
                             </tr>
                         </table>
