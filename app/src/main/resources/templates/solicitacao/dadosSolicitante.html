@@ -14,7 +14,7 @@
         <div class="card-content valign center has-text-centered">
             <div class="columns ">
                 <ul th:object="${solicitante}">
-
+                <ul th:object="${formata}">
                     <h2 class="title is-2">Dados Paciente</h2>
 
                     <div class="column is-10">
@@ -23,7 +23,7 @@
                                 <label class="label">Nome </label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.get().getNome()}" disabled>
+                                <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.getNome()}" disabled>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                                 <label class="label">Gênero</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="genero" th:placeholder="(${solicitante.get().getGenero() == 'F'} ? 'Feminino' : 'Masculino')" disabled>
+                                <input class="validate input is-info" type="text" name="genero" th:placeholder="(${solicitante.getGenero() == 'F'} ? 'Feminino' : 'Masculino')" disabled>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                 <label class="label">Status</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="status" th:placeholder="${solicitante.get().getStatus()}" disabled>
+                                <input class="validate input is-info" type="text" name="status" th:placeholder="${solicitante.getStatus()}" disabled>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                                 <label class="label">Situação</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="situacao" th:placeholder="(${solicitante.get().getSituacao() == 'pre'} ? 'Pré-Transplantado' : 'Pós-Transplantado')" disabled>
+                                <input class="validate input is-info" type="text" name="situacao" th:placeholder="(${solicitante.getSituacao() == 'pre'} ? 'Pré-Transplantado' : 'Pós-Transplantado')" disabled>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                 <label class="label">Data de Nascimento</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="dataNascimento" th:placeholder="${solicitante.get().getDataNascimento()}" disabled>
+                                <input class="validate input is-info" type="text" name="dataNascimento" th:placeholder="${solicitante.getDataNascimento().format(formata)}" disabled>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                 <label class="label">Telefone</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="telefone" th:placeholder="${solicitante.get().getTelefone()}" disabled>
+                                <input class="validate input is-info" type="text" name="telefone" th:placeholder="${solicitante.getTelefone()}" disabled>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                                 <label class="label">Peso</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="peso" th:placeholder="${solicitante.get().getPeso()}" disabled>
+                                <input class="validate input is-info" type="text" name="peso" th:placeholder="${solicitante.getPeso()}" disabled>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                                 <label class="label">Data de Entrada</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="dataEntrada" th:placeholder="${solicitante.get().getDataEntrada()}" disabled>
+                                <input class="validate input is-info" type="text" name="dataEntrada" th:placeholder="${solicitante.getDataEntrada().format(formata)}" disabled>
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                                 <label class="label">Data de Saída</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="dataSaida" th:placeholder="${solicitante.get().getDataSaida()}" disabled>
+                                <input class="validate input is-info" type="text" name="dataSaida" th:placeholder="${solicitante.getDataSaida().format(formata)}" disabled>
                             </div>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                                 <label class="label">Rua</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="rua" th:placeholder="${solicitante.get().getEndereco().getRua()}" disabled>
+                                <input class="validate input is-info" type="text" name="rua" th:placeholder="${solicitante.getEndereco().getRua()}" disabled>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                                 <label class="label">Número</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="numero" th:placeholder="${solicitante.get().getEndereco().getNumero()}" disabled>
+                                <input class="validate input is-info" type="text" name="numero" th:placeholder="${solicitante.getEndereco().getNumero()}" disabled>
                             </div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                                 <label class="label">Cidade</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="cidade" th:placeholder="${solicitante.get().getEndereco().getCidade()}" disabled>
+                                <input class="validate input is-info" type="text" name="cidade" th:placeholder="${solicitante.getEndereco().getCidade()}" disabled>
                             </div>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                                 <label class="label">Bairro</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="bairro" th:placeholder="${solicitante.get().getEndereco().getBairro()}" disabled>
+                                <input class="validate input is-info" type="text" name="bairro" th:placeholder="${solicitante.getEndereco().getBairro()}" disabled>
                             </div>
                         </div>
                     </div>
@@ -168,14 +168,14 @@
                                 <label class="label">UF</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="uf" th:placeholder="${solicitante.get().getEndereco().getUf()}" disabled>
+                                <input class="validate input is-info" type="text" name="uf" th:placeholder="${solicitante.getEndereco().getUf()}" disabled>
                             </div>
                         </div>
                     </div>
 
                     <h2 class="title is-2">Dados Acompanhante</h2>
 
-                    <div th:each="acomp, index : ${solicitante.get().getAcompanhantes()}">
+                    <div th:each="acomp, index : ${solicitante.getAcompanhantes()}">
 
                         <h5 class="title is-5">Acompanhante
                             <span th:text="${index.index + 1}"></span>:
@@ -197,11 +197,12 @@
                                     <label class="label">Data de Nascimento</label>
                                 </div>
                                 <div class="control">
-                                    <input class="validate input is-info" type="text" name="dataNascimentoAcomp" th:placeholder="${acomp.dataNascimento}" disabled>
+                                    <input class="validate input is-info" type="text" name="dataNascimentoAcomp" th:placeholder="${acomp.dataNascimento.format(formata)}" disabled>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </ul>
                 </ul>
             </div>
 

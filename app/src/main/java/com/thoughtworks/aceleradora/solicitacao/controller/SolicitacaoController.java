@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -54,8 +55,8 @@ public class SolicitacaoController {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if(solicitacaoOptional.isPresent()) {
-            model.addAttribute("solicitante", solicitacaoOptional);
-
+            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            model.addAttribute("solicitante", solicitacaoOptional.get());
             return "solicitacao/dadosSolicitante";
         }
         return "404";
