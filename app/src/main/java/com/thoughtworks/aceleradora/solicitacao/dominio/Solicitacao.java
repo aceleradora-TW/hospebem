@@ -25,6 +25,8 @@ public class Solicitacao {
 
     private String cadeirante;
 
+    private String status;
+
     private float peso;
 
 
@@ -49,6 +51,7 @@ public class Solicitacao {
     public Solicitacao() {
     }
 
+
     public Solicitacao(String nome,
                        String genero,
                        String situacao,
@@ -60,6 +63,7 @@ public class Solicitacao {
                        LocalDate dataSaida,
                        LocalDate dataTransplante,
                        Endereco endereco,
+                       String status,
                        List<Acompanhante> acompanhantes)
     {
         this.nome = nome;
@@ -70,6 +74,7 @@ public class Solicitacao {
         this.peso = peso;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
+        this.status = status;
         this.acompanhantes = acompanhantes;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
@@ -164,6 +169,14 @@ public class Solicitacao {
         this.acompanhantes = acompanhantes;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Solicitacao{" +
@@ -178,6 +191,7 @@ public class Solicitacao {
                 ", dataSaida=" + dataSaida +
                 ", dataTransplante=" + dataTransplante +
                 ", endereco=" + endereco +
+                ", status=" + status +
                 ", acompanhantes=" + acompanhantes +
                 '}';
     }

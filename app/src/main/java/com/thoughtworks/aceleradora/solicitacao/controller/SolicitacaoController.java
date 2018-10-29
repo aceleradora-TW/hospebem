@@ -34,6 +34,22 @@ public class SolicitacaoController {
         return "solicitacao/cadastro";
     }
 
+    @GetMapping("/casa/lista")
+    public String listaSolicitacoesDaCasa(Model model) {
+
+        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAll());
+
+        return "solicitacao/listagens/listaSolicitacaoCasa";
+    }
+
+    @GetMapping("/hospital/lista")
+    public String listaSolicitacoesDoHospital(Model model) {
+
+        model.addAttribute("solicitacoesHospital", solicitacaoRepository.findAll());
+
+        return "solicitacao/listagens/listaSolicitacaoHospital";
+    }
+
     @PostMapping("/cadastro")
     @ResponseBody
     public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
@@ -46,4 +62,11 @@ public class SolicitacaoController {
         return "solicitacao/cadastro";
     }
 
+    @GetMapping("/gerenciaHospede/listagemHospede")
+    public String listaGerenciamentoHospede(Model model) {
+
+        model.addAttribute("gerenciaHospede", solicitacaoRepository.findAllByStatus("aceito"));
+
+        return "solicitacao/listaHospede/listaGerenciamentoHospede";
+    }
 }

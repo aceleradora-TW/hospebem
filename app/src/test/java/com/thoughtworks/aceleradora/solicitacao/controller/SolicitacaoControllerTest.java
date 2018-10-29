@@ -63,7 +63,7 @@ public class SolicitacaoControllerTest {
         List<Acompanhante> acompanhantes = asList(
                 new Acompanhante("Amanda", "F", dataNascimento, soli),
                 new Acompanhante("Aline","F", dataNascimento, soli));
-        Solicitacao solicitacao = new Solicitacao("Abc", "F", "Pendente", "1234", "sim", 1, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, acompanhantes);
+        Solicitacao solicitacao = new Solicitacao("oi","f","pendente","123456789","sim",46,dataNascimento,dataEntrada,dataSaida,dataTransplante,end,"kdfd",acompanhantes);
 
 
 
