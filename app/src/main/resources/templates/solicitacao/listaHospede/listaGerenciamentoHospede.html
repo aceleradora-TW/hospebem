@@ -26,26 +26,19 @@
                 <h1 class="title is-half centralizar espacamento">Lista de Gerenciamento de Hospede</h1>
 
                 <div class="is-mobile is-centered">
+
                     <table class="table pricing__table">
-
-
-                        <div class="is-mobile is-centered">
-                        </div>
+                    <div class="is-mobile is-centered"></div>
                         <table class="table centralizar">
 
                             <tr>
-                                <th>Nome </th>
+                                <th>Nome</th>
                             </tr>
-
-                            </thead>
-
-
                             <tr th:each="solicitacao : ${gerenciaHospede}">
-                                <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
-
-                                </td>
+                            <td> <a href="/login" class="has-text-centered" th:text="${solicitacao.nome}"></a></td>
                             </tr>
-                        </table>
+                            </table>
+                            </table>
                 </div>
             </div>
         </div>
