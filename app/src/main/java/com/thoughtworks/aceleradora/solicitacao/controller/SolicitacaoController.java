@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import javax.validation.constraints.NotNull;
 import java.util.Optional;
@@ -45,6 +48,7 @@ public class SolicitacaoController {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
         solicitacao.setCancelamento(false);
         solicitacao.setStatus("Pendente");
+        solicitacao.setDataAtualizacao(LocalDateTime.now());
         solicitacaoRepository.save(solicitacao);
 
         model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
@@ -72,7 +76,7 @@ public class SolicitacaoController {
     public String listaSolicitacoesDoHospital(Model model) {
 
         model.addAttribute("solicitacoesHospital", solicitacaoRepository.findAll());
-
+        model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
 

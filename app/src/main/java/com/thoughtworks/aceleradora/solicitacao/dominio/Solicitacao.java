@@ -2,7 +2,7 @@ package com.thoughtworks.aceleradora.solicitacao.dominio;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -43,6 +43,9 @@ public class Solicitacao {
     @Column(name="data_transplante")
     private LocalDate dataTransplante;
 
+    @Column(name="data_atualizacao")
+    private LocalDateTime dataAtualizacao;
+
     @OneToOne(cascade=ALL)
     private Endereco endereco;
 
@@ -64,8 +67,11 @@ public class Solicitacao {
                        LocalDate dataTransplante,
                        Endereco endereco,
                        String status,
-                       List<Acompanhante> acompanhantes)
+                       List<Acompanhante> acompanhantes,
+                       LocalDateTime dataAtualizacao)
     {
+
+
         this.nome = nome;
         this.genero = genero;
         this.situacao = situacao;
@@ -80,6 +86,10 @@ public class Solicitacao {
         this.dataSaida = dataSaida;
         this.dataTransplante = dataTransplante;
         this.cancelamento = cancelamento;
+        this.endereco = endereco;
+        this.acompanhantes = acompanhantes;
+        this.status = status;
+        this.dataAtualizacao = dataAtualizacao;
     }
 
 
@@ -190,6 +200,15 @@ public class Solicitacao {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
     @Override
     public String toString() {
         return "Solicitacao{" +
