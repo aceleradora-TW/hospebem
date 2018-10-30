@@ -1,11 +1,10 @@
 function validaCadastroSolicitacao(evento) {
     if (camposPaciente()) {
         if(camposAcompanhantes()) {
-            alert("duncou")
+            alert("Solicitação efetuada!")
             evento.currentTarget.submit()
             return true
         }
-        return false
     }
 
     return false
