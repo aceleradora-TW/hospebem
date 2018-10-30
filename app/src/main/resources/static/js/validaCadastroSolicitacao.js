@@ -1,5 +1,4 @@
 function validaCadastroSolicitacao(evento) {
-//     evento.preventDefault();
     if (camposPaciente()) {
         if(camposAcompanhantes()) {
             alert("duncou")
@@ -11,7 +10,7 @@ function validaCadastroSolicitacao(evento) {
 
     return false
 }
-//
+
 function camposPaciente() {
     if (document.getElementById("nome").value == false) {
         alert('Por favor, preencha o campo nome');
@@ -54,7 +53,6 @@ function camposPaciente() {
     }
 
     return true
-
 }
 
  function camposAcompanhantes(){
