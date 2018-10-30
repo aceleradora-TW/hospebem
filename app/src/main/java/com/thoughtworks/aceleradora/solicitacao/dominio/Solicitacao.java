@@ -29,7 +29,6 @@ public class Solicitacao {
 
     private float peso;
 
-
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
