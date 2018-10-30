@@ -93,6 +93,9 @@ public class Solicitacao {
         this.dataAtualizacao = dataAtualizacao;
         this.orgao = orgao;
     }
+    public Long getId(){
+        return id;
+    }
 
     public Long getId() {
         return id;

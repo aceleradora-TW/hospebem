@@ -223,7 +223,7 @@
                         <div class="field">
                             <div class="control">
                                 <p>Data de nascimento <span th:text="${acompIndex.index + 1}"></span>:
-                                    <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo" autocomplete="off"
+                                    <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo"
                                            th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}"
                                            onkeypress="return false;">
                                 </p>
