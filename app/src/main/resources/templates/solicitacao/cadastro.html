@@ -34,7 +34,7 @@
                 <h1 class="title is-1 is-half centralizar espacamento">Solicitação de Vaga</h1>
 
                 <h2 class="subtitle is-2"> Dados do paciente</h2>
-                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="POST" onsubmit="return validaCadastroSolicitacao(this)" id="formSolicitacao">
+                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="POST" onsubmit="return validaCadastroSolicitacao(event)" id="formSolicitacao">
                     <div class="field">
                         <div class="control">
                             <span>*Nome Completo:</span>
@@ -46,12 +46,10 @@
                         <div class="control">
                             <span>*Gênero:</span>
                             <label>
-                                <input class="is-checkradio is-success" name="genero" type="radio" value ="F" id="genero1">
-                                <span>F</span>
+                                <input class="radiao" name="genero" type="radio" value ="F" id="genero1">F
                             </label>
                             <label>
-                                <input name="genero" type="radio" value ="M" id="genero2">
-                                <span>M</span>
+                                <input class="radiao" name="genero" type="radio" value ="M" id="genero2">M
                             </label>
                         </div>
                     </div>
@@ -221,4 +219,5 @@
 
     </main>
 </body>
+
 </html>

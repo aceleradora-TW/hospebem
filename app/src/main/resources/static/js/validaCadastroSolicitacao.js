@@ -1,11 +1,18 @@
 function validaCadastroSolicitacao(evento) {
-    evento.preventDefault();
-    campos_paciente();
-    campos_acompanhantes();
-    return false;
-}
+//     evento.preventDefault();
+    if (camposPaciente()) {
+        if(camposAcompanhantes()) {
+            alert("duncou")
+            evento.currentTarget.submit()
+            return true
+        }
+        return false
+    }
 
-function campos_paciente() {
+    return false
+}
+//
+function camposPaciente() {
     if (document.getElementById("nome").value == false) {
         alert('Por favor, preencha o campo nome');
         document.getElementById("nome").focus();
@@ -15,6 +22,7 @@ function campos_paciente() {
     if (document.getElementById("genero1").checked == false &&
         document.getElementById("genero2").checked == false) {
         alert('Por favor, selecione o gênero do paciente');
+        document.getElementById("genero1").focus();
         return false;
     }
 
@@ -35,6 +43,7 @@ function campos_paciente() {
     if (document.getElementById("situacao.pre").checked == false &&
         document.getElementById("situacao.pos").checked == false) {
         alert('Por favor, selecione a situacao do transplante');
+        document.getElementById("situacao.pre").focus();
         return false;
     }
 
@@ -43,9 +52,12 @@ function campos_paciente() {
         document.getElementById("dataEntrada").focus();
         return false;
     }
+
+    return true
+
 }
 
- function campos_acompanhantes(){
+ function camposAcompanhantes(){
      if (document.querySelector(".nome").value == false) {
          alert('Por favor, preencha o campo nome do acompanhante 1');
          document.querySelector(".nome").focus();
@@ -61,6 +73,8 @@ function campos_paciente() {
          document.querySelector(".data").focus();
          return false;
      }
+
+     return true;
 }
 
 
