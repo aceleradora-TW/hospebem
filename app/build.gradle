@@ -54,18 +54,16 @@ task stopRunningJar(type: Exec) {
 }
 
 flyway {
-
-    def host = System.getenv("HOSPEBEM_DB_HOST") ?: 'localhost'
-    def port = System.getenv("HOSPEBEM_DB_PORT") ?: 5432
-    def name = System.getenv("HOSPEBEM_DB_NAME") ?: 'hospebem'
-
-    url = "jdbc:postgresql://$host:$port/$name"
-    user = System.getenv("HOSPEBEM_DB_USER") ?: 'postgres'
-    password = System.getenv("HOSPEBEM_DB_PASSWORD") ?: 'hospebem'
+    url = System.getenv("SPRING_DATASOURCE_URL") ?: 'jdbc:postgresql://localhost:5432/hospebem'
+    user = System.getenv("SPRING_DATASOURCE_USERNAME") ?: 'postgres'
+    password = System.getenv("SPRING_DATASOURCE_PASSWORD") ?: 'hospebem'
 }
 
 bootRun {
     sourceResources sourceSets.main
+    jvmArgs = [
+      '-Dspring.profiles.active=dev'
+    ]
 }
 
 build.mustRunAfter('clean')
