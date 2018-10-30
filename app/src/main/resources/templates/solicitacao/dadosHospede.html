@@ -1,0 +1,249 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Hospebem</title>-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.26/css/bulma.css">-->
+    <!--<link rel="stylesheet" href="/css/style.css">-->
+    <!--<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<header>-->
+        <!--<nav class="navbar is-fixed-top is-info has-text-centered nav-style" aria-label="main navigation">-->
+            <!--<label>-->
+                <!--HOSPEBEM-->
+            <!--</label>-->
+        <!--</nav>-->
+    <!--</header>-->
+
+    <!--<div class="panel-block is-mobile">-->
+        <!--<h1 class="padding-bottom">Lista de hospedes aceitos:</h1>-->
+        <!--<table class="table pricing__table">-->
+            <!--<tr class="columns">-->
+                <!--<td class="column has-text-centered">Nome</td>-->
+                <!--<td class="column has-text-centered">Data</td>-->
+                <!--<td class="column has-text-centered">Idade</td>-->
+                <!--<td class="column has-text-centered">Informações</td>-->
+            <!--</tr>-->
+            <!--<tr th:each="solicitacao : ${solicitante}">-->
+                <!--<td th:value="${solicitante.nome}"></td>-->
+
+            <!--</tr>-->
+        <!--</table>-->
+    <!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospebem - Dados Paciente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main>
+    <div class="card-content valign center has-text-centered">
+        <div class="columns ">
+            <ul th:object="${solicitante}">
+                <ul th:object="${formata}">
+                    <h2 class="title is-2">Dados Paciente</h2>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Nome </label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="nome" th:placeholder="${solicitante.getNome()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Gênero</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="genero" th:placeholder="(${solicitante.getGenero() == 'F'} ? 'Feminino' : 'Masculino')" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Status</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="status" th:placeholder="${solicitante.getStatus()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Situação</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="situacao" th:placeholder="(${solicitante.getSituacao() == 'pre'} ? 'Pré-Transplantado' : 'Pós-Transplantado')" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Data de Nascimento</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="dataNascimento" th:placeholder="${solicitante.getDataNascimento().format(formata)}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Telefone</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="telefone" th:placeholder="${solicitante.getTelefone()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Peso</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="peso" th:placeholder="${solicitante.getPeso()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Data de Entrada</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="dataEntrada" th:placeholder="${solicitante.getDataEntrada().format(formata)}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Data de Saída</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="dataSaida" th:placeholder="${solicitante.getDataSaida().format(formata)}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="title is-2">Endereço</h2>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Rua</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="rua" th:placeholder="${solicitante.getEndereco().getRua()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Número</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="numero" th:placeholder="${solicitante.getEndereco().getNumero()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Cidade</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="cidade" th:placeholder="${solicitante.getEndereco().getCidade()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Bairro</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="bairro" th:placeholder="${solicitante.getEndereco().getBairro()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">UF</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" name="uf" th:placeholder="${solicitante.getEndereco().getUf()}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="title is-2">Dados Acompanhante</h2>
+
+                    <div th:each="acomp, index : ${solicitante.getAcompanhantes()}">
+
+                        <h5 class="title is-5">Acompanhante
+                            <span th:text="${index.index + 1}"></span>:
+                        </h5>
+                        <div class="column is-10">
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Nome</label>
+                                </div>
+                                <div class="control">
+                                    <input class="validate input is-info" type="text" name="nomeAcomp" th:placeholder="${acomp.nome}" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column is-10">
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Data de Nascimento</label>
+                                </div>
+                                <div class="control">
+                                    <input class="validate input is-info" type="text" name="dataNascimentoAcomp" th:placeholder="${acomp.dataNascimento.format(formata)}" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </ul>
+        </div>
+
+        <a class="button is-info" href="/solicitacao/casa/lista">Voltar</a>
+
+    </div>
+</main>
+</body>
+</html>
