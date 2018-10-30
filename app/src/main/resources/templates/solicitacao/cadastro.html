@@ -236,7 +236,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Nome Completo:</span>
-                                <input class="input input-fancy" name="nome" type="text">
+                                <input class="input input-fancy" th:field="*{nome}" type="text">
                             </div>
                         </div>
                     </div>
@@ -245,11 +245,11 @@
                             <div class="control">
                                 <span>Gênero:</span>
                                 <label>
-                                    <input class="is-checkradio is-success" name="genero" type="radio" value="F">
+                                    <input th:field="*{genero}" type="radio" value="F">
                                     <span>F</span>
                                 </label>
                                 <label>
-                                    <input name="genero" type="radio" value="M">
+                                    <input th:field="*{genero}" type="radio" value="M">
                                     <span>M</span>
                                 </label>
                             </div>
@@ -259,7 +259,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Data de nascimento:</span>
-                                <input name="dataPaci" id="dataNascimento" placeholder="Clique para selecionar uma data"
+                                <input id="dataNascimento" placeholder="Clique para selecionar uma data"
                                     type="text" class="input input-fancy datepicker" th:field="*{dataNascimento}"
                                     onkeypress="return false;">
                             </div>
@@ -280,7 +280,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Caso o paciente seja cadeirante, informe o seu peso:</span>
-                                <input class="input input-fancy" name="peso" type="text">
+                                <input class="input input-fancy" th:field="*{peso}" type="number">
                             </div>
                         </div>
                     </div>
@@ -289,11 +289,11 @@
                             <div class="control">
                                 <span>Situação do Paciente:</span>
                                 <label>
-                                    <input name="situacao" type="radio" value="pre">
+                                    <input th:field="*{situacao}" type="radio" value="pre">
                                     <span>Pré-transplantado</span>
                                 </label>
                                 <label>
-                                    <input name="situacao" type="radio" value="pos">
+                                    <input th:field="*{situacao}" type="radio" value="pos">
                                     <span>Pós-transplantado</span>
                                 </label>
                             </div>
@@ -303,7 +303,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Data do transplante:</span>
-                                <input name="datatransplante" id="dataTransplante" placeholder="Clique para selecionar uma data"
+                                <input id="dataTransplante" placeholder="Clique para selecionar uma data"
                                     type="text" class="input input-fancy datepicker" th:field="*{dataTransplante}"
                                     onkeypress="return false;">
                             </div>
@@ -313,7 +313,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Data de entrada requerida:</span>
-                                <input name="dataentrada" id="dataEntrada" placeholder="Clique para selecionar uma data"
+                                <input id="dataEntrada" placeholder="Clique para selecionar uma data"
                                     type="text" class="input input-fancy datepicker" th:field="*{dataEntrada}"
                                     onkeypress="return false;">
                             </div>
@@ -323,7 +323,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Data de saída (previsão):</span>
-                                <input name="datasaida" id="dataSaida" placeholder="Clique para selecionar uma data"
+                                <input id="dataSaida" placeholder="Clique para selecionar uma data"
                                     type="text" class="input input-fancy datepicker" th:field="*{dataSaida}" onkeypress="return false;">
                             </div>
                         </div>
@@ -332,7 +332,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Telefone para Contato:</span>
-                                <input class="input input-fancy" name="telefone" type="text">
+                                <input class="input input-fancy" th:field="*{telefone}" type="text">
                             </div>
                         </div>
                     </div>
@@ -342,7 +342,7 @@
                                 <h3 class="subtitle is-3">Endereço</h3>
 
                                 <span>Rua:</span>
-                                <input class="input input-fancy" name="endereco.rua" type="text">
+                                <input class="input input-fancy" th:field="*{endereco.rua}" type="text">
                             </div>
                         </div>
                     </div>
@@ -351,7 +351,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Número:</span>
-                                <input class="input input-fancy" name="endereco.numero" type="text">
+                                <input class="input input-fancy" th:field="*{endereco.numero}" type="text">
                             </div>
                         </div>
                     </div>
@@ -359,7 +359,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Cidade:</span>
-                                <input class="input input-fancy" name="endereco.cidade" type="text">
+                                <input class="input input-fancy" th:field="*{endereco.cidade}" type="text">
                             </div>
                         </div>
                     </div>
@@ -367,7 +367,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Bairro:</span>
-                                <input class="input input-fancy" name="endereco.bairro" type="text">
+                                <input class="input input-fancy" th:field="*{endereco.bairro}" type="text">
                             </div>
                         </div>
                     </div>
@@ -375,7 +375,7 @@
                         <div class="field">
                             <div class="control">
                                 <span>Uf:</span>
-                                <input class="input input-fancy" name="endereco.uf" type="text">
+                                <input class="input input-fancy" th:field="*{endereco.uf}" type="text">
                             </div>
                         </div>
                     </div>
