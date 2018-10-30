@@ -167,20 +167,22 @@
                 </div>
 
 
-                <h4 class="subtitle is-3">Dados do Acompanhante</h4>
+                    <h4 class="title subtitle is-3">Dados do Acompanhante</h4>
+                    <h5 class="subtitle is-6">(Os campos do acompanhante 1 são obrigatórios)</h5>
+
 
 
                 <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
                     <div class="field">
                         <div class="control">
-                            <p>*Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                            <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
                                 <input class="nome input input-fancy" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                             </p>
                         </div>
                     </div>
                     <div class="field">
                         <div class="control">
-                            <p>*Gênero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                            <p>Gênero acompanhante <span th:text="${acompIndex.index + 1}"></span>:
                                 <label>
 
                                     <input class ="genero" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
@@ -196,7 +198,7 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <p>*Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
+                            <p>Data de nascimento <span th:text="${acompIndex.index + 1}" ></span>:
                                 <input  placeholder="Clique para selecionar uma data" class=" data input input-fancy datepicker-retroativo" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" onkeypress="return false;">
                             </p>
 
