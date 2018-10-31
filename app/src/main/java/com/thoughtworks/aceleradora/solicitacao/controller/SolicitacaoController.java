@@ -68,6 +68,22 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 
+    @GetMapping("/dados")
+    public String mostraDadosPaciente(Model model, Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if (solicitacaoOptional.isPresent()) {
+            Solicitacao solicitacao = solicitacaoOptional.get();
+            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            model.addAttribute("solicitante", solicitacao);
+
+            return "solicitacao/listaHospede/dadosSolicitante";
+        }
+        return "404";
+    }
+
+
+
     @GetMapping("/{id}/editar")
     public String editaDadosHospede(Model model, @PathVariable Long id){
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
