@@ -123,14 +123,14 @@
                         <div class="column">
                             <p>*Órgão:</p>
                             <div class="select verde-viavida ">
-                                <select>
+                                <select name="orgao">
                                     <option>Selecione o órgão</option>
-                                    <option>Coração</option>
-                                    <option>Fígado</option>
-                                    <option>Pâncreas</option>
-                                    <option>Pulmão</option>
-                                    <option>Rim</option>
-                                    <option>Tecidos(córnea, medula, pele)</option>
+                                    <option th:value="'coracao'" th:text="Coração"></option>
+                                    <option th:value="'figado'" th:text="Fígado"></option>
+                                    <option th:value="'pancreas'" th:text="Pâncreas"></option>
+                                    <option th:value="'pulmao'" th:text="Pulmão"></option>
+                                    <option th:value="'rim'" th:text="Rim"></option>
+                                    <option th:value="'tecidos'" th:text="Tecidos"></option>
                                 </select>
                             </div>
                         </div>

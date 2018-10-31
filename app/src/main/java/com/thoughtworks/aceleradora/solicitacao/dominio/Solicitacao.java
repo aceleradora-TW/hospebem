@@ -29,6 +29,8 @@ public class Solicitacao {
 
     private float peso;
 
+    private String orgao;
+
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
@@ -63,6 +65,7 @@ public class Solicitacao {
                        LocalDate dataTransplante,
                        Endereco endereco,
                        String status,
+                       String orgao,
                        List<Acompanhante> acompanhantes)
     {
         this.nome = nome;
@@ -78,6 +81,7 @@ public class Solicitacao {
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.dataTransplante = dataTransplante;
+        this.orgao = orgao;
     }
 
     public String getNome() {
@@ -176,6 +180,10 @@ public class Solicitacao {
         this.status = status;
     }
 
+    public String getOrgao() { return orgao; }
+
+    public void setOrgao(String orgao) { this.orgao = orgao; }
+
     @Override
     public String toString() {
         return "Solicitacao{" +
@@ -184,13 +192,14 @@ public class Solicitacao {
                 ", situacao='" + situacao + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", cadeirante='" + cadeirante + '\'' +
+                ", status='" + status + '\'' +
                 ", peso=" + peso +
+                ", orgao='" + orgao + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 ", dataEntrada=" + dataEntrada +
                 ", dataSaida=" + dataSaida +
                 ", dataTransplante=" + dataTransplante +
                 ", endereco=" + endereco +
-                ", status=" + status +
                 ", acompanhantes=" + acompanhantes +
                 '}';
     }
