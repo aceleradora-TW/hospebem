@@ -26,11 +26,9 @@
             <td class="column has-text-centered"></td>
         </tr>
         <tr class="columns" th:each="solicitacao : ${solicitacoesCasa}">
-            <!--<div th:if="${solicitacao.cancelamento == false} and ${solicitacao.status != 'Negado'}">-->
                 <td class="column has-text-centered">19-8-2013</td>
                 <td class="column has-text-centered" th:text="${solicitacao.nome}"></td>
                 <td class="column has-text-centered">24</td>
-
                 <td class="column has-text-centered">
                     <form th:action="@{/solicitacao/dados}" method="get">
                         <input type="hidden" name="id" th:value="${solicitacao.id}">
@@ -41,10 +39,10 @@
                 </td>
 
                 <td>
-                    <form th:action="@{/solicitacao/SelecionarQuarto}" method="post">
+                    <form th:action="@{/quartos/listaQuartos}" method="get">
                         <input type="hidden" name="id" th:value="${solicitacao.id}">
                         <button class="button " type="submit">
-                            <i>SelecionarQuarto</i>
+                            <i>Selecionar quarto</i>
                         </button>
                     </form>
                 </td>
