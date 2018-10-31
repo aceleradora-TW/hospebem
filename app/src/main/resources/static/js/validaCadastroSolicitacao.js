@@ -1,25 +1,24 @@
 function validaCadastroSolicitacao(evento) {
     if (camposPaciente()) {
-        if(camposAcompanhantes()) {
+        if (camposAcompanhantes()) {
             alert("Solicitação efetuada!")
             evento.currentTarget.submit()
             return true
         }
     }
-
     return false
 }
 
 function camposPaciente() {
-    var nome =  document.getElementById("nome")
-    var genero1 = document.getElementById("genero1")
-    var genero2 = document.getElementById("genero2")
-    var dataNascimento =  document.getElementById("dataNascimento")
-    var peso = document.getElementById("peso")
-    var ehCadeirante = document.getElementById("cadeirante.sim")
-    var situacaoPre = document.getElementById("situacao.pre")
-    var situacaoPos = document.getElementById("situacao.pos")
-    var dataEntrada = document.getElementById("dataEntrada")
+    var nome           = document.getElementById("nome")
+    var genero1        = document.getElementById("genero1")
+    var genero2        = document.getElementById("genero2")
+    var dataNascimento = document.getElementById("dataNascimento")
+    var peso           = document.getElementById("peso")
+    var ehCadeirante   = document.getElementById("cadeirante.sim")
+    var situacaoPre    = document.getElementById("situacao.pre")
+    var situacaoPos    = document.getElementById("situacao.pos")
+    var dataEntrada    = document.getElementById("dataEntrada")
 
     if (nome.value  === '') {
         alert('Por favor, preencha o campo nome')
@@ -44,24 +43,22 @@ function camposPaciente() {
     } else
         dataNascimento.classList.add('input-fancy')
 
-    if (ehCadeirante.checked  === true) {
+    if (ehCadeirante.checked === true) {
         if (peso.value === '') {
             alert('Por favor, preencha o campo peso')
             validaInputErrado(peso)
             return false
-
         } else
             peso.classList.add('input-fancy')
     }
 
-    if (situacaoPre.checked === false &&
-        situacaoPos.checked === false) {
+    if (situacaoPre.checked === false && situacaoPos.checked === false) {
         alert('Por favor, selecione a situacao do transplante')
         situacaoPre.focus()
         return false
     }
 
-    if (dataEntrada.value === ''){
+    if (dataEntrada.value === '') {
         alert('Por favor, preencha a data de entrada')
         validaInputErrado(dataEntrada)
         return false
@@ -72,10 +69,10 @@ function camposPaciente() {
     return true
 }
 
- function camposAcompanhantes(){
-     var nomeAcomp = document.querySelector(".nome")
-     var generoAcomp = document.querySelectorAll(".genero")
-     var dataNasciAcomp = document.querySelector(".data")
+ function camposAcompanhantes() {
+     var nomeAcomp      = document.querySelector(".nome")
+     var generoAcomp    = document.querySelectorAll(".genero")
+     var dataNasciAcomp = document.querySelector(".data-nasc-acomp")
 
      if (nomeAcomp.value === '') {
          alert('Por favor, preencha o campo nome do acompanhante 1')
@@ -90,7 +87,7 @@ function camposPaciente() {
          return false;
      }
 
-     if(dataNasciAcomp.value == false){
+     if (dataNasciAcomp.value === '') {
          alert('Por favor, preencha a data de nascimento do acompanhante');
          validaInputErrado(dataNasciAcomp)
          return false;
@@ -103,4 +100,8 @@ function validaInputErrado(item) {
     item.classList.remove('input-fancy')
     item.classList.add('is-danger')
     item.focus()
+}
+
+window.onload = function limpaInput() {
+    document.getElementById('peso').value='';
 }

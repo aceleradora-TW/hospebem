@@ -25,20 +25,13 @@ button {
     justify-content: center;
 }
 
-.container {
-    padding-top: 12%;
-}
-
 .dados-paciente{
     text-align: justify;
 }
 
 .dados-paciente {
     text-align: justify;
-}
-
-.dados-paciente * {
-    margin-bottom: 16px;
+    padding-top: 5vh; 
 }
 
 .botao-esqueci-senha {
@@ -94,4 +87,8 @@ button {
 
 .titulo-h1 {
     font-size: 2rem;
+}
+
+.campo-obrigatorio {
+    color: rgba(244, 75, 66, 1);
 }
