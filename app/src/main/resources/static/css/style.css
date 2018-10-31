@@ -88,3 +88,7 @@ button {
 .titulo-h1 {
     font-size: 2rem;
 }
+
+.campo-obrigatorio {
+    color: rgba(244, 75, 66, 1);
+}
