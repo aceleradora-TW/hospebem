@@ -8,11 +8,15 @@ body {
 }
 
 .input.input-fancy{
-    border-color: rgb(131, 186, 255);
+    border-color: rgba(56, 124, 43, 1);
 }
 
 button {
     align-items: center;
+}
+
+.campo-obrigatorio {
+    color: rgba(244, 75, 66, 1);
 }
 
 .centralizar {
@@ -31,7 +35,7 @@ button {
 
 .dados-paciente {
     text-align: justify;
-    padding-top: 5vh; 
+    padding-top: 5vh;
 }
 
 .botao-esqueci-senha {
@@ -56,7 +60,7 @@ button {
     width:100%;
 }
 .navbar {
-    background-color: rgb(70, 178, 235);
+    background-color: rgba(56, 124, 43, 1);
     position: relative;
     width:100%;
 }
@@ -89,6 +93,37 @@ button {
     font-size: 2rem;
 }
 
-.campo-obrigatorio {
-    color: rgba(244, 75, 66, 1);
+.verde-viavida {
+    background-color: rgba(56, 124, 43, 1);
+    border-color: transparent;
+    color: #fff;
+}
+
+.verde-viavida:hover{
+    color: #fff;
+    background-color: rgb(95, 195, 130);
+}
+
+.select.verde-viavida:not(:hover)::after {
+    border-color: rgba(56, 124, 43, 1);
+    padding-bottom: 1px;
+}
+
+.select:not(.is-multiple) {
+    height: 2em;
+    width: 100%;
+}
+
+.select.verde-viavida select {
+    border-color: rgba(56, 124, 43, 1);
+}
+
+.select {
+    border-radius: 162px;
+    width: 100%;
+}
+
+.select select {
+    height: 4vh;
+    width: 100%;
 }

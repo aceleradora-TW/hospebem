@@ -109,15 +109,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>Data do transplante:</span>
-                            <input id="dataTransplante" placeholder="Clique para selecionar uma data"
-                                   type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataTransplante}"
-                                   onkeypress="return false;">
+                <div class="columns column">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Data do transplante:</span>
+                                    <input id="dataTransplante" placeholder="Clique para selecionar uma data"
+                                           type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataTransplante}"
+                                           onkeypress="return false;">
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="column">
+                            <p>*Órgão:</p>
+                            <div class="select verde-viavida ">
+                                <select>
+                                    <option>Selecione o órgão</option>
+                                    <option>Coração</option>
+                                    <option>Fígado</option>
+                                    <option>Pâncreas</option>
+                                    <option>Pulmão</option>
+                                    <option>Rim</option>
+                                    <option>Tecidos(córnea, medula, pele)</option>
+                                </select>
+                            </div>
+                        </div>
                 </div>
                 <div class="column">
                     <div class="field">
@@ -235,7 +251,7 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <button class="button is-success is-focused" value="Enviar Solicitação" type="submit">Enviar Solicitação</button>
+                            <button class="button verde-viavida" value="Enviar Solicitação" type="submit">Enviar Solicitação</button>
                             <input class="button" type="reset" value="Limpar Formulário">
                         </div>
                     </div>
