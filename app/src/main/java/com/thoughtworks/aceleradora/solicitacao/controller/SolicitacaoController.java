@@ -43,7 +43,6 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/cadastro")
-    @ResponseBody
     public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
         solicitacao.setCancelamento(false);
@@ -56,7 +55,7 @@ public class SolicitacaoController {
         return "redirect:/";
     }
 
-    @GetMapping("/dados/id")
+    @GetMapping("/dados")
     public String mostraDadosPaciente(Model model, @RequestParam("id") Long id, Solicitacao solicitacao) {
         model.addAttribute("solicitacao", solicitacaoRepository.findById(id));
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
@@ -83,7 +82,7 @@ public class SolicitacaoController {
     @GetMapping("/casa/lista/aceitos")
     public String gerenciarHospedesAceitos(Model model) {
 
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAll());
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("aceito"));
 
         return "solicitacao/GerenciarHospedeAceitos";
     }
