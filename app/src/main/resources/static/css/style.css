@@ -109,14 +109,15 @@ button {
     padding-bottom: 1px;
 }
 
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: rgba(56, 124, 43, 1);
+    right: 1.125em;
+    z-index: 4;
+}
+
 .select:not(.is-multiple) {
     height: 2em;
     width: 100%;
-}
-
-.select select {
-    border-color: rgba(56, 124, 43, 1);
-
 }
 
 .select {
@@ -127,4 +128,9 @@ button {
 .select select {
     height: 4vh;
     width: 100%;
+    border-color: rgba(56, 124, 43, 1);
+}
+
+.select select:hover, .select select.is-hovered {
+    border-color: rgba(56, 124, 43, 1);
 }

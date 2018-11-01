@@ -81,7 +81,7 @@
                         <div class="control">
                             <label>
                                 <input type="checkbox" value="sim" id="cadeirante.sim" th:field="*{cadeirante}">
-                                <span>O hospede é cadeirante</span>
+                                <span>O hóspede é cadeirante</span>
                             </label>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <span>Caso o hospede seja cadeirante, informe o seu peso:</span>
+                            <span>Caso o hóspede seja cadeirante, informe o seu peso:</span>
                             <input class="input input-fancy" th:field="*{peso}" type="text" maxlength="3" id="peso">
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <span>*Situação do Hospede:</span>
+                            <span>*Situação do Hóspede:</span>
                             <label>
                                 <input th:field="*{situacao}" type="radio" value="pre" id="situacao.pre">
                                 <span>Pré-transplante</span>
@@ -122,7 +122,7 @@
                         </div>
                         <div class="column">
                             <p>*Órgão:</p>
-                            <div class="select verde-viavida">
+                            <div class="select">
                                 <select name="orgao">
                                     <option>Selecione o órgão</option>
                                     <option th:value="'coracao'" th:text="Coração"></option>

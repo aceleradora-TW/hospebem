@@ -52,6 +52,10 @@ function camposPaciente() {
             peso.classList.add('input-fancy')
     }
 
+    if (ehCadeirante.checked === false) {
+        return true
+    }
+
     if (situacaoPre.checked === false && situacaoPos.checked === false) {
         alert('Por favor, selecione a situacao do transplante')
         situacaoPre.focus()
