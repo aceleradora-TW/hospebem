@@ -49,7 +49,7 @@ public class Solicitacao {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "solicitacao")
     private List<Acompanhante> acompanhantes;
 
-    public Solicitacao() {
+    public Solicitacao(String oi, String f, String pendente, String telefone, String sim, String peso, LocalDate dataNascimento, LocalDate dataEntrada, LocalDate dataSaida, LocalDate dataTransplante, Endereco end, String kdfd, List<Acompanhante> acompanhantes, String coração) {
     }
 
 
