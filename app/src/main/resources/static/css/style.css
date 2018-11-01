@@ -114,8 +114,9 @@ button {
     width: 100%;
 }
 
-.select.verde-viavida select {
+.select select {
     border-color: rgba(56, 124, 43, 1);
+
 }
 
 .select {
