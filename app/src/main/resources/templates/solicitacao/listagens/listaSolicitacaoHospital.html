@@ -32,10 +32,10 @@
                             <tr th:each="solicitacao : ${solicitacoesHospital}">
                                 <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
                                 <td class="has-text-centered">11-11-2018</td>
-                                <td class="has-text-centered">Pendente</td>
+                                <td class="has-text-centered" th:text="${solicitacao.status}"></td>
                                 <td class="column has-text-centered">
                                     <a href="/">
-                                        <button class="button" type="submit">
+                                        <button class="button" type="submit" th:if="${solicitacao.status}!='aceito'">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </a>
