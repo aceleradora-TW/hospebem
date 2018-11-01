@@ -23,4 +23,3 @@ task stage {
 }
 
 copyToLib.mustRunAfter(':app:build')
-stage.finalizedBy(':app:flywayMigrate')
