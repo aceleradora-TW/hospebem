@@ -68,8 +68,9 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 
-    @GetMapping("/dados")
-    public String mostraDadosPaciente(Model model, Long id) {
+    @GetMapping("{id}/dados")
+    public String mostraDadosPaciente(Model model, @PathVariable Long id) {
+
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if (solicitacaoOptional.isPresent()) {
