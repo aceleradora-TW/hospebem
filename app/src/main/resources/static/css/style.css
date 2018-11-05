@@ -38,6 +38,10 @@ button {
     padding-top: 5vh;
 }
 
+.display-none {
+    display: none;
+}
+
 .botao-esqueci-senha {
     color: rgba(70, 178, 235, 1);
 }

@@ -27,7 +27,7 @@ public class Solicitacao {
 
     private String status;
 
-    private String peso;
+    private float peso;
 
     private String orgao;
 
@@ -58,7 +58,7 @@ public class Solicitacao {
                        String situacao,
                        String telefone,
                        String cadeirante,
-                       String peso,
+                       float peso,
                        LocalDate dataNascimento,
                        LocalDate dataEntrada,
                        LocalDate dataSaida,
@@ -124,11 +124,11 @@ public class Solicitacao {
         this.cadeirante = cadeirante;
     }
 
-    public String getPeso() {
+    public float getPeso() {
         return peso;
     }
 
-    public void setPeso(String peso) {
+    public void setPeso(float peso) {
         this.peso = peso;
     }
 

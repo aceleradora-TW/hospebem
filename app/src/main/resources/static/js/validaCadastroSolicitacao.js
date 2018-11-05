@@ -43,18 +43,20 @@ function camposPaciente() {
     } else
         dataNascimento.classList.add('input-fancy')
 
-    if (ehCadeirante.checked === true) {
-        if (peso.value === '') {
-            alert('Por favor, preencha o campo peso')
-            validaInputErrado(peso)
-            return false
-        } else
-            peso.classList.add('input-fancy')
-    }
+    // if (ehCadeirante.checked === true) {
+    //     if (peso.value === '') {
+    //         alert('Por favor, preencha o campo peso')
+    //         validaInputErrado(peso)
+    //         return false
+    //     } else
+    //         peso.classList.add('input-fancy')
+    // }
 
-    if (ehCadeirante.checked === false) {
-        return true
-    }
+
+
+
+
+
 
     if (situacaoPre.checked === false && situacaoPos.checked === false) {
         alert('Por favor, selecione a situacao do transplante')
@@ -106,6 +108,38 @@ function validaInputErrado(item) {
     item.focus()
 }
 
+
+
 window.onload = function limpaInput() {
     document.getElementById('peso').value='';
 }
+
+
+
+function pesoCadeirante() {
+    var pesoInput = document.getElementById('peso');
+    var textoPeso = document.querySelector('.display-none')
+    var checkBoxCadeirante = document.getElementById('cadeirante');
+
+    checkBoxCadeirante.addEventListener('change', function() {
+        if(this.checked) {
+            pesoInput.classList.remove('display-none');
+            textoPeso.classList.remove('display-none');
+
+        } else {
+            pesoInput.classList.add('display-none');
+            textoPeso.classList.add('display-none');
+
+        }
+    });
+
+
+    pesoInput.addEventListener('change', function() {
+        if(this.value > 600) {
+            pesoInput.value = 600;
+        }
+    });
+}
+
+
+

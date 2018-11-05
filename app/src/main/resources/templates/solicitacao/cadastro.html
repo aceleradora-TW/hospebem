@@ -80,7 +80,7 @@
                     <div class="field">
                         <div class="control">
                             <label>
-                                <input type="checkbox" value="sim" id="cadeirante.sim" th:field="*{cadeirante}">
+                                <input type="checkbox" value="sim" id="cadeirante" th:field="*{cadeirante}">
                                 <span>O hóspede é cadeirante</span>
                             </label>
                         </div>
@@ -89,8 +89,8 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <span>Caso o hóspede seja cadeirante, informe o seu peso:</span>
-                            <input class="input input-fancy" th:field="*{peso}" type="text" maxlength="3" id="peso">
+                            <span class="display-none">Informe o peso:</span>
+                            <input class="input input-fancy display-none" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso">
                         </div>
                     </div>
                 </div>
@@ -127,9 +127,10 @@
                                     <option>Selecione o órgão</option>
                                     <option th:value="'coracao'" th:text="Coração"></option>
                                     <option th:value="'figado'" th:text="Fígado"></option>
+                                    <option th:value="'medula'" th:text="Medula"></option>
                                     <option th:value="'pancreas'" th:text="Pâncreas"></option>
                                     <option th:value="'pulmao'" th:text="Pulmão"></option>
-                                    <option th:value="'rim'" th:text="Rim"></option>
+                                    <option th:value="'rim'" th:text="Rins"></option>
                                     <option th:value="'tecidos'" th:text="Tecidos"></option>
                                 </select>
                             </div>
@@ -271,6 +272,11 @@
             seletorDeData(datepickerFields[i]);
         }
     })
+
+    pesoCadeirante();
+
+    document.getElementById('peso').addEventListener('input', limitaCampoPeso);
+
 
 </script>
 

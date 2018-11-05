@@ -1,0 +1,1 @@
+alter table solicitacoes alter column orgao type varchar(30);
