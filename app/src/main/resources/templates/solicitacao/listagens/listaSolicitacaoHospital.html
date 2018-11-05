@@ -34,7 +34,7 @@
                                 <td class="has-text-centered">11-11-2018</td>
                                 <td class="has-text-centered" th:text="${solicitacao.status}"></td>
                                 <td class="column has-text-centered">
-                                    <a href="/">
+                                    <a th:href="@{/solicitacao/{id}/editar(id=${solicitacao.id})}">
                                         <button class="button" type="submit" th:if="${solicitacao.status}!='aceito'">
                                             <i class="fas fa-edit"></i>
                                         </button>

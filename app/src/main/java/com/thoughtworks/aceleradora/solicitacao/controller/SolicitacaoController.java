@@ -3,12 +3,15 @@ package com.thoughtworks.aceleradora.solicitacao.controller;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/solicitacao")
@@ -65,5 +68,38 @@ public class SolicitacaoController {
         model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("aceito"));
 
         return "solicitacao/listagens/listaGerenciamentoHospede";
+    }
+
+    @GetMapping("/{id}/editar")
+    public String editaDadosHospede(Model model, @PathVariable Long id){
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()){
+            Solicitacao solicitacao = solicitacaoOptional.get();
+
+            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            model.addAttribute("hospede" , solicitacao);
+
+            return "editaPaciente";
+        }
+        return "404";
+    }
+
+    @PostMapping("/{id}/editar")
+    public String salvarDadoEditadoHospede(Model model, @PathVariable Long id, Solicitacao solicitacao){
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()){
+            Solicitacao solicitacaoAtu = solicitacaoOptional.get();
+            solicitacaoAtu.setNome(solicitacao.getNome());
+            solicitacaoAtu.setTelefone(solicitacao.getTelefone());
+            solicitacaoAtu.setEndereco(solicitacao.getEndereco());
+            solicitacaoAtu.setSituacao(solicitacao.getSituacao());
+            solicitacaoAtu.setGenero(solicitacao.getGenero());
+
+             solicitacaoRepository.save(solicitacaoAtu);
+            return "solicitacao/listagens/listaSolicitacaoHospital";
+        }
+        return "404";
     }
 }

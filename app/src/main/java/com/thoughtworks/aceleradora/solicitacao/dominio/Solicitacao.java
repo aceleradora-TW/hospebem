@@ -83,6 +83,10 @@ public class Solicitacao {
         this.orgao = orgao;
     }
 
+    public Long getId(){
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }

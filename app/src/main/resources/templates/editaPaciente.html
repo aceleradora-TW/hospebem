@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospebem - Dados Paciente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<main>
+    <div class="card-content valign center has-text-centered">
+        <div  class="columns">
+            <form th:object="${hospede}" th:action="@{/solicitacao/{id}/editar(id=${hospede.id})}" method="post">
+                <h2 class="title is-2">Dados Paciente</h2>
+                <div>
+                    <button type="submit"> Salvar </button>
+                </div>
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Nome </label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" th:field="*{nome}">
+                        </div>
+                    </div>
+                </div>
+
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Gênero</label>
+                        </div>
+                        <div class="control">
+                            <input th:field="*{genero}" type="radio" value="F" id="genero1">
+                            <span>Feminino</span>
+                            </label>
+                            <label>
+                                <input th:field="*{genero}" type="radio" value="M" id="genero2">
+                                <span>Masculino</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Situação</label>
+                        </div>
+                        <div class="control">
+                                <input th:field="*{situacao}" type="radio" value="pre" id="situacao.pre">
+                                <span>Pré-transplante</span>
+                            </label>
+                            <label>
+                                <input th:field="*{situacao}" type="radio" value="pos" id="situacao.pos">
+                                <span>Pós-transplante</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <span>Data do transplante:</span>
+                            <input id="dataTransplante" placeholder="Clique para selecionar uma data"
+                                   type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataTransplante}"
+                                   onkeypress="return false;">
+                        </div>
+                    </div>
+                </div>
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Telefone</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="telefone" th:field="*{telefone}">
+                        </div>
+                    </div>
+                </div>
+
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Peso</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="peso" th:field="*{peso}">
+                        </div>
+                    </div>
+                </div>
+
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Data de Entrada</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="dataEntrada" th:field="*{dataEntrada}">
+                        </div>
+                    </div>
+                </div>
+
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Data de Saída</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="dataSaida" th:field="*{dataSaida}">
+                        </div>
+                    </div>
+                </div>
+
+            <h2 class="title is-2">Endereço</h2>
+
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Rua</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="rua" th:field="*{endereco.rua}">
+                        </div>
+                    </div>
+                </div>
+
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Número</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="numero" th:field="*{endereco.numero}">
+                        </div>
+                    </div>
+                </div>
+
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Cidade</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="cidade" th:field="*{endereco.cidade}">
+                        </div>
+                    </div>
+                </div>
+
+            <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Bairro</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="bairro" th:field="*{endereco.bairro}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">UF</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="uf" th:field="*{endereco.uf}">
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="title is-2">Dados Acompanhante</h2>
+            <div th:each="acompanhante, acompIndex : ${hospede.acompanhantes}">
+
+                    <h5 class="title is-5">Acompanhante
+                    </h5>
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Nome</label>
+                            </div>
+                            <div class="control">
+                        <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                <input class="validate input is-info" type="text"  th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                        </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Data de Nascimento</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input is-info" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+        </div>
+    </div>
+</main>
+</body>
+<script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var datepickerFields = document.getElementsByClassName('datepicker');
+
+        for (var i = 0; i < datepickerFields.length; i++) {
+            seletorDeData(datepickerFields[i]);
+        }
+    })
+
+</script>
+
+</html>
