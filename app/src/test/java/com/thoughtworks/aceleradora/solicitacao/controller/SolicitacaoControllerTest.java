@@ -63,12 +63,11 @@ public class SolicitacaoControllerTest {
         List<Acompanhante> acompanhantes = asList(
                 new Acompanhante("Amanda", "F", dataNascimento, soli),
                 new Acompanhante("Aline","F", dataNascimento, soli));
-        Solicitacao solicitacao = new Solicitacao("oi","f","pendente","123456789","sim",46,dataNascimento,dataEntrada,dataSaida,dataTransplante,end,"kdfd",acompanhantes);
 
+        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", 75, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
 
 
         String mensagem = controller.salvaSolicitacao(model, solicitacao);
-
         verify(repositorio).save(solicitacao);
         assertThat(mensagem, equalTo("solicitacao/cadastro"));
     }

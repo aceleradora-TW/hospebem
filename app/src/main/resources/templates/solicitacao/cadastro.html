@@ -80,8 +80,8 @@
                     <div class="field">
                         <div class="control">
                             <label>
-                                <input type="checkbox" value="sim" id="cadeirante.sim" th:field="*{cadeirante}">
-                                <span>O hospede é cadeirante</span>
+                                <input type="checkbox" value="sim" id="cadeirante" th:field="*{cadeirante}">
+                                <span>O hóspede é cadeirante</span>
                             </label>
                         </div>
                     </div>
@@ -89,15 +89,15 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <span>Caso o hospede seja cadeirante, informe o seu peso:</span>
-                            <input class="input input-fancy" th:field="*{peso}" type="text" maxlength="3" id="peso">
+                            <span class="display-none">Informe o peso:</span>
+                            <input class="input input-fancy display-none" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso">
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <span>*Situação do Hospede:</span>
+                            <span>*Situação do Hóspede:</span>
                             <label>
                                 <input th:field="*{situacao}" type="radio" value="pre" id="situacao.pre">
                                 <span>Pré-transplante</span>
@@ -109,15 +109,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>Data do transplante:</span>
-                            <input id="dataTransplante" placeholder="Clique para selecionar uma data"
-                                   type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataTransplante}"
-                                   onkeypress="return false;">
+                <div class="columns column">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Data do transplante:</span>
+                                    <input id="dataTransplante" placeholder="Clique para selecionar uma data"
+                                           type="text" class="input input-fancy datepicker-futuro" th:field="*{dataTransplante}"
+                                           onkeypress="return false;">
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="column">
+                            <p>*Órgão:</p>
+                            <div class="select">
+                                <select name="orgao">
+                                    <option>Selecione o órgão</option>
+                                    <option th:value="'coracao'" th:text="Coração"></option>
+                                    <option th:value="'figado'" th:text="Fígado"></option>
+                                    <option th:value="'medula'" th:text="Medula"></option>
+                                    <option th:value="'pancreas'" th:text="Pâncreas"></option>
+                                    <option th:value="'pulmao'" th:text="Pulmão"></option>
+                                    <option th:value="'rim'" th:text="Rins"></option>
+                                    <option th:value="'tecidos'" th:text="Tecidos"></option>
+                                </select>
+                            </div>
+                        </div>
                 </div>
                 <div class="column">
                     <div class="field">
@@ -235,7 +252,7 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <button class="button is-success is-focused" value="Enviar Solicitação" type="submit">Enviar Solicitação</button>
+                            <button class="button verde-viavida" value="Enviar Solicitação" type="submit">Enviar Solicitação</button>
                             <input class="button" type="reset" value="Limpar Formulário">
                         </div>
                     </div>
@@ -255,6 +272,11 @@
             seletorDeData(datepickerFields[i]);
         }
     })
+
+    pesoCadeirante();
+
+    document.getElementById('peso').addEventListener('input', limitaCampoPeso);
+
 
 </script>
 

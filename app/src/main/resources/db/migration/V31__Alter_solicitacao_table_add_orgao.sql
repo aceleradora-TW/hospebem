@@ -1,0 +1,1 @@
+ALTER TABLE solicitacoes ADD COLUMN orgao VARCHAR;
