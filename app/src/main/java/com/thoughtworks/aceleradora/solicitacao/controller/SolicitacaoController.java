@@ -8,9 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Controller
 @RequestMapping("/solicitacao")
@@ -47,6 +51,11 @@ public class SolicitacaoController {
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
 
+        Function<LocalDate, Integer> calculadoraIdade = (dataNascimento) -> Period
+                .between(dataNascimento, LocalDate.now())
+                .getYears();
+
+        model.addAttribute("calculadoraIdade", calculadoraIdade);
         model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAll());
 
         return "solicitacao/listagens/listaSolicitacaoCasa";

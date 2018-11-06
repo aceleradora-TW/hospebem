@@ -19,7 +19,7 @@
         <div class="is-mobile">
             <h1 class="title is-1 has-text-centered espacamento">Lista de Solicitações da Casa</h1>
             <div class="is-centered">
-                    <table class="table centralizar espacamento">
+                    <table class="table is-striped is-hoverable centralizar espacamento">
                         <tr>
                             <th>Data</th>
                             <th>Nome</th>
@@ -31,7 +31,7 @@
                         <tr th:each="solicitacao : ${solicitacoesCasa}">
                             <td class="has-text-centered">11-11-2018</td>
                             <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
-                            <td class="has-text-centered"> 24 </td>
+                            <td class="has-text-centered" th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></td>
                             <td class="has-text-centered">
                                 <a th:href="@{/solicitacao/{id}/dados(id=${solicitacao.id})}">
                                     <button class="button " type="submit">
@@ -49,6 +49,9 @@
                         </tr>
                     </table>
             </div>
+
+            <a class="button is-success" href="/">Voltar</a>
+
         </div>
     </div>
 </main>
