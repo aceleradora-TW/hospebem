@@ -1,13 +1,13 @@
 # Hospebem
 
-Uma aplicação mínima em Spring Boot.
+Sistema de reserva de leitos a ONG Via Vida.
 
 [![CircleCI](https://circleci.com/gh/aceleradora-TW/hospebem/tree/master.svg?style=svg)](https://circleci.com/gh/aceleradora-TW/hospebem/tree/master)
 
 ## Dependências
 
 - Java 8
-- Postgres
+- Docker
 - Node/npm
 
 
@@ -31,6 +31,7 @@ Acessa o banco
 ./banco console
 ```
              
+
 Para adicionar as tabelas ao B.D. execute as migrações do banco de dados:
 
 
@@ -68,6 +69,10 @@ __Integração__
 
 Endereço: https://hospebem-staging.herokuapp.com
 
-
 Este ambiente é atualizado toda vez que uma alteração é introduzida no projeto e as verificações automatizados do Circle CI executam
 exitosamente. Ou seja é o ambiente mais instável e que recebe as alterações mais recentes.
+
+__Produção__
+
+Endereço: https://hospebem-prod.herokuapp.com
+
