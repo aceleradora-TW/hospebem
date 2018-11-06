@@ -64,7 +64,7 @@ public class SolicitacaoControllerTest {
                 new Acompanhante("Amanda", "F", dataNascimento, soli),
                 new Acompanhante("Aline","F", dataNascimento, soli));
 
-        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", "75", dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
+        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", 75, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
 
 
         String mensagem = controller.salvaSolicitacao(model, solicitacao);

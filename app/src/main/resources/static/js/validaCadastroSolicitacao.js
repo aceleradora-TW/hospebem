@@ -14,8 +14,6 @@ function camposPaciente() {
     var genero1        = document.getElementById("genero1")
     var genero2        = document.getElementById("genero2")
     var dataNascimento = document.getElementById("dataNascimento")
-    var peso           = document.getElementById("peso")
-    var ehCadeirante   = document.getElementById("cadeirante.sim")
     var situacaoPre    = document.getElementById("situacao.pre")
     var situacaoPos    = document.getElementById("situacao.pos")
     var dataEntrada    = document.getElementById("dataEntrada")
@@ -42,21 +40,6 @@ function camposPaciente() {
 
     } else
         dataNascimento.classList.add('input-fancy')
-
-    // if (ehCadeirante.checked === true) {
-    //     if (peso.value === '') {
-    //         alert('Por favor, preencha o campo peso')
-    //         validaInputErrado(peso)
-    //         return false
-    //     } else
-    //         peso.classList.add('input-fancy')
-    // }
-
-
-
-
-
-
 
     if (situacaoPre.checked === false && situacaoPos.checked === false) {
         alert('Por favor, selecione a situacao do transplante')
@@ -132,7 +115,6 @@ function pesoCadeirante() {
 
         }
     });
-
 
     pesoInput.addEventListener('change', function() {
         if(this.value > 600) {

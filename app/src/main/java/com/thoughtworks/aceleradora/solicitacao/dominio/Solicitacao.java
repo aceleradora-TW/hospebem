@@ -1,5 +1,7 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class Solicitacao {
 
     private String cadeirante;
 
-    private String status;
+    private String status = "pendente";
 
     private float peso;
 
