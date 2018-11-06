@@ -29,7 +29,7 @@
                         </tr>
 
                         <tr th:each="solicitacao : ${solicitacoesCasa}">
-                            <td class="has-text-centered">11-11-2018</td>
+                            <td class="has-text-centered" th:text="${solicitacao.dataAtualizacao}"></td>
                             <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
                             <td class="has-text-centered" th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></td>
                             <td class="has-text-centered">

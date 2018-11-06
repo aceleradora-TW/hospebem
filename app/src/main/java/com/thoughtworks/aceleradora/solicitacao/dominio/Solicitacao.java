@@ -2,6 +2,8 @@ package com.thoughtworks.aceleradora.solicitacao.dominio;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -42,6 +44,9 @@ public class Solicitacao {
     @Column(name="data_transplante")
     private LocalDate dataTransplante;
 
+    @Column(name="data_atualizacao")
+    private LocalDateTime dataAtualizacao;
+
     @OneToOne(cascade=ALL)
     private Endereco endereco;
 
@@ -57,15 +62,15 @@ public class Solicitacao {
                        String situacao,
                        String telefone,
                        String cadeirante,
+                       String status,
                        float peso,
                        LocalDate dataNascimento,
                        LocalDate dataEntrada,
                        LocalDate dataSaida,
                        LocalDate dataTransplante,
+                       LocalDateTime dataAtualizacao,
                        Endereco endereco,
-                       String status,
-                       List<Acompanhante> acompanhantes,
-                       String orgao)
+                       List<Acompanhante> acompanhantes)
     {
         this.nome = nome;
         this.genero = genero;
@@ -80,6 +85,7 @@ public class Solicitacao {
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.dataTransplante = dataTransplante;
+        this.dataAtualizacao = dataAtualizacao;
         this.orgao = orgao;
     }
 
@@ -181,6 +187,14 @@ public class Solicitacao {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
     }
 
     public String getOrgao() { return orgao; }
