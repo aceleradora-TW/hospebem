@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.mock;
@@ -46,6 +47,7 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.formularioCadastro(solicitacao, model);
 
+        assertTrue(false);
         assertThat(paginaRenderizada, equalTo("solicitacao/cadastro"));
     }
 
