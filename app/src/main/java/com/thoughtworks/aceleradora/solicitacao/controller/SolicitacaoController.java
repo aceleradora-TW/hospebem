@@ -96,6 +96,9 @@ public class SolicitacaoController {
             solicitacaoAtu.setEndereco(solicitacao.getEndereco());
             solicitacaoAtu.setSituacao(solicitacao.getSituacao());
             solicitacaoAtu.setGenero(solicitacao.getGenero());
+            solicitacaoAtu.setPeso(solicitacao.getPeso());
+            solicitacaoAtu.setDataNascimento(solicitacao.getDataNascimento());
+            solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
 
              solicitacaoRepository.save(solicitacaoAtu);
             return "solicitacao/listagens/listaSolicitacaoHospital";
