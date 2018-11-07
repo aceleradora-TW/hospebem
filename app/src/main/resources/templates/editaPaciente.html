@@ -19,6 +19,15 @@
 
 </head>
 <body>
+<header>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <p class="titulo-nav">Hospebem</p>
+            </a>
+        </div>
+    </nav>
+</header>
 <main>
     <div class="card-content valign center has-text-centered">
         <div  class="columns">
@@ -26,7 +35,7 @@
                   id="formSolicitacao">
                 <h2 class="title is-2">Dados Paciente</h2>
                 <div>
-                    <button type="submit" class="inpuy input-fancy"> Salvar </button>
+                    <button type="submit" class="button verde-viavida"> Salvar </button>
                 </div>
                 <div class="column is-10">
                     <div class="field is-horizontal">
@@ -47,7 +56,7 @@
                         <div class="control">
                             <input th:field="*{genero}" type="radio" value="F" id="genero1">
                             <span>Feminino</span>
-                            </label>
+
                             <label>
                                 <input th:field="*{genero}" type="radio" value="M" id="genero2">
                                 <span>Masculino</span>
