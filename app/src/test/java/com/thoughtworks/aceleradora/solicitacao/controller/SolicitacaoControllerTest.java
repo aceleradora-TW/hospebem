@@ -13,6 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.ui.Model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -53,6 +54,7 @@ public class SolicitacaoControllerTest {
         LocalDate dataEntrada= LocalDate.of(2010, 3, 7);
         LocalDate dataSaida= LocalDate.of(2010, 3, 7);
         LocalDate dataTransplante= LocalDate.of(2010, 3, 7);
+        LocalDateTime dataAtt = LocalDateTime.of(2007,07, 10, 10, 10, 10);
 
         Endereco end = new Endereco("A", "B", "C", "D", "E");
 
@@ -60,7 +62,7 @@ public class SolicitacaoControllerTest {
                 new Acompanhante("Amanda", "F", dataNascimento, soli),
                 new Acompanhante("Aline","F", dataNascimento, soli));
 
-        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", 75, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
+        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", "pendente", 54, dataNascimento, dataEntrada, dataSaida, dataTransplante, dataAtt, end, acompanhantes);
 
         String paginaRenderizada = controller.salvaSolicitacao(solicitacao);
 
