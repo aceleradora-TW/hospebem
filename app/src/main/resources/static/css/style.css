@@ -43,7 +43,7 @@ button {
 }
 
 .botao-esqueci-senha {
-    color: rgba(70, 178, 235, 1);
+    color: rgba(56, 124, 43, 1);
 }
 
 .espacamento {
@@ -64,7 +64,7 @@ button {
     width:100%;
 }
 .navbar {
-    background-color: rgba(56, 124, 43, 1);
+    background-color: rgba(56, 124, 43,1);
     position: relative;
     width:100%;
 }
@@ -85,7 +85,7 @@ button {
 }
 
 .is-active {
-    background-color: rgb(70, 178, 235);
+    background-color: rgba(56, 124, 43, 1);
 }
 
 .recuperar {

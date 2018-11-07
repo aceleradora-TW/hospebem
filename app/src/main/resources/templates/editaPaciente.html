@@ -22,10 +22,11 @@
 <main>
     <div class="card-content valign center has-text-centered">
         <div  class="columns">
-            <form th:object="${hospede}" th:action="@{/solicitacao/{id}/editar(id=${hospede.id})}" method="post">
+            <form th:object="${hospede}" th:action="@{/solicitacao/{id}/editar(id=${hospede.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
+                  id="formSolicitacao">
                 <h2 class="title is-2">Dados Paciente</h2>
                 <div>
-                    <button type="submit"> Salvar </button>
+                    <button type="submit" class="inpuy input-fancy"> Salvar </button>
                 </div>
                 <div class="column is-10">
                     <div class="field is-horizontal">
@@ -33,7 +34,7 @@
                             <label class="label">Nome </label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" th:field="*{nome}">
+                            <input class="validate input input-fancy" type="text" th:field="*{nome}">
                         </div>
                     </div>
                 </div>
@@ -96,7 +97,7 @@
                             <label class="label">Telefone</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="telefone" th:field="*{telefone}">
+                            <input class="validate input input-fancy" type="text" name="telefone" th:field="*{telefone}">
                         </div>
                     </div>
                 </div>
@@ -107,7 +108,7 @@
                             <label class="label">Peso</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="peso" th:value="*{peso}">
+                            <input class="validate input input-fancy" type="text" name="peso" th:value="*{peso}">
                         </div>
                     </div>
                 </div>
@@ -118,21 +119,11 @@
                             <label class="label">Data de Entrada</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="dataEntrada" th:field="*{dataEntrada}">
+                            <input class="validate input input-fancy" type="text" name="dataEntrada" th:field="*{dataEntrada}">
                         </div>
                     </div>
                 </div>
 
-            <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Data de Saída</label>
-                        </div>
-                        <div class="control">
-                            <input class="validate input is-info" type="text" name="dataSaida" th:field="*{dataSaida}">
-                        </div>
-                    </div>
-                </div>
 
             <h2 class="title is-2">Endereço</h2>
 
@@ -142,7 +133,7 @@
                             <label class="label">Rua</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="rua" th:field="*{endereco.rua}">
+                            <input class="validate input input-fancy" type="text" name="rua" th:field="*{endereco.rua}">
                         </div>
                     </div>
                 </div>
@@ -153,7 +144,7 @@
                             <label class="label">Número</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="numero" th:field="*{endereco.numero}">
+                            <input class="validate input input-fancy" type="text" name="numero" th:field="*{endereco.numero}">
                         </div>
                     </div>
                 </div>
@@ -164,7 +155,7 @@
                             <label class="label">Cidade</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="cidade" th:field="*{endereco.cidade}">
+                            <input class="validate input input-fancy" type="text" name="cidade" th:field="*{endereco.cidade}">
                         </div>
                     </div>
                 </div>
@@ -175,7 +166,7 @@
                             <label class="label">Bairro</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="bairro" th:field="*{endereco.bairro}">
+                            <input class="validate input input-fancy" type="text" name="bairro" th:field="*{endereco.bairro}">
                         </div>
                     </div>
 
@@ -187,7 +178,7 @@
                             <label class="label">UF</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="uf" th:field="*{endereco.uf}">
+                            <input class="validate input input-fancy" type="text" name="uf" th:field="*{endereco.uf}">
                         </div>
                     </div>
                 </div>
@@ -204,7 +195,7 @@
                             </div>
                             <div class="control">
                         <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                                <input class="validate input is-info" type="text"  th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                                <input class="validate input input-fancy" type="text"  th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                         </p>
                             </div>
                         </div>
@@ -216,7 +207,7 @@
                                 <label class="label">Data de Nascimento</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}">
+                                <input class="validate input input-fancy" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}">
                             </div>
                         </div>
                     </div>
