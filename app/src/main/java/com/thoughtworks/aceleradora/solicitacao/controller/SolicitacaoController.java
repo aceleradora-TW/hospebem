@@ -71,6 +71,17 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
 
+    @PostMapping("/cadastro")
+    public String salvaSolicitacao(Model model, Solicitacao solicitacao) {
+        solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
+
+        solicitacaoRepository.save(solicitacao);
+
+        model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
+
+        return "redirect:/";
+    }
+
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
 
@@ -95,16 +106,14 @@ public class SolicitacaoController {
     }
 
 
-
     @GetMapping("/{id}/editar")
-    public String editaDadosHospede(Model model, @PathVariable Long id){
+    public String editaDadosHospede(Model model, @PathVariable Long id) {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
-
-        if(solicitacaoOptional.isPresent()){
+        if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
 
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("solicitacao" , solicitacao);
+            model.addAttribute("solicitacao", solicitacao);
 
             return "solicitacao/editaPaciente";
         }
@@ -112,7 +121,7 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/{id}/editar")
-    public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao){
+    public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao) {
         Solicitacao solicitacaoAtu = solicitacaoRepository.getOne(id);
 
         solicitacaoAtu.setNome(solicitacao.getNome());
@@ -130,9 +139,9 @@ public class SolicitacaoController {
 
     @GetMapping("/{id}/excluir")
     public String excluirSolicitacaoHospital(@PathVariable Long id) {
-        Optional <Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
-        if(solicitacaoOptional.isPresent()){
+        if (solicitacaoOptional.isPresent()) {
             solicitacaoRepository.deleteById(id);
 
             return "redirect:/solicitacao/hospital/lista";
