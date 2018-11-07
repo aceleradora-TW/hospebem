@@ -56,6 +56,8 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
+        model.addAttribute("formatarData", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        model.addAttribute("formatarHora", DateTimeFormatter.ofPattern("hh:mm:ss"));
         model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAll());
 
         return "solicitacao/listagens/listaSolicitacaoCasa";

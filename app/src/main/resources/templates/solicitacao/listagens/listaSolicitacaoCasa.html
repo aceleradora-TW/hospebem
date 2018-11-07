@@ -21,7 +21,8 @@
             <div class="is-centered">
                     <table class="table is-bordered is-striped is-narrow is-hoverable centralizar espacamento">
                         <tr>
-                            <th>Data</th>
+                            <th>Dia da Solicitação</th>
+                            <th>Horário da Solicitação</th>
                             <th>Nome</th>
                             <th>Idade</th>
                             <th>Informações</th>
@@ -29,7 +30,8 @@
                         </tr>
 
                         <tr th:each="solicitacao : ${solicitacoesCasa}">
-                            <td class="has-text-centered" th:text="${solicitacao.dataAtualizacao}"></td>
+                            <td class="has-text-centered" th:text="${solicitacao.dataAtualizacao.format(formatarData)}"></td>
+                            <td class="has-text-centered" th:text="${solicitacao.dataAtualizacao.format(formatarHora)}"></td>
                             <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
                             <td class="has-text-centered" th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></td>
                             <td class="has-text-centered">
