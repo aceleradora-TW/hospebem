@@ -201,6 +201,16 @@ public class Solicitacao {
 
     public void setOrgao(String orgao) { this.orgao = orgao; }
 
+    @PrePersist
+    protected void onCreate() {
+        dataAtualizacao = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        dataAtualizacao = LocalDateTime.now();
+    }
+
     @Override
     public String toString() {
         return "Solicitacao{" +
