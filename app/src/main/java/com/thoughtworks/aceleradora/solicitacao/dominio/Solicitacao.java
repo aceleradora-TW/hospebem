@@ -206,4 +206,5 @@ public class Solicitacao {
                 ", acompanhantes=" + acompanhantes +
                 '}';
     }
-}
+
+    }

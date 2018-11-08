@@ -47,7 +47,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <form method="post">
+                                    <form method="post" th:href="@{solicitacao/excluir/{id}(id=${solicitacao.id})}">
                                         <button class="button" type="submit">
                                             <input type="hidden" name="id">
                                             <i class="fas fa-trash"></i>

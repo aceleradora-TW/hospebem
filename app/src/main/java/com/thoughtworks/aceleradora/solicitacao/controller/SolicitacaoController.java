@@ -78,7 +78,7 @@ public class SolicitacaoController {
             Solicitacao solicitacao = solicitacaoOptional.get();
 
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("hospede" , solicitacao);
+            model.addAttribute("solicitacao" , solicitacao);
 
             return "editaPaciente";
         }
@@ -102,6 +102,19 @@ public class SolicitacaoController {
 
              solicitacaoRepository.save(solicitacaoAtu);
             return "solicitacao/listagens/listaSolicitacaoHospital";
+        }
+        return "404";
+    }
+
+    @PostMapping("/excluir/{id}")
+    public String excluirSolicitacaoHospital(@PathVariable("id") Long id) {
+        Optional <Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()){
+            Solicitacao solicitacao = solicitacaoOptional.get();
+            solicitacaoRepository.delete(solicitacao);
+
+            return "redirect:/solicitacao/listagens/listaSolicitacaoHospital";
         }
         return "404";
     }

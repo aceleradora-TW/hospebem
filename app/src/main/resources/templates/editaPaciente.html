@@ -31,7 +31,7 @@
 <main>
     <div class="card-content valign center has-text-centered">
         <div  class="columns">
-            <form th:object="${hospede}" th:action="@{/solicitacao/{id}/editar(id=${hospede.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
+            <form th:object="${solicitacao}" th:action="@{/solicitacao/{id}/editar(id=${solicitacao.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
                   id="formSolicitacao">
                 <h2 class="title is-2">Dados Paciente</h2>
                 <div>
@@ -193,7 +193,7 @@
                 </div>
 
                 <h2 class="title is-2">Dados Acompanhante</h2>
-            <div th:each="acompanhante, acompIndex : ${hospede.acompanhantes}">
+            <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
 
                     <h5 class="title is-5">Acompanhante
                     </h5>
