@@ -2,8 +2,6 @@
 <html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Formulario</title>
-
-
 </head>
 
 <body>
@@ -107,12 +105,12 @@
                             <div class="select">
                                 <select name="orgao" id="select">
                                     <option disabled selected value="selecione">Selecione o órgão</option>
-                                    <option th:value="'coracao'" th:text="Coração"></option>
-                                    <option th:value="'figado'" th:text="Fígado"></option>
+                                    <option th:value="'coração'" th:text="Coração"></option>
+                                    <option th:value="'fígado'" th:text="Fígado"></option>
                                     <option th:value="'medula'" th:text="Medula"></option>
-                                    <option th:value="'pancreas'" th:text="Pâncreas"></option>
-                                    <option th:value="'pulmao'" th:text="Pulmão"></option>
-                                    <option th:value="'rim'" th:text="Rins"></option>
+                                    <option th:value="'pâncreas'" th:text="Pâncreas"></option>
+                                    <option th:value="'pulmão'" th:text="Pulmão"></option>
+                                    <option th:value="'rins'" th:text="Rins"></option>
                                     <option th:value="'tecidos'" th:text="Tecidos"></option>
                                 </select>
                             </div>
@@ -242,12 +240,9 @@
                         </div>
                     </div>
                 </div>
+            </form>
         </div>
-        </form>
     </div>
-    </div>
-
-
 </main>
 </body>
 </html>

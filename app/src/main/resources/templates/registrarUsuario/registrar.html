@@ -1,44 +1,67 @@
 <!DOCTYPE html>
 <html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Hospebem Registrar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="/js/registraAssistenteSocial.js"></script>
+    <script src="https://unpkg.com/pikaday@1.7.0/pikaday.js"></script>
 </head>
 <body>
     <div th:include="@{/partes/cabecalhoPadrao}"/>
 
-    <main>
-        <div class="container card-content valign center has-text-centered">
-            <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
-            <form action="#" th:action="@{/registrar}" th:object="${formUsuario}" method="post">
-                <div th:if="${#fields.hasAnyErrors()}">
-                    <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
-                </div>
-
-                <div class="columns has-text-left">
-                    <div class="column is-half">
-                            <label>Informe um usuário:</label>
-                            <input class="validate input is-info" th:field="*{nome}" id = "first_name" type="text" name="nome">
-                    </div>
-                </div>
-
-                <div class="columns has-text-left">
-                    <div class = "column is-half">
-                            <label>Informe uma senha:</label>
-                            <input class="validate input is-info" th:field="*{senha}" id="password" type="password" name="senha">
-                    </div>
-                </div>
-
-                <div class="columns has-text-left">
-                    <div class = "column is-half">
-                    <label>Tipo:</label>
-                    <input type="radio" name="tipo" th:field="*{tipo}" value="admin"> Administrador
-                    <input type="radio" name="tipo" th:field="*{tipo}" value="assistente-hospital"> Assistente social
-                    </div>
-                </div>
-
-                <input class="button is-medium is-info"type="submit" value="Enviar">
-            </form>
+<main>
+    <div class="container card-content valign center has-text-centered">
+    <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
+    <form action="#" th:action="@{/registrar}" th:object="${formUsuario}" method="post">
+        <div th:if="${#fields.hasAnyErrors()}">
+            <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
         </div>
-    </main>
+
+        <div class="columns has-text-left">
+            <div class = "column is-half">
+                <label>Tipo:</label>
+                <input id="admin" type="radio" name="tipo" th:field="*{tipo}" value="admin"> Administrador
+                <input id="assistente" type="radio" name="tipo" th:field="*{tipo}" value="assistente-hospital"> Assistente social
+            </div>
+        </div>
+        <div class="column">
+            <div class="field">
+                <div class="control">
+                    <span class="display-none">Informe o nome da assistente social</span>
+                    <input class="input input-fancy display-none" th:field="*{nome}" type="text" id="nomeAss">
+                </div>
+            </div>
+        </div>
+        <div class="columns has-text-left">
+            <div class="column is-half">
+                    <label>Informe um usuário:</label>
+                    <input class="input input-fancy" th:field="*{nome}" id = "first_name" type="text" name="nome">
+            </div>
+        </div>
+
+        <div class="columns has-text-left">
+            <div class = "column is-half">
+                    <label>Informe uma senha:</label>
+                    <input class="input input-fancy" th:field="*{senha}" id="password" type="password" name="senha">
+            </div>
+        </div>
+
+
+        <input class="button is-medium verde-viavida"type="submit" value="Enviar">
+    </form>
+    </div>
+</main>
 </body>
+
+
+<script>
+    registraAssistente();
+
+</script>
+
 </html>
