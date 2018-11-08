@@ -50,7 +50,7 @@
                     <div class="field">
                         <div class="control">
                             <span>*Data de nascimento:</span>
-                            <input id="dataNascimento" placeholder="Clique para selecionar uma data"
+                            <input id="dataNascimento" placeholder="Clique para selecionar uma data" autocomplete="off"
                                    type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataNascimento}"
                                    onkeypress="return false" autocomplete="off">
                         </div>
@@ -90,13 +90,14 @@
                     </div>
                 </div>
                 <div class="columns column">
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span>Data do transplante:</span>
-                                <input id="dataTransplante" placeholder="Clique para selecionar uma data"
-                                       type="text" class="input input-fancy datepicker-futuro" th:field="*{dataTransplante}"
-                                       onkeypress="return false;">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Data do transplante:</span>
+                                    <input id="dataTransplante" placeholder="Clique para selecionar uma data" autocomplete="off"
+                                           type="text" class="input input-fancy datepicker-futuro" th:field="*{dataTransplante}"
+                                           onkeypress="return false;">
+                                </div>
                             </div>
                         </div>
                         <div class="column">
@@ -123,7 +124,7 @@
                     <div class="field">
                         <div class="control">
                             <span>*Data de entrada requerida:</span>
-                            <input id="dataEntrada" placeholder="Clique para selecionar uma data"
+                            <input id="dataEntrada" placeholder="Clique para selecionar uma data" autocomplete="off"
                                    type="text" class="input input-fancy datepicker-futuro" th:field="*{dataEntrada}"
                                    onkeypress="return false;">
                         </div>
@@ -133,7 +134,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Data de saída (previsão):</span>
-                            <input id="dataSaida" placeholder="Clique para selecionar uma data"
+                            <input id="dataSaida" placeholder="Clique para selecionar uma data" autocomplete="off"
                                    type="text" class="input input-fancy datepicker-futuro" th:field="*{dataSaida}"
                                    onkeypress="return false;">
                         </div>
