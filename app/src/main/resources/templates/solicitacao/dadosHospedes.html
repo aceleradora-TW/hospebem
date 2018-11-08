@@ -11,7 +11,7 @@
     <main>
         <div class="card-content valign center has-text-centered">
             <div class="columns ">
-                <ul th:object="${hospede}">
+                <ul th:object="${solicitacao}">
                     <h2 class="title is-2">Dados Paciente</h2>
 
                     <div class="column is-10">
@@ -20,7 +20,7 @@
                                 <label class="label">Nome </label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="nome" th:value="${hospede.nome}" disabled>
+                                <input class="validate input is-info" type="text" name="nome" th:value="${solicitacao.nome}" disabled>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                                 <label class="label">Gênero</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="genero" th:value="(${hospede.genero == 'F'} ? 'Feminino' : 'Masculino')" disabled>
+                                <input class="validate input is-info" type="text" name="genero" th:value="(${solicitacao.genero == 'F'} ? 'Feminino' : 'Masculino')" disabled>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                 <label class="label">Status</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="status" th:value="${hospede.status}" disabled>
+                                <input class="validate input is-info" type="text" name="status" th:value="${solicitacao.status}" disabled>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                 <label class="label">Situação</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="situacao" th:value="(${hospede.situacao == 'pre'} ? 'Pré-Transplantado' : 'Pós-Transplantado')" disabled>
+                                <input class="validate input is-info" type="text" name="situacao" th:value="(${solicitacao.situacao == 'pre'} ? 'Pré-Transplantado' : 'Pós-Transplantado')" disabled>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                                 <label class="label">Data de Nascimento</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="dataNascimento" th:value="${hospede.dataNascimento.format(formata)}" disabled>
+                                <input class="validate input is-info" type="text" name="dataNascimento" th:value="${solicitacao.dataNascimento.format(formata)}" disabled>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                                 <label class="label">Telefone</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="telefone" th:value="${hospede.telefone}" disabled>
+                                <input class="validate input is-info" type="text" name="telefone" th:value="${solicitacao.telefone}" disabled>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                                 <label class="label">Peso</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="peso" th:value="${hospede.peso}" disabled>
+                                <input class="validate input is-info" type="text" name="peso" th:value="${solicitacao.peso}" disabled>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                                 <label class="label">Data de Entrada</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="dataEntrada" th:value="${hospede.dataEntrada.format(formata)}" disabled>
+                                <input class="validate input is-info" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada.format(formata)}" disabled>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                                 <label class="label">Data de Saída</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="dataSaida" th:value="${hospede.dataSaida.format(formata)}" disabled>
+                                <input class="validate input is-info" type="text" name="dataSaida" th:value="${solicitacao.dataSaida.format(formata)}" disabled>
                             </div>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                                 <label class="label">Rua</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="rua" th:value="${hospede.endereco.rua}" disabled>
+                                <input class="validate input is-info" type="text" name="rua" th:value="${solicitacao.endereco.rua}" disabled>
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                                 <label class="label">Número</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="numero" th:value="${hospede.endereco.numero}" disabled>
+                                <input class="validate input is-info" type="text" name="numero" th:value="${solicitacao.endereco.numero}" disabled>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                                 <label class="label">Cidade</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="cidade" th:value="${hospede.endereco.cidade}" disabled>
+                                <input class="validate input is-info" type="text" name="cidade" th:value="${solicitacao.endereco.cidade}" disabled>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                                 <label class="label">Bairro</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="bairro" th:value="${hospede.endereco.bairro}" disabled>
+                                <input class="validate input is-info" type="text" name="bairro" th:value="${solicitacao.endereco.bairro}" disabled>
                             </div>
                         </div>
                     </div>
@@ -165,14 +165,14 @@
                                 <label class="label">UF</label>
                             </div>
                             <div class="control">
-                                <input class="validate input is-info" type="text" name="uf" th:value="${hospede.endereco.uf}" disabled>
+                                <input class="validate input is-info" type="text" name="uf" th:value="${solicitacao.endereco.uf}" disabled>
                             </div>
                         </div>
                     </div>
 
                     <h2 class="title is-2">Dados Acompanhante</h2>
 
-                    <div th:each="acomp, index : ${hospede.acompanhantes}">
+                    <div th:each="acomp, index : ${solicitacao.acompanhantes}">
 
                         <h5 class="title is-5">Acompanhante
                             <span th:text="${index.index + 1}"></span>:
