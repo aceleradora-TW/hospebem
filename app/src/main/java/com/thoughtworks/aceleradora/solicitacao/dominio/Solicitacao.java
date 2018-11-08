@@ -32,7 +32,7 @@ public class Solicitacao {
     private String status="Pendente";
 
 
-    private float peso;
+    private Float peso;
 
     private String orgao;
 
@@ -137,11 +137,11 @@ public class Solicitacao {
         this.cadeirante = cadeirante;
     }
 
-    public float getPeso() {
+    public Float getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(Float peso) {
         this.peso = peso;
     }
 
