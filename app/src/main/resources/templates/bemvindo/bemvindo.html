@@ -1,71 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:sec="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hospebem - Inicio </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-    <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <p class="titulo-nav">HospeBem</p>
-            </a>
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">Inicio</a>
-                <a class="navbar-item" href="/solicitacao/hospital/lista"> Lista de Solicitações Hospital </a>
+    <header>
+        <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <p class="titulo-nav">HospeBem</p>
+                </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
             </div>
-        </div>
-    </nav>
-</header>
-<main class="espaco-linhas">
-    <div class="agrupadora has-text-centered">
 
-        <h1 class="title is-1 espaco-titulo">Hospebem</h1>
-        <p>Sistema de agendamento entre hospitais e pousada <a href="https://www.viavida.org.br/" target="_blank">ViaVida</a>.</h6>
-
-    <div class="columns">
-        <img src="/css/img/hospebem.png" alt="Logo viaVida">
-    </div>
-
-        <div sec:authorize="isAuthenticated()">
-            <div>
-                <p> Seja bem-vindo: <strong><span sec:authentication="name"></span></strong></p>               </p>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/">Inicio</a>
+                    <a class="navbar-item" href="/solicitacao/hospital/lista"> Lista de Solicitações Hospital </a>
+                </div>
             </div>
+        </nav>
+    </header>
+
+    <main class="espaco-linhas">
+        <div class="agrupadora has-text-centered">
+
+            <h1 class="title is-1 espaco-titulo">Hospebem</h1>
+            <p>Sistema de agendamento entre hospitais e pousada <a href="https://www.viavida.org.br/" target="_blank">ViaVida</a>.</h6>
+
+        <div class="columns">
+            <img src="/css/img/hospebem.png" alt="Logo viaVida">
         </div>
 
-        <div sec:authorize="!isAuthenticated()">
-            <a href="/login"><div>Logar</div></a>
-            <a href="/registrar"><div>Registrar</div></a>
-        </div>
-        <div sec:authorize="isAuthenticated()">
-            <form action="#" th:action="@{/logout}" method="post">
-                <input type="submit" class="button is-medium is-outlined" value="Deslogar">
-            </form>
-        </div>
+            <div sec:authorize="isAuthenticated()">
+                <div>
+                    <p> Seja bem-vindo: <strong><span sec:authentication="name"></span></strong></p>               </p>
+                </div>
+            </div>
 
-    </div>
-</main>
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login"><div>Logar</div></a>
+                <a href="/registrar"><div>Registrar</div></a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <form action="#" th:action="@{/logout}" method="post">
+                    <input type="submit" class="button is-medium is-outlined" value="Deslogar">
+                </form>
+            </div>
 
-<footer class="footer">
-    <div class="content has-text-centered">
-        <p> HospeBem © 2018</p>
-    </div>
-</footer>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p> HospeBem © 2018</p>
+        </div>
+    </footer>
 </body>
 
 <script>

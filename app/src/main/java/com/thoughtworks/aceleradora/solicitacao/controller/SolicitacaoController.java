@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 
 @Controller
@@ -68,6 +67,6 @@ public class SolicitacaoController {
 
         model.addAttribute("gerenciaHospede", solicitacaoRepository.findAllByStatus("aceito"));
 
-        return "solicitacao/listaHospede/listaGerenciamentoHospede";
+        return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 }
