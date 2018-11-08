@@ -140,7 +140,6 @@ button{
 }
 
 .select select {
-    height: 4vh;
     width: 100%;
     border-color: rgba(56, 124, 43, 1);
 }
