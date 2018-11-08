@@ -1,1 +1,0 @@
-ALTER TABLE solicitacoes ALTER COLUMN peso TYPE numeric USING (peso::numeric);
