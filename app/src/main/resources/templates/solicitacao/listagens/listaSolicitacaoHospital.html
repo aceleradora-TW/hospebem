@@ -1,38 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Hospebem</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
-    <nav class="navbar is-fixed-top is-info centralizar" aria-label="main navigation">
-        <label>
-            HOSPEBEM
-        </label>
-    </nav>
-</header>
-<main>
-    <div class="container">
-        <div class="is-mobile">
-            <div>
-                <h1 class="title is-half centralizar espacamento">Lista de Solicitações</h1>
-                <form th:action="@{/solicitacao/cadastro}" method="GET">
-                    <div class="is-centered is-half centralizar espacamento">
-                        <input type="submit" class="button is-info" value="Solicitar Vaga" />
-                    </div>
-                </form>
-                <div class="is-mobile is-centered">
-                    <table class="table pricing__table">
+    <div th:include="@{/partes/cabecalhoPadrao}"/>
 
-
+    <main>
+        <div class="container">
+            <div class="is-mobile">
+                <div>
+                    <h1 class="title is-half centralizar espacamento">Lista de Solicitações</h1>
+                    <form th:action="@{/solicitacao/cadastro}" method="GET">
+                        <div class="is-centered is-half centralizar espacamento">
+                            <input type="submit" class="button is-info" value="Solicitar Vaga" />
+                        </div>
+                    </form>
+                    <div class="is-mobile is-centered">
                         <div class="is-mobile is-centered">
                         </div>
                         <table class="table centralizar">
@@ -44,9 +30,6 @@
                                 <th>Editar</th>
                                 <th>Excluir</th>
                             </tr>
-
-                            </thead>
-
 
                             <tr th:each="solicitacao : ${solicitacoesHospital}">
                                 <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
@@ -69,11 +52,10 @@
                                 </td>
                             </tr>
                         </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
-
+    </main>
 </body>
 </html>

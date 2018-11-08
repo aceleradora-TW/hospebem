@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 
 @Controller
@@ -52,15 +51,14 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/cadastro")
-    @ResponseBody
-    public String salvaSolicitacao(Model model, @ModelAttribute("solicitacao") Solicitacao solicitacao) {
+    public String salvaSolicitacao(Model model, Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
         solicitacaoRepository.save(solicitacao);
 
         model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
 
-        return "solicitacao/cadastro";
+        return "redirect:/";
     }
 
     @GetMapping("/gerenciaHospede/listagemHospede")
@@ -68,6 +66,6 @@ public class SolicitacaoController {
 
         model.addAttribute("gerenciaHospede", solicitacaoRepository.findAllByStatus("aceito"));
 
-        return "solicitacao/listaHospede/listaGerenciamentoHospede";
+        return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 }

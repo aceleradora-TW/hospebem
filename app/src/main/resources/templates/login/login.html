@@ -1,62 +1,47 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
-<header>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <p class="titulo-nav">HospeBem</p>
-            </a>
+    <div th:include="@{/partes/cabecalhoPadrao}"/>
+
+    <main>
+        <div class="container card-content valign center has-text-centered">
+            <form th:action="@{/login}" method="POST">
+                <h1 class="title is-1">HospeBem</h1>
+
+                <div class="columns">
+                    <div class="column is-half">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="validate input is-info is-rounded" id = "first_name" type="text" name="nome" placeholder="Usuário">
+                            <span class="icon is-small is-left">
+                                  <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class = "column is-half">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="validate input is-info is-rounded" id="password" type="password" name="senha" placeholder="Senha">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                             </span>
+                        </p>
+                    </div>
+                </div>
+
+                <button class="button is-info is-medium is-rounded" type="submit" name="action">Entrar </button>
+
+                <div class="recuperar">
+                    <p><a href="#">Esqueci minha senha</a></p>
+                </div>
+            </form>
         </div>
-    </nav>
-</header>
-<main>
-    <div class="container card-content valign center has-text-centered">
-        <form th:action="@{/login}" method="POST">
-            <h1 class="title is-1">HospeBem</h1>
-
-            <div class="columns">
-                <div class="column is-half">
-                    <p class="control has-icons-left has-icons-right">
-                        <input class="validate input is-info is-rounded" id = "first_name" type="text" name="nome" placeholder="Usuário">
-                        <span class="icon is-small is-left">
-                              <i class="fas fa-user"></i>
-                        </span>
-                </div>
-            </div>
-
-            <div class="columns">
-                <div class = "column is-half">
-                    <p class="control has-icons-left has-icons-right">
-                        <input class="validate input is-info is-rounded" id="password" type="password" name="senha" placeholder="Senha">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                         </span>
-                    </p>
-                </div>
-            </div>
-
-            <button class="button is-info is-medium is-rounded" type="submit" name="action">Entrar </button>
-
-            <div class="recuperar">
-                <p><a href="#">Esqueci minha senha</a></p>
-            </div>
-        </form>
-    </div>
-</main>
-
+    </main>
 </body>
-
 </html>

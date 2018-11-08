@@ -1,57 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Hospebem Registrar</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <p class="titulo-nav">HospeBem</p>
-            </a>
+    <div th:include="@{/partes/cabecalhoPadrao}"/>
+
+    <main>
+        <div class="container card-content valign center has-text-centered">
+            <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
+            <form action="#" th:action="@{/registrar}" th:object="${formUsuario}" method="post">
+                <div th:if="${#fields.hasAnyErrors()}">
+                    <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
+                </div>
+
+                <div class="columns has-text-left">
+                    <div class="column is-half">
+                            <label>Informe um usuário:</label>
+                            <input class="validate input is-info" th:field="*{nome}" id = "first_name" type="text" name="nome">
+                    </div>
+                </div>
+
+                <div class="columns has-text-left">
+                    <div class = "column is-half">
+                            <label>Informe uma senha:</label>
+                            <input class="validate input is-info" th:field="*{senha}" id="password" type="password" name="senha">
+                    </div>
+                </div>
+
+                <div class="columns has-text-left">
+                    <div class = "column is-half">
+                    <label>Tipo:</label>
+                    <input type="radio" name="tipo" th:field="*{tipo}" value="admin"> Administrador
+                    <input type="radio" name="tipo" th:field="*{tipo}" value="assistente-hospital"> Assistente social
+                    </div>
+                </div>
+
+                <input class="button is-medium is-info"type="submit" value="Enviar">
+            </form>
         </div>
-    </nav>
-</header>
-
-<main>
-    <div class="container card-content valign center has-text-centered">
-    <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
-    <form action="#" th:action="@{/registrar}" th:object="${formUsuario}" method="post">
-        <div th:if="${#fields.hasAnyErrors()}">
-            <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
-        </div>
-
-        <div class="columns has-text-left">
-            <div class="column is-half">
-                    <label>Informe um usuário:</label>
-                    <input class="validate input is-info" th:field="*{nome}" id = "first_name" type="text" name="nome">
-            </div>
-        </div>
-
-        <div class="columns has-text-left">
-            <div class = "column is-half">
-                    <label>Informe uma senha:</label>
-                    <input class="validate input is-info" th:field="*{senha}" id="password" type="password" name="senha">
-            </div>
-        </div>
-
-        <div class="columns has-text-left">
-            <div class = "column is-half">
-            <label>Tipo:</label>
-            <input type="radio" name="tipo" th:field="*{tipo}" value="admin"> Administrador
-            <input type="radio" name="tipo" th:field="*{tipo}" value="assistente-hospital"> Assistente social
-            </div>
-        </div>
-
-        <input class="button is-medium is-info"type="submit" value="Enviar">
-    </form>
-    </div>
-</main>
-
+    </main>
 </body>
 </html>
