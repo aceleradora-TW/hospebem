@@ -20,11 +20,35 @@
                 <input id="assistente" type="radio" name="tipo" th:field="*{tipo}" value="assistente-hospital"> Assistente social
             </div>
         </div>
-        <div class="column">
-            <div class="field">
+        <div class="columns has-text-left">
+            <div class="column is-half">
                 <div class="control">
-                    <span class="display-none">Informe o nome da assistente social</span>
-                    <input class="input input-fancy display-none" th:field="*{nome}" type="text" id="nomeAss">
+                    <span class="display-none">*Informe o Nome da Assistente Social:</span>
+                    <input class="input input-fancy display-none" th:field="*{nomeAssistente}" type="text" id="nomeAss">
+                </div>
+            </div>
+        </div>
+        <div class="columns has-text-left">
+            <div class="column is-half">
+                <div class="control">
+                    <span id="emailAssistente" class="display-none">*Informe o E-mail da Assistente Social:</span>
+                    <input class="input input-fancy display-none" th:field="*{email}" type="text" id="emailAss">
+                </div>
+            </div>
+        </div>
+        <div class="columns has-text-left">
+            <div class="column is-half">
+                <div class="control">
+                    <span id="hospitalReferencia" class="display-none">*Informe o hospital de Referência da Assistente Social:</span>
+                    <input class="input input-fancy display-none" th:field="*{hospitalReferencia}" type="text" id="hospReferencia">
+                </div>
+            </div>
+        </div>
+        <div class="columns has-text-left">
+            <div class="column is-half">
+                <div class="control">
+                    <span id="telefoneAss" class="display-none">*Informe o Telefone da Assistente Social:</span>
+                    <input class="input input-fancy display-none" th:field="*{telefone}" type="text" id="teleAssistente">
                 </div>
             </div>
         </div>
