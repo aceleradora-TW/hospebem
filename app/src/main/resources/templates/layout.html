@@ -18,12 +18,27 @@
     <script src="https://unpkg.com/pikaday@1.7.0/pikaday.js"></script>
     <script src="js/calender.js"></script>
     <script src="/js/validaCadastroSolicitacao.js"></script>
-
-    
+    <script src="/js/validaIdade.js"></script>
 </head>
 
 <body th:replace="${content}">
 
 </body>
+<script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var datepickerFields = document.getElementsByClassName('datepicker');
+
+        for (var i = 0; i < datepickerFields.length; i++) {
+            seletorDeData(datepickerFields[i]);
+        }
+    })
+
+    pesoCadeirante();
+
+    document.getElementById('peso').addEventListener('input', limitaCampoPeso);
+
+
+</script>
 
 </html>
