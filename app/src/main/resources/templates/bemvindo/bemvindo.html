@@ -19,8 +19,20 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="/">Inicio</a>
-                    <a class="navbar-item" href="/solicitacao/hospital/lista"> Lista de Solicitações Hospital </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-item menu">
+                            Menu
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" th:href="@{/solicitacao/cadastro}">
+                                Cadastro solicitação
+                            </a>
+                            <a class="navbar-item" th:href="@{/solicitacao/hospital/lista}">
+                                Lista de solicitações hospital
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </nav>

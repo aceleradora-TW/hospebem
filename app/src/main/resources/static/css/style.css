@@ -68,13 +68,20 @@ button {
     position: relative;
     width:100%;
 }
+.navbar-dropdown{
+    background-color: rgba(56, 124, 43, 1);
+}
 
 .navbar-item {
     color: rgb(255,255,255);
 }
 
+
 .navbar-item:hover p {
-    color: rgb(255,255,255);
+    color: rgba(255,255,255,1);
+}
+.navbar-item:hover .menu {
+    color: rgba(56, 124, 43, 1);
 }
 
 .is-active {
