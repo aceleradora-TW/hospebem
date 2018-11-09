@@ -96,25 +96,35 @@ window.onload = function limpaInput() {
 }
 
 function pesoCadeirante() {
-    let pesoInput = document.getElementById('peso');
-    let textoPeso = document.querySelector('.display-none')
-    let checkBoxCadeirante = document.getElementById('cadeirante');
+    var textoPeso = document.querySelector('.display-none')
+    var checkBoxCadeirante = document.getElementById('cadeirante');
+    var pesoInput = document.getElementById('peso');
 
-    checkBoxCadeirante.addEventListener('change', function() {
-        if(this.checked) {
+    checkBoxCadeirante.addEventListener('change', function () {
+        if (this.checked) {
             pesoInput.classList.remove('display-none');
             textoPeso.classList.remove('display-none');
+            if (pesoInput.value === '') {
+                pesoInput.setAttribute('required', 'required');
+                pesoInput.setCustomValidity('Informe o peso do hospede');
+                validaInputErrado(pesoInput)
+                return false;
+            }
+            return false;
 
         } else {
             pesoInput.classList.add('display-none');
             textoPeso.classList.add('display-none');
-
+            return false;
         }
+
     });
+
 
     pesoInput.addEventListener('change', function() {
         if(this.value > 600) {
             pesoInput.value = 600;
         }
     });
+    return true;
 }
