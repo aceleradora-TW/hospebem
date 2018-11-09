@@ -35,12 +35,10 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/cadastro")
-    public String salvaSolicitacao(Model model, Solicitacao solicitacao) {
+    public String salvaSolicitacao(Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
         solicitacaoRepository.save(solicitacao);
-
-        model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
 
         return "redirect:/";
     }
@@ -64,7 +62,7 @@ public class SolicitacaoController {
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
 
-        model.addAttribute("gerenciaHospede", solicitacaoRepository.findAllByStatus("aceito"));
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("aceito"));
 
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
