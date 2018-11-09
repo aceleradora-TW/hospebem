@@ -70,4 +70,25 @@ public class SolicitacaoControllerTest {
         verify(repositorio).save(solicitacao);
         assertThat(paginaRenderizada, equalTo("redirect:/"));
     }
+
+    @Test
+    public void deveRenderizarListaSolicitacaoCasa(){
+        String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
+
+        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoCasa"));
+    }
+
+    @Test
+    public void deveRenderizarListaSolicitacaoHospital(){
+        String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
+
+        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoHospital"));
+    }
+
+    @Test
+    public void deveRenderizarListaDeHospedes(){
+        String paginaRenderizada = controller.listaGerenciamentoHospede(model);
+
+        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
+    }
 }

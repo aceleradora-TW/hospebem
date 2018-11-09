@@ -45,7 +45,7 @@
             <p>Sistema de agendamento entre hospitais e pousada <a href="https://www.viavida.org.br/" target="_blank">ViaVida</a>.</h6>
 
         <div class="columns">
-            <img src="/css/img/hospebem.png" alt="Logo viaVida">
+            <img src="/img/hospebem.png" alt="Logo viaVida">
         </div>
 
             <div sec:authorize="isAuthenticated()">
@@ -76,8 +76,8 @@
 
 <script>
     (function() {
-        var burger = document.querySelector('.burger');
-        var nav = document.querySelector('#'+burger.dataset.target);
+        let burger = document.querySelector('.burger');
+        let nav = document.querySelector('#'+burger.dataset.target);
 
         burger.addEventListener('click', function(){
             burger.classList.toggle('is-active');

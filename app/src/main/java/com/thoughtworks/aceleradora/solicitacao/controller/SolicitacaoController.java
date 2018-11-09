@@ -34,6 +34,17 @@ public class SolicitacaoController {
         return "solicitacao/cadastro";
     }
 
+    @PostMapping("/cadastro")
+    public String salvaSolicitacao(Model model, Solicitacao solicitacao) {
+        solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
+
+        solicitacaoRepository.save(solicitacao);
+
+        model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
+
+        return "redirect:/";
+    }
+
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
 
@@ -50,18 +61,7 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
 
-    @PostMapping("/cadastro")
-    public String salvaSolicitacao(Model model, Solicitacao solicitacao) {
-        solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
-
-        solicitacaoRepository.save(solicitacao);
-
-        model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
-
-        return "redirect:/";
-    }
-
-    @GetMapping("/gerenciaHospede/listagemHospede")
+    @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
 
         model.addAttribute("gerenciaHospede", solicitacaoRepository.findAllByStatus("aceito"));
