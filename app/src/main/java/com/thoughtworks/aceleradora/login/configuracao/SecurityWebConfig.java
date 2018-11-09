@@ -40,7 +40,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/bemvindo")
                     .and()
                 .logout()
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/logout")
                 .clearAuthentication(true)
                 .permitAll();
     }

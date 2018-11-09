@@ -77,7 +77,7 @@
             <a href="/registrar"><div>Registrar</div></a>
         </div>
         <div sec:authorize="isAuthenticated()">
-            <form action="#" th:action="@{/login}" method="post">
+            <form action="#" th:action="@{/logout}" method="post">
                 <input type="submit" class="button is-medium is-outlined" value="Deslogar">
             </form>
         </div>
