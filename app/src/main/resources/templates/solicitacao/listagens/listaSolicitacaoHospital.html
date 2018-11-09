@@ -46,16 +46,20 @@
                                         </button>
                                     </a>
                                 </td>
+
                                 <td>
-                                    <form method="post" th:href="@{solicitacao/excluir/{id}(id=${solicitacao.id})}">
-                                        <button class="button" type="submit">
-                                            <input type="hidden" name="id">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <!--th:href="@{solicitacao/excluir/{id}(id=${solicitacao.id})}-->
+                                    <a class="button is-danger" th:href="${'/solicitacao/excluir/' + solicitacao.id}">
+                                        <button class="button" type="submit">Excluir</button>
+                                    </a>
+                                    <!--<form method="post" th:href="@{solicitacao/excluir/{id}(id=${solicitacao.id})}">-->
+
+                                    <!--</form>-->
                                 </td>
                             </tr>
                         </table>
+                        <!--<input type="hidden" name="id">-->
+                        <!--<i class="fas fa-trash"></i>-->
                     </div>
                 </div>
             </div>

@@ -19,12 +19,12 @@ public class SolicitacaoController {
 
     private SolicitacaoRepository solicitacaoRepository;
 
-
     public SolicitacaoController() {
 
     }
 
     @Autowired
+
     public SolicitacaoController(SolicitacaoRepository repositorio) {
         this.solicitacaoRepository = repositorio;
     }
@@ -106,15 +106,15 @@ public class SolicitacaoController {
         return "404";
     }
 
-    @PostMapping("/excluir/{id}")
+    @GetMapping("/excluir/{id}")
     public String excluirSolicitacaoHospital(@PathVariable("id") Long id) {
         Optional <Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if(solicitacaoOptional.isPresent()){
             Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacaoRepository.delete(solicitacao);
+            solicitacaoRepository.deleteById(id);
 
-            return "redirect:/solicitacao/listagens/listaSolicitacaoHospital";
+            return "redirect:/solicitacao/hospital/lista";
         }
         return "404";
     }
