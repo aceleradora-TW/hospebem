@@ -6,6 +6,11 @@ function validaLogin(event) {
     return false
 }
 
+function alerta(){
+    alert('Usuário ou senha incorretos!')
+    return false;
+}
+
 function validarCampoSenha() {
     var user = document.getElementById('first_name')
     var senha = document.getElementById('password')

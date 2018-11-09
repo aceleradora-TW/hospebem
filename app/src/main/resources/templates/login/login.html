@@ -13,6 +13,11 @@
             <form th:action="@{/login}" method="POST">
                 <h1 class="title is-1">HospeBem</h1>
 
+
+            <div th:if="${param.error}" class="">
+               <p class="has-text-danger"> Usuário ou senha incorretos!</p>
+            </div>
+
             <div class="columns">
                 <div class="column is-half">
                     <p class="control has-icons-left has-icons-right">
@@ -22,7 +27,6 @@
                         </span>
                 </div>
             </div>
-
             <div class="columns">
                 <div class = "column is-half">
                     <p class="control has-icons-left has-icons-right">
