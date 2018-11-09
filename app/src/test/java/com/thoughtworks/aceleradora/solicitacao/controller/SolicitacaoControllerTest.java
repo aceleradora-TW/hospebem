@@ -66,7 +66,7 @@ public class SolicitacaoControllerTest {
 
         Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", 75, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
 
-        String paginaRenderizada = controller.salvaSolicitacao(model, solicitacao);
+        String paginaRenderizada = controller.salvaSolicitacao(solicitacao);
         verify(repositorio).save(solicitacao);
         assertThat(paginaRenderizada, equalTo("redirect:/"));
     }
