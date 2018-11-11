@@ -22,6 +22,7 @@ public class SolicitacaoController {
 
     private SolicitacaoRepository solicitacaoRepository;
 
+
     public SolicitacaoController() {
 
     }
