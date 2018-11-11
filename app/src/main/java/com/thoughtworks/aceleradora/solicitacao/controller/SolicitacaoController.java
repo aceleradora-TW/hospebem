@@ -23,7 +23,6 @@ public class SolicitacaoController {
     }
 
     @Autowired
-
     public SolicitacaoController(SolicitacaoRepository repositorio) {
         this.solicitacaoRepository = repositorio;
     }
