@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospebem</title>
+</head>
+
+<body>
+<div th:include="@{/partes/cabecalhoPadrao}"/>
+
+<main>
+    <div class="container">
+
+        <div class="columns is-mobile is-centered">
+            <div class="column">
+                <h1 class="title is-half centralizar espacamento">Lista de Solicitações Casa</h1>
+
+                <div class="columns is-mobile is-centered">
+                    <table class="table centralizar">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Última Atualização</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                        <tr th:each="solicitacao : ${solicitacoesCasa}">
+
+                            <td th:text="${solicitacao.nome}"> </td>
+                            <td>11-11-2018</td>
+                            <td th:text="${solicitacao.status}"></td>
+                            <td>
+                                <form th:action="@{/quartos/listaQuartos}" method="get">
+                                    <input type="hidden" name="id" th:value="${solicitacao.id}">
+                                    <button type="submit" class="button is-info">Selecionar Quarto</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

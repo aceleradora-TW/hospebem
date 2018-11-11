@@ -3,7 +3,6 @@ package com.thoughtworks.aceleradora.solicitacao.controller;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
-import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,13 +79,13 @@ public class SolicitacaoController {
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             model.addAttribute("solicitacao" , solicitacao);
 
-            return "editaPaciente";
+            return "solicitacao/editaPaciente";
         }
         return "404";
     }
 
     @PostMapping("/{id}/editar")
-    public String salvarDadoEditadoHospede(Model model, @PathVariable Long id, Solicitacao solicitacao){
+    public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao){
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if(solicitacaoOptional.isPresent()){
@@ -101,17 +100,16 @@ public class SolicitacaoController {
             solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
 
              solicitacaoRepository.save(solicitacaoAtu);
-            return "solicitacao/listagens/listaSolicitacaoHospital";
+            return "redirect:/solicitacao/listagens/listaSolicitacaoHospital";
         }
         return "404";
     }
 
-    @GetMapping("/excluir/{id}")
-    public String excluirSolicitacaoHospital(@PathVariable("id") Long id) {
+    @GetMapping("/{id}/excluir")
+    public String excluirSolicitacaoHospital(@PathVariable Long id) {
         Optional <Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if(solicitacaoOptional.isPresent()){
-            Solicitacao solicitacao = solicitacaoOptional.get();
             solicitacaoRepository.deleteById(id);
 
             return "redirect:/solicitacao/hospital/lista";
