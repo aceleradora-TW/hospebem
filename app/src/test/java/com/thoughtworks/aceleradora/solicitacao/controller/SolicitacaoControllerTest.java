@@ -44,7 +44,7 @@ public class SolicitacaoControllerTest {
     @Test
     public void deveRenderizarFormularioDeCadastro() {
 
-        String paginaRenderizada = controller.formularioCadastro(solicitacao, model);
+        String paginaRenderizada = controller.formularioCadastro(model);
 
         assertThat(paginaRenderizada, equalTo("solicitacao/cadastro"));
     }
@@ -66,8 +66,29 @@ public class SolicitacaoControllerTest {
 
         Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", 75, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
 
-        String paginaRenderizada = controller.salvaSolicitacao(model, solicitacao);
+        String paginaRenderizada = controller.salvaSolicitacao(solicitacao);
         verify(repositorio).save(solicitacao);
-        assertThat(paginaRenderizada, equalTo("redirect:/"));
+        assertThat(paginaRenderizada, equalTo("redirect:/solicitacao/hospital/lista"));
+    }
+
+    @Test
+    public void deveRenderizarListaSolicitacaoCasa(){
+        String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
+
+        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoCasa"));
+    }
+
+    @Test
+    public void deveRenderizarListaSolicitacaoHospital(){
+        String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
+
+        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoHospital"));
+    }
+
+    @Test
+    public void deveRenderizarListaDeHospedes(){
+        String paginaRenderizada = controller.listaGerenciamentoHospede(model);
+
+        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
     }
 }

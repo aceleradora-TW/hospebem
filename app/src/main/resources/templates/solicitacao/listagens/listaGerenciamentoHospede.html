@@ -19,7 +19,7 @@
                             <tr>
                                 <th>Nome</th>
                             </tr>
-                            <tr th:each="solicitacao : ${gerenciaHospede}">
+                            <tr th:each="solicitacao : ${solicitacoesAceitas}">
                                 <td>
                                     <a href="/login" class="has-text-centered" th:text="${solicitacao.nome}"></a>
                                 </td>

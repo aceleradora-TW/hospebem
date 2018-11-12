@@ -10,13 +10,13 @@ function validaCadastroSolicitacao(evento) {
 }
 
 function camposPaciente() {
-    var nome           = document.getElementById("nome")
-    var genero1        = document.getElementById("genero1")
-    var genero2        = document.getElementById("genero2")
-    var dataNascimento = document.getElementById("dataNascimento")
-    var situacaoPre    = document.getElementById("situacao.pre")
-    var situacaoPos    = document.getElementById("situacao.pos")
-    var dataEntrada    = document.getElementById("dataEntrada")
+    let nome           = document.getElementById("nome")
+    let genero1        = document.getElementById("genero1")
+    let genero2        = document.getElementById("genero2")
+    let dataNascimento = document.getElementById("dataNascimento")
+    let situacaoPre    = document.getElementById("situacao.pre")
+    let situacaoPos    = document.getElementById("situacao.pos")
+    let dataEntrada    = document.getElementById("dataEntrada")
 
     if (nome.value  === '') {
         alert('Por favor, preencha o campo nome')
@@ -59,9 +59,9 @@ function camposPaciente() {
 }
 
  function camposAcompanhantes() {
-     var nomeAcomp      = document.querySelector(".nome")
-     var generoAcomp    = document.querySelectorAll(".genero")
-     var dataNasciAcomp = document.querySelector(".data-nasc-acomp")
+     let nomeAcomp      = document.querySelector(".nome")
+     let generoAcomp    = document.querySelectorAll(".genero")
+     let dataNasciAcomp = document.querySelector(".data-nasc-acomp")
 
      if (nomeAcomp.value === '') {
          alert('Por favor, preencha o campo nome do acompanhante 1')
@@ -91,18 +91,14 @@ function validaInputErrado(item) {
     item.focus()
 }
 
-
-
 window.onload = function limpaInput() {
     document.getElementById('peso').value='';
 }
 
-
-
 function pesoCadeirante() {
-    var pesoInput = document.getElementById('peso');
-    var textoPeso = document.querySelector('.display-none')
-    var checkBoxCadeirante = document.getElementById('cadeirante');
+    let pesoInput = document.getElementById('peso');
+    let textoPeso = document.querySelector('.display-none')
+    let checkBoxCadeirante = document.getElementById('cadeirante');
 
     checkBoxCadeirante.addEventListener('change', function() {
         if(this.checked) {
@@ -122,6 +118,3 @@ function pesoCadeirante() {
         }
     });
 }
-
-
-

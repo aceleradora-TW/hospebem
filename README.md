@@ -30,16 +30,8 @@ Acessa o banco
 ```sh
 ./banco console
 ```
-             
 
-Para adicionar as tabelas ao B.D. execute as migrações do banco de dados:
-
-
-```sh
-./gradlew flywayMigrate -i
-```
-
-Para executar a aplicação:
+Para executar a aplicação e migrações do bando de dados:
 
 ```sh
 ./gradlew bootRun

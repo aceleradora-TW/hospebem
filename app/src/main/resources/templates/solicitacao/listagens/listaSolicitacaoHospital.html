@@ -5,7 +5,6 @@
 </head>
 
 <body>
-
     <div th:include="@{/partes/cabecalhoPadrao}"/>
 
     <main>
@@ -15,14 +14,13 @@
                     <h1 class="title is-half centralizar espacamento">Lista de Solicitações</h1>
                     <form th:action="@{/solicitacao/cadastro}" method="GET">
                         <div class="is-centered is-half centralizar espacamento">
-                            <input type="submit" class="button is-info" value="Solicitar Vaga" />
+                            <input type="submit" class="button verde-viavida" value="Solicitar Vaga" />
                         </div>
                     </form>
                     <div class="is-mobile is-centered">
                         <div class="is-mobile is-centered">
                         </div>
                         <table class="table centralizar">
-
                             <tr>
                                 <th>Nome </th>
                                 <th>Última atualização</th>
