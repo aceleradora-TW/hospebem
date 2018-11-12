@@ -45,7 +45,8 @@ function camposPaciente() {
     }
 
     if (situacaoPre.checked === false && situacaoPos.checked === false) {
-        alert('Por favor, selecione a situacao do transplante')
+        // alert('Por favor, selecione a situacao do transplante')
+        item.setCustomValidity('Campo obrigatório para solicitação.');
         situacaoPre.focus()
         return false
     }
@@ -142,7 +143,7 @@ function requiredInput(item) {
 }
 
 function requiredRadio(item) {
-    if (item.checked === false) {
+    if (item.checked === true) {
         item.setCustomValidity('Campo obrigatório para solicitação.');
     } else {
         item.setCustomValidity('');

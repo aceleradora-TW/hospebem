@@ -80,11 +80,11 @@
                         <div class="control">
                             <span>*Situação do Hóspede:</span>
                             <label>
-                                <input th:field="*{situacao}" type="radio" value="pre-transplante" id="situacao.pre">
+                                <input th:field="*{situacao}" type="radio" value="pre-transplante" id="situacao.pre" required oninvalid="this.setCustomValidity('Preencha esse campo')">
                                 <span>Pré-transplante</span>
                             </label>
                             <label>
-                                <input th:field="*{situacao}" type="radio" value="pos-transplante" id="situacao.pos">
+                                <input th:field="*{situacao}" type="radio" value="pos-transplante" id="situacao.pos" required oninvalid="this.setCustomValidity('Preencha esse campo')">
                                 <span>Pós-transplante</span>
                             </label>
                         </div>
