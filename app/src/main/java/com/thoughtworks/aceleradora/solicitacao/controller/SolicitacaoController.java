@@ -68,16 +68,6 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
 
-    @PostMapping("/cadastro")
-    public String salvaSolicitacao(Model model, Solicitacao solicitacao) {
-        solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
-
-        solicitacaoRepository.save(solicitacao);
-
-        model.addAttribute("solicitacoes", solicitacaoRepository.findAll());
-
-        return "redirect:/";
-    }
 
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
