@@ -78,4 +78,17 @@
     });
 </script>
 
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        let datepickerFields = document.getElementsByClassName('datepicker');
+        for (let i = 0; i < datepickerFields.length; i++) {
+            seletorDeData(datepickerFields[i]);
+        }
+        let pesoInput = document.getElementById('peso');
+        if(pesoInput){
+            pesoInput.addEventListener('input', pesoCadeirante());
+        }
+    });
+</script>
+
 </html>
