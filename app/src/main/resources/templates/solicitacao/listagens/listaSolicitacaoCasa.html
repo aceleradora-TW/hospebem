@@ -7,36 +7,44 @@
 <body>
 <div th:include="@{/partes/cabecalhoPadrao}"/>
 
+<header>
+    <nav class="navbar is-fixed-top is-info has-text-centered nav-style" aria-label="main navigation">
+        <label>
+            HOSPEBEM
+        </label>
+    </nav>
+</header>
 <main>
     <div class="container">
-
-        <div class="columns is-mobile is-centered">
-            <div class="column">
-                <h1 class="title is-half centralizar espacamento">Lista de Solicitações Casa</h1>
-
-                <div class="columns is-mobile is-centered">
-                    <table class="table centralizar">
-                        <tr>
-                            <th>Nome</th>
-                            <th>Última Atualização</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                        <tr th:each="solicitacao : ${solicitacoesCasa}">
-
-                            <td th:text="${solicitacao.nome}"> </td>
-                            <td>11-11-2018</td>
-                            <td th:text="${solicitacao.status}"></td>
-                            <td>
-                                <form th:action="@{/quartos/listaQuartos}" method="get">
-                                    <input type="hidden" name="id" th:value="${solicitacao.id}">
-                                    <button type="submit" class="button is-info">Selecionar Quarto</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </table>
+        <div class="has-text-centered is-centered ">
+            <h1 class="title espacamento">Lista de Solicitações da Casa</h1>
+            <div th:each="solicitacao : ${solicitacoesCasa}" class="box column">
+                <div class="">
+                    <strong><span>Nome:</span></strong>
+                    <span th:text="${solicitacao.nome} + ' - '"></span>
+                    <strong><span>Idade:</span></strong>
+                    <span th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></span>
+                </div>
+                <div class="">
+                    <strong><span>Data de solicitação:</span></strong>
+                    <span th:text="${solicitacao.formataData()}"></span>
+                </div>
+                <div>
+                    <a th:href="@{/solicitacao/{id}/dados(id=${solicitacao.id})}">
+                        <button type="submit" class="button is-rounded is-success ">
+                            Ver informações
+                        </button>
+                    </a>
+                    <a th:href="@{/{id}/quartos/listaQuartos(id=${solicitacao.id})}">
+                        <button type="submit" class="button verde-viavida is-rounded">
+                            Selecionar quarto
+                        </button>
+                    </a>
                 </div>
             </div>
+
+            <a class="button verde-viavida" href="/">Voltar</a>
+
         </div>
     </div>
 </main>

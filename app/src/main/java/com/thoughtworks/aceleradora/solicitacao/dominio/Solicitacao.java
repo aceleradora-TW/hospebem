@@ -1,7 +1,12 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -24,7 +29,8 @@ public class Solicitacao {
 
     private String cadeirante;
 
-    private String status = "pendente";
+    private String status="Pendente";
+
 
     private float peso;
 
@@ -42,6 +48,9 @@ public class Solicitacao {
     @Column(name="data_transplante")
     private LocalDate dataTransplante;
 
+    @Column(name="data_atualizacao")
+    private LocalDateTime dataAtualizacao;
+
     @OneToOne(cascade=ALL)
     private Endereco endereco;
 
@@ -57,15 +66,15 @@ public class Solicitacao {
                        String situacao,
                        String telefone,
                        String cadeirante,
+                       String status,
                        float peso,
                        LocalDate dataNascimento,
                        LocalDate dataEntrada,
                        LocalDate dataSaida,
                        LocalDate dataTransplante,
+                       LocalDateTime dataAtualizacao,
                        Endereco endereco,
-                       String status,
-                       List<Acompanhante> acompanhantes,
-                       String orgao)
+                       List<Acompanhante> acompanhantes)
     {
         this.nome = nome;
         this.genero = genero;
@@ -80,15 +89,12 @@ public class Solicitacao {
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.dataTransplante = dataTransplante;
+        this.dataAtualizacao = dataAtualizacao;
         this.orgao = orgao;
     }
 
-    public Long getId(){
+    public Long getId() {
         return id;
-    }
-
-    public void setId(Long id){
-        this.id = id;
     }
 
     public String getNome() {
@@ -161,6 +167,14 @@ public class Solicitacao {
 
     public LocalDate getDataTransplante() { return dataTransplante; }
 
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
     public void setDataTransplante(LocalDate dataTransplante) { this.dataTransplante = dataTransplante; }
 
     public List<Acompanhante> getAcompanhantes() {
@@ -191,6 +205,23 @@ public class Solicitacao {
 
     public void setOrgao(String orgao) { this.orgao = orgao; }
 
+    public String formataData(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        LocalDateTime dateTime = getDataAtualizacao();
+        String formattedDateTime= dateTime.format(formatter);
+        return formattedDateTime;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        dataAtualizacao = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        dataAtualizacao = LocalDateTime.now();
+    }
+
     @Override
     public String toString() {
         return "Solicitacao{" +
@@ -199,7 +230,6 @@ public class Solicitacao {
                 ", situacao='" + situacao + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", cadeirante='" + cadeirante + '\'' +
-                ", status='" + status + '\'' +
                 ", peso=" + peso +
                 ", orgao='" + orgao + '\'' +
                 ", dataNascimento=" + dataNascimento +
@@ -207,8 +237,9 @@ public class Solicitacao {
                 ", dataSaida=" + dataSaida +
                 ", dataTransplante=" + dataTransplante +
                 ", endereco=" + endereco +
+                ", status=" + status +
                 ", acompanhantes=" + acompanhantes +
+                ", dataAtualizacao=" + dataAtualizacao +
                 '}';
     }
-
-    }
+}

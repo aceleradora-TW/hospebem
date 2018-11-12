@@ -7,16 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Controller
 @RequestMapping("/solicitacao")
 public class SolicitacaoController {
 
     private SolicitacaoRepository solicitacaoRepository;
+
 
     public SolicitacaoController() {
 
@@ -47,6 +50,11 @@ public class SolicitacaoController {
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
 
+        Function<LocalDate, Integer> calculadoraIdade = (dataNascimento) -> Period
+                .between(dataNascimento, LocalDate.now())
+                .getYears();
+
+        model.addAttribute("calculadoraIdade", calculadoraIdade);
         model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAll());
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
@@ -60,6 +68,7 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
 
+
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
 
@@ -68,15 +77,30 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 
-    @GetMapping("/{id}/editar")
-    public String editaDadosHospede(Model model, @PathVariable Long id){
+    @GetMapping("{id}/dados")
+    public String mostraDadosPaciente(Model model, @PathVariable Long id) {
+
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
-        if(solicitacaoOptional.isPresent()){
+        if (solicitacaoOptional.isPresent()) {
+            Solicitacao solicitacao = solicitacaoOptional.get();
+            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            model.addAttribute("solicitante", solicitacao);
+
+            return "solicitacao/listaHospede/dadosSolicitante";
+        }
+        return "404";
+    }
+
+
+    @GetMapping("/{id}/editar")
+    public String editaDadosHospede(Model model, @PathVariable Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+        if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
 
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("solicitacao" , solicitacao);
+            model.addAttribute("solicitacao", solicitacao);
 
             return "solicitacao/editaPaciente";
         }
@@ -84,7 +108,7 @@ public class SolicitacaoController {
     }
 
     @PostMapping("/{id}/editar")
-    public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao){
+    public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao) {
         Solicitacao solicitacaoAtu = solicitacaoRepository.getOne(id);
 
         solicitacaoAtu.setNome(solicitacao.getNome());
@@ -102,9 +126,9 @@ public class SolicitacaoController {
 
     @GetMapping("/{id}/excluir")
     public String excluirSolicitacaoHospital(@PathVariable Long id) {
-        Optional <Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
-        if(solicitacaoOptional.isPresent()){
+        if (solicitacaoOptional.isPresent()) {
             solicitacaoRepository.deleteById(id);
 
             return "redirect:/solicitacao/hospital/lista";
