@@ -8,14 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/solicitacao")
 public class SolicitacaoController {
 
     private SolicitacaoRepository solicitacaoRepository;
-
 
     public SolicitacaoController() {
 
@@ -65,5 +66,49 @@ public class SolicitacaoController {
         model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("aceito"));
 
         return "solicitacao/listagens/listaGerenciamentoHospede";
+    }
+
+    @GetMapping("/{id}/editar")
+    public String editaDadosHospede(Model model, @PathVariable Long id){
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()){
+            Solicitacao solicitacao = solicitacaoOptional.get();
+
+            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            model.addAttribute("solicitacao" , solicitacao);
+
+            return "solicitacao/editaPaciente";
+        }
+        return "404";
+    }
+
+    @PostMapping("/{id}/editar")
+    public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao){
+        Solicitacao solicitacaoAtu = solicitacaoRepository.getOne(id);
+
+        solicitacaoAtu.setNome(solicitacao.getNome());
+        solicitacaoAtu.setTelefone(solicitacao.getTelefone());
+        solicitacaoAtu.setEndereco(solicitacao.getEndereco());
+        solicitacaoAtu.setSituacao(solicitacao.getSituacao());
+        solicitacaoAtu.setGenero(solicitacao.getGenero());
+        solicitacaoAtu.setPeso((Float) solicitacao.getPeso());
+        solicitacaoAtu.setDataNascimento(solicitacao.getDataNascimento());
+        solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
+
+        solicitacaoRepository.save(solicitacaoAtu);
+        return "redirect:/solicitacao/hospital/lista";
+    }
+
+    @GetMapping("/{id}/excluir")
+    public String excluirSolicitacaoHospital(@PathVariable Long id) {
+        Optional <Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if(solicitacaoOptional.isPresent()){
+            solicitacaoRepository.deleteById(id);
+
+            return "redirect:/solicitacao/hospital/lista";
+        }
+        return "404";
     }
 }

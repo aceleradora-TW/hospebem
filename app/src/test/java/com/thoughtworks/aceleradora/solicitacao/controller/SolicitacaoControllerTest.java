@@ -27,11 +27,7 @@ public class SolicitacaoControllerTest {
     private SolicitacaoController controller;
 
     @Mock
-    private Solicitacao solicitacao;
-
-    @Mock
     private Model model;
-
 
     @Mock
     private SolicitacaoRepository repositorio;
@@ -67,7 +63,9 @@ public class SolicitacaoControllerTest {
         Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", 75, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
 
         String paginaRenderizada = controller.salvaSolicitacao(solicitacao);
+
         verify(repositorio).save(solicitacao);
+
         assertThat(paginaRenderizada, equalTo("redirect:/solicitacao/hospital/lista"));
     }
 
