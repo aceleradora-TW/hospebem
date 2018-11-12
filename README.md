@@ -4,7 +4,7 @@ Uma aplicação mínima em Spring Boot.
 
 [![CircleCI](https://circleci.com/gh/aceleradora-TW/hospebem/tree/master.svg?style=svg)](https://circleci.com/gh/aceleradora-TW/hospebem/tree/master)
 
-## Dependências
+## Dependências ...
 
 - Java 8
 - Postgres
