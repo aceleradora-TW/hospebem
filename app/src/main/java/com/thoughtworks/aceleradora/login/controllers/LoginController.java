@@ -55,7 +55,6 @@ public class LoginController {
     }
 
 
-
     @GetMapping(value = "/bemvindo")
     public String bemVindo(@ModelAttribute Usuario usuario) {
         return "bemvindo/bemvindo";
