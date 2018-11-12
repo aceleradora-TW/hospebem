@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -57,9 +55,7 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("formatarDataHora", DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm"));
         model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAll());
-
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
