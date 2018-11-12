@@ -44,7 +44,7 @@ public class SolicitacaoControllerTest {
     @Test
     public void deveRenderizarFormularioDeCadastro() {
 
-        String paginaRenderizada = controller.formularioCadastro(solicitacao, model);
+        String paginaRenderizada = controller.formularioCadastro(model);
 
         assertThat(paginaRenderizada, equalTo("solicitacao/cadastro"));
     }
@@ -66,8 +66,8 @@ public class SolicitacaoControllerTest {
 
         Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", 75, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
 
-        String paginaRenderizada = controller.salvaSolicitacao(model, solicitacao);
+        String paginaRenderizada = controller.salvaSolicitacao(solicitacao);
         verify(repositorio).save(solicitacao);
-        assertThat(paginaRenderizada, equalTo("redirect:/"));
+        assertThat(paginaRenderizada, equalTo("redirect:/solicitacao/hospital/lista"));
     }
 }
