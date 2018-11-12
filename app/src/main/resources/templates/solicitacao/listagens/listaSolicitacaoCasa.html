@@ -23,11 +23,11 @@
                     <strong><span>Nome:</span></strong>
                     <span th:text="${solicitacao.nome} + ' - '"></span>
                     <strong><span>Idade:</span></strong>
-                    <span th:text="${solicitacao.dataNascimento}"></span>
+                    <span th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></span>
                 </div>
                 <div class="">
                     <strong><span>Data de solicitação:</span></strong>
-                    <span th:text="${solicitacao.dataAtualizacao.format(formatarDataHora)}"></span>
+                    <span th:text="${solicitacao.formataData()}"></span>
                 </div>
                 <div>
                     <a th:href="@{/solicitacao/{id}/dados(id=${solicitacao.id})}">

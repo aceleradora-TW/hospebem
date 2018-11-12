@@ -1,8 +1,11 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +29,8 @@ public class Solicitacao {
 
     private String cadeirante;
 
-    private String status = "pendente";
+    private String status="Pendente";
+
 
     private float peso;
 
@@ -163,6 +167,14 @@ public class Solicitacao {
 
     public LocalDate getDataTransplante() { return dataTransplante; }
 
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
+
     public void setDataTransplante(LocalDate dataTransplante) { this.dataTransplante = dataTransplante; }
 
     public List<Acompanhante> getAcompanhantes() {
@@ -189,17 +201,16 @@ public class Solicitacao {
         this.status = status;
     }
 
-    public LocalDateTime getDataAtualizacao() {
-        return dataAtualizacao;
-    }
-
-    public void setDataAtualizacao(LocalDateTime dataAtualizacao) {
-        this.dataAtualizacao = dataAtualizacao;
-    }
-
     public String getOrgao() { return orgao; }
 
     public void setOrgao(String orgao) { this.orgao = orgao; }
+
+    public String formataData(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        LocalDateTime dateTime = getDataAtualizacao();
+        String formattedDateTime= dateTime.format(formatter);
+        return formattedDateTime;
+    }
 
     @PrePersist
     protected void onCreate() {
@@ -219,7 +230,6 @@ public class Solicitacao {
                 ", situacao='" + situacao + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", cadeirante='" + cadeirante + '\'' +
-                ", status='" + status + '\'' +
                 ", peso=" + peso +
                 ", orgao='" + orgao + '\'' +
                 ", dataNascimento=" + dataNascimento +
@@ -229,6 +239,7 @@ public class Solicitacao {
                 ", endereco=" + endereco +
                 ", status=" + status +
                 ", acompanhantes=" + acompanhantes +
+                ", dataAtualizacao=" + dataAtualizacao +
                 '}';
     }
 }

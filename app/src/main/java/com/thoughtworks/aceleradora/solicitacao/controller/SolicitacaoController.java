@@ -60,6 +60,7 @@ public class SolicitacaoController {
         model.addAttribute("formatarDataHora", DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm"));
         model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAll());
 
+
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
 
