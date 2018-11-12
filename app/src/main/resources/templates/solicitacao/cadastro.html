@@ -28,7 +28,7 @@
                     <div class="field">
                         <div class="control">
                             <span>*Nome Completo:</span>
-                            <input class="input input-fancy" th:field="*{nome}" type="text" id="nome">
+                            <input class="input input-fancy" th:field="*{nome}" type="text" id="nome" required oninvalid="requiredInput(this)" oninput="requiredInput(this)">
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,8 @@
                             <span>*Data de nascimento:</span>
                             <input id="dataNascimento" placeholder="Clique para selecionar uma data" autocomplete="off"
                                    type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataNascimento}"
-                                   onkeypress="return false" autocomplete="off">
+                                    autocomplete="off"
+                                   onkeypress="return false" required oninvalid="requiredInput(this)" oninput="requiredInput(this)">
                         </div>
                     </div>
                 </div>
@@ -71,7 +72,7 @@
                     <div class="field">
                         <div class="control">
                             <span class="display-none">Informe o peso:</span>
-                            <input class="input input-fancy display-none" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso" value="0">
+                            <input class="input input-fancy display-none" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso" value="0" required oninvalid="requiredInput(this)" oninput="requiredInput(this)">
                         </div>
                     </div>
                 </div>
@@ -91,33 +92,31 @@
                     </div>
                 </div>
                 <div class="columns column">
-                        <div class="column">
-                            <div class="field">
-                                <div class="control">
-                                    <span>Data do transplante:</span>
-                                    <input id="dataTransplante" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                           type="text" class="input input-fancy datepicker-futuro" th:field="*{dataTransplante}"
-                                           onkeypress="return false;">
-                                </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Data do transplante:</span>
+                                <input id="dataTransplante" placeholder="Clique para selecionar uma data" autocomplete="off"
+                                       type="text" class="input input-fancy datepicker-futuro" th:field="*{dataTransplante}"
+                                       onkeypress="return false;">
                             </div>
                         </div>
-                        <div class="column">
-                            <p>*Órgão:</p>
-                            <div class = "control">
-                                <div class="select">
-                                    <select name="orgao">
-                                        <option>Selecione o órgão</option>
-                                        <option th:value="'coracao'" th:text="Coração"></option>
-                                        <option th:value="'figado'" th:text="Fígado"></option>
-                                        <option th:value="'medula'" th:text="Medula"></option>
-                                        <option th:value="'pancreas'" th:text="Pâncreas"></option>
-                                        <option th:value="'pulmao'" th:text="Pulmão"></option>
-                                        <option th:value="'rim'" th:text="Rins"></option>
-                                        <option th:value="'tecidos'" th:text="Tecidos"></option>
-                                    </select>
-                                </div>
+                    </div>
+                    <div class="column">
+                        <p>*Órgão:</p>
+                        <div class = "control">
+                            <div class="select">
+                                <select name="orgao">
+                                    <option disabled selected>Selecione o órgão</option>
+                                    <option th:value="'coracao'" th:text="Coração"></option>
+                                    <option th:value="'figado'" th:text="Fígado"></option>
+                                    <option th:value="'medula'" th:text="Medula"></option>
+                                    <option th:value="'pancreas'" th:text="Pâncreas"></option>
+                                    <option th:value="'pulmao'" th:text="Pulmão"></option>
+                                    <option th:value="'rim'" th:text="Rins"></option>
+                                    <option th:value="'tecidos'" th:text="Tecidos"></option>
+                                </select>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -127,7 +126,7 @@
                             <span>*Data de entrada requerida:</span>
                             <input id="dataEntrada" placeholder="Clique para selecionar uma data" autocomplete="off"
                                    type="text" class="input input-fancy datepicker-futuro" th:field="*{dataEntrada}"
-                                   onkeypress="return false;">
+                                   onkeypress="return false;" required oninvalid="requiredInput(this)" oninput="requiredInput(this)">
                         </div>
                     </div>
                 </div>
@@ -244,9 +243,12 @@
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
+        </form>
     </div>
+    </div>
+
+
 </main>
 </body>
 </html>
