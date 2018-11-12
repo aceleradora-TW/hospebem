@@ -85,10 +85,8 @@ public class SolicitacaoController {
 
     @PostMapping("/{id}/editar")
     public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao){
-        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+        Solicitacao solicitacaoAtu = solicitacaoRepository.getOne(id);
 
-        if(solicitacaoOptional.isPresent()){
-            Solicitacao solicitacaoAtu = solicitacaoOptional.get();
             solicitacaoAtu.setNome(solicitacao.getNome());
             solicitacaoAtu.setTelefone(solicitacao.getTelefone());
             solicitacaoAtu.setEndereco(solicitacao.getEndereco());
@@ -98,10 +96,8 @@ public class SolicitacaoController {
             solicitacaoAtu.setDataNascimento(solicitacao.getDataNascimento());
             solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
 
-             solicitacaoRepository.save(solicitacaoAtu);
+            solicitacaoRepository.save(solicitacaoAtu);
             return "redirect:/solicitacao/hospital/lista";
-        }
-        return "404";
     }
 
     @GetMapping("/{id}/excluir")
