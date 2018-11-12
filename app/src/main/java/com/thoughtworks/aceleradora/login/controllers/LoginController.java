@@ -31,16 +31,16 @@ public class LoginController {
     }
 
     @GetMapping(value = "/registrar")
-    public String registrar(Model model){
+    public String registrar(Model model) {
         model.addAttribute("formUsuario", new Usuario());
         return "registrarUsuario/registrar";
     }
 
     @PostMapping(value = "/registrar")
-    public String registrar(@ModelAttribute("formUsuario") Usuario usuario, BindingResult bindingResult){
+    public String registrar(@ModelAttribute("formUsuario") Usuario usuario, BindingResult bindingResult) {
         usuarioValidador.validate(usuario, bindingResult);
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "registrarUsuario/registrar";
         }
 
@@ -50,17 +50,19 @@ public class LoginController {
     }
 
     @GetMapping(value = "/login")
-    public String login(){
+    public String login() {
         return "login/login";
     }
 
+
+
     @GetMapping(value = "/bemvindo")
-    public String bemVindo(){
+    public String bemVindo(@ModelAttribute Usuario usuario) {
         return "bemvindo/bemvindo";
     }
 
     @GetMapping("/logout")
-    public String getLogoutPage(HttpServletRequest request, HttpServletResponse response){
+    public String getLogoutPage(HttpServletRequest request, HttpServletResponse response) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null)
@@ -68,4 +70,5 @@ public class LoginController {
 
         return "redirect:/login";
     }
+
 }

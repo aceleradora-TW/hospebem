@@ -75,9 +75,14 @@ button{
 }
 
 .navbar {
+<<<<<<< 04b8ae1db1955eba6f7d63469b49d6113422fa0d
     background-color: rgba(56, 124, 43,1);
     position: relative;
     width:100%;
+=======
+    background-color: rgba(56, 124, 43, 1);
+    size: 100%;
+>>>>>>> arruma bug peso
 }
 .navbar-dropdown{
     background-color: rgba(56, 124, 43, 1);
