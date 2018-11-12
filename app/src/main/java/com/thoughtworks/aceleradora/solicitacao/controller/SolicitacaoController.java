@@ -87,17 +87,17 @@ public class SolicitacaoController {
     public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao){
         Solicitacao solicitacaoAtu = solicitacaoRepository.getOne(id);
 
-            solicitacaoAtu.setNome(solicitacao.getNome());
-            solicitacaoAtu.setTelefone(solicitacao.getTelefone());
-            solicitacaoAtu.setEndereco(solicitacao.getEndereco());
-            solicitacaoAtu.setSituacao(solicitacao.getSituacao());
-            solicitacaoAtu.setGenero(solicitacao.getGenero());
-            solicitacaoAtu.setPeso((Float) solicitacao.getPeso());
-            solicitacaoAtu.setDataNascimento(solicitacao.getDataNascimento());
-            solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
+        solicitacaoAtu.setNome(solicitacao.getNome());
+        solicitacaoAtu.setTelefone(solicitacao.getTelefone());
+        solicitacaoAtu.setEndereco(solicitacao.getEndereco());
+        solicitacaoAtu.setSituacao(solicitacao.getSituacao());
+        solicitacaoAtu.setGenero(solicitacao.getGenero());
+        solicitacaoAtu.setPeso((Float) solicitacao.getPeso());
+        solicitacaoAtu.setDataNascimento(solicitacao.getDataNascimento());
+        solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
 
-            solicitacaoRepository.save(solicitacaoAtu);
-            return "redirect:/solicitacao/hospital/lista";
+        solicitacaoRepository.save(solicitacaoAtu);
+        return "redirect:/solicitacao/hospital/lista";
     }
 
     @GetMapping("/{id}/excluir")
