@@ -94,12 +94,12 @@ public class SolicitacaoController {
             solicitacaoAtu.setEndereco(solicitacao.getEndereco());
             solicitacaoAtu.setSituacao(solicitacao.getSituacao());
             solicitacaoAtu.setGenero(solicitacao.getGenero());
-            solicitacaoAtu.setPeso((Float)solicitacao.getPeso());
+            solicitacaoAtu.setPeso((Float) solicitacao.getPeso());
             solicitacaoAtu.setDataNascimento(solicitacao.getDataNascimento());
             solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
 
              solicitacaoRepository.save(solicitacaoAtu);
-            return "redirect:/solicitacao/listagens/listaSolicitacaoHospital";
+            return "redirect:/solicitacao/hospital/lista";
         }
         return "404";
     }
