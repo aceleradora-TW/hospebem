@@ -27,7 +27,7 @@ public class SolicitacaoController {
     }
 
     @GetMapping("/cadastro")
-    public String formularioCadastro(Solicitacao solicitacao, Model model) {
+    public String formularioCadastro(Model model) {
         Solicitacao novaSolicitacao = new Solicitacao();
         novaSolicitacao.setAcompanhantes(Arrays.asList(new Acompanhante(), new Acompanhante()));
         model.addAttribute("solicitacao", novaSolicitacao);
@@ -40,7 +40,7 @@ public class SolicitacaoController {
 
         solicitacaoRepository.save(solicitacao);
 
-        return "redirect:/";
+        return "redirect:/solicitacao/hospital/lista";
     }
 
     @GetMapping("/casa/lista")
