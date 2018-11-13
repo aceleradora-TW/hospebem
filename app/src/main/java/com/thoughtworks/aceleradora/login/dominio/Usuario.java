@@ -95,17 +95,4 @@ public class Usuario {
     public void setHospitalReferencia(String hospitalReferencia) {
         this.hospitalReferencia = hospitalReferencia;
     }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "nome='" + nome + '\'' +
-                ", senha='" + senha + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", nomeAssistente='" + nomeAssistente + '\'' +
-                ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", hospitalReferencia='" + hospitalReferencia + '\'' +
-                '}';
-    }
 }

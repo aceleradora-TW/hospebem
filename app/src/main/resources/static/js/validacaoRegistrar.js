@@ -1,5 +1,5 @@
 
-validaRegistrar = (evento) => {
+const validaRegistrar = (evento) => {
     if (validaTipoUsuario()){
         if (camposAssistente()) {
             if (validaUsuarioSenha()) {
@@ -12,7 +12,7 @@ validaRegistrar = (evento) => {
     return false
 }
 
-validaTipoUsuario = () => {
+const validaTipoUsuario = () => {
     let adminRadio = document.getElementById("admin")
     let assistenteRadio = document.getElementById("assistente")
     if (adminRadio.checked === false && assistenteRadio.checked === false) {
@@ -22,18 +22,18 @@ validaTipoUsuario = () => {
     return true
 }
 
-validaUsuarioSenha = () => {
+const validaUsuarioSenha = () => {
     let usuario = document.getElementById("first_name")
     let senha   = document.getElementById("password")
 
     if (usuario.value === '') {
-        ValidaCampoVazio(usuario)
+        validaCampoVazio(usuario)
         return false
     } else
         usuario.classList.add('input-fancy')
 
     if (senha.value === '') {
-        ValidaCampoVazio(senha)
+        validaCampoVazio(senha)
         return false
 
     } else
@@ -42,7 +42,7 @@ validaUsuarioSenha = () => {
     return true
 }
 
-registraAssistente = () => {
+const registraAssistente = () => {
     let esconderCampos = document.querySelector('.div-escondida')
     let radioNome = document.getElementById('assistente')
     let radioAdmin = document.getElementById('admin')
@@ -57,53 +57,48 @@ registraAssistente = () => {
         if (this.checked === true){
             esconderCampos.classList.add('display-none')
         }
-    });
+    })
     }
 
- ValidaCampoVazio = (item) => {
+const validaCampoVazio = (item) => {
     alert('Preencha o campo obrigatorio!')
     item.classList.remove('input-fancy')
     item.classList.add('is-danger')
     item.focus()
 }
 
-
-camposAssistente = () => {
+const camposAssistente = () => {
     let nomeAssis = document.getElementById('nomeAss')
     let emailAssis = document.getElementById('emailAss')
-    let hospRef = document.getElementById('hospReferencia')
-    let telAssis = document.getElementById('teleAssistente')
+    let hospitalReferencia = document.getElementById('hospReferencia')
+    let telefoneAssistente = document.getElementById('teleAssistente')
     let assistenteRadio = document.getElementById('assistente')
 
     if (assistenteRadio.checked === true) {
         if (nomeAssis.value === '') {
-            ValidaCampoVazio(nomeAssis)
+            validaCampoVazio(nomeAssis)
             return false
-
         } else
             nomeAssis.classList.add('input-fancy')
 
         if (emailAssis.value === '') {
-            ValidaCampoVazio(emailAssis)
+            validaCampoVazio(emailAssis)
             return false
         } else
             emailAssis.classList.add('input-fancy')
 
-        if (hospRef.value === '') {
-            ValidaCampoVazio(hospRef)
+        if (hospitalReferencia.value === '') {
+            validaCampoVazio(hospitalReferencia)
             return false
         } else
-            hospRef.classList.add('input-fancy')
+            hospitalReferencia.classList.add('input-fancy')
 
-        if (telAssis.value === '') {
-            ValidaCampoVazio(telAssis)
+        if (telefoneAssistente.value === '') {
+            validaCampoVazio(telefoneAssistente)
             return false
-
         } else
-            telAssis.classList.add('input-fancy')
+            telefoneAssistente.classList.add('input-fancy')
     }
-
-
     return true
 }
 
