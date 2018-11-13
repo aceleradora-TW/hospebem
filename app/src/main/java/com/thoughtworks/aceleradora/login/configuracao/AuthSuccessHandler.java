@@ -17,6 +17,10 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
 
     private RedirectStrategy redirectStrategy;
 
+    public AuthSuccessHandler(RedirectStrategy redirectStrategy) {
+        this.redirectStrategy = redirectStrategy;
+    }
+
     public AuthSuccessHandler() {
         this.redirectStrategy = new DefaultRedirectStrategy();
     }
