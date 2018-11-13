@@ -14,7 +14,8 @@ public class Usuario {
     @Column(unique = true)
     private String nome;
     private String senha;
-    private String tipo;
+    @Enumerated(EnumType.STRING)
+    private Cargo cargo;
     @Column(name ="nome_assistente")
     private String nomeAssistente;
     private String email;
@@ -26,10 +27,10 @@ public class Usuario {
 
     }
 
-    public Usuario(String nome, String senha, String tipo, String nomeAssistente, String email, String telefone, String hospitalReferencia) {
+    public Usuario(String nome, String senha, Cargo cargo, String nomeAssistente, String email, String telefone, String hospitalReferencia) {
         this.nome = nome;
         this.senha = senha;
-        this.tipo = tipo;
+        this.cargo = cargo;
         this.nomeAssistente = nomeAssistente;
         this.email = email;
         this.telefone = telefone;
@@ -56,12 +57,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getTipo() {
-        return tipo;
+    public Cargo getCargo() {
+        return cargo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
     }
 
     public String getNomeAssistente() {

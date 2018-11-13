@@ -1,62 +1,16 @@
 <!DOCTYPE html>
-<html  xmlns:sec="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html th:replace="~{layout :: layout(~{::title}, ~{::main})}" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hospebem - Inicio </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-
-
-    <link rel="stylesheet" href="css/style.css">
-
+</head>
 <body>
 
-
-<header>
-
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="/">
-                    <p class="titulo-nav">HospeBem</p>
-                </a>
-
-                <a role="button" class="navbar-burger burger " aria-label="menu" aria-expanded="false" ata-target="navbarBasicExample" onclick="menu()">
-                    <span >                    </span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-item menu">
-                            Menu
-                        </a>
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item" th:href="@{/solicitacao/cadastro}">
-                                Cadastro solicitação
-                            </a>
-                            <a class="navbar-item" th:href="@{/solicitacao/hospital/lista}">
-                                Lista de solicitações hospital
-                            </a>
-                            <a class="navbar-item" th:href="@{/}">Inicio</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-
-</header>
 <main class="espaco-linhas">
     <div class="agrupadora has-text-centered">
 
         <h1 class="title is-1 espaco-titulo">Hospebem</h1>
-        <p>Sistema de agendamento entre hospitais e a pousada <a href="https://www.viavida.org.br/" target="_blank">VIAVIDA</a>.</p>
+        <p>Sistema de agendamento entre hospitais e pousada <a href="https://www.viavida.org.br/" target="_blank">ViaVida</a></p>
 
         <div class="columns">
             <img src="/img/hospebem.png" alt="Logo viaVida">
@@ -68,35 +22,43 @@
             </div>
         </div>
 
-        <div sec:authorize="!isAuthenticated()">
-            <a href="/login"><div>Logar</div></a>
-            <a href="/registrar"><div>Registrar</div></a>
+        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+            Div que somente o administrador pode ver!
+            <a th:href="@{/admin}">Ver página de admin!</a> <br>
+            <a th:href="@{/assistente}">Tentar ver página de assistente e falhar miseravelmente</a>
         </div>
+
+        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+            Div que somente a assistente social pode ver!
+            <a th:href="@{/assistente}">Ver página de assistente!</a> <br>
+            <a th:href="@{/admin}">Tentar ver página de admin e falhar miseravelmente</a>
+        </div>
+
+        <div sec:authorize="!isAuthenticated()">
+            <a href="/login">
+                <div>Logar</div>
+            </a>
+            <a href="/registrar">
+                <div>Registrar</div>
+            </a>
+    </div>
         <div sec:authorize="isAuthenticated()">
             <form action="#" th:action="@{/logout}" method="post">
                 <input type="submit" class="button is-medium is-outlined" value="Deslogar">
             </form>
         </div>
-
     </div>
 </main>
 
-<footer class="footer">
-    <div class="content has-text-centered">
-        <p> HospeBem © 2018</p>
-    </div>
-</footer>
-</body>
     <script>
-    function menu() {
+        (function () {
         var burger = document.querySelector('.burger');
-        var nav = document.querySelector('#'+burger.dataset.target);
-        burger.addEventListener('click', function(){
+        let nav = document.querySelector('#' + burger.dataset.target);
+        burger.addEventListener('click', function () {
             burger.classList.toggle('is-active');
             nav.classList.toggle('is-hoverable');
             return burger;
         });
     };
-</script>
-
+    </script>
 </html>

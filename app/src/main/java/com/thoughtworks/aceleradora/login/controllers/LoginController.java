@@ -1,6 +1,8 @@
 package com.thoughtworks.aceleradora.login.controllers;
 
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import com.thoughtworks.aceleradora.login.dominio.Cargo;
 import com.thoughtworks.aceleradora.login.dominio.Usuario;
 import com.thoughtworks.aceleradora.login.servicos.UsuarioService;
 import com.thoughtworks.aceleradora.login.validador.UsuarioValidador;
@@ -33,6 +35,8 @@ public class LoginController {
     @GetMapping(value = "/registrar")
     public String registrar(Model model) {
         model.addAttribute("formUsuario", new Usuario());
+        model.addAttribute("cargos", Cargo.values());
+
         return "registrarUsuario/registrar";
     }
 
@@ -58,6 +62,15 @@ public class LoginController {
     @GetMapping(value = "/bemvindo")
     public String bemVindo(@ModelAttribute Usuario usuario) {
         return "bemvindo/bemvindo";
+    }
+
+    @GetMapping(value = "/admin")
+    public String paginaAdmin() {
+        return "admin";
+    }
+    @GetMapping(value = "/assistente")
+    public String paginaAssistente() {
+        return "assistente";
     }
 
     @GetMapping("/logout")

@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.login.configuracao;
 
+import com.thoughtworks.aceleradora.login.dominio.Cargo;
 import com.thoughtworks.aceleradora.login.servicos.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +30,8 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/registrar", "/js/**", "/css/**")
                 .permitAll()
+                .antMatchers("/admin").hasAuthority(Cargo.ADMINISTRADOR.getNome())
+                .antMatchers("/assistente").hasAuthority(Cargo.ASSISTENTE_SOCIAL.getNome())
                 .anyRequest()
                 .authenticated()
                 .and()
