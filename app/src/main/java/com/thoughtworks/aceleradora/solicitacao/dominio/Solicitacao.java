@@ -32,7 +32,7 @@ public class Solicitacao {
     private String status="Pendente";
 
 
-    private float peso;
+    private Float peso;
 
     private String orgao;
 
@@ -74,7 +74,8 @@ public class Solicitacao {
                        LocalDate dataTransplante,
                        LocalDateTime dataAtualizacao,
                        Endereco endereco,
-                       List<Acompanhante> acompanhantes)
+                       List<Acompanhante> acompanhantes,
+                       String orgao)
     {
         this.nome = nome;
         this.genero = genero;
@@ -137,11 +138,11 @@ public class Solicitacao {
         this.cadeirante = cadeirante;
     }
 
-    public float getPeso() {
+    public Float getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(Float peso) {
         this.peso = peso;
     }
 

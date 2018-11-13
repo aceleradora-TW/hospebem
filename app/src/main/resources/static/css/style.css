@@ -7,7 +7,7 @@ body {
     margin: 70px;
 }
 
-.input.input-fancy{
+.input.input-fancy {
     border-color: rgba(56, 124, 43, 1);
 }
 
@@ -15,7 +15,10 @@ button{
     align-items: center;
     background-color: rgba(56, 124, 43, 1);
     text-decoration-color: rgba(222, 222, 222, 1);
-);
+}
+
+.input-radio {
+    border: 1px solid red;
 }
 
 .campo-obrigatorio {
@@ -66,6 +69,11 @@ button{
     bottom:0;
     width:100%;
 }
+
+.margin-invisible {
+    border-color: transparent;
+}
+
 .navbar {
     background-color: rgba(56, 124, 43,1);
     position: relative;
@@ -140,7 +148,6 @@ button{
 }
 
 .select select {
-    height: 4vh;
     width: 100%;
     border-color: rgba(56, 124, 43, 1);
 }

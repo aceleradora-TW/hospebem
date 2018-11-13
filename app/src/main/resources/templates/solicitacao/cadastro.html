@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <title>Formulario</title>
+
+
 </head>
 
 <body>
@@ -27,20 +28,20 @@
                     <div class="field">
                         <div class="control">
                             <span>*Nome Completo:</span>
-                            <input class="input input-fancy" th:field="*{nome}" type="text" id="nome">
+                            <input class="input input-fancy" th:field="*{nome}" type="text" id="nome" >
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="field">
-                        <div class="control">
+                        <div class="control input-radio margin-invisible">
                             <label>
                                 <span>*</span>
-                                <input th:field="*{genero}" type="radio" value="F" id="genero1">
+                                <input th:field="*{genero}" type="radio" value="Feminino" id="genero1">
                                 <span>Feminino</span>
                             </label>
                             <label>
-                                <input th:field="*{genero}" type="radio" value="M" id="genero2">
+                                <input th:field="*{genero}" type="radio" value="Masculino" id="genero2">
                                 <span>Masculino</span>
                             </label>
                         </div>
@@ -50,9 +51,9 @@
                     <div class="field">
                         <div class="control">
                             <span>*Data de nascimento:</span>
-                            <input id="dataNascimento" placeholder="Clique para selecionar uma data"
+                            <input id="dataNascimento" placeholder="Clique para selecionar uma data" autocomplete="off"
                                    type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataNascimento}"
-                                   onkeypress="return false" autocomplete="off">
+                                   onkeypress="return false" >
                         </div>
                     </div>
                 </div>
@@ -70,20 +71,20 @@
                     <div class="field">
                         <div class="control">
                             <span class="display-none">Informe o peso:</span>
-                            <input class="input input-fancy display-none" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso">
+                            <input class="input input-fancy display-none" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso" value="0" >
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="field">
-                        <div class="control">
+                        <div class="control input-radio situacao margin-invisible">
                             <span>*Situação do Hóspede:</span>
                             <label>
-                                <input th:field="*{situacao}" type="radio" value="pre" id="situacao.pre">
+                                <input th:field="*{situacao}" type="radio" value="pre-transplante" id="situacao.pre" >
                                 <span>Pré-transplante</span>
                             </label>
                             <label>
-                                <input th:field="*{situacao}" type="radio" value="pos" id="situacao.pos">
+                                <input th:field="*{situacao}" type="radio" value="pos-transplante" id="situacao.pos" >
                                 <span>Pós-transplante</span>
                             </label>
                         </div>
@@ -94,25 +95,27 @@
                         <div class="field">
                             <div class="control">
                                 <span>Data do transplante:</span>
-                                <input id="dataTransplante" placeholder="Clique para selecionar uma data"
+                                <input id="dataTransplante" placeholder="Clique para selecionar uma data" autocomplete="off"
                                        type="text" class="input input-fancy datepicker-futuro" th:field="*{dataTransplante}"
                                        onkeypress="return false;">
                             </div>
                         </div>
                     </div>
-                    <div class="column">
+                    <div class="column input-radio orgao margin-invisible">
                         <p>*Órgão:</p>
-                        <div class="select">
-                            <select name="orgao">
-                                <option>Selecione o órgão</option>
-                                <option th:value="'coracao'" th:text="Coração"></option>
-                                <option th:value="'figado'" th:text="Fígado"></option>
-                                <option th:value="'medula'" th:text="Medula"></option>
-                                <option th:value="'pancreas'" th:text="Pâncreas"></option>
-                                <option th:value="'pulmao'" th:text="Pulmão"></option>
-                                <option th:value="'rim'" th:text="Rins"></option>
-                                <option th:value="'tecidos'" th:text="Tecidos"></option>
-                            </select>
+                        <div class = "control">
+                            <div class="select">
+                                <select name="orgao" id="select">
+                                    <option disabled selected value="selecione">Selecione o órgão</option>
+                                    <option th:value="'coracao'" th:text="Coração"></option>
+                                    <option th:value="'figado'" th:text="Fígado"></option>
+                                    <option th:value="'medula'" th:text="Medula"></option>
+                                    <option th:value="'pancreas'" th:text="Pâncreas"></option>
+                                    <option th:value="'pulmao'" th:text="Pulmão"></option>
+                                    <option th:value="'rim'" th:text="Rins"></option>
+                                    <option th:value="'tecidos'" th:text="Tecidos"></option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,9 +123,9 @@
                     <div class="field">
                         <div class="control">
                             <span>*Data de entrada requerida:</span>
-                            <input id="dataEntrada" placeholder="Clique para selecionar uma data"
+                            <input id="dataEntrada" placeholder="Clique para selecionar uma data" autocomplete="off"
                                    type="text" class="input input-fancy datepicker-futuro" th:field="*{dataEntrada}"
-                                   onkeypress="return false;">
+                                   onkeypress="return false;" >
                         </div>
                     </div>
                 </div>
@@ -130,7 +133,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Data de saída (previsão):</span>
-                            <input id="dataSaida" placeholder="Clique para selecionar uma data"
+                            <input id="dataSaida" placeholder="Clique para selecionar uma data" autocomplete="off"
                                    type="text" class="input input-fancy datepicker-futuro" th:field="*{dataSaida}"
                                    onkeypress="return false;">
                         </div>
@@ -202,7 +205,7 @@
                         </div>
                     </div>
 
-                    <div class="column">
+                    <div class="column label-acomp margin-invisible input-radio">
                         <div class="field">
                             <div class="control">
                                 <label>
@@ -221,7 +224,7 @@
                         <div class="field">
                             <div class="control">
                                 <p>Data de nascimento <span th:text="${acompIndex.index + 1}"></span>:
-                                    <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo"
+                                    <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo" autocomplete="off"
                                            th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}"
                                            onkeypress="return false;">
                                 </p>
@@ -235,12 +238,16 @@
                         <div class="control">
                             <button class="button verde-viavida" value="Enviar Solicitação" type="submit">Enviar Solicitação</button>
                             <input class="button" type="reset" value="Limpar Formulário">
+                            <a class="button is-danger is-outlined" type="button" href="/">Cancelar</a>
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
+        </form>
     </div>
+    </div>
+
+
 </main>
 </body>
 </html>
