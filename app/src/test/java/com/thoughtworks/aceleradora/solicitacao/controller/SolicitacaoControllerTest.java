@@ -62,7 +62,7 @@ public class SolicitacaoControllerTest {
                 new Acompanhante("Amanda", "F", dataNascimento, soli),
                 new Acompanhante("Aline","F", dataNascimento, soli));
 
-        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", (float) 75, dataNascimento, dataEntrada, dataSaida, dataTransplante, end, "pendente", acompanhantes, "coracao");
+        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", "pendente", 12, dataNascimento, dataEntrada, dataSaida, dataTransplante, dataAtt, end, acompanhantes, "coracao");
 
         String paginaRenderizada = controller.salvaSolicitacao(solicitacao);
         verify(repositorio).save(solicitacao);

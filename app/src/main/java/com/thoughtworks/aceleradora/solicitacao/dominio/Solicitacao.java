@@ -74,7 +74,8 @@ public class Solicitacao {
                        LocalDate dataTransplante,
                        LocalDateTime dataAtualizacao,
                        Endereco endereco,
-                       List<Acompanhante> acompanhantes)
+                       List<Acompanhante> acompanhantes,
+                       String orgao)
     {
         this.nome = nome;
         this.genero = genero;
