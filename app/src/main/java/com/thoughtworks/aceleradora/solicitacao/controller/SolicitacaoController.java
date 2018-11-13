@@ -121,7 +121,7 @@ public class SolicitacaoController {
         solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
 
         solicitacaoRepository.save(solicitacaoAtu);
-        return "redirect:/solicitacao/hospital/lista";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/excluir")
