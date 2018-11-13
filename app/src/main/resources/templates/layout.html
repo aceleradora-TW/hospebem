@@ -8,7 +8,8 @@
 
     <title th:replace="${title}"></title>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <link rel="stylesheet" href="https://unpkg.com/pikaday@1.7.0/css/pikaday.css">
     <link href="/css/style.css" rel="stylesheet">
@@ -20,7 +21,50 @@
     <script src="/js/validaCadastroSolicitacao.js"></script>
 </head>
 
-<body th:replace="${content}">
+<body>
+
+    <header>
+        <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <p class="titulo-nav">HospeBem</p>
+                </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                   data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-item menu">
+                            Menu
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" th:href="@{/solicitacao/cadastro}">
+                                Cadastro solicitação
+                            </a>
+                            <a class="navbar-item" th:href="@{/solicitacao/hospital/lista}">
+                                Lista de solicitações hospital
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+
+    <main th:replace="${content}"></main>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p> HospeBem © 2018</p>
+        </div>
+    </footer>
 
 </body>
 
@@ -34,7 +78,7 @@
 
         let pesoInput = document.getElementById('peso');
 
-        if(pesoInput){
+        if (pesoInput) {
             pesoInput.addEventListener('input', pesoCadeirante());
         }
     });

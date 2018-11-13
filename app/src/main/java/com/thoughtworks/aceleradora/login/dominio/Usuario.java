@@ -14,16 +14,17 @@ public class Usuario {
 
     private String senha;
 
-    private String tipo;
+    @Enumerated(EnumType.STRING)
+    private Cargo cargo;
 
     public Usuario(){
 
     }
 
-    public Usuario(String nome, String senha, String tipo){
+    public Usuario(String nome, String senha, Cargo cargo){
         this.nome = nome;
         this.senha = senha;
-        this.tipo = tipo;
+        this.cargo = cargo;
     }
 
     public void setId(Long id) {
@@ -46,7 +47,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getTipo() { return tipo; }
+    public Cargo getCargo() {
+        return cargo;
+    }
 
-    public void setTipo(String tipo) { this.tipo = tipo; }
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
 }
