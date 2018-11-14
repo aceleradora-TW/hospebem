@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html th:replace="~{layoutSemMenu :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hospebem Registrar</title>
+    <title>HospeBem Registrar</title>
 </head>
-
 <body>
 <div th:include="@{./partes/cabecalhoPadrao}"/>
 <main>
@@ -15,10 +14,9 @@
             </div>
 
             <div class="columns has-text-left">
-                <div class = "column is-half">
-                    <label>Tipo:</label>
-                    <input id="admin" type="radio" name="tipo" th:field="*{tipo}" value="admin"> Administrador
-                    <input id="assistente" type="radio" name="tipo" th:field="*{tipo}" value="assistente-hospital"> Assistente social
+                <div class = "column is-half" >
+                    <label th:field="*{cargo}" >Tipo:</label>
+                    <input th:id="${cargo}" th:each="cargo : ${cargos}" type="radio" name="tipo" th:value="${cargo}" th:text="${cargo.nome}">
                 </div>
             </div>
             <div class="display-none div-escondida">
@@ -67,18 +65,22 @@
                     <input class="input input-fancy" th:field="*{senha}" id="password" type="password" name="senha">
                 </div>
             </div>
-            <input class="button is-medium verde-viavida"type="submit" value="Enviar">
-
-            <div class="columns has-text-left">
-                <div class="column is-half">
-                    <label>Tipo:</label>
-                    <select th:field="*{cargo}">
-                        <option th:each="cargo : ${cargos}" th:value="${cargo}" th:text="${cargo.nome}"></option>
-                    </select>
-                </div>
-            </div>
+            <input class="button is-medium verde-viavida" type="submit" value="Enviar">
         </form>
     </div>
 </main>
 </body>
 </html>
+
+
+
+<!--
+
+<div class="columns has-text-left">
+    <div class="column is-half">
+        <label>Tipo:</label>
+        <select th:field="*{cargo}">
+            <option th:each="cargo : ${cargos}" th:value="${cargo}" th:text="${cargo.nome}"></option>
+        </select>
+    </div>
+</div>-->
