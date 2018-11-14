@@ -72,10 +72,10 @@ public class SolicitacaoController {
 
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("solicitante", solicitacao);
+            model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            model.addAttribute("solicitacao", solicitacao);
 
-            return "solicitacao/listaHospede/dadosSolicitante";
+            return "solicitacao/dadosSolicitacao";
         }
         return "404";
     }

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Hospebem - Dados Paciente</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
-    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div th:include="@{/partes/cabecalho}"/>
+
+<div th:include="@{./partes/cabecalhoPadrao}"/>
 <main>
     <div class="card-content valign center has-text-centered">
         <div class="columns ">
@@ -222,6 +219,51 @@
                             </div>
                         </div>
                     </ul>
+                </div>
+                <h2 class="title is-2">Dados Assistente Social</h2>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Nome</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="rua" th:value="${solicitacao.endereco.rua}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Email</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="numero" th:value="${solicitacao.endereco.numero}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Telefone</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="cidade" th:value="${solicitacao.endereco.cidade}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Hospital</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input is-info" type="text" name="bairro" th:value="${solicitacao.endereco.bairro}" disabled>
+                        </div>
+                    </div>
                 </div>
             </ul>
         </div>
