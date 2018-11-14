@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layoutSemMenu :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Login</title>
 </head>
 
 <body>
-    <div th:include="@{./partes/cabecalhoPadrao}"/>
 
-    <main>
-        <div class="container card-content valign center has-text-centered">
-            <form th:action="@{/login}" method="POST">
-                <h1 class="title is-1">HospeBem</h1>
+<main>
+    <div class="container card-content valign center has-text-centered">
+        <form th:action="@{/login}" method="POST" onsubmit="return validaLogin(event)">
+            <h1 class="title is-1">HospeBem</h1>
 
 
             <div th:if="${param.error}" class="">

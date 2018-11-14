@@ -9,19 +9,28 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private UserDetailsImpl userDetailsService;
+
+    @Autowired
+    public SecurityWebConfig(UserDetailsImpl userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new AuthSuccessHandler();
     }
 
     @Override
@@ -40,8 +49,8 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .usernameParameter("nome")
                     .passwordParameter("senha")
-                    .defaultSuccessUrl("/bemvindo")
-                    .and()
+                    .successHandler(authenticationSuccessHandler())
+                .and()
                 .logout()
                 .logoutSuccessUrl("/logout")
                 .clearAuthentication(true)

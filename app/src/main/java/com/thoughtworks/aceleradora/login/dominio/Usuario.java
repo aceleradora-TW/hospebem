@@ -13,7 +13,9 @@ public class Usuario {
 
     @Column(unique = true)
     private String nome;
+
     private String senha;
+
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
     @Column(name ="nome_assistente")

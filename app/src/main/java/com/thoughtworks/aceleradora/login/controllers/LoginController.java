@@ -68,9 +68,10 @@ public class LoginController {
     public String paginaAdmin() {
         return "admin";
     }
-    @GetMapping(value = "/assistente")
+
+    @GetMapping(value = "/listahospital")
     public String paginaAssistente() {
-        return "assistente";
+        return "/solicitacao/listagens/listaSolicitacaoHospital";
     }
 
     @GetMapping("/logout")

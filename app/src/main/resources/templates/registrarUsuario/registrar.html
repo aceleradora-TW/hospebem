@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layoutSemMenu :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Hospebem Registrar</title>
 </head>
+
 <body>
 <div th:include="@{./partes/cabecalhoPadrao}"/>
 <main>
@@ -67,6 +68,15 @@
                 </div>
             </div>
             <input class="button is-medium verde-viavida"type="submit" value="Enviar">
+
+            <div class="columns has-text-left">
+                <div class="column is-half">
+                    <label>Tipo:</label>
+                    <select th:field="*{cargo}">
+                        <option th:each="cargo : ${cargos}" th:value="${cargo}" th:text="${cargo.nome}"></option>
+                    </select>
+                </div>
+            </div>
         </form>
     </div>
 </main>
