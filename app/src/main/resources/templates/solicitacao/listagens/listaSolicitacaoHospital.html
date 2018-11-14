@@ -46,10 +46,24 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">
-                                        <button class="button is-danger" type="submit">Excluir</button>
-                                    </a>
+                                    <!--<a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">-->
+                                        <button class="button is-danger modal-button" type="submit">Excluir</button>
+                                    <!--</a>-->
                                 </td>
+                                <div class="modal">
+                                    <div class="modal-background"></div>
+                                    <div class="modal-card">
+                                        <section class="modal-card-body">
+                                            Tem certeza que deseja excluir a solicitação?
+                                        </section>
+                                        <footer class="modal-card-foot">
+                                            <a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">
+                                                <button class="button is-danger modal-button" type="submit">Confirmar</button>
+                                            </a>
+                                            <button class="button">Cancelar</button>
+                                        </footer>
+                                    </div>
+                                </div>
                             </tr>
                         </table>
                     </div>
@@ -58,4 +72,15 @@
         </div>
     </main>
 </body>
+
+<script type="text/javascript">
+    let botaoExcluir = document.querySelector('.modal-button')
+    let modal = document.querySelector('.modal')
+
+    botaoExcluir.addEventListener('change', () => {
+        modal.classList.add('is-active')
+    })
+
+</script>
+
 </html>
