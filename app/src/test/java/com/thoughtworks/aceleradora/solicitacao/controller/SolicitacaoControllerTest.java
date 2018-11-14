@@ -66,6 +66,7 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.salvaSolicitacao(solicitacao);
         verify(repositorio).save(solicitacao);
+
         assertThat(paginaRenderizada, equalTo("redirect:/solicitacao/hospital/lista"));
     }
 
