@@ -19,7 +19,7 @@ public class Usuario {
     private String nomeAssistente;
     private String email;
     private String telefone;
-    @Column(name="hospital_ref")
+    @Column(name="hospital_referencia")
     private String hospitalReferencia;
 
     public Usuario(){

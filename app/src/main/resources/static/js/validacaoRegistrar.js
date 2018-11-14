@@ -1,4 +1,3 @@
-
 const validaRegistrar = (evento) => {
     if (validaTipoUsuario()){
         if (camposAssistente()) {
@@ -68,24 +67,24 @@ const validaCampoVazio = (item) => {
 }
 
 const camposAssistente = () => {
-    let nomeAssis = document.getElementById('nomeAss')
-    let emailAssis = document.getElementById('emailAss')
-    let hospitalReferencia = document.getElementById('hospReferencia')
-    let telefoneAssistente = document.getElementById('teleAssistente')
+    let nomeAssistente = document.getElementById('nomeAssistente')
+    let emailAssistente = document.getElementById('emailDaAssistente')
+    let hospitalReferencia = document.getElementById('hospitalDeReferencia')
+    let telefoneAssistente = document.getElementById('telefoneAssistente')
     let assistenteRadio = document.getElementById('assistente')
 
     if (assistenteRadio.checked === true) {
-        if (nomeAssis.value === '') {
-            validaCampoVazio(nomeAssis)
+        if (nomeAssistente.value === '') {
+            validaCampoVazio(nomeAssistente)
             return false
         } else
-            nomeAssis.classList.add('input-fancy')
+            nomeAssistente.classList.add('input-fancy')
 
-        if (emailAssis.value === '') {
-            validaCampoVazio(emailAssis)
+        if (emailAssistente.value === '') {
+            validaCampoVazio(emailAssistente)
             return false
         } else
-            emailAssis.classList.add('input-fancy')
+            emailAssistente.classList.add('input-fancy')
 
         if (hospitalReferencia.value === '') {
             validaCampoVazio(hospitalReferencia)

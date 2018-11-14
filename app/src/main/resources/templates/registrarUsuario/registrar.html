@@ -7,25 +7,25 @@
 <div th:include="@{/partes/cabecalhoPadrao}"/>
 <main>
     <div class="container card-content valign center has-text-centered">
-    <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
+        <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
         <form action="" th:action="@{/registrar}" th:object="${formUsuario}" method="post" onsubmit="return validaRegistrar(event)" id="registraAss">
-        <div th:if="${#fields.hasAnyErrors()}">
-            <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
-        </div>
-
-        <div class="columns has-text-left">
-            <div class = "column is-half">
-                <label>Tipo:</label>
-                <input id="admin" type="radio" name="tipo" th:field="*{tipo}" value="admin"> Administrador
-                <input id="assistente" type="radio" name="tipo" th:field="*{tipo}" value="assistente-hospital"> Assistente social
+            <div th:if="${#fields.hasAnyErrors()}">
+                <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
             </div>
-        </div>
+
+            <div class="columns has-text-left">
+                <div class = "column is-half">
+                    <label>Tipo:</label>
+                    <input id="admin" type="radio" name="tipo" th:field="*{tipo}" value="admin"> Administrador
+                    <input id="assistente" type="radio" name="tipo" th:field="*{tipo}" value="assistente-hospital"> Assistente social
+                </div>
+            </div>
             <div class="display-none div-escondida">
                 <div class="columns has-text-left">
                     <div class="column is-half">
                         <div class="control">
-                            <span class="">*Informe o Nome da Assistente Social:</span>
-                            <input class="input input-fancy " th:field="*{nomeAssistente}" type="text" id="nomeAss">
+                            <span>*Informe o Nome da Assistente Social:</span>
+                            <input class="input input-fancy " th:field="*{nomeAssistente}" type="text" id="nomeAssistente">
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <div class="column is-half">
                         <div class="control">
                             <span id="emailAssistente">*Informe o E-mail da Assistente Social:</span>
-                            <input class="input input-fancy " th:field="*{email}" type="text" id="emailAss">
+                            <input class="input input-fancy " th:field="*{email}" type="text" id="emailDaAssistente">
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                     <div class="column is-half">
                         <div class="control">
                             <span id="hospitalReferencia">*Informe o hospital de Referência da Assistente Social:</span>
-                            <input class="input input-fancy " th:field="*{hospitalReferencia}" type="text" id="hospReferencia">
+                            <input class="input input-fancy " th:field="*{hospitalReferencia}" type="text" id="hospitalDeReferencia">
                         </div>
                     </div>
                 </div>
@@ -49,25 +49,25 @@
                     <div class="column is-half">
                         <div class="control">
                             <span id="telefoneAss">*Informe o Telefone da Assistente Social:</span>
-                            <input class="input input-fancy " th:field="*{telefone}" type="text" id="teleAssistente">
+                            <input class="input input-fancy " th:field="*{telefone}" type="text" id="telefoneAssistente">
                         </div>
                     </div>
                 </div>
             </div>
-        <div class="columns has-text-left">
-            <div class="column is-half">
-                    <label>Informe um usuário:</label>
+            <div class="columns has-text-left">
+                <div class="column is-half">
+                    <label>*Informe um usuário:</label>
                     <input class="input input-fancy" th:field="*{nome}" id = "first_name" type="text" name="nome">
+                </div>
             </div>
-        </div>
-        <div class="columns has-text-left">
-            <div class="column is-half">
-                    <label>Informe uma senha:</label>
+            <div class="columns has-text-left">
+                <div class="column is-half">
+                    <label>*Informe uma senha:</label>
                     <input class="input input-fancy" th:field="*{senha}" id="password" type="password" name="senha">
+                </div>
             </div>
-        </div>
-        <input class="button is-medium verde-viavida"type="submit" value="Enviar">
-    </form>
+            <input class="button is-medium verde-viavida"type="submit" value="Enviar">
+        </form>
     </div>
 </main>
 </body>

@@ -32,7 +32,7 @@ public class UsuarioServiceTest {
 
     @Test
     public void salvaUsuarioComSenhaCriptografada() {
-        Usuario usuario = new Usuario("Abc", "Segredo", "administrador", "Shirley","shirley@blabla","23232","sao lucas");
+        Usuario usuario = new Usuario("Abc", "Segredo", "administrador", "Maria","Maria@email","23232","sao lucas");
         when(encoder.encode("Segredo")).thenReturn("Shhhh");
 
         servico.salvar(usuario);
