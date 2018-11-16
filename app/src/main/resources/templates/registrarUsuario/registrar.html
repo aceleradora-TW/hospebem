@@ -4,7 +4,6 @@
     <title>HospeBem Registrar</title>
 </head>
 <body>
-<div th:include="@{./partes/cabecalhoPadrao}"/>
 <main>
     <div class="container card-content valign center has-text-centered">
         <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
@@ -16,7 +15,7 @@
             <div class="columns has-text-left">
                 <div class = "column is-half" >
                     <label th:field="*{cargo}" >Tipo:</label>
-                    <input th:id="${cargo}" th:each="cargo : ${cargos}" type="radio" name="tipo" th:value="${cargo}" th:text="${cargo.nome}">
+                    <input th:id="${cargo}" th:each="cargo : ${cargos}" type="radio" name="cargo" th:value="${cargo}" th:text="${cargo.nome}">
                 </div>
             </div>
             <div class="display-none div-escondida">
@@ -71,16 +70,3 @@
 </main>
 </body>
 </html>
-
-
-
-<!--
-
-<div class="columns has-text-left">
-    <div class="column is-half">
-        <label>Tipo:</label>
-        <select th:field="*{cargo}">
-            <option th:each="cargo : ${cargos}" th:value="${cargo}" th:text="${cargo.nome}"></option>
-        </select>
-    </div>
-</div>-->

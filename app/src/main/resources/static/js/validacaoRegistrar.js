@@ -12,8 +12,8 @@ const validaRegistrar = (evento) => {
 }
 
 const validaTipoUsuario = () => {
-    let adminRadio = document.getElementById("admin")
-    let assistenteRadio = document.getElementById("assistente")
+    let adminRadio = document.getElementById("ADMINISTRADOR")
+    let assistenteRadio = document.getElementById("ASSISTENTE_SOCIAL")
     if (adminRadio.checked === false && assistenteRadio.checked === false) {
         alert('Por favor, selecione o tipo')
         return false
