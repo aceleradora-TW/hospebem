@@ -4,7 +4,6 @@ import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Endereco;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,7 +47,6 @@ public class SolicitacaoControllerTest {
 
     @Test
     public void deveSalvarSolicitacaoNoBanco() {
-
         Solicitacao soli = mock(Solicitacao.class);
         LocalDate dataNascimento = LocalDate.of(2010, 3, 7);
         LocalDate dataEntrada= LocalDate.of(2010, 3, 7);
