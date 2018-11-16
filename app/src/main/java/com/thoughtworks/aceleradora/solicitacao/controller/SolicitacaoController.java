@@ -124,7 +124,6 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
 
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
-            System.out.println(">>>>>>>>>>>>>>>>>>>>. " + acompanhante.getId());
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }
 
