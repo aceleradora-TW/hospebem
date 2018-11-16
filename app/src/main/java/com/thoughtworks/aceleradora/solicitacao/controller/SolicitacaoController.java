@@ -6,7 +6,11 @@ import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -19,11 +23,6 @@ import java.util.function.Function;
 public class SolicitacaoController {
 
     private SolicitacaoRepository solicitacaoRepository;
-
-
-    public SolicitacaoController() {
-
-    }
 
     @Autowired
     public SolicitacaoController(SolicitacaoRepository repositorio) {
@@ -41,6 +40,7 @@ public class SolicitacaoController {
     @PostMapping("/cadastro")
     public String salvaSolicitacao(Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
+
 
         solicitacaoRepository.save(solicitacao);
 
@@ -104,23 +104,30 @@ public class SolicitacaoController {
 
             return "solicitacao/editaPaciente";
         }
+
         return "404";
     }
 
     @PostMapping("/{id}/editar")
     public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao) {
-        Solicitacao solicitacaoAtu = solicitacaoRepository.getOne(id);
+        Solicitacao solicitacaoAtualizada = solicitacaoRepository.getOne(id);
 
-        solicitacaoAtu.setNome(solicitacao.getNome());
-        solicitacaoAtu.setTelefone(solicitacao.getTelefone());
-        solicitacaoAtu.setEndereco(solicitacao.getEndereco());
-        solicitacaoAtu.setSituacao(solicitacao.getSituacao());
-        solicitacaoAtu.setGenero(solicitacao.getGenero());
-        solicitacaoAtu.setPeso((Float) solicitacao.getPeso());
-        solicitacaoAtu.setDataNascimento(solicitacao.getDataNascimento());
-        solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
+        solicitacaoAtualizada.setNome(solicitacao.getNome());
+        solicitacaoAtualizada.setTelefone(solicitacao.getTelefone());
+        solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
+        solicitacaoAtualizada.setSituacao(solicitacao.getSituacao());
+        solicitacaoAtualizada.setGenero(solicitacao.getGenero());
+        solicitacaoAtualizada.setPeso(solicitacao.getPeso());
+        solicitacaoAtualizada.setDataNascimento(solicitacao.getDataNascimento());
+        solicitacaoAtualizada.setDataTransplante(solicitacao.getDataTransplante());
 
-        solicitacaoRepository.save(solicitacaoAtu);
+        solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
+
+        for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
+            acompanhante.setSolicitacao(solicitacaoAtualizada);
+        }
+
+        solicitacaoRepository.save(solicitacaoAtualizada);
         return "redirect:/";
     }
 
@@ -133,8 +140,8 @@ public class SolicitacaoController {
 
             return "redirect:/solicitacao/hospital/lista";
         }
+
         return "404";
     }
-
 
 }
