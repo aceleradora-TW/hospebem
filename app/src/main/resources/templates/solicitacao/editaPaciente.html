@@ -194,7 +194,7 @@
 
                 <h2 class="title is-2">Dados Acompanhante</h2>
             <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
-
+                <input class="validate input input-fancy" type="hidden" th:field="*{acompanhantes[__${acompIndex.index}__].id}" />
                     <h5 class="title is-5">Acompanhante
                     </h5>
                     <div class="column is-10">
