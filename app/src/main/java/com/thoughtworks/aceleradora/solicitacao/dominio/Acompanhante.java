@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "acompanhantes")
-public class Acompanhante {
+public class Acompanhante implements Comparable<Acompanhante>{
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -84,5 +84,16 @@ public class Acompanhante {
                 ", dataNascimento=" + dataNascimento +
                 ", solicitacao=" + solicitacao +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Acompanhante acompanhante) {
+        if(this.id < acompanhante.getId()){
+            return -1;
+        }
+        if(this.id > acompanhante.getId()){
+            return 1;
+        }
+        return 0;
     }
 }

@@ -16,6 +16,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -99,7 +101,7 @@ public class SolicitacaoController {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            Endereco endereco = new Endereco();
+            Collections.sort(solicitacao.getAcompanhantes());
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             model.addAttribute("solicitacao", solicitacao);
             return "solicitacao/editaPaciente";
