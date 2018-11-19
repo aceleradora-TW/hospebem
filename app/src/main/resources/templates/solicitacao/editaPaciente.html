@@ -34,9 +34,7 @@
             <form th:object="${solicitacao}" th:action="@{/solicitacao/{id}/editar(id=${solicitacao.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
                   id="formSolicitacao">
                 <h2 class="title is-2">Dados Paciente</h2>
-                <div>
-                    <button type="submit" class="button verde-viavida"> Salvar </button>
-                </div>
+
                 <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
@@ -128,7 +126,8 @@
                             <label class="label">Data de Entrada</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="text" name="dataEntrada" th:field="*{dataEntrada}">
+                            <input class="validate input input-fancy datepicker-retroativo" autocomplete="off" type="text" name="dataEntrada" th:field="*{dataEntrada}"
+                                   onkeypress="return false;">
                         </div>
                     </div>
                 </div>
@@ -217,12 +216,16 @@
                                 <label class="label">Data de Nascimento</label>
                             </div>
                             <div class="control">
-                                <input class="validate input input-fancy" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}">
+                                <input class="validate input input-fancy datepicker-retroativo" autocomplete="off" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}"
+                                       onkeypress="return false;">
                             </div>
                         </div>
                     </div>
                 </div>
-        </form>
+                <div>
+                    <button type="submit" class="button verde-viavida"> Salvar </button>
+                </div>
+            </form>
         </div>
     </div>
 </main>
