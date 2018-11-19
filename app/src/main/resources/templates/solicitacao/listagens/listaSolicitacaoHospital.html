@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/bulmaModal.js"></script>
+
 </head>
 
 <body>
@@ -33,24 +34,24 @@
                                 <th>Editar</th>
                                 <th>Excluir</th>
                             </tr>
-
                             <tr th:each="solicitacao : ${solicitacoesHospital}">
                                 <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
-                                <td class="has-text-centered">11-11-2018</td>
+                                <td class="has-text-centered" th:text="${solicitacao.formataData()}"></td>
                                 <td class="has-text-centered" th:text="${solicitacao.status}"></td>
                                 <td class="column has-text-centered">
                                     <a th:href="@{/solicitacao/{id}/editar(id=${solicitacao.id})}">
-                                        <button class="button" type="submit" th:if="${solicitacao.status}!='aceito'">
+                                        <button class="button" type="submit" th:if="${solicitacao.status}!='Aceito'">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </a>
                                 </td>
                                 <td>
-                                    <!--<a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">-->
-                                        <button class="button is-danger modal-button" type="submit">Excluir</button>
-                                    <!--</a>-->
+                                    <a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">
+                                    <button class="button is-danger modal-button" id="btn" data-target="#confirm" type="submit" th:if="${solicitacao.status}!='Aceito'">Excluir  </button>
+                                    </a>
                                 </td>
-                                <div class="modal">
+
+                                <div class="modal" id="myModal">
                                     <div class="modal-background"></div>
                                     <div class="modal-card">
                                         <section class="modal-card-body">
@@ -64,6 +65,8 @@
                                         </footer>
                                     </div>
                                 </div>
+
+
                             </tr>
                         </table>
                     </div>
@@ -74,13 +77,11 @@
 </body>
 
 <script type="text/javascript">
-    let botaoExcluir = document.querySelector('.modal-button')
-    let modal = document.querySelector('.modal')
-
-    botaoExcluir.addEventListener('change', () => {
-        modal.classList.add('is-active')
-    })
+    let now = new Date();
+    now.format("dd/MM/yyyy HH:mm:ss");
 
 </script>
+
+
 
 </html>
