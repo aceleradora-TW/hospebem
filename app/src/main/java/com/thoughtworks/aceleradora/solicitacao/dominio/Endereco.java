@@ -28,6 +28,10 @@ public class Endereco {
         this.uf = uf;
     }
 
+    public Long getId(){
+        return id;
+    }
+
     public String getRua() {
         return rua;
     }
@@ -48,6 +52,10 @@ public class Endereco {
         return uf;
     }
 
+    public void setId(Long id){
+        this.id = id;
+    }
+
     public void setRua(String rua) {
         this.rua = rua;
     }
@@ -56,12 +64,14 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public void setCidade(String cidade) {
+    public Solicitacao setCidade(String cidade) {
         this.cidade = cidade;
+        return null;
     }
 
-    public void setBairro(String bairro) {
+    public Solicitacao setBairro(String bairro) {
         this.bairro = bairro;
+        return null;
     }
 
     public void setUf(String uf) {

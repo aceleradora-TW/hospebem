@@ -1,6 +1,7 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Endereco;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,10 +99,9 @@ public class SolicitacaoController {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-
+            Endereco endereco = new Endereco();
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             model.addAttribute("solicitacao", solicitacao);
-
             return "solicitacao/editaPaciente";
         }
 
@@ -114,12 +114,12 @@ public class SolicitacaoController {
 
         solicitacaoAtualizada.setNome(solicitacao.getNome());
         solicitacaoAtualizada.setTelefone(solicitacao.getTelefone());
-        solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
         solicitacaoAtualizada.setSituacao(solicitacao.getSituacao());
         solicitacaoAtualizada.setGenero(solicitacao.getGenero());
         solicitacaoAtualizada.setPeso(solicitacao.getPeso());
         solicitacaoAtualizada.setDataNascimento(solicitacao.getDataNascimento());
         solicitacaoAtualizada.setDataTransplante(solicitacao.getDataTransplante());
+        solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
 
