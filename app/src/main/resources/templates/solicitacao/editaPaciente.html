@@ -136,61 +136,62 @@
 
             <h2 class="title is-2">Endereço</h2>
 
-            <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Rua</label>
-                        </div>
-                        <div class="control">
-                            <input class="validate input input-fancy" type="text" name="rua" th:field="*{endereco.rua}">
-                        </div>
-                    </div>
-                </div>
-
-            <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Número</label>
-                        </div>
-                        <div class="control">
-                            <input class="validate input input-fancy" type="text" name="numero" th:field="*{endereco.numero}">
+                <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Rua</label>
+                            </div>
+                            <div class="control">
+                                <input type="hidden" th:field="*{endereco.id}">
+                                <input class="validate input input-fancy" type="text" th:field="*{endereco.rua}">
+                            </div>
                         </div>
                     </div>
-                </div>
-
-            <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Cidade</label>
-                        </div>
-                        <div class="control">
-                            <input class="validate input input-fancy" type="text" name="cidade" th:field="*{endereco.cidade}">
-                        </div>
-                    </div>
-                </div>
-
-            <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Bairro</label>
-                        </div>
-                        <div class="control">
-                            <input class="validate input input-fancy" type="text" name="bairro" th:field="*{endereco.bairro}">
-                        </div>
-                    </div>
-
-                </div>
 
                 <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">UF</label>
-                        </div>
-                        <div class="control">
-                            <input class="validate input input-fancy" type="text" name="uf" th:field="*{endereco.uf}">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Número</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input input-fancy" type="text" name="numero" th:field="*{endereco.numero}">
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Cidade</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input input-fancy" type="text" name="cidade" th:field="*{endereco.cidade}">
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Bairro</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input input-fancy" type="text" name="bairro" th:field="*{endereco.bairro}">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">UF</label>
+                            </div>
+                            <div class="control">
+                                <input class="validate input input-fancy" type="text" name="uf" th:field="*{endereco.uf}">
+                            </div>
+                        </div>
+                    </div>
 
                 <h2 class="title is-2">Dados Acompanhante</h2>
             <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
