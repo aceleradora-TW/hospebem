@@ -46,7 +46,7 @@
                     </div>
                 </div>
 
-            <div class="column is-10">
+                <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Gênero</label>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-            <div class="column is-10">
+                <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Telefone</label>
@@ -109,18 +109,18 @@
                     </div>
                 </div>
 
-            <div class="column is-10">
+                <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Peso</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="text" name="peso" th:value="*{peso}">
+                            <input class="validate input input-fancy" type="number" min="0" max="600" step="0.1" id="peso" value="0"  th:field="*{peso}" >
                         </div>
                     </div>
                 </div>
 
-            <div class="column is-10">
+                <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Data de Entrada</label>
@@ -133,68 +133,68 @@
                 </div>
 
 
-            <h2 class="title is-2">Endereço</h2>
+                <h2 class="title is-2">Endereço</h2>
 
                 <div class="column is-10">
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label">Rua</label>
-                            </div>
-                            <div class="control">
-                                <input type="hidden" th:field="*{endereco.id}">
-                                <input class="validate input input-fancy" type="text" th:field="*{endereco.rua}">
-                            </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Rua</label>
+                        </div>
+                        <div class="control">
+                            <input type="hidden" th:field="*{endereco.id}">
+                            <input class="validate input input-fancy" type="text" th:field="*{endereco.rua}">
                         </div>
                     </div>
+                </div>
 
                 <div class="column is-10">
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label">Número</label>
-                            </div>
-                            <div class="control">
-                                <input class="validate input input-fancy" type="text" name="numero" th:field="*{endereco.numero}">
-                            </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Número</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input input-fancy" type="text" name="numero" th:field="*{endereco.numero}">
                         </div>
                     </div>
+                </div>
 
                 <div class="column is-10">
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label">Cidade</label>
-                            </div>
-                            <div class="control">
-                                <input class="validate input input-fancy" type="text" name="cidade" th:field="*{endereco.cidade}">
-                            </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Cidade</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input input-fancy" type="text" name="cidade" th:field="*{endereco.cidade}">
                         </div>
                     </div>
+                </div>
 
                 <div class="column is-10">
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label">Bairro</label>
-                            </div>
-                            <div class="control">
-                                <input class="validate input input-fancy" type="text" name="bairro" th:field="*{endereco.bairro}">
-                            </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Bairro</label>
                         </div>
-
-                    </div>
-
-                    <div class="column is-10">
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label">UF</label>
-                            </div>
-                            <div class="control">
-                                <input class="validate input input-fancy" type="text" name="uf" th:field="*{endereco.uf}">
-                            </div>
+                        <div class="control">
+                            <input class="validate input input-fancy" type="text" name="bairro" th:field="*{endereco.bairro}">
                         </div>
                     </div>
+
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">UF</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input input-fancy" type="text" name="uf" th:field="*{endereco.uf}">
+                        </div>
+                    </div>
+                </div>
 
                 <h2 class="title is-2">Dados Acompanhante</h2>
-            <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
-                <input class="validate input input-fancy" type="hidden" th:field="*{acompanhantes[__${acompIndex.index}__].id}" />
+                <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
+                    <input class="validate input input-fancy" type="hidden" th:field="*{acompanhantes[__${acompIndex.index}__].id}" />
                     <h5 class="title is-5">Acompanhante
                     </h5>
                     <div class="column is-10">
@@ -203,9 +203,27 @@
                                 <label class="label">Nome</label>
                             </div>
                             <div class="control">
-                        <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                                <input class="validate input input-fancy" type="text"  th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
-                        </p>
+                                <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                    <input class="validate input input-fancy" type="text"  th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Gênero</label>
+                            </div>
+                            <div class="control">
+                                <label>
+                                    <input class="genero" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                    <span>Feminino</span>
+                                </label>
+                                <label>
+                                    <input class="genero" type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                    <span>Masculino</span>
+                                </label>
                             </div>
                         </div>
                     </div>
