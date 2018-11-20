@@ -6,21 +6,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.RedirectStrategy;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class AuthSuccessHandlerTest {
@@ -52,7 +48,7 @@ public class AuthSuccessHandlerTest {
 
         authSuccessHandler.onAuthenticationSuccess(request, response, authentication);
 
-        verify(redirectStrategy, times(1)).sendRedirect(request, response, "/admin");
+        verify(redirectStrategy, times(1)).sendRedirect(request, response, "/bemvindo");
     }
 
     @Test
@@ -63,6 +59,6 @@ public class AuthSuccessHandlerTest {
 
         authSuccessHandler.onAuthenticationSuccess(request, response, authentication);
 
-        verify(redirectStrategy, times(1)).sendRedirect(request, response, "/assistente");
+        verify(redirectStrategy, times(1)).sendRedirect(request, response, "/listahospital");
     }
 }

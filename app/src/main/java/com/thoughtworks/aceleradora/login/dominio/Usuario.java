@@ -1,7 +1,5 @@
 package com.thoughtworks.aceleradora.login.dominio;
 
-import org.hibernate.annotations.Columns;
-
 import javax.persistence.*;
 
 @Entity(name = "usuarios")

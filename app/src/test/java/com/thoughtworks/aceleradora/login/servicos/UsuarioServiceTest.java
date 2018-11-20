@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.login.servicos;
 
+import com.thoughtworks.aceleradora.login.dominio.Cargo;
 import com.thoughtworks.aceleradora.login.dominio.Usuario;
 import com.thoughtworks.aceleradora.login.dominio.UsuarioRepository;
 import org.junit.Before;
@@ -32,7 +33,9 @@ public class UsuarioServiceTest {
 
     @Test
     public void salvaUsuarioComSenhaCriptografada() {
-        Usuario usuario = new Usuario("Abc", "Segredo", "administrador", "Maria","Maria@email","23232","sao lucas");
+        Cargo cargo = Cargo.ADMINISTRADOR;
+
+        Usuario usuario = new Usuario("Abc", "Segredo", cargo, "Maria", "Maria@email", "23232", "sao lucas");
         when(encoder.encode("Segredo")).thenReturn("Shhhh");
 
         servico.salvar(usuario);
