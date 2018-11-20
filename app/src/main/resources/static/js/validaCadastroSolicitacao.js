@@ -14,13 +14,13 @@ function camposPaciente() {
     var genero1            = document.getElementById("genero1")
     var genero2            = document.getElementById("genero2")
     var labelGenero        = document.querySelector('.margin-invisible')
-    var dataNascimento     = document.getElementById("dataNascimento")
+    var dataNascimento     = document.getElementById('dataNascimento')
     var situacaoPre        = document.getElementById("situacao.pre")
     var situacaoPos        = document.getElementById("situacao.pos")
     var labelSituacao      = document.querySelector('.situacao')
     var checkBoxCadeirante = document.getElementById('cadeirante')
     var pesoInput          = document.getElementById('peso')
-    var dataEntrada        = document.getElementById("dataEntrada")
+    var dataEntrada        = document.getElementById('dataEntrada')
     var orgao              = document.getElementById('select')
     var selectOrgao        = document.querySelector('.orgao')
 
@@ -35,6 +35,7 @@ function camposPaciente() {
         genero1.focus()
         return false
     }
+
 
     if (dataNascimento.value  === '') {
         validaInputErrado(dataNascimento)
@@ -70,9 +71,11 @@ function camposPaciente() {
 }
 function camposAcompanhantes() {
      var nomeAcomp   = document.querySelector(".nome")
-     var generoAcomp = document.querySelectorAll(".genero")
+    var genero1            = document.getElementById("generoA1")
+    var genero2            = document.getElementById("generoA2")
      var dataNasciAcomp = document.querySelector(".data-nasc-acomp")
-        var labelAcomp = document.querySelector('.label-acomp')
+     var labelAcomp = document.querySelector('.label-acomp')
+
      if (nomeAcomp.value === '') {
          nomeAcomp.placeholder='Insira o campo requisitado'
          validaInputErrado(nomeAcomp)
@@ -80,12 +83,10 @@ function camposAcompanhantes() {
      } else
          nomeAcomp.classList.add('input-fancy')
 
-     if (generoAcomp[0].checked === false && generoAcomp[1].checked === false) {
+     if (genero1.checked === false && genero2.checked === false) {
          labelAcomp.classList.remove('margin-invisible')
          return false;
-     } else
-         labelAcomp.classList.add('margin-invisible')
-
+     }
 
      if (dataNasciAcomp.value === '') {
          nomeAcomp.placeholder='Insira o campo requisitado'

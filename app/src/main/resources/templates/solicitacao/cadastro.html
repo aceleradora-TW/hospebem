@@ -36,11 +36,11 @@
                         <div class="control input-radio margin-invisible">
                             <label>
                                 <span>*</span>
-                                <input th:field="*{genero}" type="radio" value="Feminino" id="genero1">
+                                <input th:field="*{genero}" name= "opcao" type="radio" value="Feminino" id="genero1">
                                 <span>Feminino</span>
                             </label>
                             <label>
-                                <input th:field="*{genero}" type="radio" value="Masculino" id="genero2">
+                                <input th:field="*{genero}" name= "opcao" type="radio" value="Masculino" id="genero2">
                                 <span>Masculino</span>
                             </label>
                         </div>
@@ -100,12 +100,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="column">
+                    <div class="column input-radio orgao margin-invisible">
                         <p>*Órgão:</p>
                         <div class = "control">
                             <div class="select">
                                 <select name="orgao" id="select">
-                                    <option disabled selected value="selecione">Selecione o órgão</option>
+                                    <option disabled selected th:value="selecione">Selecione o órgão</option>
                                     <option th:value="'coração'" th:text="Coração"></option>
                                     <option th:value="'fígado'" th:text="Fígado"></option>
                                     <option th:value="'medula'" th:text="Medula"></option>
@@ -207,13 +207,13 @@
                     </div>
                     <div class="column">
                         <div class="field">
-                            <div class="control">
+                            <div class="control label-acomp margin-invisible input-radio">
                                 <label>
-                                    <input class="genero" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                    <input id="generoA1" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
                                     <span>Feminino</span>
                                 </label>
                                 <label>
-                                    <input class="genero" type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                    <input id="generoA2" type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
                                     <span>Masculino</span>
                                 </label>
                             </div>
