@@ -32,5 +32,6 @@ public class UsuarioValidador implements Validator {
         if(usuario.getNome() == null) {
             erros.rejectValue("nome", "Usuario.usuarioForm.usuarioVazio");
         }
+        
     }
 }

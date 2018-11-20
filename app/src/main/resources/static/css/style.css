@@ -78,6 +78,8 @@ button{
     background-color: rgba(56, 124, 43,1);
     position: relative;
     width:100%;
+    background-color: rgba(56, 124, 43, 1);
+    size: 100%;
 }
 .navbar-dropdown{
     background-color: rgba(56, 124, 43, 1);
@@ -155,4 +157,3 @@ button{
 .select select:hover, .select select.is-hovered {
     border-color: rgba(56, 124, 43, 1);
 }
-

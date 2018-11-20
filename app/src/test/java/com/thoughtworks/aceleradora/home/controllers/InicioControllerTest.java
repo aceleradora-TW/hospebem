@@ -1,6 +1,7 @@
 package com.thoughtworks.aceleradora.home.controllers;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class InicioControllerTest {

@@ -12,8 +12,8 @@ const validaRegistrar = (evento) => {
 }
 
 const validaTipoUsuario = () => {
-    let adminRadio = document.getElementById("admin")
-    let assistenteRadio = document.getElementById("assistente")
+    let adminRadio = document.getElementById("ADMINISTRADOR")
+    let assistenteRadio = document.getElementById("ASSISTENTE_SOCIAL")
     if (adminRadio.checked === false && assistenteRadio.checked === false) {
         alert('Por favor, selecione o tipo')
         return false
@@ -43,8 +43,8 @@ const validaUsuarioSenha = () => {
 
 const registraAssistente = () => {
     let esconderCampos = document.querySelector('.div-escondida')
-    let radioNome = document.getElementById('assistente')
-    let radioAdmin = document.getElementById('admin')
+    let radioNome = document.getElementById('ASSISTENTE_SOCIAL')
+    let radioAdmin = document.getElementById('ADMINISTRADOR')
     radioNome.addEventListener('change', function () {
 
         if (this.checked === true){

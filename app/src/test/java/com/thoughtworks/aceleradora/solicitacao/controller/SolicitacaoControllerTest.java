@@ -51,16 +51,16 @@ public class SolicitacaoControllerTest {
 
         Solicitacao soli = mock(Solicitacao.class);
         LocalDate dataNascimento = LocalDate.of(2010, 3, 7);
-        LocalDate dataEntrada= LocalDate.of(2010, 3, 7);
-        LocalDate dataSaida= LocalDate.of(2010, 3, 7);
-        LocalDate dataTransplante= LocalDate.of(2010, 3, 7);
-        LocalDateTime dataAtt = LocalDateTime.of(2007,07, 10, 10, 10, 10);
+        LocalDate dataEntrada = LocalDate.of(2010, 3, 7);
+        LocalDate dataSaida = LocalDate.of(2010, 3, 7);
+        LocalDate dataTransplante = LocalDate.of(2010, 3, 7);
+        LocalDateTime dataAtt = LocalDateTime.of(2007, 07, 10, 10, 10, 10);
 
         Endereco end = new Endereco("A", "B", "C", "D", "E");
 
         List<Acompanhante> acompanhantes = asList(
                 new Acompanhante("Amanda", "F", dataNascimento, soli),
-                new Acompanhante("Aline","F", dataNascimento, soli));
+                new Acompanhante("Aline", "F", dataNascimento, soli));
 
         Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", "pendente", 12, dataNascimento, dataEntrada, dataSaida, dataTransplante, dataAtt, end, acompanhantes, "coracao");
 
@@ -71,21 +71,21 @@ public class SolicitacaoControllerTest {
     }
 
     @Test
-    public void deveRenderizarListaSolicitacaoCasa(){
+    public void deveRenderizarListaSolicitacaoCasa() {
         String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
 
 //        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoCasa"));
     }
 
     @Test
-    public void deveRenderizarListaSolicitacaoHospital(){
+    public void deveRenderizarListaSolicitacaoHospital() {
         String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
 
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoHospital"));
     }
 
     @Test
-    public void deveRenderizarListaDeHospedes(){
+    public void deveRenderizarListaDeHospedes() {
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
 
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));

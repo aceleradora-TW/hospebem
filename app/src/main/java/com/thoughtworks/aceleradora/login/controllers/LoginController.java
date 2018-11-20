@@ -1,6 +1,7 @@
 package com.thoughtworks.aceleradora.login.controllers;
 
 
+import com.thoughtworks.aceleradora.login.dominio.Cargo;
 import com.thoughtworks.aceleradora.login.dominio.Usuario;
 import com.thoughtworks.aceleradora.login.servicos.UsuarioService;
 import com.thoughtworks.aceleradora.login.validador.UsuarioValidador;
@@ -25,16 +26,18 @@ public class LoginController {
     }
 
     @GetMapping(value = "/registrar")
-    public String registrar(Model model){
+    public String registrar(Model model) {
         model.addAttribute("formUsuario", new Usuario());
+        model.addAttribute("cargos", Cargo.values());
+
         return "registrarUsuario/registrar";
     }
 
     @PostMapping(value = "/registrar")
-    public String registrar(@ModelAttribute("formUsuario") Usuario usuario, BindingResult bindingResult){
+    public String registrar(@ModelAttribute("formUsuario") Usuario usuario, BindingResult bindingResult) {
         usuarioValidador.validate(usuario, bindingResult);
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "registrarUsuario/registrar";
         }
 
@@ -44,12 +47,23 @@ public class LoginController {
     }
 
     @GetMapping(value = "/login")
-    public String login(){
+    public String login() {
         return "login/login";
     }
 
+
     @GetMapping(value = "/bemvindo")
-    public String bemVindo(){
+    public String bemVindo(@ModelAttribute Usuario usuario) {
         return "bemvindo/bemvindo";
+    }
+
+    @GetMapping(value = "/admin")
+    public String paginaAdmin() {
+        return "admin";
+    }
+
+    @GetMapping(value = "/listahospital")
+    public String paginaAssistente() {
+        return "/solicitacao/listagens/listaSolicitacaoHospital";
     }
 }

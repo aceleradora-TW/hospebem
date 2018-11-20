@@ -1,88 +1,53 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:sec="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html th:replace="~{layout :: layout(~{::title}, ~{::main})}" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>Hospebem - Inicio </title>
 </head>
 <body>
-    <header>
-        <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="/">
-                    <p class="titulo-nav">HospeBem</p>
-                </a>
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-item menu">
-                            Menu
-                        </a>
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item" th:href="@{/solicitacao/cadastro}">
-                                Cadastro solicitação
-                            </a>
-                            <a class="navbar-item" th:href="@{/solicitacao/hospital/lista}">
-                                Lista de solicitações hospital
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+<main class="espaco-linhas">
+    <div class="agrupadora has-text-centered">
 
-    <main class="espaco-linhas">
-        <div class="agrupadora has-text-centered">
-
-            <h1 class="title is-1 espaco-titulo">Hospebem</h1>
-            <p>Sistema de agendamento entre hospitais e pousada <a href="https://www.viavida.org.br/" target="_blank">ViaVida</a>.</h6>
+        <h1 class="title is-1 espaco-titulo">Hospebem</h1>
+        <p>Sistema de agendamento entre hospitais e pousada <a href="https://www.viavida.org.br/" target="_blank">ViaVida</a>.</h6>
 
         <div class="columns">
             <img src="/img/hospebem.png" alt="Logo viaVida">
         </div>
 
-            <div sec:authorize="isAuthenticated()">
-                <div>
-                    <p> Seja bem-vindo: <strong><span sec:authentication="name"></span></strong></p>               </p>
-                </div>
+        <div sec:authorize="isAuthenticated()">
+            <div>
+                <p> Seja bem-vindo: <strong><span sec:authentication="name"></span></strong></p>
             </div>
-
-            <div sec:authorize="!isAuthenticated()">
-                <a href="/login"><div>Logar</div></a>
-                <a href="/registrar"><div>Registrar</div></a>
-            </div>
-            <div sec:authorize="isAuthenticated()">
-                <form action="#" th:action="@{/logout}" method="post">
-                    <input type="submit" class="button is-medium is-outlined" value="Deslogar">
-                </form>
-            </div>
-
         </div>
-    </main>
 
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p> HospeBem © 2018</p>
+
+        <div sec:authorize="!isAuthenticated()">
+            <a href="/login">
+                <div>Logar</div>
+            </a>
+            <a href="/registrar">
+                <div>Registrar</div>
+            </a>
         </div>
-    </footer>
-</body>
+
+        <div sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+</main>
 
 <script>
-    (function() {
+    (function () {
         let burger = document.querySelector('.burger');
-        let nav = document.querySelector('#'+burger.dataset.target);
+        let nav = document.querySelector('#' + burger.dataset.target);
 
-        burger.addEventListener('click', function(){
+        burger.addEventListener('click', function () {
             burger.classList.toggle('is-active');
-            nav.classList.toggle('is-active');
+            nav.classList.toggle('is-hoverable');
+            return burger;
         });
-    })();
+    };
 </script>
 </html>
