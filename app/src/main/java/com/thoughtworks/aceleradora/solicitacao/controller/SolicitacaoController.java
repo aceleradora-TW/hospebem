@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
 @Controller
@@ -101,7 +98,7 @@ public class SolicitacaoController {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            Collections.sort(solicitacao.getAcompanhantes());
+            solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             model.addAttribute("solicitacao", solicitacao);
             return "solicitacao/editaPaciente";
@@ -125,7 +122,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-
+        
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }

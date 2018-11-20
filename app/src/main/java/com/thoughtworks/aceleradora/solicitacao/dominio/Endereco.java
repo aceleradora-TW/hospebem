@@ -64,14 +64,12 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public Solicitacao setCidade(String cidade) {
+    public void setCidade(String cidade) {
         this.cidade = cidade;
-        return null;
     }
 
-    public Solicitacao setBairro(String bairro) {
+    public void setBairro(String bairro) {
         this.bairro = bairro;
-        return null;
     }
 
     public void setUf(String uf) {
