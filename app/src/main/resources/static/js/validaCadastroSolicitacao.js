@@ -1,28 +1,28 @@
 function validaCadastroSolicitacao(evento) {
     if (camposPaciente()) {
         if (camposAcompanhantes()) {
-                alert("Solicitação efetuada!")
-                evento.currentTarget.submit()
-                return true
+            alert("Solicitação efetuada!")
+            evento.currentTarget.submit()
+            return true
         }
     }
     return false
 }
 
 function camposPaciente() {
-    var nome               = document.getElementById("nome")
-    var genero1            = document.getElementById("genero1")
-    var genero2            = document.getElementById("genero2")
-    var labelGenero        = document.querySelector('.margin-invisible')
-    var dataNascimento     = document.getElementById('dataNascimento')
-    var situacaoPre        = document.getElementById("situacao.pre")
-    var situacaoPos        = document.getElementById("situacao.pos")
-    var labelSituacao      = document.querySelector('.situacao')
+    var nome = document.getElementById("nome")
+    var genero1 = document.getElementById("genero1")
+    var genero2 = document.getElementById("genero2")
+    var labelGenero = document.querySelector('.margin-invisible')
+    var dataNascimento = document.getElementById('dataNascimento')
+    var situacaoPre = document.getElementById("situacao.pre")
+    var situacaoPos = document.getElementById("situacao.pos")
+    var labelSituacao = document.querySelector('.situacao')
     var checkBoxCadeirante = document.getElementById('cadeirante')
-    var pesoInput          = document.getElementById('peso')
-    var dataEntrada        = document.getElementById('dataEntrada')
-    var orgao              = document.getElementById('select')
-    var selectOrgao        = document.querySelector('.orgao')
+    var pesoInput = document.getElementById('peso')
+    var dataEntrada = document.getElementById('dataEntrada')
+    var orgao = document.getElementById('select')
+    var selectOrgao = document.querySelector('.orgao')
 
     if (nome.value === '') {
         validaInputErrado(nome)
@@ -30,20 +30,20 @@ function camposPaciente() {
     } else
         nome.classList.add('input-fancy')
 
-    if (genero1.checked  === false && genero2.checked  === false) {
+    if (genero1.checked === false && genero2.checked === false) {
         labelGenero.classList.remove('margin-invisible')
         genero1.focus()
         return false
     }
 
 
-    if (dataNascimento.value  === '') {
+    if (dataNascimento.value === '') {
         validaInputErrado(dataNascimento)
         return false
     } else
         dataNascimento.classList.add('input-fancy')
 
-    if (checkBoxCadeirante.checked === true && pesoInput.value === ''){
+    if (checkBoxCadeirante.checked === true && pesoInput.value === '') {
         return false
     }
 
@@ -57,7 +57,7 @@ function camposPaciente() {
         selectOrgao.classList.remove('margin-invisible')
         orgao.focus()
         return false
-    }  else
+    } else
         selectOrgao.classList.add('margin-invisible')
 
 
@@ -69,44 +69,45 @@ function camposPaciente() {
 
     return true
 }
+
 function camposAcompanhantes() {
-     var nomeAcomp   = document.querySelector(".nome")
-    var genero1            = document.getElementById("generoA1")
-    var genero2            = document.getElementById("generoA2")
-     var dataNasciAcomp = document.querySelector(".data-nasc-acomp")
-     var labelAcomp = document.querySelector('.label-acomp')
+    var nomeAcomp = document.querySelector(".nome")
+    var genero1 = document.querySelector(".generoA1")
+    var genero2 = document.querySelector(".generoA2")
+    var dataNasciAcomp = document.querySelector(".data-nasc-acomp")
+    var labelAcomp = document.querySelector('.label-acomp')
 
-     if (nomeAcomp.value === '') {
-         nomeAcomp.placeholder='Insira o campo requisitado'
-         validaInputErrado(nomeAcomp)
-         return false
-     } else
-         nomeAcomp.classList.add('input-fancy')
+    if (nomeAcomp.value === '') {
+        nomeAcomp.placeholder = 'Insira o campo requisitado'
+        validaInputErrado(nomeAcomp)
+        return false
+    } else
+        nomeAcomp.classList.add('input-fancy')
 
-     if (genero1.checked === false && genero2.checked === false) {
-         labelAcomp.classList.remove('margin-invisible')
-         return false;
-     }
+    if (genero1.checked === false && genero2.checked === false) {
+        labelAcomp.classList.remove('margin-invisible')
+        return false;
+    }
 
-     if (dataNasciAcomp.value === '') {
-         nomeAcomp.placeholder='Insira o campo requisitado'
-         validaInputErrado(dataNasciAcomp)
-         return false;
+    if (dataNasciAcomp.value === '') {
+        nomeAcomp.placeholder = 'Insira o campo requisitado'
+        validaInputErrado(dataNasciAcomp)
+        return false;
 
-     }
-     return true;
+    }
+    return true;
 
 }
 
 function validaInputErrado(item) {
     item.classList.remove('input-fancy')
     item.classList.add('is-danger')
-    item.placeholder='Insira o campo requisitado'
+    item.placeholder = 'Insira o campo requisitado'
     item.focus()
 }
 
 window.onload = function limpaInput() {
-    document.getElementById('peso').value=''
+    document.getElementById('peso').value = ''
 }
 
 function pesoCadeirante() {
@@ -131,8 +132,8 @@ function pesoCadeirante() {
 
     })
 
-    pesoInput.addEventListener('change', function() {
-        if(this.value > 600) {
+    pesoInput.addEventListener('change', function () {
+        if (this.value > 600) {
             pesoInput.value = 600;
         }
     })
