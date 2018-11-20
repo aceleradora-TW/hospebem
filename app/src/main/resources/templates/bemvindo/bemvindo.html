@@ -33,9 +33,7 @@
         </div>
 
         <div sec:authorize="isAuthenticated()">
-            <form action="#" th:action="@{/logout}" method="post">
-                <input type="submit" class="button is-medium is-outlined" value="Deslogar">
-            </form>
+            <a th:href="@{/logout}">Logout</a>
         </div>
     </div>
 </main>

@@ -74,7 +74,7 @@ public class LoginController {
         return "/solicitacao/listagens/listaSolicitacaoHospital";
     }
 
-    @GetMapping("/logout")
+   /* @GetMapping("/logout")
     public String getLogoutPage(HttpServletRequest request, HttpServletResponse response) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -82,6 +82,6 @@ public class LoginController {
             new SecurityContextLogoutHandler().logout(request, response, authentication);
 
         return "redirect:/login";
-    }
+    }*/
 
 }
