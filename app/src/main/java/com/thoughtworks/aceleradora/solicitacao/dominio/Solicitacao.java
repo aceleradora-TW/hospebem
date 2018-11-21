@@ -1,12 +1,18 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
-import org.hibernate.annotations.ColumnDefault;
-
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
@@ -29,7 +35,7 @@ public class Solicitacao {
 
     private String cadeirante;
 
-    private String status="Pendente";
+    private String status = "Pendente";
 
 
     private Float peso;
@@ -39,19 +45,19 @@ public class Solicitacao {
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @Column(name="data_entrada")
+    @Column(name = "data_entrada")
     private LocalDate dataEntrada;
 
-    @Column(name="data_saida")
+    @Column(name = "data_saida")
     private LocalDate dataSaida;
 
-    @Column(name="data_transplante")
+    @Column(name = "data_transplante")
     private LocalDate dataTransplante;
 
-    @Column(name="data_atualizacao")
+    @Column(name = "data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
-    @OneToOne(cascade=ALL)
+    @OneToOne(cascade = ALL)
     private Endereco endereco;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "solicitacao")
@@ -59,7 +65,6 @@ public class Solicitacao {
 
     public Solicitacao() {
     }
-
 
     public Solicitacao(String nome,
                        String genero,
@@ -75,8 +80,7 @@ public class Solicitacao {
                        LocalDateTime dataAtualizacao,
                        Endereco endereco,
                        List<Acompanhante> acompanhantes,
-                       String orgao)
-    {
+                       String orgao) {
         this.nome = nome;
         this.genero = genero;
         this.situacao = situacao;
@@ -162,11 +166,17 @@ public class Solicitacao {
         this.endereco = endereco;
     }
 
-    public LocalDate getDataSaida() { return dataSaida; }
+    public LocalDate getDataSaida() {
+        return dataSaida;
+    }
 
-    public void setDataSaida(LocalDate dataSaida) { this.dataSaida = dataSaida; }
+    public void setDataSaida(LocalDate dataSaida) {
+        this.dataSaida = dataSaida;
+    }
 
-    public LocalDate getDataTransplante() { return dataTransplante; }
+    public LocalDate getDataTransplante() {
+        return dataTransplante;
+    }
 
     public LocalDateTime getDataAtualizacao() {
         return dataAtualizacao;
@@ -176,7 +186,9 @@ public class Solicitacao {
         this.dataAtualizacao = dataAtualizacao;
     }
 
-    public void setDataTransplante(LocalDate dataTransplante) { this.dataTransplante = dataTransplante; }
+    public void setDataTransplante(LocalDate dataTransplante) {
+        this.dataTransplante = dataTransplante;
+    }
 
     public List<Acompanhante> getAcompanhantes() {
         return acompanhantes;
@@ -202,15 +214,16 @@ public class Solicitacao {
         this.status = status;
     }
 
-    public String getOrgao() { return orgao; }
+    public String getOrgao() {
+        return orgao;
+    }
 
-    public void setOrgao(String orgao) { this.orgao = orgao; }
+    public void setOrgao(String orgao) {
+        this.orgao = orgao;
+    }
 
-    public String formataData(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        LocalDateTime dateTime = getDataAtualizacao();
-        String formattedDateTime= dateTime.format(formatter);
-        return formattedDateTime;
+    public String formataData() {
+        return dataAtualizacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
     }
 
     @PrePersist

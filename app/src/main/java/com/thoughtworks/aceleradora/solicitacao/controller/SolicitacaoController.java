@@ -6,24 +6,24 @@ import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.function.Function;
+
+import static java.util.Arrays.asList;
 
 @Controller
 @RequestMapping("/solicitacao")
 public class SolicitacaoController {
 
     private SolicitacaoRepository solicitacaoRepository;
-
-
-    public SolicitacaoController() {
-
-    }
 
     @Autowired
     public SolicitacaoController(SolicitacaoRepository repositorio) {
@@ -33,7 +33,7 @@ public class SolicitacaoController {
     @GetMapping("/cadastro")
     public String formularioCadastro(Model model) {
         Solicitacao novaSolicitacao = new Solicitacao();
-        novaSolicitacao.setAcompanhantes(Arrays.asList(new Acompanhante(), new Acompanhante()));
+        novaSolicitacao.setAcompanhantes(asList(new Acompanhante(), new Acompanhante()));
         model.addAttribute("solicitacao", novaSolicitacao);
         return "solicitacao/cadastro";
     }
@@ -96,6 +96,7 @@ public class SolicitacaoController {
     @GetMapping("/{id}/editar")
     public String editaDadosHospede(Model model, @PathVariable Long id) {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
 
@@ -104,6 +105,7 @@ public class SolicitacaoController {
 
             return "solicitacao/editaPaciente";
         }
+
         return "404";
     }
 
@@ -116,7 +118,7 @@ public class SolicitacaoController {
         solicitacaoAtu.setEndereco(solicitacao.getEndereco());
         solicitacaoAtu.setSituacao(solicitacao.getSituacao());
         solicitacaoAtu.setGenero(solicitacao.getGenero());
-        solicitacaoAtu.setPeso((Float) solicitacao.getPeso());
+        solicitacaoAtu.setPeso(solicitacao.getPeso());
         solicitacaoAtu.setDataNascimento(solicitacao.getDataNascimento());
         solicitacaoAtu.setDataTransplante(solicitacao.getDataTransplante());
 
