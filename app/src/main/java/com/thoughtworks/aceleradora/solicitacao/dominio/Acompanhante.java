@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "acompanhantes")
-public class Acompanhante {
+public class Acompanhante{
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -38,6 +38,14 @@ public class Acompanhante {
         this.genero = genero;
         this.dataNascimento = dataNascimento;
         this.solicitacao = solicitacao;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

@@ -22,16 +22,18 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
+
     @Column(name = "nome_assistente")
     private String nomeAssistente;
+
     private String email;
+
     private String telefone;
+  
     @Column(name = "hospital_referencia")
     private String hospitalReferencia;
 
-    public Usuario() {
-
-    }
+    public Usuario(){ }
 
     public Usuario(String nome, String senha, Cargo cargo, String nomeAssistente, String email, String telefone, String hospitalReferencia) {
         this.nome = nome;
