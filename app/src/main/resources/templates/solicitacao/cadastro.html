@@ -30,7 +30,7 @@
                 </div>
                 <div class="column">
                     <div class="field">
-                        <div class="control input-radio margin-invisible">
+                        <div class="control input-radio margin-invisible" id="labelGenero">
                             <label>
                                 <span>*</span>
                                 <input th:field="*{genero}" name= "opcao" type="radio" value="Feminino" id="genero1">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="column">
                     <div class="field">
-                        <div class="control input-radio situacao margin-invisible">
+                        <div class="control input-radio situacao margin-invisible" id="labelSituacao">
                             <span>*Situação do Hóspede:</span>
                             <label>
                                 <input th:field="*{situacao}" type="radio" value="pre-transplante" id="situacao.pre" >
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="column input-radio orgao margin-invisible">
+                    <div class="column input-radio orgao margin-invisible" id="selectOrgao">
                         <p>*Órgão:</p>
                         <div class = "control">
                             <div class="select">
@@ -204,7 +204,7 @@
                     </div>
                     <div class="column">
                         <div class="field">
-                            <div class="control label-acomp margin-invisible input-radio">
+                            <div class="control margin-invisible input-radio" id="labelAcomp">
                                 <label>
                                     <input class="generoA1" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
                                     <span>Feminino</span>

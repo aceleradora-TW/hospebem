@@ -49,9 +49,7 @@
                                     <a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">
                                         <button class="button is-danger" type="submit" onclick="return confirm('Tem certeza que deseja excluir esse usuario?')">Excluir</button>
                                     </a>
-                                    <button class="button is-danger modal-button" id="btn" data-target="#confirm" type="submit" th:if="${solicitacao.status}!='Aceito'">Excluir  </button>
-                                </td>
-                                
+                               </td>
                             </tr>
                         </table>
                     </div>
