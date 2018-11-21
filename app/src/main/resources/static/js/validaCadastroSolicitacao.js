@@ -113,7 +113,11 @@ function validaInputErrado(item) {
 }
 
 window.onload = function limpaInput() {
-    document.getElementById('peso').value = ''
+    var campoPeso = document.getElementById('peso')
+
+    if (campoPeso) {
+        campoPeso.value = ''
+    }
 }
 
 function pesoCadeirante() {

@@ -42,17 +42,21 @@ const registraAssistente = () => {
     let radioAssistente = document.getElementById('ASSISTENTE_SOCIAL')
     let radioAdmin = document.getElementById('ADMINISTRADOR')
 
-    radioAssistente.addEventListener('change', function () {
-        if (this.checked) {
-            esconderCampos.classList.remove('display-none')
-        }
-    })
+    if (radioAssistente) {
+        radioAssistente.addEventListener('change', function () {
+            if (radioAssistente.checked) {
+                esconderCampos.classList.remove('display-none')
+            }
+        })
+    }
 
-    radioAdmin.addEventListener('change', function () {
-        if (this.checked) {
-            esconderCampos.classList.add('display-none')
-        }
-    })
+    if (radioAdmin) {
+        radioAdmin.addEventListener('change', function () {
+            if (radioAdmin.checked) {
+                esconderCampos.classList.add('display-none')
+            }
+        })
+    }
 }
 
 const validaCampoVazio = (item) => {
