@@ -109,12 +109,40 @@ public class SolicitacaoController {
 
     @PostMapping("/{id}/editar")
     public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao) {
+
+        Solicitacao solicitacaoAtualizada = solicitacaoRepository.getOne(id);
+
+        solicitacaoAtualizada.setNome(solicitacao.getNome());
+        solicitacaoAtualizada.setTelefone(solicitacao.getTelefone());
+        solicitacaoAtualizada.setSituacao(solicitacao.getSituacao());
+        solicitacaoAtualizada.setGenero(solicitacao.getGenero());
+        solicitacaoAtualizada.setPeso(solicitacao.getPeso());
+        solicitacaoAtualizada.setDataNascimento(solicitacao.getDataNascimento());
+        solicitacaoAtualizada.setDataTransplante(solicitacao.getDataTransplante());
+        solicitacaoAtualizada.setDataEntrada(solicitacao.getDataEntrada());
+        solicitacaoAtualizada.setDataSaida(solicitacao.getDataSaida());
+        solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
+
+        solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
+
+        for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
+            acompanhante.setSolicitacao(solicitacaoAtualizada);
+        }
+
+        solicitacaoRepository.save(solicitacaoAtualizada);
+
+        return "redirect:/solicitacao/hospital/lista";
+    }
+
+    @GetMapping("/{id}/excluir")
+    public String excluirSolicitacaoHospital(@PathVariable Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if (solicitacaoOptional.isPresent()) {
             solicitacaoRepository.deleteById(id);
 
             return "redirect:/solicitacao/hospital/lista";
         }
-
         return "404";
     }
-
 }
