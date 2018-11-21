@@ -133,6 +133,7 @@ public class SolicitacaoController {
 
             return "redirect:/solicitacao/hospital/lista";
         }
+
         return "404";
     }
 }

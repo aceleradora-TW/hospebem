@@ -74,7 +74,7 @@ public class SolicitacaoControllerTest {
     public void deveRenderizarListaSolicitacaoCasa() {
         String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
 
-//        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoCasa"));
+        assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoCasa"));
     }
 
     @Test
