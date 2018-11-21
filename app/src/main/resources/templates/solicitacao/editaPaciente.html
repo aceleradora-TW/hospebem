@@ -184,6 +184,7 @@
 
                 <h2 class="title is-2">Dados Acompanhante</h2>
                 <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
+                    <input class="validate input input-fancy" type="hidden" th:field="*{acompanhantes[__${acompIndex.index}__].id}" />
                     <h5 class="title is-5">Acompanhante
                     </h5>
                     <div class="column is-10">
@@ -195,6 +196,24 @@
                                 <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
                                     <input class="validate input input-fancy" type="text"  th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Gênero</label>
+                            </div>
+                            <div class="control">
+                                <label>
+                                    <input class="genero" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                    <span>Feminino</span>
+                                </label>
+                                <label>
+                                    <input class="genero" type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                    <span>Masculino</span>
+                                </label>
                             </div>
                         </div>
                     </div>
