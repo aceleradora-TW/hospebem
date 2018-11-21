@@ -1,5 +1,5 @@
 const validaRegistrar = (evento) => {
-    if (validaTipoUsuario() === true && camposAssistente() === true && validaUsuarioSenha() === true) {
+    if (validaTipoUsuario() === true && validaCamposAssistente() === true && validaUsuarioSenha() === true) {
         alert("registro efetuado!")
         evento.currentTarget.submit()
         return true
@@ -62,7 +62,7 @@ const validaCampoVazio = (item) => {
     item.focus()
 }
 
-const camposAssistente = () => {
+const validaCamposAssistente = () => {
     let nomeAssistente = document.getElementById('nomeAssistente')
     let emailAssistente = document.getElementById('emailDaAssistente')
     let hospitalReferencia = document.getElementById('hospitalDeReferencia')
