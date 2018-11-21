@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>HospeBem - Lista Quartos</title>
+</head>
+<body>
+<main>
+    <div class="column has-text-centered">
+        <a class="button verde-viavida" th:href="@{/solicitacao/casa/lista}">Voltar</a>
+    </div>
+
+    <h1 class="title has-text-centered espacamento-titulo">Mapa dos quartos</h1>
+    <div class="columns is-mobile" >
+        <div class="column has-text-centered">
+            <ul th:each="quarto : ${listaQuartos}">
+                <div class="column">
+                    <a th:href="@{/quartos/{idSolicitacao}/quarto/{idQuarto}(idSolicitacao=${solicitacao.id}, idQuarto=${quarto.id})}">
+                        <button type="reset" class="button is-success red"  th:if="${quarto.leitosDisponiveis <= 0 || numeroHospedes > quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
+                        <button type="submit" class="button is-success "  th:if="${quarto.leitosDisponiveis > 0 && numeroHospedes <= quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
+                    </a>
+                    <div>
+                        <label>Tipo:</label>
+                        <label th:text="${quarto.tipo}"></label>
+                    </div>
+                    <div>
+                        <label>Leitos Disponíveis: </label>
+                        <label th:text="${quarto.leitosDisponiveis}"></label>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</main>
+</body>
+</html>
