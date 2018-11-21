@@ -92,11 +92,14 @@ public class Solicitacao {
         this.dataTransplante = dataTransplante;
         this.orgao = orgao;
     }
-    public Long getId(){
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
