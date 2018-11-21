@@ -22,4 +22,11 @@ public class SolicitacaoTest {
 
         assertThat(solicitacao.formataData(),  equalTo("21/12/2018 10:30"));
     }
+
+    @Test
+    public void retornaApenasUmTracoQuandoDataDeAtualizacaoEhNula() {
+        Solicitacao solicitacao = new Solicitacao();
+
+        assertThat(solicitacao.formataData(), equalTo("-"));
+    }
 }
