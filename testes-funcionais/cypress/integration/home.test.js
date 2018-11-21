@@ -1,4 +1,4 @@
-describe('A pagina Home', () => {
+describe('A pagina inicial', () => {
 
   it('carrega com sucesso', () => {
     cy.visit('/')

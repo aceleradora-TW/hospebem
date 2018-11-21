@@ -33,3 +33,5 @@ bin/
 # Node
 node_modules
 package-lock.json
+
+testes-funcionais/cypress/screenshots

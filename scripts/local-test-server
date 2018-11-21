@@ -1,12 +1,13 @@
-.#!/bin/bash -eu
+#!/bin/bash -eu
 
 readonly MAX_STARTUP_CHECK_ATTEMPTS="60"
 
 readonly command=${1:?}
 readonly jar_path=${2:?}
 readonly build_dir=${3:?}
+readonly app_profile=${4:?}
 
-readonly startup_command="java -jar ${jar_path}"
+readonly startup_command="java -jar -Dspring.profiles.active=${app_profile} ${jar_path}"
 readonly log_path="$build_dir/test-server.log"
 readonly pid_path="$build_dir/test-server.pid"
 
@@ -15,6 +16,8 @@ get_server_pid() {
 }
 
 start_server() {
+    echo " >>> Inicializando servidor: ${startup_command}"
+
     ${startup_command} > ${log_path} 2>&1 &
     echo $! > ${pid_path}
 }
