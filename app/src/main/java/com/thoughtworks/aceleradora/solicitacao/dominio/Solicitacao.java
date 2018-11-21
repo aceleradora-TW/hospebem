@@ -1,14 +1,21 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
-import org.hibernate.annotations.ColumnDefault;
-
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static java.time.format.DateTimeFormatter.ofPattern;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -92,11 +99,14 @@ public class Solicitacao {
         this.dataTransplante = dataTransplante;
         this.orgao = orgao;
     }
-    public Long getId(){
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -206,11 +216,11 @@ public class Solicitacao {
 
     public void setOrgao(String orgao) { this.orgao = orgao; }
 
-    public String formataData(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        LocalDateTime dateTime = getDataAtualizacao();
-        String formattedDateTime= dateTime.format(formatter);
-        return formattedDateTime;
+    public String formataData() {
+        return Optional
+                .ofNullable(dataAtualizacao)
+                .map(data -> data.format(ofPattern("dd/MM/yyyy HH:mm")))
+                .orElse("-");
     }
 
     @PrePersist
