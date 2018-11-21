@@ -100,7 +100,6 @@ public class SolicitacaoController {
             solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             model.addAttribute("solicitacao", solicitacao);
-
             return "solicitacao/editaPaciente";
         }
         return "404";
@@ -122,7 +121,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-
+        
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }
