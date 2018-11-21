@@ -1,12 +1,8 @@
 const validaRegistrar = (evento) => {
-    if (validaTipoUsuario()){
-        if (camposAssistente()) {
-            if (validaUsuarioSenha()) {
-                alert("registro efetuado!")
-                evento.currentTarget.submit()
-                return true
-            }
-        }
+    if (validaTipoUsuario() === true && camposAssistente() === true && validaUsuarioSenha() === true) {
+        alert("registro efetuado!")
+        evento.currentTarget.submit()
+        return true
     }
     return false
 }
@@ -71,9 +67,9 @@ const camposAssistente = () => {
     let emailAssistente = document.getElementById('emailDaAssistente')
     let hospitalReferencia = document.getElementById('hospitalDeReferencia')
     let telefoneAssistente = document.getElementById('telefoneAssistente')
-    let assistenteRadio = document.getElementById('assistente')
+    let radioNome = document.getElementById('ASSISTENTE_SOCIAL')
 
-    if (assistenteRadio.checked === true) {
+    if (radioNome.checked === true) {
         if (nomeAssistente.value === '') {
             validaCampoVazio(nomeAssistente)
             return false
