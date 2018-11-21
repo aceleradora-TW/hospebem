@@ -16,14 +16,10 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
-
     @Column(name ="nome_assistente")
     private String nomeAssistente;
-
     private String email;
-
     private String telefone;
-
     @Column(name="hospital_referencia")
     private String hospitalReferencia;
 

@@ -17,7 +17,7 @@ public class Endereco {
     private String bairro;
     private String uf;
 
-    public Endereco(){
+    public Endereco() {
     }
 
     public Endereco(String rua, String numero, String cidade, String bairro, String uf) {

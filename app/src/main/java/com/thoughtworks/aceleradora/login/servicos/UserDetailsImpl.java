@@ -25,14 +25,14 @@ public class UserDetailsImpl implements UserDetailsService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepository.findByNome(username);
 
-        Set<GrantedAuthority> permissoes = new HashSet<GrantedAuthority>(){{
+        Set<GrantedAuthority> permissoes = new HashSet<GrantedAuthority>() {{
             add(new SimpleGrantedAuthority(usuario.getCargo().getNome()));
         }};
 
         return new User(usuario.getNome(), usuario.getSenha(), permissoes);
-        }
     }
+}
 
