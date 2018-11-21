@@ -22,13 +22,13 @@
         </ul>
     </div>
     <div class="is-centered is-half centralizar espacamento" th:if="${quarto.getLeitosDisponiveis() > 0}">
-        <form th:action="@{/quarto/aceitar}" method="post">
+        <form th:action="@{/quarto/aceitar}" method="POST">
             <input type="hidden" name="id" th:value="${solicitacao.id}">
             <input type="hidden" name="idQuarto" th:value="${quarto.id}">
             <button type="submit" class="button verde-viavida"> Aceitar Solicitação </button>
         </form>
 
-        <form th:action="@{/quarto/negar}" method="post">
+        <form th:action="@{/quarto/negar}" method="POST">
             <input type="hidden" name="id" th:value="${solicitacao.id}">
             <input type="hidden" name="idQuarto" th:value="${quarto.id}">
             <button type="submit" class="button verde-viavida"> Negar Solicitação</button>

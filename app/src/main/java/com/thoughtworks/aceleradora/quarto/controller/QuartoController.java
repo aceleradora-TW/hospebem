@@ -63,6 +63,30 @@ public class QuartoController {
         return "404";
     }
 
+    @PostMapping("/aceitar")
+    public String aceitaSolicitacao(Long id, Long idQuarto) {
+        Solicitacao solicitacao = solicitacaoRepository.getOne(id);
+        Quarto quarto = quartoRepository.getOne(idQuarto);
+
+        limitaQuartos(solicitacao, quarto);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/negar")
+    public String negaSolicitacao(Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if (solicitacaoOptional.isPresent()) {
+            Solicitacao solicitacao = solicitacaoOptional.get();
+            solicitacao.setStatus("Negado");
+            solicitacaoRepository.save(solicitacao);
+
+            return "redirect:/solicitacao/casa/lista";
+        }
+        return "404";
+    }
+
     private int hospedesPresentes(Solicitacao solicitacao){
         int numeroHospedes = 1;
 
@@ -72,5 +96,22 @@ public class QuartoController {
             }
         }
         return numeroHospedes;
+    }
+
+    private void limitaQuartos(Solicitacao solicitacao, Quarto quarto){
+        int numeroHospedes = hospedesPresentes(solicitacao);
+
+        if(numeroHospedes <= quarto.getLeitosDisponiveis()) {
+            solicitacao.setStatus("Aceito");
+            solicitacao.setQuarto(quarto);
+            quarto.getSolicitacoes().add(solicitacao);
+            quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() - numeroHospedes);
+
+            if (quarto.getLeitosDisponiveis() <= 0) {
+                quarto.setStatusQuartos("Indisponivel");
+            }
+        }
+        solicitacaoRepository.save(solicitacao);
+        quartoRepository.save(quarto);
     }
 }
