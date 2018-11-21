@@ -17,6 +17,11 @@ button{
     text-decoration-color: rgba(222, 222, 222, 1);
 }
 
+.borda-arredondada {
+    border-radius: 11px;
+}
+
+
 .input-radio {
     border: 1px solid red;
 }
@@ -152,6 +157,7 @@ button{
 .select select {
     width: 100%;
     border-color: rgba(56, 124, 43, 1);
+    border-radius: 11px;
 }
 
 .select select:hover, .select select.is-hovered {

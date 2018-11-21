@@ -24,7 +24,7 @@
                     <div class="field">
                         <div class="control">
                             <span>*Nome Completo:</span>
-                            <input class="input input-fancy" th:field="*{nome}" type="text" id="nome" >
+                            <input class="input input-fancy borda-arredondada" th:field="*{nome}" type="text" id="nome" >
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         <div class="control">
                             <span>*Data de nascimento:</span>
                             <input id="dataNascimento" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                   type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataNascimento}"
+                                   type="text" class="input input-fancy datepicker-retroativo borda-arredondada" th:field="*{dataNascimento}"
                                    onkeypress="return false" >
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="field">
                         <div class="control">
                             <span class="display-none">Informe o peso:</span>
-                            <input class="input input-fancy display-none" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso" value="0" >
+                            <input class="input input-fancy display-none borda-arredondada" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso" value="0" >
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                             <div class="control">
                                 <span>Data do transplante:</span>
                                 <input id="dataTransplante" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                       type="text" class="input input-fancy datepicker-futuro" th:field="*{dataTransplante}"
+                                       type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataTransplante}"
                                        onkeypress="return false;">
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                         <p>*Órgão:</p>
                         <div class = "control">
                             <div class="select">
-                                <select name="orgao" id="select">
+                                <select class="" name="orgao" id="select">
                                     <option disabled selected th:value="selecione">Selecione o órgão</option>
                                     <option th:value="'coração'" th:text="Coração"></option>
                                     <option th:value="'fígado'" th:text="Fígado"></option>
@@ -120,7 +120,7 @@
                         <div class="control">
                             <span>*Data de entrada requerida:</span>
                             <input id="dataEntrada" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                   type="text" class="input input-fancy datepicker-futuro" th:field="*{dataEntrada}"
+                                   type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataEntrada}"
                                    onkeypress="return false;" >
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                         <div class="control">
                             <span>Data de saída (previsão):</span>
                             <input id="dataSaida" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                   type="text" class="input input-fancy datepicker-futuro" th:field="*{dataSaida}"
+                                   type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataSaida}"
                                    onkeypress="return false;">
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Telefone para Contato:</span>
-                            <input class="input input-fancy" th:field="*{telefone}" type="text">
+                            <input class="input input-fancy borda-arredondada" th:field="*{telefone}" type="text">
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                             <h3 class="subtitle is-3">Endereço</h3>
 
                             <span>Logradouro:</span>
-                            <input class="input input-fancy" th:field="*{endereco.rua}" type="text">
+                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.rua}" type="text">
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Número:</span>
-                            <input class="input input-fancy" th:field="*{endereco.numero}" type="text">
+                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.numero}" type="text">
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Cidade:</span>
-                            <input class="input input-fancy" th:field="*{endereco.cidade}" type="text">
+                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.cidade}" type="text">
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Bairro:</span>
-                            <input class="input input-fancy" th:field="*{endereco.bairro}" type="text">
+                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.bairro}" type="text">
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
                     <div class="field">
                         <div class="control">
                             <span>UF:</span>
-                            <input class="input input-fancy" th:field="*{endereco.uf}" type="text">
+                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.uf}" type="text">
                         </div>
                     </div>
                 </div>
@@ -197,7 +197,7 @@
                         <div class="field">
                             <div class="control">
                                 <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                                    <input class="input input-fancy nome" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                                    <input class="input input-fancy nome borda-arredondada" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                                 </p>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                         <div class="field">
                             <div class="control">
                                 <p>Data de nascimento <span th:text="${acompIndex.index + 1}"></span>:
-                                    <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo"
+                                    <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo borda-arredondada"
                                            th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}"
                                            onkeypress="return false;">
                                 </p>
@@ -232,9 +232,9 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <button class="button verde-viavida" value="Enviar Solicitação" type="submit">Enviar Solicitação</button>
-                            <input class="button" type="reset" value="Limpar Formulário">
-                            <a class="button is-danger is-outlined" type="button" href="/">Cancelar</a>
+                            <button class="button verde-viavida borda-arredondada" value="Enviar Solicitação" type="submit">Enviar Solicitação</button>
+                            <input class="button borda-arredondada" type="reset" value="Limpar Formulário">
+                            <a class="button is-danger is-outlined borda-arredondada" type="button" href="/">Cancelar</a>
                         </div>
                     </div>
                 </div>
