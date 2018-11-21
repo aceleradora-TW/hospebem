@@ -2,4 +2,4 @@ rootProject.name = 'hospebem'
 
 include 'app'
 include 'testes-funcionais'
-
+include 'scripts'

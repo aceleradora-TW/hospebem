@@ -1,0 +1,34 @@
+def appBuildDir = project(':app').buildDir
+
+def serverCommand = "${projectDir}/local-test-server"
+def dbCommand = "${projectDir}/local-database"
+
+task startFromJar(type: Exec, dependsOn: ':app:assemble') {
+
+    commandLine serverCommand, "start", "$appBuildDir/libs/app.jar", "$appBuildDir", "dev"
+}
+
+task stopRunningJar(type: Exec) {
+
+    commandLine serverCommand, "stop", "$appBuildDir/libs/app.jar", "$appBuildDir", "dev"
+}
+
+task dbSetup(type: Exec) {
+
+    commandLine dbCommand, "setup"
+}
+
+task dbStart(type: Exec) {
+
+    commandLine dbCommand, "start"
+}
+
+task dbContainerStop(type: Exec) {
+
+    commandLine dbCommand, "stop"
+}
+
+task dbContainerRemove(type: Exec) {
+
+    commandLine dbCommand, "remove"
+}
