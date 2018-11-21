@@ -90,13 +90,13 @@ public class Solicitacao {
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.dataTransplante = dataTransplante;
-        this.dataAtualizacao = dataAtualizacao;
         this.orgao = orgao;
     }
-
-    public Long getId() {
+    public Long getId(){
         return id;
     }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getNome() {
         return nome;
