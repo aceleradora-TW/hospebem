@@ -1,6 +1,12 @@
 package com.thoughtworks.aceleradora.login.dominio;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity(name = "usuarios")
 public class Usuario {
@@ -17,14 +23,14 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
 
-    @Column(name ="nome_assistente")
+    @Column(name = "nome_assistente")
     private String nomeAssistente;
 
     private String email;
 
     private String telefone;
-
-    @Column(name="hospital_referencia")
+  
+    @Column(name = "hospital_referencia")
     private String hospitalReferencia;
 
     public Usuario(){ }

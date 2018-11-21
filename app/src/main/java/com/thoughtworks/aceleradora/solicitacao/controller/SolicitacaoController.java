@@ -1,7 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
-import com.thoughtworks.aceleradora.solicitacao.dominio.Endereco;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Optional;
 import java.util.function.Function;
+
+import static java.util.Arrays.asList;
+import static java.util.Comparator.comparing;
 
 @Controller
 @RequestMapping("/solicitacao")
@@ -32,7 +34,7 @@ public class SolicitacaoController {
     @GetMapping("/cadastro")
     public String formularioCadastro(Model model) {
         Solicitacao novaSolicitacao = new Solicitacao();
-        novaSolicitacao.setAcompanhantes(Arrays.asList(new Acompanhante(), new Acompanhante()));
+        novaSolicitacao.setAcompanhantes(asList(new Acompanhante(), new Acompanhante()));
         model.addAttribute("solicitacao", novaSolicitacao);
         return "solicitacao/cadastro";
     }
@@ -96,9 +98,10 @@ public class SolicitacaoController {
     @GetMapping("/{id}/editar")
     public String editaDadosHospede(Model model, @PathVariable Long id) {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
+            solicitacao.getAcompanhantes().sort(comparing(Acompanhante::getId));
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             model.addAttribute("solicitacao", solicitacao);
             return "solicitacao/editaPaciente";
@@ -109,6 +112,7 @@ public class SolicitacaoController {
 
     @PostMapping("/{id}/editar")
     public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao) {
+
         Solicitacao solicitacaoAtualizada = solicitacaoRepository.getOne(id);
 
         solicitacaoAtualizada.setNome(solicitacao.getNome());
@@ -122,7 +126,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-        
+
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }
