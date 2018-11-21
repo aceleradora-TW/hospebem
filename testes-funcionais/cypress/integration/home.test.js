@@ -1,6 +1,6 @@
 describe('A pagina inicial', () => {
 
-  it('carrega tudo corretamente, incluindo recursos estaticos', () => {
+  it('carrega sem nenhum erro', () => {
     cy.visit('/')
   })
 
