@@ -162,6 +162,9 @@ h1{
     width: 100%;
 }
 
+.button.is-success.red{
+    background-color: rgb(255, 0, 0);
+}
 .select {
     border-radius: 162px;
     width: 100%;

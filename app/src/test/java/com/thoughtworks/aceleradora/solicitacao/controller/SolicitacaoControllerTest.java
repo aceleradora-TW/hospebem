@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
+import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Endereco;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
@@ -48,11 +49,14 @@ public class SolicitacaoControllerTest {
     @Test
     public void deveSalvarSolicitacaoNoBanco() {
         Solicitacao soli = mock(Solicitacao.class);
+        Quarto quarto = mock(Quarto.class);
         LocalDate dataNascimento = LocalDate.of(2010, 3, 7);
         LocalDate dataEntrada = LocalDate.of(2010, 3, 7);
         LocalDate dataSaida = LocalDate.of(2010, 3, 7);
         LocalDate dataTransplante = LocalDate.of(2010, 3, 7);
         LocalDateTime dataAtt = LocalDateTime.of(2007, 07, 10, 10, 10, 10);
+        LocalDate dataCheckin = LocalDate.of(2010, 3, 7);
+        LocalDate dataCheckout = LocalDate.of(2010, 3, 7);
 
         Endereco end = new Endereco("A", "B", "C", "D", "E");
 
@@ -60,7 +64,10 @@ public class SolicitacaoControllerTest {
                 new Acompanhante("Amanda", "F", dataNascimento, soli),
                 new Acompanhante("Aline", "F", dataNascimento, soli));
 
-        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos", "545214", "sim", "pendente", 12, dataNascimento, dataEntrada, dataSaida, dataTransplante, dataAtt, end, acompanhantes, "coracao");
+        Solicitacao solicitacao = new Solicitacao("joao", "masculino", "pos",
+                "545214", "sim", "pendente", 15, dataNascimento,
+                dataEntrada, dataSaida, dataTransplante, dataAtt, end, acompanhantes,
+                "coracao", dataCheckin, dataCheckout, quarto);
 
         String paginaRenderizada = controller.salvaSolicitacao(solicitacao);
         verify(repositorio).save(solicitacao);
