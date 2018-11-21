@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -31,7 +30,7 @@ public class UserDetailsImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepository.findByNome(username);
 
-        Set<SimpleGrantedAuthority> permissoes = Stream
+        Set<GrantedAuthority> permissoes = Stream
                 .of(new SimpleGrantedAuthority(usuario.getCargo().getNome()))
                 .collect(toSet());
 
