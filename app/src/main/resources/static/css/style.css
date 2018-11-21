@@ -17,6 +17,10 @@ button{
     text-decoration-color: rgba(222, 222, 222, 1);
 }
 
+.centraliza-vertical {
+    align-items: center;
+}
+
 .borda-arredondada {
     border-radius: 11px;
 }
@@ -34,6 +38,8 @@ button{
     display: flex;
     justify-content: center;
 }
+
+
 
 .columns {
     display: flex;
@@ -163,3 +169,17 @@ button{
 .select select:hover, .select select.is-hovered {
     border-color: rgba(56, 124, 43, 1);
 }
+
+.centraliza-input-cadeirante {
+    justify-content: center;
+    display: flex;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
