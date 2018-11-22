@@ -14,7 +14,7 @@ import static org.springframework.http.ResponseEntity.ok;
 public class CsvControllers {
 
     private SolicitacaoCsvService solicitacaoCsvService;
-    
+
     @GetMapping(value = "/negadas/csv", produces = "text/csv")
     public ResponseEntity<String> negadas() {
         return constroiResposta(solicitacaoCsvService.solicitacoesNegadas());
@@ -30,7 +30,5 @@ public class CsvControllers {
                 .header(CONTENT_DISPOSITION, "attachement; filename=arquivo.csv")
                 .body(corpo);
     }
-
-
 }
 
