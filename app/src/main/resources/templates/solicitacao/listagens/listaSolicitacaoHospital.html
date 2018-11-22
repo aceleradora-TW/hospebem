@@ -36,7 +36,7 @@
 
                             <tr th:each="solicitacao : ${solicitacoesHospital}">
                                 <td class="has-text-centered" th:text="${solicitacao.nome}"></td>
-                                <td class="has-text-centered">11-11-2018</td>
+                                <td class="has-text-centered" th:text="${solicitacao.formataData()}"></td>
                                 <td class="has-text-centered" th:text="${solicitacao.status}"></td>
                                 <td class="column has-text-centered">
                                     <a th:href="@{/solicitacao/{id}/editar(id=${solicitacao.id})}">
@@ -47,7 +47,7 @@
                                 </td>
                                 <td>
                                     <a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">
-                                        <button class="button is-danger" type="submit">Excluir</button>
+                                        <button class="button is-danger" type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
                                     </a>
                                 </td>
                             </tr>
