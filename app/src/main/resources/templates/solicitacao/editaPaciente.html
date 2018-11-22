@@ -6,11 +6,9 @@
 </head>
 <body>
 
-<div th:include="@{./partes/cabecalhoPadrao}"/>
-
 <main>
     <div class="card-content valign center has-text-centered">
-        <div  class="columns">
+        <div class="columns">
             <form th:object="${solicitacao}" th:action="@{/solicitacao/{id}/editar(id=${solicitacao.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
                   id="formSolicitacao">
                 <h2 class="title is-2">Dados Paciente</h2>
@@ -105,7 +103,19 @@
                             <label class="label">Data de Entrada</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy datepicker-retroativo" autocomplete="off" type="text" name="dataEntrada" th:field="*{dataEntrada}"
+                            <input class="validate input input-fancy datepicker-futuro" autocomplete="off" type="text" name="dataEntrada" th:field="*{dataEntrada}"
+                                   onkeypress="return false;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Data de Saída</label>
+                        </div>
+                        <div class="control">
+                            <input class="validate input input-fancy datepicker-futuro" autocomplete="off" type="text" name="dataSaida" th:field="*{dataSaida}"
                                    onkeypress="return false;">
                         </div>
                     </div>
