@@ -96,6 +96,7 @@ public class Solicitacao {
         this.acompanhantes = acompanhantes;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
+        this.dataAtualizacao = dataAtualizacao;
         this.dataTransplante = dataTransplante;
         this.orgao = orgao;
     }
@@ -172,10 +173,6 @@ public class Solicitacao {
         this.endereco = endereco;
     }
 
-    public LocalDate getDataSaida() { return dataSaida; }
-
-    public void setDataSaida(LocalDate dataSaida) { this.dataSaida = dataSaida; }
-
     public LocalDate getDataTransplante() { return dataTransplante; }
 
     public LocalDateTime getDataAtualizacao() {
@@ -199,6 +196,10 @@ public class Solicitacao {
     public void setDataEntrada(LocalDate dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
+
+    public LocalDate getDataSaida() { return dataSaida; }
+
+    public void setDataSaida(LocalDate dataSaida) { this.dataSaida = dataSaida; }
 
     public void setAcompanhantes(List<Acompanhante> acompanhantes) {
         this.acompanhantes = acompanhantes;

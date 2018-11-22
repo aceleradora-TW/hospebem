@@ -119,6 +119,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setDataNascimento(solicitacao.getDataNascimento());
         solicitacaoAtualizada.setDataTransplante(solicitacao.getDataTransplante());
         solicitacaoAtualizada.setDataEntrada(solicitacao.getDataEntrada());
+        solicitacaoAtualizada.setDataSaida(solicitacao.getDataSaida());
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
