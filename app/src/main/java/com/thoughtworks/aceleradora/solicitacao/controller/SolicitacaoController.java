@@ -54,7 +54,7 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAll());
+        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus("Pendente"));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }

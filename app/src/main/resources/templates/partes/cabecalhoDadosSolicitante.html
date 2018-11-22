@@ -1,0 +1,19 @@
+<div class="column centralizar" xmlns:th="http://www.thymeleaf.org">
+    <div>
+        <p class="centralizar">
+            <b>Informações Paciente</b>
+        </p>
+        <p>
+            <label>
+                <b>Nome:</b>
+            </label>
+            <label th:text="${solicitacao.nome}"></label>
+        </p>
+        <p>
+            <label>
+                <b>Número de acompanhantes:</b>
+            </label>
+            <label th:text="${numeroHospedes - 1}"></label>
+        </p>
+    </div>
+</div>

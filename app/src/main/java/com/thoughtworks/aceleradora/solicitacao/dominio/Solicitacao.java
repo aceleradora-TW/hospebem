@@ -1,15 +1,20 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
+
+import org.hibernate.annotations.ColumnDefault;
+
+import javax.persistence.*;
+//import javax.persistence.CascadeType;
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.FetchType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
+//import javax.persistence.OneToMany;
+//import javax.persistence.OneToOne;
+//import javax.persistence.PrePersist;
+//import javax.persistence.PreUpdate;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,6 +22,7 @@ import java.util.Optional;
 
 import static java.time.format.DateTimeFormatter.ofPattern;
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "solicitacoes")
@@ -58,15 +64,24 @@ public class Solicitacao {
     @Column(name = "data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
-    @OneToOne(cascade = ALL)
+    @Column(name="data_checkin")
+    private LocalDate dataCheckin;
+
+    @Column(name="data_checkout")
+    private LocalDate dataCheckout;
+
+    @OneToOne(cascade=ALL)
     private Endereco endereco;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "solicitacao")
+    @OneToMany(cascade = ALL, fetch = EAGER, mappedBy = "solicitacao")
     private List<Acompanhante> acompanhantes;
+
+    @ManyToOne(fetch = EAGER)
+    @JoinColumn(name = "quarto_id")
+    private Quarto quarto;
 
     public Solicitacao() {
     }
-
 
     public Solicitacao(String nome,
                        String genero,
@@ -82,7 +97,11 @@ public class Solicitacao {
                        LocalDateTime dataAtualizacao,
                        Endereco endereco,
                        List<Acompanhante> acompanhantes,
-                       String orgao) {
+                       String orgao,
+                       LocalDate dataCheckin,
+                       LocalDate dataCheckout,
+                       Quarto quarto)
+    {
         this.nome = nome;
         this.genero = genero;
         this.situacao = situacao;
@@ -98,6 +117,8 @@ public class Solicitacao {
         this.dataAtualizacao = dataAtualizacao;
         this.dataTransplante = dataTransplante;
         this.orgao = orgao;
+        this.dataCheckin = dataCheckin;
+        this.dataCheckout = dataCheckout;
     }
 
     public Long getId() {
@@ -226,6 +247,30 @@ public class Solicitacao {
 
     public void setOrgao(String orgao) {
         this.orgao = orgao;
+    }
+
+    public LocalDate getDataCheckin() {
+        return dataCheckin;
+    }
+
+    public void setDataCheckin(LocalDate dataCheckin) {
+        this.dataCheckin = dataCheckin;
+    }
+
+    public LocalDate getDataCheckout() {
+        return dataCheckout;
+    }
+
+    public void setDataCheckout(LocalDate dataCheckout) {
+        this.dataCheckout = dataCheckout;
+    }
+
+    public Quarto getQuarto() {
+        return quarto;
+    }
+
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
     }
 
     public String formataData() {
