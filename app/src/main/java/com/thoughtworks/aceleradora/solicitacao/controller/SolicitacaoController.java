@@ -41,7 +41,6 @@ public class SolicitacaoController {
     public String salvaSolicitacao(Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
-
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/solicitacao/hospital/lista";
@@ -103,7 +102,6 @@ public class SolicitacaoController {
             model.addAttribute("solicitacao", solicitacao);
             return "solicitacao/editaPaciente";
         }
-
         return "404";
     }
 
@@ -141,8 +139,6 @@ public class SolicitacaoController {
 
             return "redirect:/solicitacao/hospital/lista";
         }
-
         return "404";
     }
-
 }

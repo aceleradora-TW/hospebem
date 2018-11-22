@@ -15,10 +15,21 @@ button{
     align-items: center;
     background-color: rgba(56, 124, 43, 1);
     text-decoration-color: rgba(222, 222, 222, 1);
+    border-radius: 11px;
 }
+
+.centraliza-vertical {
+    align-items: center;
+}
+
+.borda-arredondada {
+    border-radius: 11px;
+}
+
 
 .input-radio {
     border: 1px solid red;
+    margin-left:5px;
 }
 
 .campo-obrigatorio {
@@ -29,6 +40,8 @@ button{
     display: flex;
     justify-content: center;
 }
+
+
 
 .columns {
     display: flex;
@@ -112,9 +125,14 @@ button{
 .titulo-nav{
     font-size: 1.5rem;
 }
-
+h1{
+    font-size: 36px;
+}
 .titulo-h1 {
     font-size: 2rem;
+}
+.titulo-h2{
+    font-size: 1.5rem;
 }
 
 .verde-viavida {
@@ -152,8 +170,23 @@ button{
 .select select {
     width: 100%;
     border-color: rgba(56, 124, 43, 1);
+    border-radius: 11px;
 }
 
 .select select:hover, .select select.is-hovered {
     border-color: rgba(56, 124, 43, 1);
 }
+
+.centraliza-input-cadeirante {
+    justify-content: center;
+    display: flex;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.width-50 {
+    width: 50%;
+}
+

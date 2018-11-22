@@ -23,9 +23,7 @@ public class Usuario {
     @Column(name="hospital_referencia")
     private String hospitalReferencia;
 
-    public Usuario(){
-
-    }
+    public Usuario(){ }
 
     public Usuario(String nome, String senha, Cargo cargo, String nomeAssistente, String email, String telefone, String hospitalReferencia) {
         this.nome = nome;
