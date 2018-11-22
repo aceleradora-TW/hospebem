@@ -5,21 +5,19 @@
       <title>Formulario</title>
 </head>
 <body>
-
 <main>
     <div class="card-content valign center has-text-centered">
         <div class="columns">
             <form th:object="${solicitacao}" th:action="@{/solicitacao/{id}/editar(id=${solicitacao.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
                   id="formSolicitacao">
-                <h2 class="title is-2">Dados Paciente</h2>
-
+                <h3 class="title is-3">Dados do Paciente</h3>
                 <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Nome </label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="text" th:field="*{nome}">
+                            <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{nome}">
                         </div>
                     </div>
                 </div>
@@ -29,9 +27,10 @@
                             <label class="label">Gênero</label>
                         </div>
                         <div class="control">
-                            <input th:field="*{genero}" type="radio" value="F" id="genero1">
-                            <span>Feminino</span>
-
+                            <label>
+                                <input th:field="*{genero}" type="radio" value="F" id="genero1">
+                                <span>Feminino</span>
+                            </label>
                             <label>
                                 <input th:field="*{genero}" type="radio" value="M" id="genero2">
                                 <span>Masculino</span>
@@ -44,8 +43,8 @@
                         <div class="control">
                             <span>Data de Nascimento:</span>
                             <input id="dataNascimento" placeholder="Clique para selecionar uma data"
-                                   type="text" class="input input-fancy datepicker-retroativo" th:field="*{dataNascimento}"
-                                   onkeypress="return false;">
+                                   type="text" class="input input-fancy datepicker-retroativo borda-arredondada" th:field="*{dataNascimento}"
+                                   onkeypress="return false;" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -55,8 +54,9 @@
                             <label class="label">Situação</label>
                         </div>
                         <div class="control">
-                            <input th:field="*{situacao}" type="radio" value="pre" id="situacao.pre">
-                            <span>Pré-transplante</span>
+                            <label>
+                                <input th:field="*{situacao}" type="radio" value="pre" id="situacao.pre">
+                                <span>Pré-transplante</span>
                             </label>
                             <label>
                                 <input th:field="*{situacao}" type="radio" value="pos" id="situacao.pos">
@@ -70,7 +70,7 @@
                         <div class="control">
                             <span>Data do transplante:</span>
                             <input id="dataTransplante" placeholder="Clique para selecionar uma data"
-                                   type="text" class="input input-fancy datepicker-futuro" th:field="*{dataTransplante}"
+                                   type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataTransplante}"
                                    onkeypress="return false;">
                         </div>
                     </div>
@@ -81,29 +81,27 @@
                             <label class="label">Telefone</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="text" name="telefone" th:field="*{telefone}">
+                            <input class="validate input input-fancy borda-arredondada" type="text" name="telefone" th:field="*{telefone}">
                         </div>
                     </div>
                 </div>
-
                 <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Peso</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="number" min="0" max="600" step="0.1" id="peso" value="0"  th:field="*{peso}" >
+                            <input class="validate input input-fancy borda-arredondada" type="number" min="0" max="600" step="0.1" id="peso" value="0"  th:field="*{peso}" >
                         </div>
                     </div>
                 </div>
-
                 <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Data de Entrada</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy datepicker-futuro" autocomplete="off" type="text" name="dataEntrada" th:field="*{dataEntrada}"
+                            <input class="validate input input-fancy datepicker-retroativo borda-arredondada" autocomplete="off" type="text" name="dataEntrada" th:field="*{dataEntrada}"
                                    onkeypress="return false;">
                         </div>
                     </div>
@@ -120,10 +118,7 @@
                         </div>
                     </div>
                 </div>
-
-
-                <h2 class="title is-2">Endereço</h2>
-
+                <h3 class="title is-3">Endereço</h3>
                 <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
@@ -131,29 +126,27 @@
                         </div>
                         <div class="control">
                             <input type="hidden" th:field="*{endereco.id}">
-                            <input class="validate input input-fancy" type="text" th:field="*{endereco.rua}">
+                            <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{endereco.rua}">
                         </div>
                     </div>
                 </div>
-
                 <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Número</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="text" name="numero" th:field="*{endereco.numero}">
+                            <input class="validate input input-fancy borda-arredondada" type="text" name="numero" th:field="*{endereco.numero}">
                         </div>
                     </div>
                 </div>
-
                 <div class="column is-10">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Cidade</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="text" name="cidade" th:field="*{endereco.cidade}">
+                            <input class="validate input input-fancy borda-arredondada" type="text" name="cidade" th:field="*{endereco.cidade}">
                         </div>
                     </div>
                 </div>
@@ -164,7 +157,7 @@
                             <label class="label">Bairro</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="text" name="bairro" th:field="*{endereco.bairro}">
+                            <input class="validate input input-fancy borda-arredondada" type="text" name="bairro" th:field="*{endereco.bairro}">
                         </div>
                     </div>
 
@@ -176,16 +169,14 @@
                             <label class="label">UF</label>
                         </div>
                         <div class="control">
-                            <input class="validate input input-fancy" type="text" name="uf" th:field="*{endereco.uf}">
+                            <input class="validate input input-fancy borda-arredondada" type="text" name="uf" th:field="*{endereco.uf}">
                         </div>
                     </div>
                 </div>
-
-                <h2 class="title is-2">Dados Acompanhante</h2>
+                <h3 class="title is-3">Dados do Acompanhante</h3>
                 <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
-                    <input class="validate input input-fancy" type="hidden" th:field="*{acompanhantes[__${acompIndex.index}__].id}" />
-                    <h5 class="title is-5">Acompanhante
-                    </h5>
+                    <input class="validate input input-fancy borda-arredondada" type="hidden" th:field="*{acompanhantes[__${acompIndex.index}__].id}" />
+                    <h5 class="title is-5">Acompanhante</h5>
                     <div class="column is-10">
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
@@ -193,12 +184,11 @@
                             </div>
                             <div class="control">
                                 <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                                    <input class="validate input input-fancy" type="text"  th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                                    <input class="validate input input-fancy borda-arredondada" type="text"  th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
                                 </p>
                             </div>
                         </div>
                     </div>
-
                     <div class="column is-10">
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
@@ -216,14 +206,13 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="column is-10">
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
                                 <label class="label">Data de Nascimento</label>
                             </div>
                             <div class="control">
-                                <input class="validate input input-fancy datepicker-retroativo" autocomplete="off" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}"
+                                <input class="validate input input-fancy datepicker-retroativo borda-arredondada" autocomplete="off" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}"
                                        onkeypress="return false;">
                             </div>
                         </div>

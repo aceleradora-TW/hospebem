@@ -40,14 +40,14 @@
                                 <td class="has-text-centered" th:text="${solicitacao.status}"></td>
                                 <td class="column has-text-centered">
                                     <a th:href="@{/solicitacao/{id}/editar(id=${solicitacao.id})}">
-                                        <button class="button" type="submit" th:if="${solicitacao.status}!='Aceito'">
+                                        <button class="button borda-arredondada" type="submit" th:if="${solicitacao.status}!='aceito'">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                     </a>
                                 </td>
                                 <td>
                                     <a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">
-                                        <button class="button is-danger" type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
+                                        <button class="button is-danger borda-arredondada" type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</button>
                                     </a>
                                </td>
                             </tr>

@@ -24,20 +24,22 @@
                 </div>
                 <div>
                     <a th:href="@{/solicitacao/{id}/dados(id=${solicitacao.id})}">
-                        <button type="submit" class="button is-rounded is-success ">
+                        <button type="submit" class="button is-success borda-arredondada">
                             Ver informações
                         </button>
                     </a>
                     <a th:href="@{/{id}/quartos/listaQuartos(id=${solicitacao.id})}">
-                        <button type="submit" class="button verde-viavida is-rounded">
+                        <button type="submit" class="button verde-viavida borda-arredondada">
                             Selecionar quarto
                         </button>
                     </a>
                 </div>
             </div>
-
-            <a class="button verde-viavida" href="/">Voltar</a>
-
+                <a href="/">
+                    <button type="submit" class="button verde-viavida borda-arredondada">
+                        Voltar
+                    </button>
+                </a>
         </div>
     </div>
 </main>

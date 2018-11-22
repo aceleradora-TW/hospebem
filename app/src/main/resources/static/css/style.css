@@ -15,6 +15,7 @@ button{
     align-items: center;
     background-color: rgba(56, 124, 43, 1);
     text-decoration-color: rgba(222, 222, 222, 1);
+    border-radius: 11px;
 }
 
 .centraliza-vertical {
@@ -28,6 +29,7 @@ button{
 
 .input-radio {
     border: 1px solid red;
+    margin-left:5px;
 }
 
 .campo-obrigatorio {
@@ -123,9 +125,14 @@ button{
 .titulo-nav{
     font-size: 1.5rem;
 }
-
+h1{
+    font-size: 36px;
+}
 .titulo-h1 {
     font-size: 2rem;
+}
+.titulo-h2{
+    font-size: 1.5rem;
 }
 
 .verde-viavida {
