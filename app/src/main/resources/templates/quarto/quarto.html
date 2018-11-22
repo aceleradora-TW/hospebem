@@ -9,7 +9,7 @@
     <div th:include="@{./partes/cabecalhoDadosSolicitante}"/>
 
     <div class="column has-text-centered">
-        <a class="button verde-viavida" th:href="@{/quartos/{id}/listaQuartos(id=${solicitacao.id})}">Voltar</a>
+        <a class="button verde-viavida borda-arredondada" th:href="@{/quartos/{id}/listaQuartos(id=${solicitacao.id})}">Voltar</a>
     </div>
 
     <h1 class="title is-half centralizar espacamento-titulo" th:text="'Quarto: ' + ${quarto.nomeQuarto}"></h1>
@@ -25,13 +25,13 @@
         <form th:action="@{/quarto/aceitar}" method="POST">
             <input type="hidden" name="id" th:value="${solicitacao.id}">
             <input type="hidden" name="idQuarto" th:value="${quarto.id}">
-            <button type="submit" class="button verde-viavida"> Aceitar Solicitação </button>
+            <button type="submit" class="button verde-viavida borda-arredondada"> Aceitar Solicitação </button>
         </form>
 
         <form th:action="@{/quarto/negar}" method="POST">
             <input type="hidden" name="id" th:value="${solicitacao.id}">
             <input type="hidden" name="idQuarto" th:value="${quarto.id}">
-            <button type="submit" class="button verde-viavida"> Negar Solicitação</button>
+            <button type="submit" class="button verde-viavida borda-arredondada"> Negar Solicitação</button>
         </form>
     </div>
 </main>
