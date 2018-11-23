@@ -19,7 +19,7 @@ const validaTipoUsuario = () => {
 
 const validaUsuarioSenha = () => {
     let usuario = document.getElementById("first_name")
-    let senha   = document.getElementById("password")
+    let senha = document.getElementById("password")
 
     if (usuario.value === '') {
         validaCampoVazio(usuario)
@@ -39,21 +39,21 @@ const validaUsuarioSenha = () => {
 
 const registraAssistente = () => {
     let esconderCampos = document.querySelector('.div-escondida')
-    let radioNome = document.getElementById('ASSISTENTE_SOCIAL')
+    let radioAssistente = document.getElementById('ASSISTENTE_SOCIAL')
     let radioAdmin = document.getElementById('ADMINISTRADOR')
-    radioNome.addEventListener('change', function () {
 
-        if (this.checked === true){
+    radioAssistente.addEventListener('change', function () {
+        if (this.checked) {
             esconderCampos.classList.remove('display-none')
         }
     })
 
     radioAdmin.addEventListener('change', function () {
-        if (this.checked === true){
+        if (this.checked) {
             esconderCampos.classList.add('display-none')
         }
     })
-    }
+}
 
 const validaCampoVazio = (item) => {
     alert('Preencha o campo obrigatorio!')
@@ -67,33 +67,26 @@ const validaCamposAssistente = () => {
     let emailAssistente = document.getElementById('emailDaAssistente')
     let hospitalReferencia = document.getElementById('hospitalDeReferencia')
     let telefoneAssistente = document.getElementById('telefoneAssistente')
-    let radioNome = document.getElementById('ASSISTENTE_SOCIAL')
 
-    if (radioNome.checked === true) {
-        if (nomeAssistente.value === '') {
-            validaCampoVazio(nomeAssistente)
-            return false
-        } else
-            nomeAssistente.classList.add('input-fancy')
+    let radioAssistente = document.getElementById('ASSISTENTE_SOCIAL')
 
-        if (emailAssistente.value === '') {
-            validaCampoVazio(emailAssistente)
-            return false
-        } else
-            emailAssistente.classList.add('input-fancy')
+    if (radioAssistente && radioAssistente.checked) {
 
-        if (hospitalReferencia.value === '') {
-            validaCampoVazio(hospitalReferencia)
-            return false
-        } else
-            hospitalReferencia.classList.add('input-fancy')
+        var campos = [nomeAssistente, emailAssistente, hospitalReferencia, telefoneAssistente]
 
-        if (telefoneAssistente.value === '') {
-            validaCampoVazio(telefoneAssistente)
-            return false
-        } else
-            telefoneAssistente.classList.add('input-fancy')
+        for (var i = 0; i < campos.length; i++) {
+
+            if (!campos[i].value) {
+                validaCampoVazio(campos[i])
+                return false;
+            }
+
+            campos[i].classList.add('input-fancy')
+        }
+
+        return true
     }
+
     return true
 }
 
