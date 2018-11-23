@@ -18,6 +18,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static java.time.format.DateTimeFormatter.ofPattern;
@@ -309,5 +310,37 @@ public class Solicitacao {
                 ", acompanhantes=" + acompanhantes +
                 ", dataAtualizacao=" + dataAtualizacao +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Solicitacao that = (Solicitacao) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(nome, that.nome) &&
+                Objects.equals(genero, that.genero) &&
+                Objects.equals(situacao, that.situacao) &&
+                Objects.equals(telefone, that.telefone) &&
+                Objects.equals(cadeirante, that.cadeirante) &&
+                Objects.equals(status, that.status) &&
+                Objects.equals(peso, that.peso) &&
+                Objects.equals(orgao, that.orgao) &&
+                Objects.equals(dataNascimento, that.dataNascimento) &&
+                Objects.equals(dataEntrada, that.dataEntrada) &&
+                Objects.equals(dataSaida, that.dataSaida) &&
+                Objects.equals(dataTransplante, that.dataTransplante) &&
+                Objects.equals(dataAtualizacao, that.dataAtualizacao) &&
+                Objects.equals(dataCheckin, that.dataCheckin) &&
+                Objects.equals(dataCheckout, that.dataCheckout) &&
+                Objects.equals(endereco, that.endereco) &&
+                Objects.equals(acompanhantes, that.acompanhantes) &&
+                Objects.equals(quarto, that.quarto);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, nome, genero, situacao, telefone, cadeirante, status, peso, orgao, dataNascimento, dataEntrada, dataSaida, dataTransplante, dataAtualizacao, dataCheckin, dataCheckout, endereco, acompanhantes, quarto);
     }
 }

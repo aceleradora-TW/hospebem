@@ -1,7 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
-import com.thoughtworks.aceleradora.solicitacao.dominio.Endereco;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Optional;
 import java.util.function.Function;
 
 @Controller
@@ -30,8 +31,7 @@ public class SolicitacaoController {
     }
 
     @GetMapping("/cadastro")
-    public String formularioCadastro(Model model) {
-        Solicitacao novaSolicitacao = new Solicitacao();
+    public String formularioCadastro(Model model, Solicitacao novaSolicitacao) {
         novaSolicitacao.setAcompanhantes(Arrays.asList(new Acompanhante(), new Acompanhante()));
         model.addAttribute("solicitacao", novaSolicitacao);
         return "solicitacao/cadastro";
@@ -48,7 +48,6 @@ public class SolicitacaoController {
 
     @GetMapping("/casa/lista")
     public String listaSolicitacoesDaCasa(Model model) {
-
         Function<LocalDate, Integer> calculadoraIdade = (dataNascimento) -> Period
                 .between(dataNascimento, LocalDate.now())
                 .getYears();
@@ -59,21 +58,19 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
 
+    @GetMapping("/listagemHospede")
+    public String listaGerenciamentoHospede(Model model) {
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("aceito"));
+
+        return "solicitacao/listagens/listaGerenciamentoHospede";
+    }
+
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
 
         model.addAttribute("solicitacoesHospital", solicitacaoRepository.findAll());
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
-    }
-
-
-    @GetMapping("/listagemHospede")
-    public String listaGerenciamentoHospede(Model model) {
-
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("aceito"));
-
-        return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 
     @GetMapping("{id}/dados")

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -89,5 +90,23 @@ public class Acompanhante{
                 ", dataNascimento=" + dataNascimento +
                 ", solicitacao=" + solicitacao +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Acompanhante that = (Acompanhante) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(nome, that.nome) &&
+                Objects.equals(genero, that.genero) &&
+                Objects.equals(dataNascimento, that.dataNascimento) &&
+                Objects.equals(solicitacao, that.solicitacao);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, nome, genero, dataNascimento, solicitacao);
     }
 }
