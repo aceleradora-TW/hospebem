@@ -21,7 +21,7 @@ public class SolicitacaoCsvService {
     }
 
     public String solicitacoesNegadas() {
-         List<Solicitacao> negada = repository.findAll();
+         List<Solicitacao> negada = repository.findAllByStatus("negada");
 
         String listaSolicitacoesNegadas = negada
                 .stream()
