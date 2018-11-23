@@ -24,20 +24,10 @@ public class CsvControllers {
 
     @GetMapping(value = "/negadas/csv", produces = "text/csv")
     public ResponseEntity<String> negadas() {
-        return constroiResposta(solicitacaoCsvService.solicitacoesRelatorio("negado"));
-    }
-
-    @GetMapping(value = "/hospede/csv", produces = "text/csv")
-    public ResponseEntity<String> aceitas() {
-        return constroiResposta(solicitacaoCsvService.solicitacoesRelatorio("Hospede"));
-    }
-
-    private ResponseEntity<String> constroiResposta(String corpo) {
         return ok()
                 .header(CONTENT_DISPOSITION, "attachement; filename=arquivo.csv")
-                .body("Nome,Status,Genero,Data de Nascimento,Situação,Orgão,Rua,Número,Cidade,Bairro,UF,Cadeirante,Telefone \n"+ corpo);
+                .body(solicitacaoCsvService.solicitacoesRelatorio());
     }
-
 
 }
 

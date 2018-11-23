@@ -3,14 +3,11 @@ package com.thoughtworks.aceleradora.solicitacao.dominio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.lang.String.join;
 import static java.util.stream.Collectors.joining;
+
 
 @Service
 public class SolicitacaoCsvService {
@@ -22,17 +19,26 @@ public class SolicitacaoCsvService {
         this.repository = repository;
     }
 
-    public String solicitacoesRelatorio(String status) {
-         List<Solicitacao> solicitacaos = repository.findAllByStatus(status);
+    public String solicitacoesRelatorio() {
+         List<Solicitacao> solicitacaos = repository.findAll();
 
     String listaSolicitacoesRelatorio = solicitacaos
                 .stream()
+                .filter(solicitacao -> solicitacao.getStatus().equalsIgnoreCase("Hospede") || solicitacao.getStatus().equals("negada"))
                 .map(solicitacao -> String.join(",", solicitacao.getNome(),solicitacao.getStatus(), solicitacao.getGenero(),solicitacao.getDataNascimento().toString(),
                         solicitacao.getSituacao(), solicitacao.getOrgao(), solicitacao.getEndereco().getRua(),solicitacao.getEndereco().getNumero(),solicitacao.getEndereco().getCidade(),
                         solicitacao.getEndereco().getBairro(),solicitacao.getEndereco().getUf(), solicitacao.getCadeirante(), solicitacao.getTelefone()))
                 .collect(joining("\n"));
 
-        return listaSolicitacoesRelatorio;
+    return String.join("\n",cabecalho(), listaSolicitacoesRelatorio);
+    }
+
+    private String cabecalho(){
+        return Stream.of(
+                 "Nome", "Status", "Genero", "Data de Nascimento", "Situacao", "Orgao", "Rua", "Numero",
+                 "Cidade", "Bairro", "UF", "Cadeirante", "Telefone"
+        ).collect(joining(","));
+
     }
 
 }
