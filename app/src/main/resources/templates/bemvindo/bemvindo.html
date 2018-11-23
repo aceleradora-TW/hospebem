@@ -5,24 +5,42 @@
     <title>Hospebem - Inicio </title>
 </head>
 <body>
-
-<main class="espaco-linhas">
+<main>
     <div class="agrupadora has-text-centered">
-
         <h1 class="title is-1 espaco-titulo">Hospebem</h1>
-        <p>Sistema de agendamento entre hospitais e pousada <a href="https://www.viavida.org.br/" target="_blank">ViaVida</a>.</h6>
-
-        <div class="columns">
-            <img src="/img/hospebem.png" alt="Logo viaVida">
-        </div>
-
-        <div sec:authorize="isAuthenticated()">
-            <div>
-                <p> Seja bem-vindo: <strong><span sec:authentication="name"></span></strong></p>
+        <section class="container">
+            <div class="level-item">
+                <div class="columns is-multiline is-centered cards-container" id="sectioncontainer">
+                    <div class="column is-narrow tamanho-board">
+                        <article class="message ">
+                            <div class="message-header header-heigth header-color">
+                                <div sec:authorize="isAuthenticated()">
+                                    <div>
+                                        <p> Seja bem-vindo: <strong><span sec:authentication="name"></span></strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-body espaco-linhas">
+                                <div class="board-item">
+                                    <div class="board-item-content"><a href="/solicitacao/casa/lista">Lista de solicitações</a></div>
+                                </div>
+                                <div class="board-item">
+                                    <div class="board-item-content"><a href="/solicitacao/listagemHospede">Gerenciar Hospedes</a></div>
+                                </div>
+                                <div class="board-item">
+                                    <div class="board-item-content"><a href="/registrar">Registrar usuários</a></div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
-        </div>
-
-
+        </section>
+        <button class="button espacamento">
+            <div class="navbar-end" sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}">Logout</a>
+            </div>
+        </button>
         <div sec:authorize="!isAuthenticated()">
             <a href="/login">
                 <div>Logar</div>
@@ -30,10 +48,6 @@
             <a href="/registrar">
                 <div>Registrar</div>
             </a>
-        </div>
-
-        <div sec:authorize="isAuthenticated()">
-            <a th:href="@{/logout}">Logout</a>
         </div>
     </div>
 </main>
