@@ -24,12 +24,12 @@ public class CsvControllers {
 
     @GetMapping(value = "/negadas/csv", produces = "text/csv")
     public ResponseEntity<String> negadas() {
-        return constroiResposta(solicitacaoCsvService.solicitacoesNegadas());
+        return constroiResposta(solicitacaoCsvService.solicitacoesRelatorio("negado"));
     }
 
-    @GetMapping(value = "/aceitas/csv", produces = "text/csv")
+    @GetMapping(value = "/hospede/csv", produces = "text/csv")
     public ResponseEntity<String> aceitas() {
-        return constroiResposta(solicitacaoCsvService.solicitacoesAceitas());
+        return constroiResposta(solicitacaoCsvService.solicitacoesRelatorio("Hospede"));
     }
 
     private ResponseEntity<String> constroiResposta(String corpo) {

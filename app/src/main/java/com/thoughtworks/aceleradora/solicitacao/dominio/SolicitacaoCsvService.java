@@ -22,20 +22,17 @@ public class SolicitacaoCsvService {
         this.repository = repository;
     }
 
-    public String solicitacoesNegadas() {
-         List<Solicitacao> negada = repository.findAllByStatus("negada");
+    public String solicitacoesRelatorio(String status) {
+         List<Solicitacao> solicitacaos = repository.findAllByStatus(status);
 
-    String listaSolicitacoesNegadas = negada
+    String listaSolicitacoesRelatorio = solicitacaos
                 .stream()
                 .map(solicitacao -> String.join(",", solicitacao.getNome(),solicitacao.getStatus(), solicitacao.getGenero(),solicitacao.getDataNascimento().toString(),
                         solicitacao.getSituacao(), solicitacao.getOrgao(), solicitacao.getEndereco().getRua(),solicitacao.getEndereco().getNumero(),solicitacao.getEndereco().getCidade(),
                         solicitacao.getEndereco().getBairro(),solicitacao.getEndereco().getUf(), solicitacao.getCadeirante(), solicitacao.getTelefone()))
                 .collect(joining("\n"));
 
-        return listaSolicitacoesNegadas;
+        return listaSolicitacoesRelatorio;
     }
 
-    public String solicitacoesAceitas() {
-    return "";
-    }
 }
