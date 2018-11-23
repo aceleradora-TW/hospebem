@@ -15,11 +15,7 @@ import java.util.List;
 @RequestMapping("/")
 public class CheckinCheckoutController {
     private QuartoRepository quartoRepository;
-
     private SolicitacaoRepository solicitacaoRepository;
-
-    public CheckinCheckoutController() {
-    }
 
     @Autowired
     public CheckinCheckoutController(QuartoRepository repositorio, SolicitacaoRepository solicitacaoRepository) {
@@ -35,7 +31,7 @@ public class CheckinCheckoutController {
         model.addAttribute("quartos", quartoRepository.findAll());
         model.addAttribute("solicitacoes", solicitacoes);
         model.addAttribute("solicitacao", new Solicitacao());
-        model.addAttribute("formataData", formataData("data"));
+        model.addAttribute("formataData", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
         return "quarto/listagens/listaCheckinCheckout";
     }
@@ -62,12 +58,4 @@ public class CheckinCheckoutController {
 
         return "redirect:/listacheckincheckout";
     }
-
-    private DateTimeFormatter formataData(String tipo){
-        if(tipo.equals("dataHora")){
-            return DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm");
-        }
-        return DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    }
-
 }

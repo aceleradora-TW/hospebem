@@ -57,10 +57,8 @@
         if (pesoInput) {
             pesoInput.addEventListener('input', pesoCadeirante());
         }
-        registraAssistente();
-    });
 
-    document.addEventListener('DOMContentLoaded', () => {
+        registraAssistente();
 
         const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
@@ -77,6 +75,12 @@
                 });
             });
         }
+
+        let formularioCheckin = document.querySelector("#formularioCheckin");
+        let formularioCheckout = document.querySelector("#formularioCheckout");
+
+        formularioCheckin.addEventListener("submit", validaForm('.data-checkin'));
+        formularioCheckout.addEventListener("submit", validaForm('.data-checkout'));
     });
 </script>
 

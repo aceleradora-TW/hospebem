@@ -39,7 +39,7 @@
                             <hr>
                             <form th:action="@{/checkout/{id}(id = ${solicitacao.id})}"
                                   th:object="${solicitacao}"
-                                  method="POST" onsubmit="return validaFormCheckout(event)" id="formCheckout">
+                                  method="POST" onsubmit="return validaFormCheckout(event)" id="formularioCheckout">
 
                                 <div class="field has-addons">
                                     <div class="control">
@@ -78,7 +78,7 @@
                             <hr>
                             <form th:action="@{/checkin/{id}(id = ${solicitacao.id})}"
                                   th:object="${solicitacao}"
-                                  method="POST" onsubmit="return validaFormCheckin(event)" id="formCheckin">
+                                  method="POST" id="formularioCheckin">
 
                                 <div class="field has-addons">
                                     <div class="control">

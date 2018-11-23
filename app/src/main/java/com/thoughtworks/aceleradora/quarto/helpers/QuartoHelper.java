@@ -5,15 +5,14 @@ import com.thoughtworks.aceleradora.quarto.dominio.QuartoRepository;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuartoHelp{
-
-    public QuartoHelp(){
-
-    }
+@Component
+public class QuartoHelper{
+    private static final int NUMERO_MAXIMO_HOSPEDES = 3;
 
     public int hospedesPresentes(Solicitacao solicitacao){
         int numeroHospedes = 1;
@@ -27,7 +26,7 @@ public class QuartoHelp{
     }
 
     public void limitaQuartos(Solicitacao solicitacao, Quarto quarto, SolicitacaoRepository solicitacaoRepository, QuartoRepository quartoRepository){
-        int numeroHospedes = hospedesPresentes(solicitacao) == 3 ? 2 : hospedesPresentes(solicitacao);
+        int numeroHospedes = hospedesPresentes(solicitacao) == NUMERO_MAXIMO_HOSPEDES ? 2 : hospedesPresentes(solicitacao);
 
         if(numeroHospedes <= quarto.getLeitosDisponiveis()) {
             solicitacao.setStatus(Solicitacao.Status.ACEITO.toString());
