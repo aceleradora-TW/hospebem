@@ -39,8 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="columns column width-100">
-                    <div class="column width-50">
+                    <div class="column">
                         <div class="field">
                             <div class="control">
                                 <span>*Data de nascimento:</span>
@@ -50,8 +49,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="width-50">
-                        <div class="column centraliza-input-cadeirante">
+
+                        <div class="column">
                             <div class="field">
                                 <div class="control">
                                     <label>
@@ -69,8 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+
                 <div class="column">
                     <div class="field">
                         <div class="control input-radio situacao margin-invisible" id="labelSituacao">
@@ -156,35 +154,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>Número:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.numero}" type="text">
+                <div class="columns column">
+                    <div class="column">
+                        <span>Número:</span>
+                        <div class="field">
+                            <div class="control">
+                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.numero}" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <span>Bairro:</span>
+                        <div class="field">
+                            <div class="control">
+                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.bairro}" type="text">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>Cidade:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.cidade}" type="text">
+                <div class="columns column">
+                    <div class="column">
+                        <span>Cidade:</span>
+                        <div class="field">
+                            <div class="control">
+                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.cidade}" type="text">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>Bairro:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.bairro}" type="text">
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>UF:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.uf}" type="text">
+                    <div class="column">
+                        <span>UF:</span>
+                        <div class="field">
+                            <div class="control">
+                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.uf}" type="text">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -221,7 +223,7 @@
                             <div class="control">
                                 <p>Data de nascimento <span th:text="${acompIndex.index + 1}"></span>:
                                     <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo borda-arredondada"
-                                           th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}"
+                                           th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" autocomplete="off"
                                            onkeypress="return false;">
                                 </p>
                             </div>
@@ -231,9 +233,25 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <button class="button verde-viavida borda-arredondada" value="Enviar Solicitação" type="submit">Enviar Solicitação</button>
-                            <input class="button borda-arredondada" type="reset" value="Limpar Formulário">
-                            <a class="button is-danger is-outlined borda-arredondada" type="button" href="/">Cancelar</a>
+                            <button class="button verde-viavida borda-arredondada" value="Enviar Solicitação" type="submit">
+                                <span>Enviar solicitação</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-angle-right"></i>
+                                </span>
+                            </button>
+                            <button class="button borda-arredondada" type="reset">
+                            <span>Limpar formulário</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-paint-brush"></i>
+                                </span>
+                            </button>
+
+                            <a class="button is-danger borda-arredondada" type="button" th:href="@{/solicitacao/hospital/lista}">
+                                <span>Cancelar</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-times"></i>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>

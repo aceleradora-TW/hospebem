@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br" th:fragment="layout(title, content)" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" th:fragment="layout(title, content)" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -30,34 +31,10 @@
             <a class="navbar-item" href="/">
                 <p class="titulo-nav">HospeBem</p>
             </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-               data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-item menu">
-                        Menu
-                    </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" th:href="@{/solicitacao/cadastro}">
-                            Cadastro solicitação
-                        </a>
-                        <a class="navbar-item" th:href="@{/solicitacao/hospital/lista}">
-                            Lista de solicitações hospital
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
         </div>
     </nav>
 </header>
-    <main th:replace="${content}"></main>
+<main th:replace="${content}"></main>
 </body>
 
 <script type="text/javascript">
@@ -78,28 +55,21 @@
 
     document.addEventListener('DOMContentLoaded', () => {
 
-        // Get all "navbar-burger" elements
         const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-    // Check if there are any navbar burgers
-    if ($navbarBurgers.length > 0) {
+        if ($navbarBurgers.length > 0) {
 
-        // Add a click event on each of them
-        $navbarBurgers.forEach( el => {
-            el.addEventListener('click', () => {
+            $navbarBurgers.forEach( el => {
+                el.addEventListener('click', () => {
+                const target = el.dataset.target;
 
-            // Get the target from the "data-target" attribute
-            const target = el.dataset.target;
-        const $target = document.getElementById(target);
+                const $target = document.getElementById(target);
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
-    });
-    });
-    }
-
+                });
+            });
+        }
     });
 </script>
 
