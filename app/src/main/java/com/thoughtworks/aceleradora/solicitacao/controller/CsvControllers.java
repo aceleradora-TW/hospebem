@@ -24,10 +24,7 @@ public class CsvControllers {
 
     @GetMapping(value = "/negadas/csv", produces = "text/csv")
     public ResponseEntity<String> negadas() {
-       return  ok()
-               .header(CONTENT_DISPOSITION, "attachement; filename=arquivo.csv")
-                .body("nome,situação,orgão \na,b,c");
-
+        return constroiResposta(solicitacaoCsvService.solicitacoesNegadas());
     }
 
     @GetMapping(value = "/aceitas/csv", produces = "text/csv")

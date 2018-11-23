@@ -27,8 +27,8 @@ public class SolicitacaoCsvService {
 
     String listaSolicitacoesNegadas = negada
                 .stream()
-                .map(solicitacao -> join(solicitacao.getNome()).join(solicitacao.getSituacao()).join(solicitacao.getStatus()))
-                .collect(joining(",\n"));
+                .map(solicitacao -> String.join(",", solicitacao.getNome(), solicitacao.getSituacao(), solicitacao.getOrgao()))
+                .collect(joining("\n"));
 
         return listaSolicitacoesNegadas;
     }
