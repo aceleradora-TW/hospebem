@@ -20,23 +20,26 @@ public class SolicitacaoCsvService {
     }
 
     public String solicitacoesRelatorio() {
-         List<Solicitacao> solicitacaos = repository.findAll();
+        List<Solicitacao> solicitacaos = repository.findAll();
 
-    String listaSolicitacoesRelatorio = solicitacaos
+        String listaSolicitacoesRelatorio = solicitacaos
                 .stream()
-                .filter(solicitacao -> solicitacao.getStatus().equalsIgnoreCase("Hospede") || solicitacao.getStatus().equals("negada"))
-                .map(solicitacao -> String.join(",", solicitacao.getNome(),solicitacao.getStatus(), solicitacao.getGenero(),solicitacao.getDataNascimento().toString(),
-                        solicitacao.getSituacao(), solicitacao.getOrgao(), solicitacao.getEndereco().getRua(),solicitacao.getEndereco().getNumero(),solicitacao.getEndereco().getCidade(),
-                        solicitacao.getEndereco().getBairro(),solicitacao.getEndereco().getUf(), solicitacao.getCadeirante(), solicitacao.getTelefone()))
+                .filter(solicitacao -> {
+                    return solicitacao.getStatus().equalsIgnoreCase("Hospede") || solicitacao.getStatus().equalsIgnoreCase("Ex Hospede") || solicitacao.getStatus().equals("negada");
+                })
+                .map(solicitacao -> String.join(",",solicitacao.getNome(),solicitacao.getStatus(),solicitacao.getGenero(),solicitacao.getDataNascimento().toString(),
+                        solicitacao.getSituacao(),solicitacao.getOrgao(),solicitacao.getEndereco().getRua(),solicitacao.getEndereco().getNumero(),
+                        solicitacao.getEndereco().getCidade(),solicitacao.getEndereco().getBairro(),solicitacao.getEndereco().getUf(),
+                        solicitacao.getCadeirante(),solicitacao.getTelefone()))
                 .collect(joining("\n"));
 
-    return String.join("\n",cabecalho(), listaSolicitacoesRelatorio);
+        return String.join("\n",cabecalho(), listaSolicitacoesRelatorio);
     }
 
     private String cabecalho(){
         return Stream.of(
-                 "Nome", "Status", "Genero", "Data de Nascimento", "Situacao", "Orgao", "Rua", "Numero",
-                 "Cidade", "Bairro", "UF", "Cadeirante", "Telefone"
+                "Nome", "Status", "Genero", "Data de Nascimento", "Situacao", "Orgao", "Rua", "Numero",
+                "Cidade", "Bairro", "UF", "Cadeirante", "Telefone"
         ).collect(joining(","));
 
     }
