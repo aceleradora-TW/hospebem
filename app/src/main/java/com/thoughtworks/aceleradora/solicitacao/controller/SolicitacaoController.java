@@ -124,7 +124,7 @@ public class SolicitacaoController {
         }
 
         solicitacaoRepository.save(solicitacaoAtualizada);
-        return "redirect:/";
+        return "redirect:/solicitacao/hospital/lista";
     }
 
     @GetMapping("/{id}/excluir")

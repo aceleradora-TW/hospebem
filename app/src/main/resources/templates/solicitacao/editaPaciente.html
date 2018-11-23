@@ -103,7 +103,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Data de Saída</span>
-                            <input class="validate input input-fancy datepicker-futuro" autocomplete="off" type="text" name="dataSaida" th:field="*{dataSaida}"
+                            <input class="validate input input-fancy datepicker-futuro borda-arredondada" autocomplete="off" type="text" name="dataSaida" th:field="*{dataSaida}"
                                    onkeypress="return false;">
                         </div>
                     </div>
@@ -209,7 +209,12 @@
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="button verde-viavida"> Salvar </button>
+                    <a th:href="@{/solicitacao/hospital/lista}">
+                        <button type="submit" class="button verde-viavida borda-arredondada">
+                                <span>Salvar</span>
+                                <span class="icon is-small"><i class="fas fa-gavel"></i></span>
+                        </button>
+                    </a>
                 </div>
             </form>
         </div>

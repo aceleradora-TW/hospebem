@@ -8,38 +8,40 @@
 
 <main>
     <div class="container">
-        <div class="has-text-centered is-centered ">
-            <h1 class="title espacamento">Lista de Solicitações da Casa</h1>
-            <div th:each="solicitacao : ${solicitacoesCasa}" class="box column">
-                <div class="">
-                    <strong><span>Nome:</span></strong>
-                    <span th:text="${solicitacao.nome} + ' - '"></span>
-
-                    <strong><span>Idade:</span></strong>
-                    <span th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></span>
-                </div>
-                <div class="">
-                    <strong><span>Data de solicitação:</span></strong>
-                    <span th:text="${solicitacao.formataData()}"></span>
-                </div>
-                <div>
-                    <a th:href="@{/solicitacao/{id}/dados(id=${solicitacao.id})}">
-                        <button type="submit" class="button is-success borda-arredondada">
-                            Ver informações
-                        </button>
-                    </a>
-                    <a th:href="@{/quarto/{id}/listaQuartos(id=${solicitacao.id})}">
-                        <button type="submit" class="button verde-viavida borda-arredondada">
-                            Selecionar quarto
-                        </button>
-                    </a>
+        <div class="section">
+            <div class="columns is-multiline is-lefty">
+                <div th:each="solicitacao : ${solicitacoesCasa}">
+                    <div class="column">
+                        <div class="box">
+                            <strong><span>Nome:</span></strong>
+                            <span th:text="${solicitacao.nome} + ' - '"></span>
+                            <strong><span>Idade:</span></strong>
+                            <span th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></span>
+                            <hr>
+                            <strong><span>Data de solicitação:</span></strong>
+                            <span th:text="${solicitacao.formataData()}"></span>
+                            <hr>
+                            <div class="field has-addons">
+                                <div class="control">
+                                    <a th:href="@{/solicitacao/{id}/dados(id=${solicitacao.id})}">
+                                            <button type="submit" class="button borda-arredondada">
+                                                Ver informações
+                                            </button>
+                                        </a>
+                                    </div>
+                                    <div class="control">
+                                        <a th:href="@{/quarto/{id}/listaQuartos(id=${solicitacao.id})}">
+                                            <button type="submit" class="button verde-viavida borda-arredondada">
+                                                Selecionar quarto
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-                <a href="/">
-                    <button type="submit" class="button verde-viavida borda-arredondada">
-                        Voltar
-                    </button>
-                </a>
         </div>
     </div>
 </main>

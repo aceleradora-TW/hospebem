@@ -3,31 +3,24 @@ body {
     font-size: 17px;
 }
 
-.espacamento {
-    margin: 70px;
-}
-
-.input.input-fancy {
-    border-color: rgba(56, 124, 43, 1);
-}
-
-button{
-    align-items: center;
-    background-color: rgba(56, 124, 43, 1);
-    text-decoration-color: rgba(222, 222, 222, 1);
-    margin-right: 10px;
-}
-
 .borda-arredondada {
     border-radius: 11px;
 }
 
-
-.input-radio {
-    border: 1px solid red;
-    margin-left:10px;
+.botao-esqueci-senha {
+    color: rgba(141, 198, 63, 1);
 }
 
+button {
+    align-items: center;
+    background-color: rgba(141, 198, 63, 1);
+    text-decoration-color: rgba(222, 222, 222, 1);
+    margin-right: 10px;
+}
+
+.button.is-success.red {
+    background-color: rgb(255, 0, 0);
+}
 .campo-obrigatorio {
     color: rgba(244, 75, 66, 1);
 }
@@ -38,12 +31,17 @@ button{
     margin-bottom: 15px;
 }
 
+.centraliza-input-cadeirante {
+    justify-content: center;
+    display: flex;
+}
+
 .columns {
     display: flex;
     justify-content: center;
 }
 
-.dados-paciente{
+.dados-paciente {
     text-align: justify;
 }
 
@@ -56,9 +54,6 @@ button{
     display: none;
 }
 
-.botao-esqueci-senha {
-    color: rgba(56, 124, 43, 1);
-}
 
 .espacamento {
     margin: 70px;
@@ -68,8 +63,33 @@ button{
     padding-bottom: 3vh;
 }
 
+.header-color {
+    background-color: rgba(73, 145, 71, 1);
+}
+
+.header-heigth {
+    height: 60px;
+}
+
+.input.input-fancy {
+    border-color: rgba(141, 198, 63, 1);
+}
+
+.input-radio {
+    border: 1px solid rgba(255, 56, 96, 1);
+    margin-left:10px;
+}
+
+.is-active {
+    background-color: rgba(141, 198, 63, 1);
+}
+
 .margin-invisible {
     border-color: transparent;
+}
+
+.message-body a {
+    text-decoration: none!important;
 }
 
 .navbar {
@@ -77,35 +97,61 @@ button{
     position: relative;
     width:100%;
 }
-.navbar-dropdown{
-    background-color: rgba(56, 124, 43, 1);
-}
 
 .navbar-item {
     color: rgb(255,255,255);
 }
 
-
 .navbar-item:hover p {
     color: rgba(255,255,255,1);
 }
-.navbar-item:hover .menu {
-    color: rgba(56, 124, 43, 1);
-}
 
-.is-active {
-    background-color: rgba(56, 124, 43, 1);
+.navbar-item:hover .menu {
+    color: rgba(141, 198, 63, 1);
 }
 
 .recuperar {
     padding-top: 2%;
 }
 
-.sessao, .espaco-titulo{
+.select.verde-viavida:not(:hover)::after {
+    border-color: rgba(141, 198, 63, 1);
+    padding-bottom: 1px;
+}
+.select:not(.is-multiple) {
+    height: 2em;
+    width: 100%;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: rgba(141, 198, 63, 1);
+    right: 1.125em;
+    z-index: 4;
+}
+.select {
+    border-radius: 162px;
+    width: 100%;
+}
+
+.select select {
+    width: 100%;
+    border-color: rgba(141, 198, 63, 1);
+    border-radius: 11px;
+}
+
+.select select:hover, .select select.is-hovered {
+    border-color: rgba(141, 198, 63, 1);
+}
+
+.sessao, .espaco-titulo {
     margin-top: 30px;
 }
 
-.titulo-nav{
+.tamanho-board {
+    width: 260%;
+}
+
+.titulo-nav {
     font-size: 1.5rem;
 }
 
@@ -119,52 +165,9 @@ button{
     color: #fff;
 }
 
-.verde-viavida:hover{
+.verde-viavida:hover {
     color: #fff;
     background-color: rgb(95, 195, 130);
-}
-
-.select.verde-viavida:not(:hover)::after {
-    border-color: rgba(56, 124, 43, 1);
-    padding-bottom: 1px;
-}
-
-.select:not(.is-multiple):not(.is-loading)::after {
-    border-color: rgba(56, 124, 43, 1);
-    right: 1.125em;
-    z-index: 4;
-}
-
-.select:not(.is-multiple) {
-    height: 2em;
-    width: 100%;
-}
-
-.button.is-success.red{
-    background-color: rgb(255, 0, 0);
-}
-.select {
-    border-radius: 162px;
-    width: 100%;
-}
-
-.select select {
-    width: 100%;
-    border-color: rgba(56, 124, 43, 1);
-    border-radius: 11px;
-}
-
-.select select:hover, .select select.is-hovered {
-    border-color: rgba(56, 124, 43, 1);
-}
-
-.centraliza-input-cadeirante {
-    justify-content: center;
-    display: flex;
-}
-
-.tamanho-board {
-    width: 260%;
 }
 
 .width-100 {
@@ -173,16 +176,4 @@ button{
 
 .width-50 {
     width: 50%;
-}
-.header-heigth{
-    height: 60px;
-}
-
-.header-color {
-    background-color: rgba(73, 145, 71, 1);
-}
-
-.message-body a {
-    text-decoration: none!important;
-
 }
