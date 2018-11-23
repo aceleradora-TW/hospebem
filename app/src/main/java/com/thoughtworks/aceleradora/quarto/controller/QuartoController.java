@@ -1,21 +1,28 @@
 package com.thoughtworks.aceleradora.quarto.controller;
 
+import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
+import com.thoughtworks.aceleradora.quarto.dominio.QuartoRepository;
+import com.thoughtworks.aceleradora.quarto.helpers.QuartoHelp;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
+import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import com.thoughtworks.aceleradora.email.component.EmailComponent;
-import com.thoughtworks.aceleradora.quarto.dominio.*;
 import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.*;
 
 @Controller
 @RequestMapping("/quarto")
-public class QuartoController {
+public class QuartoController{
     private QuartoRepository quartoRepository;
     private SolicitacaoRepository solicitacaoRepository;
     private EmailComponent emailComponent;
+
+    private QuartoHelp quartoHelp = new QuartoHelp();
 
     public QuartoController() {
     }
@@ -34,7 +41,7 @@ public class QuartoController {
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
 
-            model.addAttribute("numeroHospedes", hospedesPresentes(solicitacao) - 1);
+            model.addAttribute("numeroHospedes", quartoHelp.hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao", solicitacao);
             model.addAttribute("listaQuartos", quartoRepository.findAll());
 
@@ -52,10 +59,10 @@ public class QuartoController {
             Solicitacao solicitacao = solicitacaoOptional.get();
             Quarto quarto = quartoOptional.get();
 
-            model.addAttribute("numeroHospedes", hospedesPresentes(solicitacao) - 1);
+            model.addAttribute("numeroHospedes", quartoHelp.hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao" , solicitacao);
             model.addAttribute("quarto" , quarto);
-            model.addAttribute("ocupantes", ocupantes(quarto.getSolicitacoes()));
+            model.addAttribute("ocupantes", quartoHelp.ocupantes(quarto.getSolicitacoes()));
 
             return "quarto/quarto";
         }
@@ -67,9 +74,9 @@ public class QuartoController {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
         Quarto quarto = quartoRepository.getOne(idQuarto);
 
-        limitaQuartos(solicitacao, quarto);
+        quartoHelp.limitaQuartos(solicitacao, quarto, solicitacaoRepository, quartoRepository);
 
-        return "redirect:/";
+        return "redirect:/listacheckincheckout";
     }
 
     @PostMapping("/negar")
@@ -86,47 +93,5 @@ public class QuartoController {
             return "redirect:/solicitacao/casa/lista";
         }
         return "404";
-    }
-
-    private int hospedesPresentes(Solicitacao solicitacao){
-        int numeroHospedes = 1;
-
-        for(Acompanhante acompanhante: solicitacao.getAcompanhantes()){
-            if(!acompanhante.getNome().isEmpty()){
-                numeroHospedes++;
-            }
-        }
-        return numeroHospedes;
-    }
-
-    private void limitaQuartos(Solicitacao solicitacao, Quarto quarto){
-        int numeroHospedes = hospedesPresentes(solicitacao) == 3 ? 2 : hospedesPresentes(solicitacao);
-
-        if(numeroHospedes <= quarto.getLeitosDisponiveis()) {
-            solicitacao.setStatus(Solicitacao.Status.ACEITO.toString());
-            solicitacao.setQuarto(quarto);
-            quarto.getSolicitacoes().add(solicitacao);
-            quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() - numeroHospedes);
-
-            emailComponent.notificaHospital(solicitacao);
-
-            if (quarto.getLeitosDisponiveis() <= 0) {
-                quarto.setStatus(Quarto.Status.INDISPONIVEL.toString());
-            }
-        }
-        solicitacaoRepository.save(solicitacao);
-        quartoRepository.save(quarto);
-    }
-
-    public  List<Solicitacao> ocupantes(List<Solicitacao> solicitacoes){
-        List<Solicitacao> ocupantesQuarto = new ArrayList<>();
-        Solicitacao solicitacao = null;
-        for (Solicitacao s: solicitacoes){
-            if (!s.equals(solicitacao)){
-                ocupantesQuarto.add(s);
-                solicitacao = s;
-            }
-        }
-        return ocupantesQuarto;
     }
 }
