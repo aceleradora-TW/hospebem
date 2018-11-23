@@ -5,15 +5,28 @@
         </p>
         <p>
             <label>
-                <b>Nome:</b>
+                <strong>Nome:</strong>
             </label>
             <label th:text="${solicitacao.nome}"></label>
         </p>
+
         <p>
             <label>
-                <b>Número de acompanhantes:</b>
+                <strong>Gênero:</strong>
+            </label>
+            <label th:text="${solicitacao.genero}"></label>
+        </p>
+        <p>
+            <label>
+                <strong>Número de acompanhantes:</strong>
             </label>
             <label th:text="${numeroHospedes}"></label>
+        </p>
+        <p>
+            <label>
+                <strong>Órgão:</strong>
+            </label>
+            <label th:text="${solicitacao.orgao}"></label>
         </p>
     </div>
 </div>
