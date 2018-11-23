@@ -25,12 +25,12 @@ public class SolicitacaoCsvService {
         String listaSolicitacoesRelatorio = solicitacaos
                 .stream()
                 .filter(solicitacao -> {
-                    return solicitacao.getStatus().equalsIgnoreCase("Hospede") || solicitacao.getStatus().equalsIgnoreCase("Ex Hospede") || solicitacao.getStatus().equals("negada");
+                    return solicitacao.getStatus().equalsIgnoreCase("Hospede") || solicitacao.getStatus().equalsIgnoreCase("Ex hospede") || solicitacao.getStatus().equals("Negado");
                 })
                 .map(solicitacao -> String.join(",",solicitacao.getNome(),solicitacao.getStatus(),solicitacao.getGenero(),solicitacao.getDataNascimento().toString(),
                         solicitacao.getSituacao(),solicitacao.getOrgao(),solicitacao.getEndereco().getRua(),solicitacao.getEndereco().getNumero(),
                         solicitacao.getEndereco().getCidade(),solicitacao.getEndereco().getBairro(),solicitacao.getEndereco().getUf(),
-                        solicitacao.getCadeirante(),solicitacao.getTelefone()))
+                        solicitacao.getCadeirante(),solicitacao.getTelefone(), !solicitacao.getStatus().equals("Negado") ? solicitacao.getDataEntrada().toString() : ""))
                 .collect(joining("\n"));
 
         return String.join("\n",cabecalho(), listaSolicitacoesRelatorio);
