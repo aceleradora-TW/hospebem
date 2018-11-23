@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.String.join;
@@ -23,14 +25,12 @@ public class SolicitacaoCsvService {
     public String solicitacoesNegadas() {
          List<Solicitacao> negada = repository.findAll();
 
-        String listaSolicitacoesNegadas = negada
+    String listaSolicitacoesNegadas = negada
                 .stream()
-                .map(solicitacao -> join(solicitacao.getSituacao()).join(solicitacao.getOrgao()))
-                .collect(joining(","));
-
+                .map(solicitacao -> join(solicitacao.getNome()).join(solicitacao.getSituacao()).join(solicitacao.getStatus()))
+                .collect(joining(",\n"));
 
         return listaSolicitacoesNegadas;
-
     }
 
     public String solicitacoesAceitas() {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 import static org.springframework.http.ResponseEntity.ok;
 
+
 @Controller
 @RequestMapping(value = "/solicitacao")
 public class CsvControllers {
@@ -23,7 +24,10 @@ public class CsvControllers {
 
     @GetMapping(value = "/negadas/csv", produces = "text/csv")
     public ResponseEntity<String> negadas() {
-        return constroiResposta(solicitacaoCsvService.solicitacoesNegadas());
+       return  ok()
+               .header(CONTENT_DISPOSITION, "attachement; filename=arquivo.csv")
+                .body("nome,situação,orgão \na,b,c");
+
     }
 
     @GetMapping(value = "/aceitas/csv", produces = "text/csv")
@@ -34,7 +38,7 @@ public class CsvControllers {
     private ResponseEntity<String> constroiResposta(String corpo) {
         return ok()
                 .header(CONTENT_DISPOSITION, "attachement; filename=arquivo.csv")
-                .body(corpo);
+                .body("nome,situação,orgão \n"+ corpo);
     }
 
 
