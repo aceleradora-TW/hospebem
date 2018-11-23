@@ -72,9 +72,9 @@ const validaCamposAssistente = () => {
 
     if (radioAssistente && radioAssistente.checked) {
 
-        var campos = [nomeAssistente, emailAssistente, hospitalReferencia, telefoneAssistente]
+        let campos = [nomeAssistente, emailAssistente, hospitalReferencia, telefoneAssistente]
 
-        for (var i = 0; i < campos.length; i++) {
+        for (let i = 0; i < campos.length; i++) {
 
             if (!campos[i].value) {
                 validaCampoVazio(campos[i])
