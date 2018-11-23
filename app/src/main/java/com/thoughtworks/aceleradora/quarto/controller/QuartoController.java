@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -37,7 +39,7 @@ public class QuartoController {
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
 
-            model.addAttribute("numeroHospedes", hospedesPresentes(solicitacao));
+            model.addAttribute("numeroHospedes", hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao", solicitacao);
             model.addAttribute("listaQuartos", quartoRepository.findAll());
 
@@ -54,9 +56,11 @@ public class QuartoController {
         if (solicitacaoOptional.isPresent() && quartoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
             Quarto quarto = quartoOptional.get();
-            model.addAttribute("numeroHospedes", hospedesPresentes(solicitacao));
+
+            model.addAttribute("numeroHospedes", hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao" , solicitacao);
             model.addAttribute("quarto" , quarto);
+            model.addAttribute("ocupantes", ocupantes(quarto.getSolicitacoes()));
 
             return "quarto/quarto";
         }
@@ -99,7 +103,7 @@ public class QuartoController {
     }
 
     private void limitaQuartos(Solicitacao solicitacao, Quarto quarto){
-        int numeroHospedes = hospedesPresentes(solicitacao);
+        int numeroHospedes = hospedesPresentes(solicitacao) == 3 ? 2 : hospedesPresentes(solicitacao);
 
         if(numeroHospedes <= quarto.getLeitosDisponiveis()) {
             solicitacao.setStatus("Aceito");
@@ -113,5 +117,17 @@ public class QuartoController {
         }
         solicitacaoRepository.save(solicitacao);
         quartoRepository.save(quarto);
+    }
+
+    public  List<Solicitacao> ocupantes(List<Solicitacao> solicitacoes){
+        List<Solicitacao> ocupantesQuarto = new ArrayList<>();
+        Solicitacao solicitacao = null;
+        for (Solicitacao s: solicitacoes){
+            if (!s.equals(solicitacao)){
+                ocupantesQuarto.add(s);
+                solicitacao = s;
+            }
+        }
+        return ocupantesQuarto;
     }
 }

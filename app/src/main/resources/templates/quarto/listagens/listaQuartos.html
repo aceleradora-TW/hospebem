@@ -7,30 +7,36 @@
 <body>
 <main>
     <div th:include="@{./partes/cabecalhoDadosSolicitante}"/>
-    <div class="column has-text-centered">
-        <a class="button verde-viavida borda-arredondada" th:href="@{/solicitacao/casa/lista}">Voltar</a>
+    <div class="column">
+        <h3 class="title is-3 v center has-text-centered">Quartos</h3>
     </div>
+    <div class="section">
+        <div class="columns is-multiline is-lefty">
 
-    <h1 class="title has-text-centered espacamento-titulo">Mapa dos quartos</h1>
-    <div class="columns is-mobile" >
-        <div class="column has-text-centered">
-            <ul th:each="quarto : ${listaQuartos}">
-                <div class="column">
-                    <a th:href="@{/quarto/{idSolicitacao}/quarto/{idQuarto}(idSolicitacao=${solicitacao.id}, idQuarto=${quarto.id})}">
-                        <button type="reset" class="button is-success red"  th:if="${quarto.leitosDisponiveis <= 0 || numeroHospedes > quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
-                        <button type="submit" class="button is-success "  th:if="${quarto.leitosDisponiveis > 0 && numeroHospedes <= quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
-                    </a>
-                    <div>
-                        <label>Tipo:</label>
-                        <label th:text="${quarto.tipo}"></label>
-                    </div>
-                    <div>
-                        <label>Leitos Disponíveis: </label>
-                        <label th:text="${quarto.leitosDisponiveis}"></label>
+            <th:block th:each="quarto : ${listaQuartos}">
+                <div class="column is-3">
+                    <div class="box">
+                        <div class="column">
+                            <a  class="centralizar" th:href="@{/quarto/{idSolicitacao}/quarto/{idQuarto}(idSolicitacao=${solicitacao.id}, idQuarto=${quarto.id})}">
+                                <button type="reset" class="button is-success red "  th:if="${quarto.leitosDisponiveis <= 0 || numeroHospedes > quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
+                                <button type="submit" class="button is-success"  th:if="${quarto.leitosDisponiveis > 0 && numeroHospedes <= quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
+                            </a>
+                            <div class="centralizar">
+                                <strong>Tipo:</strong>
+                                <label th:text="${quarto.tipo}"></label>
+                            </div>
+                            <div class="centralizar">
+                                <strong>Leitos Disponíveis: </strong>
+                                <label th:text="${quarto.leitosDisponiveis}"></label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </ul>
+            </th:block>
         </div>
+    </div>
+    <div class="column has-text-centered">
+        <a class="button verde-viavida borda-arredondada" th:href="@{/solicitacao/casa/lista}">Voltar</a>
     </div>
 </main>
 </body>

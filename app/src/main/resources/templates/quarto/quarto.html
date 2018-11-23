@@ -17,9 +17,17 @@
     <div class="is-mobile is-centered">
         <h2 class="title is-2 is-half centralizar espacamento-titulo">Ocupado por:</h2>
 
-        <ul>
-            <a th:href="@{/quarto/quarto}" class="has-text-centered teste"/>
-        </ul>
+        <th:block th:each="ocupante : ${ocupantes}">
+            <div class="centralizar">
+                <p>
+                    <label>
+                        <strong>Nome:</strong>
+                    </label>
+                    <label th:text="${ocupante.nome}"></label>
+                </p>
+            </div>
+        </th:block>
+
     </div>
     <div class="is-centered is-half centralizar espacamento" th:if="${quarto.getLeitosDisponiveis() > 0}">
         <form th:action="@{/quarto/aceitar}" method="POST">
