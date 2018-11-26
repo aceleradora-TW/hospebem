@@ -45,6 +45,7 @@ public class SolicitacaoController {
         if (acompanhante.getNome().isEmpty() || acompanhante.getDataNascimento() ==null ) {
             solicitacao.getAcompanhantes().remove(1);
         }
+
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/solicitacao/hospital/lista";
