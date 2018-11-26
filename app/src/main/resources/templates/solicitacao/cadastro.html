@@ -6,8 +6,6 @@
 </head>
 <body>
 
-<div th:include="@{./partes/cabecalhoPadrao}"/>
-
 <main>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())"> Você não tem autorização para acessar essa página</div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
@@ -236,6 +234,47 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="column">
+                    <h4 class="title is-4">Dados do Solicitante</h4>
+                </div>
+
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <span>Nome do Solicitante:</span>
+                            <input class="input input-fancy borda-arredondada" th:field="*{nomeSolicitante}" type="text" id="nomeSolicitante" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <span>Hospital de Referência do Solicitante:</span>
+                            <input class="input input-fancy borda-arredondada" th:field="*{hospitalReferencia}" type="text" id="hospitalReferencia" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <span>E-mail do Solicitante:</span>
+                            <input class="input input-fancy borda-arredondada" th:field="*{email}" type="text" id="email" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <span>Telefone do Solicitante:</span>
+                            <input class="input input-fancy borda-arredondada" th:field="*{telefoneSolicitante}" type="text" id="telefoneSolicitante" >
+                        </div>
+                    </div>
+                </div>
+
                 <div class="column">
                     <div class="field">
                         <div class="control">

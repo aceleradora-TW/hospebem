@@ -70,6 +70,17 @@ public class Solicitacao {
     @JoinColumn(name = "quarto_id")
     private Quarto quarto;
 
+    @Column(name="nome_solicitante")
+    private String nomeSolicitante ;
+
+    @Column(name="hospital_referencia")
+    private String hospitalReferencia;
+
+    private String email;
+
+    @Column(name="telefone_solicitante")
+    private String telefoneSolicitante;
+
     public Solicitacao() {
     }
 
@@ -90,7 +101,11 @@ public class Solicitacao {
                        String orgao,
                        LocalDate dataCheckin,
                        LocalDate dataCheckout,
-                       Quarto quarto)
+                       Quarto quarto,
+                       String nomeSolicitante,
+                       String hospitalReferencia,
+                       String email,
+                       String telefoneSolicitante)
     {
         this.nome = nome;
         this.genero = genero;
@@ -109,6 +124,10 @@ public class Solicitacao {
         this.orgao = orgao;
         this.dataCheckin = dataCheckin;
         this.dataCheckout = dataCheckout;
+        this.nomeSolicitante = nomeSolicitante;
+        this.hospitalReferencia = hospitalReferencia;
+        this.email = email;
+        this.telefoneSolicitante = telefoneSolicitante;
     }
 
     public Long getId() {
@@ -263,6 +282,38 @@ public class Solicitacao {
         this.quarto = quarto;
     }
 
+    public String getNomeSolicitante() {
+        return nomeSolicitante;
+    }
+
+    public void setNomeSolicitante(String nomeSolicitante) {
+        this.nomeSolicitante = nomeSolicitante;
+    }
+
+    public String getHospitalReferencia() {
+        return hospitalReferencia;
+    }
+
+    public void setHospitalReferencia(String hospitalReferencia) {
+        this.hospitalReferencia = hospitalReferencia;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefoneSolicitante() {
+        return telefoneSolicitante;
+    }
+
+    public void setTelefoneSolicitante(String telefoneSolicitante) {
+        this.telefoneSolicitante = telefoneSolicitante;
+    }
+
     public String formataData() {
         return Optional
                 .ofNullable(dataAtualizacao)
@@ -283,7 +334,8 @@ public class Solicitacao {
     @Override
     public String toString() {
         return "Solicitacao{" +
-                "nome='" + nome + '\'' +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
                 ", genero='" + genero + '\'' +
                 ", situacao='" + situacao + '\'' +
                 ", telefone='" + telefone + '\'' +
@@ -294,10 +346,16 @@ public class Solicitacao {
                 ", dataEntrada=" + dataEntrada +
                 ", dataSaida=" + dataSaida +
                 ", dataTransplante=" + dataTransplante +
-                ", endereco=" + endereco +
-                ", status=" + status +
-                ", acompanhantes=" + acompanhantes +
                 ", dataAtualizacao=" + dataAtualizacao +
+                ", dataCheckin=" + dataCheckin +
+                ", dataCheckout=" + dataCheckout +
+                ", endereco=" + endereco +
+                ", acompanhantes=" + acompanhantes +
+                ", quarto=" + quarto +
+                ", nomeSolicitante='" + nomeSolicitante + '\'' +
+                ", hospitalReferencia='" + hospitalReferencia + '\'' +
+                ", email='" + email + '\'' +
+                ", telefoneSolicitante='" + telefoneSolicitante + '\'' +
                 '}';
     }
 
