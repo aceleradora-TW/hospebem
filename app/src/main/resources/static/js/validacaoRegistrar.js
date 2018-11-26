@@ -33,8 +33,9 @@ const validaUsuarioSenha = () => {
 
     } else
         senha.classList.add('input-fancy')
-
     return true
+
+
 }
 
 const registraAssistente = () => {

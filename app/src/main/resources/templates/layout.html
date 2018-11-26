@@ -32,6 +32,11 @@
                 <p class="titulo-nav">HospeBem</p>
             </a>
         </div>
+        <button class="button canto-superior header-color borda-botao" id="botaoLogout">
+            <div class="navbar-end" sec:authorize="isAuthenticated()">
+                <a class="cor-texto-logout" th:href="@{/logout}">Logout</a>
+            </div>
+        </button>
     </nav>
 </header>
 <main th:replace="${content}"></main>
