@@ -34,12 +34,12 @@
                             </ul>
                             <div class="recuperar">
                                 <strong> Data Check-In: </strong>
-                                <span th:text="${solicitacao.dataCheckin.format(formataData)}"></span>
+                                <span th:text="${solicitacao.formataData()}"></span>
                             </div>
                             <hr>
                             <form th:action="@{/checkout/{id}(id = ${solicitacao.id})}"
                                   th:object="${solicitacao}"
-                                  method="POST" onsubmit="return validaFormCheckout(event)" id="formularioCheckout">
+                                  method="POST" id="formCheckout">
 
                                 <div class="field has-addons">
                                     <div class="control">
@@ -78,7 +78,7 @@
                             <hr>
                             <form th:action="@{/checkin/{id}(id = ${solicitacao.id})}"
                                   th:object="${solicitacao}"
-                                  method="POST" id="formularioCheckin">
+                                  method="POST" id="formCheckin">
 
                                 <div class="field has-addons">
                                     <div class="control">

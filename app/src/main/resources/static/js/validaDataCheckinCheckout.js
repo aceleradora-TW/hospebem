@@ -27,3 +27,9 @@ const validaForm = (seletor) => (evento) => {
     evento.currentTarget.submit();
     return true;
 }
+
+let formularioCheckin = document.querySelector("#formCheckin");
+let formularioCheckout = document.querySelector("#formCheckout");
+
+formularioCheckin.addEventListener("submit", validaForm('.data-checkin'));
+formularioCheckout.addEventListener("submit", validaForm('.data-checkout'));

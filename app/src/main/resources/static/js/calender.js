@@ -26,11 +26,13 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
     }
 })
+const data = new Date()
 
-const seletorDataNascimento = (elemento) =>{
+const seletorDataNascimento = (elemento) => {
+
     return new Pikaday({
-        maxDate: new Date(),
-        yearRange: [1900, new Date().getFullYear()],
+        maxDate: data,
+        yearRange: [1900, data.getFullYear()],
         field: elemento,
         format: 'DD/MM/YYYY',
         i18n: {
@@ -44,8 +46,8 @@ const seletorDataNascimento = (elemento) =>{
 
 const seletorData = (elemento) =>{
     return new Pikaday({
-        minDate: new Date(),
-        yearRange: [1990, 2048],
+        minDate: data,
+        yearRange: [data.getFullYear(), 5000],
         field: elemento,
         format: 'DD/MM/YYYY',
         i18n: {
@@ -59,7 +61,7 @@ const seletorData = (elemento) =>{
 
 const seletorDataMenorQueHoje = (elemento) =>{
     return new Pikaday({
-        maxDate: new Date(),
+        maxDate: data,
         yearRange: [1900, 2100],
         field: elemento,
         format: 'DD/MM/YYYY',
