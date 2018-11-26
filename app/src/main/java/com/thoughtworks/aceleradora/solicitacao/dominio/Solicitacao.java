@@ -350,6 +350,7 @@ public class Solicitacao {
                 ", dataCheckin=" + dataCheckin +
                 ", dataCheckout=" + dataCheckout +
                 ", endereco=" + endereco +
+                ", status=" + status +
                 ", acompanhantes=" + acompanhantes +
                 ", quarto=" + quarto +
                 ", nomeSolicitante='" + nomeSolicitante + '\'' +

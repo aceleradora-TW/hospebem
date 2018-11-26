@@ -10,10 +10,11 @@ import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "acompanhantes")
-public class Acompanhante{
+public class Acompanhante {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -26,7 +27,7 @@ public class Acompanhante{
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = EAGER, optional = false)
     @JoinColumn(name = "solicitacao_id")
     private Solicitacao solicitacao;
 
