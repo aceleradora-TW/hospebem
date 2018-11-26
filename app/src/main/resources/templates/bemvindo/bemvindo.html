@@ -36,11 +36,6 @@
                 </div>
             </div>
         </section>
-        <button class="button espacamento">
-            <div class="navbar-end" sec:authorize="isAuthenticated()">
-            <a th:href="@{/logout}">Logout</a>
-            </div>
-        </button>
         <div sec:authorize="!isAuthenticated()">
             <a href="/login">
                 <div>Logar</div>
