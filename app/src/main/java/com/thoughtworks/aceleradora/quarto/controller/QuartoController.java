@@ -14,14 +14,16 @@ import java.util.*;
 public class QuartoController {
     private QuartoRepository quartoRepository;
     private SolicitacaoRepository solicitacaoRepository;
+    private EmailComponent emailComponent;
 
     public QuartoController() {
     }
 
     @Autowired
-    public QuartoController(QuartoRepository repositorio, SolicitacaoRepository solicitacaoRepository) {
+    public QuartoController(QuartoRepository repositorio, SolicitacaoRepository solicitacaoRepository, EmailComponent emailComponent) {
         this.quartoRepository = repositorio;
         this.solicitacaoRepository = solicitacaoRepository;
+        this.emailComponent = emailComponent;
     }
 
     @GetMapping("/{idSolicitacao}/listaQuartos")
@@ -76,6 +78,8 @@ public class QuartoController {
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
             solicitacao.setStatus(Solicitacao.Status.NEGADO.toString());
+
+            emailComponent.notificaHospital();
             solicitacaoRepository.save(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
@@ -102,6 +106,8 @@ public class QuartoController {
             solicitacao.setQuarto(quarto);
             quarto.getSolicitacoes().add(solicitacao);
             quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() - numeroHospedes);
+
+            emailComponent.notificaHospital();
 
             if (quarto.getLeitosDisponiveis() <= 0) {
                 quarto.setStatus(Quarto.Status.INDISPONIVEL.toString());

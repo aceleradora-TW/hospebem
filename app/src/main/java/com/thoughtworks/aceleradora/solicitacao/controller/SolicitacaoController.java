@@ -19,10 +19,12 @@ import java.util.function.Function;
 public class SolicitacaoController {
 
     private SolicitacaoRepository solicitacaoRepository;
+    private EmailComponent emailComponent;
 
     @Autowired
-    public SolicitacaoController(SolicitacaoRepository repositorio) {
+    public SolicitacaoController(SolicitacaoRepository repositorio, EmailComponent emailComponent) {
         this.solicitacaoRepository = repositorio;
+        this.emailComponent = emailComponent;
     }
 
     @GetMapping("/cadastro")
@@ -36,6 +38,7 @@ public class SolicitacaoController {
     public String salvaSolicitacao(Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
+        emailComponent.notificaCasa();
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/solicitacao/hospital/lista";
@@ -113,7 +116,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-        
+
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }
