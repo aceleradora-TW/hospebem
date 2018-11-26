@@ -56,9 +56,8 @@ public class SolicitacaoController {
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-         auth.getName();
-         model.addAttribute("usuarioLogado",auth.getName());
 
+        model.addAttribute("usuarioLogado",auth.getName());
         model.addAttribute("solicitacoesHospital", solicitacaoRepository.findAll());
 
         return "solicitacao/listagens/listaSolicitacaoHospital";

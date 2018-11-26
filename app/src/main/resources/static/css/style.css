@@ -54,6 +54,9 @@ button {
     display: none;
 }
 
+.div-oculta{
+    display: none;
+}
 
 .espacamento {
     margin: 70px;
