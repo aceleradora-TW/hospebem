@@ -3,6 +3,8 @@ package com.thoughtworks.aceleradora.solicitacao.controller;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import com.thoughtworks.aceleradora.email.component.EmailComponent;
+import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,9 +42,12 @@ public class SolicitacaoControllerTest {
     @Mock
     private SolicitacaoRepository repositorio;
 
+    @Mock
+    private EmailComponent emailComponent;
+
     @Before
     public void setUp() {
-        controller = new SolicitacaoController(repositorio);
+        controller = new SolicitacaoController(repositorio, emailComponent);
     }
 
     @Test
@@ -57,10 +62,8 @@ public class SolicitacaoControllerTest {
 
     @Test
     public void salvaSolicitacaoNoBancoAtualizandoAsReferenciasDeCadaAcompanhante() {
-
-        Solicitacao umaSolicitacao = new Solicitacao();
-
         Acompanhante umAcompanhante = new Acompanhante();
+        Solicitacao umaSolicitacao = new Solicitacao();
         umaSolicitacao.setAcompanhantes(singletonList(umAcompanhante));
 
         String paginaRenderizada = controller.salvaSolicitacao(umaSolicitacao);
@@ -87,7 +90,6 @@ public class SolicitacaoControllerTest {
         when(repositorio.findAllByStatus(Solicitacao.Status.ACEITO.toString())).thenReturn(solicitacoesAceitas);
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
-
 
         verify(model).addAttribute("solicitacoesAceitas", solicitacoesAceitas);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
@@ -120,7 +122,7 @@ public class SolicitacaoControllerTest {
         assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
 
     }
-
+    
     @Test
     public void exibeTelaDeNaoEncontrarQuandoPacienteNaoExistir() {
         when(repositorio.findById(1L)).thenReturn(Optional.empty());
