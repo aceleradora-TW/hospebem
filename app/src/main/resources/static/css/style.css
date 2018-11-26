@@ -177,3 +177,16 @@ button {
 .width-50 {
     width: 50%;
 }
+.canto-superior{
+    position: absolute;
+    right: 0%;
+    top: 15%
+}
+
+.borda-botao{
+    border-color: transparent;
+}
+
+.cor-texto-logout{
+    color: white;
+}
