@@ -50,16 +50,9 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(SolicitacaoStatus.HOSPEDE.toString()));
+        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(SolicitacaoStatus.PENDENTE.toString()));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
-    }
-
-    @GetMapping("/listagemHospede")
-    public String listaGerenciamentoHospede(Model model) {
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(SolicitacaoStatus.ACEITO.toString()));
-
-        return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 
     @GetMapping("/hospital/lista")
@@ -68,6 +61,13 @@ public class SolicitacaoController {
         model.addAttribute("solicitacoesHospital", solicitacaoRepository.findAll());
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
+    }
+
+    @GetMapping("/listagemHospede")
+    public String listaGerenciamentoHospede(Model model) {
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(SolicitacaoStatus.ACEITO.toString()));
+
+        return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 
     @GetMapping("{id}/dados")

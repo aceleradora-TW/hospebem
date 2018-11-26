@@ -3,6 +3,7 @@ package com.thoughtworks.aceleradora.solicitacao.controller;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import com.thoughtworks.aceleradora.solicitacao.helpers.SolicitacaoStatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,7 +54,7 @@ public class SolicitacaoControllerTest {
 
     @Test
     public void salvaSolicitacaoNoBancoAtualizandoAsReferenciasDeCadaAcompanhante() {
-
+        Acompanhante umAcompanhante = new Acompanhante();
         Solicitacao umaSolicitacao = new Solicitacao();
 
         Acompanhante umAcompanhante = new Acompanhante();
@@ -71,7 +72,7 @@ public class SolicitacaoControllerTest {
     @Test
     public void renderizaSolicitacoesDaCasaComTodasSolicitacoesPendentes() {
         List<Solicitacao> solicitacoesPendentes = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAllByStatus("Pendente")).thenReturn(solicitacoesPendentes);
+        when(repositorio.findAllByStatus(SolicitacaoStatus.PENDENTE.toString())).thenReturn(solicitacoesPendentes);
 
         String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
 
@@ -82,10 +83,9 @@ public class SolicitacaoControllerTest {
     @Test
     public void deveRenderizarListaDeHospedes() {
         List<Solicitacao> solicitacoesAceitas = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAllByStatus("Aceito")).thenReturn(solicitacoesAceitas);
+        when(repositorio.findAllByStatus(SolicitacaoStatus.ACEITO.toString())).thenReturn(solicitacoesAceitas);
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
-
 
         verify(model).addAttribute("solicitacoesAceitas", solicitacoesAceitas);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
@@ -112,7 +112,7 @@ public class SolicitacaoControllerTest {
         verify(model).addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/listaHospede/dadosSolicitante"));
     }
-
+    
     @Test
     public void exibeTelaDeNaoEncontrarQuandoPacienteNaoExistir() {
         when(repositorio.findById(1L)).thenReturn(Optional.empty());
