@@ -1,9 +1,11 @@
 function validaCadastroSolicitacao(evento) {
     if (camposPaciente()) {
         if (camposAcompanhantes()) {
-            alert("Solicitação efetuada!")
-            evento.currentTarget.submit()
-            return true
+            if(camposSolicitante()){
+                alert("Solicitação efetuada!")
+                evento.currentTarget.submit()
+                return true
+            }
         }
     }
     return false
@@ -103,6 +105,43 @@ function camposAcompanhantes() {
     }
     return true;
 
+}
+
+function camposSolicitante(){
+    var nomeSolicitante = document.getElementById('nomeSolicitante')
+    var hospitalReferencia = document.getElementById('hospitalReferencia')
+    var email = document.getElementById('email')
+    var telefoneSolicitante = document.getElementById('telefoneSolicitante')
+
+    if (nomeSolicitante.value === '') {
+        nomeSolicitante.placeholder = 'Insira o campo requisitado'
+        validaInputErrado(nomeSolicitante)
+        return false
+    } else
+        nomeSolicitante.classList.add('input-fancy')
+
+    if (hospitalReferencia.value === '') {
+        hospitalReferencia.placeholder = 'Insira o campo requisitado'
+        validaInputErrado(hospitalReferencia)
+        return false
+    } else
+        hospitalReferencia.classList.add('input-fancy')
+
+    if (email.value === '') {
+        email.placeholder = 'Insira o campo requisitado'
+        validaInputErrado(email)
+        return false
+    } else
+        email.classList.add('input-fancy')
+
+    if (telefoneSolicitante.value === '') {
+        telefoneSolicitante.placeholder = 'Insira o campo requisitado'
+        validaInputErrado(telefoneSolicitante)
+        return false
+    } else
+        telefoneSolicitante.classList.add('input-fancy')
+
+    return true;
 }
 
 function validaInputErrado(item) {
