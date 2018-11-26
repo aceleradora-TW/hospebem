@@ -1,14 +1,11 @@
 package com.thoughtworks.aceleradora.solicitacao.dominio;
 
 import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
-import com.thoughtworks.aceleradora.solicitacao.helpers.SolicitacaoStatus;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 import static java.time.format.DateTimeFormatter.ofPattern;
 import static javax.persistence.CascadeType.ALL;
@@ -17,6 +14,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "solicitacoes")
 public class Solicitacao {
+
+    public enum Status{
+        PENDENTE, ACEITO, NEGADO, HOSPEDE, EX_HOSPEDE;
+    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -32,7 +33,7 @@ public class Solicitacao {
 
     private String cadeirante;
 
-    private String status = SolicitacaoStatus.PENDENTE.toString();
+    private String status = Status.PENDENTE.toString();
 
     private Float peso;
 

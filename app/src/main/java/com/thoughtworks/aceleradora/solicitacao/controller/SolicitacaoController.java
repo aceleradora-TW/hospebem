@@ -1,8 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
-import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
-import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
-import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
 @Controller
@@ -50,7 +46,7 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(SolicitacaoStatus.PENDENTE.toString()));
+        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE.toString()));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
@@ -65,7 +61,7 @@ public class SolicitacaoController {
 
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(SolicitacaoStatus.ACEITO.toString()));
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(Solicitacao.Status.ACEITO.toString()));
 
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
@@ -115,7 +111,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-
+        
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }

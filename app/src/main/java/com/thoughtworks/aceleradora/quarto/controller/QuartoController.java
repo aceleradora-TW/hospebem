@@ -1,20 +1,13 @@
 package com.thoughtworks.aceleradora.quarto.controller;
 
-import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
-import com.thoughtworks.aceleradora.quarto.dominio.QuartoRepository;
-import com.thoughtworks.aceleradora.quarto.helpers.QuartoStatus;
-import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
-import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
-import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
-import com.thoughtworks.aceleradora.solicitacao.helpers.SolicitacaoStatus;
+import com.thoughtworks.aceleradora.quarto.dominio.*;
+import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/quarto")
@@ -82,7 +75,7 @@ public class QuartoController {
 
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacao.setStatus(SolicitacaoStatus.NEGADO.toString());
+            solicitacao.setStatus(Solicitacao.Status.NEGADO.toString());
             solicitacaoRepository.save(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
@@ -105,13 +98,13 @@ public class QuartoController {
         int numeroHospedes = hospedesPresentes(solicitacao) == 3 ? 2 : hospedesPresentes(solicitacao);
 
         if(numeroHospedes <= quarto.getLeitosDisponiveis()) {
-            solicitacao.setStatus(SolicitacaoStatus.ACEITO.toString());
+            solicitacao.setStatus(Solicitacao.Status.ACEITO.toString());
             solicitacao.setQuarto(quarto);
             quarto.getSolicitacoes().add(solicitacao);
             quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() - numeroHospedes);
 
             if (quarto.getLeitosDisponiveis() <= 0) {
-                quarto.setStatusQuartos(QuartoStatus.INDISPONIVEL.toString());
+                quarto.setStatus(Quarto.Status.INDISPONIVEL.toString());
             }
         }
         solicitacaoRepository.save(solicitacao);
