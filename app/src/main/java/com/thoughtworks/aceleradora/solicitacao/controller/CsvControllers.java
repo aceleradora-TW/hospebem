@@ -22,8 +22,8 @@ public class CsvControllers {
         this.solicitacaoCsvService = solicitacaoCsvService;
     }
 
-    @GetMapping(value = "/negadas/csv", produces = "text/csv")
-    public ResponseEntity<String> negadas() {
+    @GetMapping(value = "/csv", produces = "text/csv")
+    public ResponseEntity<String> dadosSolicitacao() {
         return ok()
                 .header(CONTENT_DISPOSITION, "attachement; filename=arquivo.csv")
                 .body(solicitacaoCsvService.solicitacoesRelatorio());

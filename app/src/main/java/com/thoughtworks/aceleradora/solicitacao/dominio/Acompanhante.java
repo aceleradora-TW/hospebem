@@ -88,7 +88,6 @@ public class Acompanhante{
                 ", nome='" + nome + '\'' +
                 ", genero='" + genero + '\'' +
                 ", dataNascimento=" + dataNascimento +
-                ", solicitacao=" + solicitacao +
                 '}';
     }
 
