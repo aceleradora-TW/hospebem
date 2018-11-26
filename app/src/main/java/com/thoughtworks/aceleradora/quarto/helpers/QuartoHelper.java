@@ -13,12 +13,13 @@ import java.util.List;
 @Component
 public class QuartoHelper{
     private static final int NUMERO_MAXIMO_HOSPEDES = 3;
+    private QuartoRepository quartoRepo;
 
     public int hospedesPresentes(Solicitacao solicitacao){
         int numeroHospedes = 1;
 
-        for(Acompanhante acompanhante: solicitacao.getAcompanhantes()){
-            if(!acompanhante.getNome().isEmpty()){
+        for (Acompanhante acompanhante: solicitacao.getAcompanhantes()) {
+            if (!acompanhante.getNome().isEmpty()) {
                 numeroHospedes++;
             }
         }
@@ -50,7 +51,16 @@ public class QuartoHelper{
                 ocupantesQuarto.add(s);
                 solicitacao = s;
             }
+
+            if (s.getStatus().equals(Solicitacao.Status.EX_HOSPEDE.toString()))
+                ocupantesQuarto.remove(s);
         }
         return ocupantesQuarto;
+    }
+
+    public Quarto aumentaLeitosDisponiveis(Quarto quarto) {
+        quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() + 2);
+        quartoRepo.save(quarto);
+        return quarto;
     }
 }
