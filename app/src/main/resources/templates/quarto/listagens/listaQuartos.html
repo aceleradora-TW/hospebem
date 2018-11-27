@@ -20,8 +20,8 @@
                     <div class="box">
                         <div class="column">
                             <a  class="centralizar" th:href="@{/quarto/{idSolicitacao}/quarto/{idQuarto}(idSolicitacao=${solicitacao.id}, idQuarto=${quarto.id})}">
-                                <button type="reset" class="button is-success red "  th:if="${quarto.leitosDisponiveis <= 0 || numeroHospedes > quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
-                                <button type="submit" class="button is-success"  th:if="${quarto.leitosDisponiveis > 0 && numeroHospedes <= quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
+                                <button type="reset" class="button borda-arredondada verde-viavida "  th:if="${quarto.leitosDisponiveis <= 0 || numeroHospedes > quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
+                                <button type="submit" class="button borda-arredondada verde-viavida"  th:if="${quarto.leitosDisponiveis > 0 && numeroHospedes <= quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
                             </a>
                             <div class="centralizar">
                                 <strong>Tipo:</strong>
