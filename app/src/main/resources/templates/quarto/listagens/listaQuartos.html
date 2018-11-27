@@ -6,47 +6,48 @@
 </head>
 <body>
 <main>
-    <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
-        <div class="section">
-            <nav class="breadcrumb" aria-label="breadcrumbs">
-                <ul>
-                    <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
-                    <li><a th:href="@{'/solicitacao/casa/lista'}" class="has-text-black" href="#" aria-current="page">Solicitação</a></li>
-                    <li><a th:href="@{'/quarto/' + ${solicitacao.id} + '/listaQuartos'}">Lista de solicitações da casa</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div th:include="@{./partes/cabecalhoDadosSolicitante}"/>
-    <div class="column">
-        <h3 class="title is-3 v center has-text-centered">Quartos</h3>
-    </div>
-    <div class="section">
-        <div class="columns is-multiline is-lefty">
-            <th:block th:each="quarto : ${listaQuartos}">
-                <div class="column is-3">
-                    <div class="box box-shadow">
-                        <div class="column">
-                            <a  class="centralizar" th:href="@{/quarto/{idSolicitacao}/quarto/{idQuarto}(idSolicitacao=${solicitacao.id}, idQuarto=${quarto.id})}">
-                                <button type="reset" class="button borda-arredondada verde-viavida "  th:if="${quarto.leitosDisponiveis <= 0 || numeroHospedes > quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
-                                <button type="submit" class="button borda-arredondada verde-viavida"  th:if="${quarto.leitosDisponiveis > 0 && numeroHospedes <= quarto.leitosDisponiveis}" th:text="${quarto.nomeQuarto}"></button>
-                            </a>
-                            <div class="centralizar">
-                                <strong>Tipo:</strong>
-                                <label th:text="${quarto.tipo}"></label>
-                            </div>
-                            <div class="centralizar">
-                                <strong>Leitos Disponíveis: </strong>
-                                <label th:text="${quarto.leitosDisponiveis}"></label>
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                        <li><a th:href="@{'/solicitacao/casa/lista'}" class="has-text-black" href="#" aria-current="page">Solicitação</a></li>
+                        <li><a th:href="@{'/quarto/' + ${solicitacao.id} + '/listaQuartos'}">Lista de solicitações da casa</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div th:include="@{./partes/cabecalhoDadosSolicitante}"/>
+            <div class="column">
+                <h3 class="title is-3 v center has-text-centered">Quartos</h3>
+            </div>
+            <div class="section">
+                <div class="columns is-multiline is-lefty">
+                    <th:block th:each="quarto : ${listaQuartos}">
+                        <div class="column is-3">
+                            <div class="box box-shadow">
+                                <div class="column">
+                                    <a  class="centralizar" th:href="@{/quarto/{idSolicitacao}/quarto/{idQuarto}(idSolicitacao=${solicitacao.id}, idQuarto=${quarto.id})}">
+                                        <button type="reset" class="button is-success red " th:if="${quarto.leitosDisponiveis() <= 0 || numeroHospedes > quarto.leitosDisponiveis()}" th:text="${quarto.nomeQuarto}"></button>
+                                        <button type="submit" class="button is-success"  th:if="${quarto.leitosDisponiveis() > 0 && numeroHospedes <= quarto.leitosDisponiveis()} " th:text="${quarto.nomeQuarto}"></button>
+                                    </a>
+                                    <div class="centralizar">
+                                        <strong>Tipo:</strong>
+                                        <label th:text="${quarto.tipo}"></label>
+                                    </div>
+                                    <div class="centralizar">
+                                        <strong>Leitos Disponíveis: </strong>
+                                        <label  th:text="${quarto.leitosDisponiveis()}"></label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </th:block>
                 </div>
-            </th:block>
+            </div>
         </div>
     </div>
-        </div>
 </main>
 </body>
 </html>

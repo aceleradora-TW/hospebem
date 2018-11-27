@@ -58,6 +58,7 @@ public class CheckinCheckoutController {
 
         solicitacao.setDataCheckout(solicitacaoCheckout.getDataCheckout());
         solicitacao.setStatus("Ex hospede");
+        solicitacao.setQuarto(null);
         solicitacaoRepository.save(solicitacao);
         return "redirect:/listacheckincheckout";
     }

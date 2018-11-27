@@ -29,11 +29,16 @@ public class Quarto {
     @Column (name = "quantidade_leitos")
     private int quantidadeLeitos;
 
-    @Column (name = "leitos_disponiveis")
-    private int leitosDisponiveis;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "quarto")
     private List<Solicitacao> solicitacoes;
+
+    public int leitosDisponiveis() {
+        return quantidadeLeitos - solicitacoes.size() - solicitacoes.size();
+    }
+
+    public int aumentaLeitos(){
+        return quantidadeLeitos + 2;
+    }
 
     public Quarto() {
     }
@@ -42,14 +47,14 @@ public class Quarto {
                   String status,
                   String tipo,
                   int quantidadeLeitos,
-                  int leitosDisponiveis,
+
                   List<Solicitacao> solicitacoes)
     {
         this.nomeQuarto = nomeQuarto;
         this.status = status;
         this.tipo = tipo;
         this.quantidadeLeitos = quantidadeLeitos;
-        this.leitosDisponiveis = leitosDisponiveis;
+
         this.solicitacoes = solicitacoes;
     }
 
@@ -85,16 +90,9 @@ public class Quarto {
         return quantidadeLeitos;
     }
 
-    public void setQuantidadeLeitos(int quantidadeLeitos) {
+    public int setQuantidadeLeitos(int quantidadeLeitos) {
         this.quantidadeLeitos = quantidadeLeitos;
-    }
-
-    public int getLeitosDisponiveis() {
-        return leitosDisponiveis;
-    }
-
-    public void setLeitosDisponiveis(int leitosDisponiveis) {
-        this.leitosDisponiveis = leitosDisponiveis;
+        return quantidadeLeitos;
     }
 
     public List<Solicitacao> getSolicitacoes() {

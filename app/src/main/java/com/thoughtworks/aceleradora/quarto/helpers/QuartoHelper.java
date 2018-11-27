@@ -29,13 +29,13 @@ public class QuartoHelper{
     public void limitaQuartos(Solicitacao solicitacao, Quarto quarto, SolicitacaoRepository solicitacaoRepository, QuartoRepository quartoRepository){
         int numeroHospedes = hospedesPresentes(solicitacao) == NUMERO_MAXIMO_HOSPEDES ? 2 : hospedesPresentes(solicitacao);
 
-        if(numeroHospedes <= quarto.getLeitosDisponiveis()) {
+        if (numeroHospedes <= quarto.leitosDisponiveis()) {
             solicitacao.setStatus(Solicitacao.Status.ACEITO.toString());
             solicitacao.setQuarto(quarto);
             quarto.getSolicitacoes().add(solicitacao);
-            quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() - numeroHospedes);
+            quarto.leitosDisponiveis();
 
-            if (quarto.getLeitosDisponiveis() <= 0) {
+            if (quarto.leitosDisponiveis() <= 0) {
                 quarto.setStatus(Quarto.Status.INDISPONIVEL.toString());
             }
         }
@@ -44,6 +44,7 @@ public class QuartoHelper{
     }
 
     public List<Solicitacao> ocupantes(List<Solicitacao> solicitacoes){
+        Quarto quarto = new Quarto();
         List<Solicitacao> ocupantesQuarto = new ArrayList<>();
         Solicitacao solicitacao = null;
         for (Solicitacao s: solicitacoes){
@@ -52,14 +53,15 @@ public class QuartoHelper{
                 solicitacao = s;
             }
 
-            if (s.getStatus().equals(Solicitacao.Status.EX_HOSPEDE.toString()))
+            if (s.getStatus().equals(Solicitacao.Status.EX_HOSPEDE.toString())){
                 ocupantesQuarto.remove(s);
+            }
         }
         return ocupantesQuarto;
     }
 
     public Quarto aumentaLeitosDisponiveis(Quarto quarto) {
-        quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() + 2);
+        quarto.setLeitosDisponiveis(quarto.leitosDisponiveis() + 2);
         quartoRepo.save(quarto);
         return quarto;
     }
