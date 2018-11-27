@@ -13,12 +13,12 @@ import static org.springframework.http.ResponseEntity.ok;
 
 @Controller
 @RequestMapping(value = "/solicitacao")
-public class CsvControllers {
+public class CsvController {
 
     private final SolicitacaoCsvService solicitacaoCsvService;
 
     @Autowired
-    public CsvControllers(SolicitacaoCsvService solicitacaoCsvService){
+    public CsvController(SolicitacaoCsvService solicitacaoCsvService){
         this.solicitacaoCsvService = solicitacaoCsvService;
     }
 
