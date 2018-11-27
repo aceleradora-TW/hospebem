@@ -5,7 +5,10 @@
     <title>Hospebem - Inicio </title>
 </head>
 <body>
-<main sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+
+<main>
+    <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
     <div class="agrupadora has-text-centered">
         <h1 class="title is-1 espaco-titulo">Hospebem</h1>
         <section class="container">
@@ -44,6 +47,7 @@
                 <div>Registrar</div>
             </a>
         </div>
+    </div>
     </div>
 </main>
 
