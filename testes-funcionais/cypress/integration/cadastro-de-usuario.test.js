@@ -12,7 +12,7 @@ describe('Cadastro de usuario', () => {
         cy.location('pathname').should('eq', '/login')
     });
 
-    it.only('Permite o cadastro de novos usuarios assistentes', () => {
+    it('Permite o cadastro de novos usuarios assistentes', () => {
         cy.visit('/registrar')
 
         cy.get("#ASSISTENTE_SOCIAL").click()
