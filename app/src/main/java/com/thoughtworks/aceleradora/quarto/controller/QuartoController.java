@@ -43,7 +43,6 @@ public class QuartoController{
             model.addAttribute("solicitacao", solicitacao);
             model.addAttribute("listaQuartos", quartoRepository.findAll());
 
-
             return "quarto/listagens/listaQuartos";
         }
         return "404";

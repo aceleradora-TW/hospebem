@@ -3,6 +3,7 @@ package com.thoughtworks.aceleradora.quarto.dominio;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -33,11 +34,20 @@ public class Quarto {
     private List<Solicitacao> solicitacoes;
 
     public int leitosDisponiveis() {
-        int a = 0;
-        for (Solicitacao s : solicitacoes){
-            a = s.getAcompanhantes().size();
+        List<Solicitacao> ocupantesQuarto = new ArrayList<>();
+        Solicitacao solicitacao = null;
+        for (Solicitacao s: solicitacoes) {
+            if (!s.equals(solicitacao)) {
+                ocupantesQuarto.add(s);
+                solicitacao = s;
+            }
+
+            if (s.getStatus() == (Solicitacao.Status.EX_HOSPEDE.toString())) {
+                ocupantesQuarto.remove(s);
+            }
         }
-        return quantidadeLeitos - solicitacoes.size() - a;
+        System.out.println("==============================" +solicitacoes.size() +"==============================");
+        return quantidadeLeitos - (ocupantesQuarto.size() * 2);
     }
 
     public Quarto() {
