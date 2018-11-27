@@ -1,8 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
-import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
-import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
-import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,13 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.ui.Model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -53,12 +45,8 @@ public class SolicitacaoControllerTest {
 
     @Test
     public void salvaSolicitacaoNoBancoAtualizandoAsReferenciasDeCadaAcompanhante() {
-
-        Solicitacao umaSolicitacao = new Solicitacao();
-
         Acompanhante umAcompanhante = new Acompanhante();
-
-        umAcompanhante.setSolicitacao(umaSolicitacao);
+        Solicitacao umaSolicitacao = new Solicitacao();
         umaSolicitacao.setAcompanhantes(singletonList(umAcompanhante));
 
         String paginaRenderizada = controller.salvaSolicitacao(umaSolicitacao);
@@ -71,7 +59,7 @@ public class SolicitacaoControllerTest {
     @Test
     public void renderizaSolicitacoesDaCasaComTodasSolicitacoesPendentes() {
         List<Solicitacao> solicitacoesPendentes = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAllByStatus("Pendente")).thenReturn(solicitacoesPendentes);
+        when(repositorio.findAllByStatus(Solicitacao.Status.PENDENTE.toString())).thenReturn(solicitacoesPendentes);
 
         String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
 
@@ -82,10 +70,9 @@ public class SolicitacaoControllerTest {
     @Test
     public void deveRenderizarListaDeHospedes() {
         List<Solicitacao> solicitacoesAceitas = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAllByStatus("Aceito")).thenReturn(solicitacoesAceitas);
+        when(repositorio.findAllByStatus(Solicitacao.Status.ACEITO.toString())).thenReturn(solicitacoesAceitas);
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
-
 
         verify(model).addAttribute("solicitacoesAceitas", solicitacoesAceitas);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
@@ -112,7 +99,7 @@ public class SolicitacaoControllerTest {
         verify(model).addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/listaHospede/dadosSolicitante"));
     }
-
+    
     @Test
     public void exibeTelaDeNaoEncontrarQuandoPacienteNaoExistir() {
         when(repositorio.findById(1L)).thenReturn(Optional.empty());

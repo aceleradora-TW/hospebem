@@ -9,6 +9,11 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity(name = "quartos")
 public class Quarto {
+
+    public enum Status{
+        DISPONIVEL, INDISPONIVEL;
+    }
+
     @Id
     @GeneratedValue (strategy = IDENTITY)
     private Long id;
@@ -17,7 +22,7 @@ public class Quarto {
     private String nomeQuarto;
 
     @Column (name = "status_quartos")
-    private String statusQuartos;
+    private String status;
 
     private String tipo;
 
@@ -34,14 +39,14 @@ public class Quarto {
     }
 
     public Quarto(String nomeQuarto,
-                  String statusQuartos,
+                  String status,
                   String tipo,
                   int quantidadeLeitos,
                   int leitosDisponiveis,
                   List<Solicitacao> solicitacoes)
     {
         this.nomeQuarto = nomeQuarto;
-        this.statusQuartos = statusQuartos;
+        this.status = status;
         this.tipo = tipo;
         this.quantidadeLeitos = quantidadeLeitos;
         this.leitosDisponiveis = leitosDisponiveis;
@@ -60,12 +65,12 @@ public class Quarto {
         this.nomeQuarto = nomeQuarto;
     }
 
-    public String getStatusQuartos() {
-        return statusQuartos;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatusQuartos(String statusQuartos) {
-        this.statusQuartos = statusQuartos;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getTipo() {

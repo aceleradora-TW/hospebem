@@ -1,22 +1,15 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
-import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
-import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
-import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
 @Controller
@@ -41,13 +34,6 @@ public class SolicitacaoController {
     public String salvaSolicitacao(Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
-        if (solicitacao.getAcompanhantes().size() == 2) {
-            Acompanhante acompanhante = solicitacao.getAcompanhantes().get(1);
-            if (acompanhante.getNome().isEmpty() || acompanhante.getDataNascimento() == null ) {
-                solicitacao.getAcompanhantes().remove(1);
-            }
-        }
-
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/solicitacao/hospital/lista";
@@ -60,16 +46,9 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus("Pendente"));
+        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE.toString()));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
-    }
-
-    @GetMapping("/listagemHospede")
-    public String listaGerenciamentoHospede(Model model) {
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("Aceito"));
-
-        return "solicitacao/listagens/listaGerenciamentoHospede";
     }
 
     @GetMapping("/hospital/lista")
@@ -80,9 +59,15 @@ public class SolicitacaoController {
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
 
+    @GetMapping("/listagemHospede")
+    public String listaGerenciamentoHospede(Model model) {
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(Solicitacao.Status.ACEITO.toString()));
+
+        return "solicitacao/listagens/listaGerenciamentoHospede";
+    }
+
     @GetMapping("{id}/dados")
     public String mostraDadosPaciente(Model model, @PathVariable Long id) {
-
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if (solicitacaoOptional.isPresent()) {
@@ -94,7 +79,6 @@ public class SolicitacaoController {
         }
         return "404";
     }
-
 
     @GetMapping("/{id}/editar")
     public String editaDadosHospede(Model model, @PathVariable Long id) {
@@ -125,7 +109,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-
+        
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }
