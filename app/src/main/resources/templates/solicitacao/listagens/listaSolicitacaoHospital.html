@@ -13,7 +13,8 @@
 <body>
 
     <main>
-        <div class="container">
+            <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())"> Você não tem autorização para acessar essa página</div>
+            <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
             <div class="is-mobile">
                 <div>
                     <h1 class="title is-half centralizar espacamento">Lista de Solicitações</h1>
