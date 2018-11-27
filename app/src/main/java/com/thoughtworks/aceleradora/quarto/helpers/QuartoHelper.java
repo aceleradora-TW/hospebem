@@ -38,6 +38,7 @@ public class QuartoHelper{
             if (quarto.leitosDisponiveis() <= 0) {
                 quarto.setStatus(Quarto.Status.INDISPONIVEL.toString());
             }
+
         }
         solicitacaoRepository.save(solicitacao);
         quartoRepository.save(quarto);
