@@ -41,6 +41,13 @@ public class SolicitacaoController {
     public String salvaSolicitacao(Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
+        if (solicitacao.getAcompanhantes().size() == 2) {
+            Acompanhante acompanhante = solicitacao.getAcompanhantes().get(1);
+            if (acompanhante.getNome().isEmpty() || acompanhante.getDataNascimento() == null ) {
+                solicitacao.getAcompanhantes().remove(1);
+            }
+        }
+
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/solicitacao/hospital/lista";
@@ -60,7 +67,7 @@ public class SolicitacaoController {
 
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("aceito"));
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus("Aceito"));
 
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
@@ -118,7 +125,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-        
+
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }

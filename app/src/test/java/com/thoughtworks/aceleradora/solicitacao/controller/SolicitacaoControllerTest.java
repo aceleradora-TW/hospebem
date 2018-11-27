@@ -10,7 +10,11 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.ui.Model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,8 +53,12 @@ public class SolicitacaoControllerTest {
 
     @Test
     public void salvaSolicitacaoNoBancoAtualizandoAsReferenciasDeCadaAcompanhante() {
-        Acompanhante umAcompanhante = new Acompanhante();
+
         Solicitacao umaSolicitacao = new Solicitacao();
+
+        Acompanhante umAcompanhante = new Acompanhante();
+
+        umAcompanhante.setSolicitacao(umaSolicitacao);
         umaSolicitacao.setAcompanhantes(singletonList(umAcompanhante));
 
         String paginaRenderizada = controller.salvaSolicitacao(umaSolicitacao);
@@ -74,9 +82,10 @@ public class SolicitacaoControllerTest {
     @Test
     public void deveRenderizarListaDeHospedes() {
         List<Solicitacao> solicitacoesAceitas = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAllByStatus("aceito")).thenReturn(solicitacoesAceitas);
+        when(repositorio.findAllByStatus("Aceito")).thenReturn(solicitacoesAceitas);
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
+
 
         verify(model).addAttribute("solicitacoesAceitas", solicitacoesAceitas);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
@@ -103,7 +112,7 @@ public class SolicitacaoControllerTest {
         verify(model).addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/listaHospede/dadosSolicitante"));
     }
-    
+
     @Test
     public void exibeTelaDeNaoEncontrarQuandoPacienteNaoExistir() {
         when(repositorio.findById(1L)).thenReturn(Optional.empty());
