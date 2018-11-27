@@ -33,11 +33,11 @@ public class Quarto {
     private List<Solicitacao> solicitacoes;
 
     public int leitosDisponiveis() {
-        return quantidadeLeitos - solicitacoes.size() - solicitacoes.size();
-    }
-
-    public int aumentaLeitos(){
-        return quantidadeLeitos + 2;
+        int a = 0;
+        for (Solicitacao s : solicitacoes){
+            a = s.getAcompanhantes().size();
+        }
+        return quantidadeLeitos - solicitacoes.size() - a;
     }
 
     public Quarto() {

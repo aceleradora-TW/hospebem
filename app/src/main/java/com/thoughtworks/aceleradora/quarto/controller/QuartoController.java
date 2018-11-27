@@ -58,6 +58,12 @@ public class QuartoController{
             Solicitacao solicitacao = solicitacaoOptional.get();
             Quarto quarto = quartoOptional.get();
 
+            System.out.printf("==================================================");
+            System.out.printf("==================================================");
+            System.out.printf("AQUI: "+quarto.leitosDisponiveis());
+            System.out.printf("==================================================");
+            System.out.printf("==================================================");
+
             model.addAttribute("numeroHospedes", quartoHelper.hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao" , solicitacao);
             model.addAttribute("quarto" , quarto);
