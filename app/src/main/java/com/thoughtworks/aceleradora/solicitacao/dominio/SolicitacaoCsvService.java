@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.stream.Stream;
 import static java.util.stream.Collectors.joining;
 
-
 @Service
 public class SolicitacaoCsvService {
 
@@ -29,9 +28,9 @@ public class SolicitacaoCsvService {
 
         String listaSolicitacoesRelatorio = solicitacoes
                 .stream()
-                .filter(solicitacao -> solicitacao.getStatus().equalsIgnoreCase("Hospede") ||
-                        solicitacao.getStatus().equalsIgnoreCase("Ex hospede") ||
-                        solicitacao.getStatus().equals("Negado")
+                .filter(solicitacao -> solicitacao.getStatus().equalsIgnoreCase(Solicitacao.Status.HOSPEDE) ||
+                        solicitacao.getStatus().equalsIgnoreCase(Solicitacao.Status.EX_HOSPEDE) ||
+                        solicitacao.getStatus().equals(Solicitacao.Status.NEGADO)
                 )
                 .map(solicitacao -> juntar(
                         paciente(solicitacao),
@@ -44,10 +43,9 @@ public class SolicitacaoCsvService {
         return String.join("\n", CABECALHO, listaSolicitacoesRelatorio);
     }
 
-
     private String paciente(Solicitacao solicitacao) {
         return juntar(
-                solicitacao.getNome(), solicitacao.getStatus(),
+                solicitacao.getNome(), solicitacao.getStatus().toString(),
                 solicitacao.getGenero(), solicitacao.getDataNascimento().toString(),
                 solicitacao.getSituacao(), solicitacao.getOrgao(), solicitacao.getCadeirante(),
                 solicitacao.getTelefone(), solicitacao.getDataEntrada().toString(),
@@ -76,8 +74,6 @@ public class SolicitacaoCsvService {
         return Stream.of(valores).collect(joining(","));
     }
 
-
-
     private String getAcompanhantesToString(Solicitacao solicitacao) {
         StringBuilder retorno = new StringBuilder(" ");
         if(solicitacao !=null) {
@@ -97,5 +93,4 @@ public class SolicitacaoCsvService {
         }
         return retorno.toString();
     }
-
 }

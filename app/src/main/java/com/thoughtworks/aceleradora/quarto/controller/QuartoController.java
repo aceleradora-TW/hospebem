@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/quarto")
@@ -82,7 +82,7 @@ public class QuartoController{
 
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacao.setStatus(Solicitacao.Status.NEGADO.toString());
+            solicitacao.setStatus(Solicitacao.Status.NEGADO);
 
             solicitacaoRepository.save(solicitacao);
             emailComponent.notificaHospital(solicitacao);
@@ -90,5 +90,47 @@ public class QuartoController{
             return "redirect:/solicitacao/casa/lista";
         }
         return "404";
+    }
+
+    private int hospedesPresentes(Solicitacao solicitacao){
+        int numeroHospedes = 1;
+
+        for(Acompanhante acompanhante: solicitacao.getAcompanhantes()){
+            if(!acompanhante.getNome().isEmpty()){
+                numeroHospedes++;
+            }
+        }
+        return numeroHospedes;
+    }
+
+    private void limitaQuartos(Solicitacao solicitacao, Quarto quarto){
+        int numeroHospedes = hospedesPresentes(solicitacao) == 3 ? 2 : hospedesPresentes(solicitacao);
+
+        if(numeroHospedes <= quarto.getLeitosDisponiveis()) {
+            solicitacao.setStatus(Solicitacao.Status.ACEITO);
+            solicitacao.setQuarto(quarto);
+            quarto.getSolicitacoes().add(solicitacao);
+            quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() - numeroHospedes);
+
+            emailComponent.notificaHospital(solicitacao);
+
+            if (quarto.getLeitosDisponiveis() <= 0) {
+                quarto.setStatus(Quarto.Status.INDISPONIVEL);
+            }
+        }
+        solicitacaoRepository.save(solicitacao);
+        quartoRepository.save(quarto);
+    }
+
+    public  List<Solicitacao> ocupantes(List<Solicitacao> solicitacoes){
+        List<Solicitacao> ocupantesQuarto = new ArrayList<>();
+        Solicitacao solicitacao = null;
+        for (Solicitacao s: solicitacoes){
+            if (!s.equals(solicitacao)){
+                ocupantesQuarto.add(s);
+                solicitacao = s;
+            }
+        }
+        return ocupantesQuarto;
     }
 }

@@ -58,7 +58,7 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE.toString()));
+        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
@@ -77,7 +77,7 @@ public class SolicitacaoController {
 
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(Solicitacao.Status.ACEITO.toString()));
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(Solicitacao.Status.ACEITO));
 
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
