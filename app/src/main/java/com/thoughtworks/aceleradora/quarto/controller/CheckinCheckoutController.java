@@ -19,7 +19,6 @@ import java.util.Optional;
 public class CheckinCheckoutController {
     private QuartoRepository quartoRepository;
     private SolicitacaoRepository solicitacaoRepository;
-    private QuartoHelper quartoHelper;
 
 
     @Autowired
@@ -46,18 +45,18 @@ public class CheckinCheckoutController {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
 
         solicitacao.setDataCheckin(solicitacaoCheckin.getDataCheckin());
-        solicitacao.setStatus("Hospede");
+        solicitacao.setStatus(Solicitacao.Status.HOSPEDE.toString());
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/listacheckincheckout";
     }
 
     @PostMapping("/checkout/{id}")
-    public String exHospede(@PathVariable Long id, Solicitacao solicitacaoCheckout, Quarto quarto) {
+    public String exHospede(@PathVariable Long id, Solicitacao solicitacaoCheckout) {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
 
         solicitacao.setDataCheckout(solicitacaoCheckout.getDataCheckout());
-        solicitacao.setStatus("Ex hospede");
+        solicitacao.setStatus(Solicitacao.Status.EX_HOSPEDE.toString());
         solicitacao.setQuarto(null);
         solicitacaoRepository.save(solicitacao);
         return "redirect:/listacheckincheckout";

@@ -20,7 +20,7 @@
 
         <div class="section">
             <div class="columns is-multiline is-lefty">
-                <th:block th:each="solicitacao : ${solicitacoes}" th:if="${solicitacao.status == 'Hospede'}">
+                <th:block th:each="solicitacao : ${solicitacoes}" th:if="${solicitacao.status == 'HOSPEDE'}">
                     <div class="column is-4">
                         <div class="box">
                             <a class="subtitle" th:href="@{/quartos/{id}/informacoes(id=${solicitacao.id})}"
@@ -63,7 +63,7 @@
 
         <div class="section">
             <div class="columns is-multiline is-lefty">
-                <th:block th:each="solicitacao : ${solicitacoes}" th:if="${solicitacao.status == 'Aceito'}">
+                <th:block th:each="solicitacao : ${solicitacoes}" th:if="${solicitacao.status == 'ACEITO'}">
                     <div class="column is-4">
                         <div class="box">
                             <a class="subtitle" th:href="@{/quartos/{id}/informacoes(id=${solicitacao.id})}"
@@ -72,7 +72,7 @@
                             <hr>
                             <ul>
                                 <li th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                    <label class="tag is-success" th:text="${quarto.nomeQuarto}"/>                                   </label>
+                                    <label class="tag is-success" th:text="${quarto.nomeQuarto}"/>
                                 </li>
                             </ul>
                             <hr>
