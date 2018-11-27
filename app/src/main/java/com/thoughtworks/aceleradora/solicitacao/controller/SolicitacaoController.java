@@ -68,7 +68,6 @@ public class SolicitacaoController {
 
     @GetMapping("{id}/dados")
     public String mostraDadosPaciente(Model model, @PathVariable Long id) {
-
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
 
         if (solicitacaoOptional.isPresent()) {
@@ -80,7 +79,6 @@ public class SolicitacaoController {
         }
         return "404";
     }
-
 
     @GetMapping("/{id}/editar")
     public String editaDadosHospede(Model model, @PathVariable Long id) {
