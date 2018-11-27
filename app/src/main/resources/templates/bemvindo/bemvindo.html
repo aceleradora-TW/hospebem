@@ -5,7 +5,7 @@
     <title>Hospebem - Inicio </title>
 </head>
 <body>
-<main>
+<main sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
     <div class="agrupadora has-text-centered">
         <h1 class="title is-1 espaco-titulo">Hospebem</h1>
         <section class="container">
