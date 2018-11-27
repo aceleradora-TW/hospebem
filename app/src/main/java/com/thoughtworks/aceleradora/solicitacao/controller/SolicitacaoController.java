@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
+import com.thoughtworks.aceleradora.email.component.EmailComponent;
 import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -8,8 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.Period;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;

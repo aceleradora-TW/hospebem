@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.quarto.controller;
 
+import com.thoughtworks.aceleradora.email.component.EmailComponent;
 import com.thoughtworks.aceleradora.quarto.dominio.*;
 import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
