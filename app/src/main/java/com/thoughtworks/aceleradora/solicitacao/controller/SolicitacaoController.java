@@ -34,6 +34,10 @@ public class SolicitacaoController {
     public String salvaSolicitacao(Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
+        Acompanhante acompanhante = solicitacao.getAcompanhantes().get(1);
+        if (acompanhante.getNome().isEmpty() || acompanhante.getDataNascimento() == null || acompanhante.getGenero() == null) {
+            solicitacao.getAcompanhantes().remove(1);
+        }
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/solicitacao/hospital/lista";
