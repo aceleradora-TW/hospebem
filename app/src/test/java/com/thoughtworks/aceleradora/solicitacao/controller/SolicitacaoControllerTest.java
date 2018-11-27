@@ -22,7 +22,7 @@ public class SolicitacaoControllerTest {
 
     private SolicitacaoController controller;
 
-    @Mock
+
     private Solicitacao solicitacao;
 
     @Mock

@@ -1,14 +1,10 @@
 function validaCadastroSolicitacao(evento) {
-    if (camposPaciente()) {
-        if (camposAcompanhantes()) {
-            if(camposSolicitante()){
-                alert("Solicitação efetuada!")
-                evento.currentTarget.submit()
-                return true
-            }
-        }
+    if (camposPaciente() && camposAcompanhantes() && camposSolicitante()) {
+        alert("Solicitação efetuada!")
+        evento.currentTarget.submit()
+        return true;
     }
-    return false
+    return false;
 }
 
 function camposPaciente() {
