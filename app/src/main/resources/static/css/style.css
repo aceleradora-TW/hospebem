@@ -193,3 +193,7 @@ button {
 .cor-texto-logout{
     color: white;
 }
+
+.ml-10 {
+    margin-left: 10px;
+}
