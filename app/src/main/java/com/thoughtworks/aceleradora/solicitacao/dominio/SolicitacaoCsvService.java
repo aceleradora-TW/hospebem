@@ -33,7 +33,8 @@ public class SolicitacaoCsvService {
                         solicitacao.getEndereco().getCidade(),
                         solicitacao.getEndereco().getBairro(), solicitacao.getEndereco().getUf(),
                         solicitacao.getCadeirante(), solicitacao.getTelefone(),
-                        solicitacao.getDataEntrada().toString(), solicitacao.getDataSaida().toString(),
+                        solicitacao.getDataEntrada().toString(),
+                        solicitacao.getDataSaida()==null?"":solicitacao.getDataSaida().toString(),
                         getAcompanhantesToString(solicitacao))
                 )
 
