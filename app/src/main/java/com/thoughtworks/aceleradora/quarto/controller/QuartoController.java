@@ -80,7 +80,7 @@ public class QuartoController {
             Solicitacao solicitacao = solicitacaoOptional.get();
             solicitacao.setStatus(Solicitacao.Status.NEGADO.toString());
 
-            emailComponent.notificaHospital();
+            emailComponent.notificaHospital(solicitacao);
             solicitacaoRepository.save(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
@@ -108,7 +108,7 @@ public class QuartoController {
             quarto.getSolicitacoes().add(solicitacao);
             quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() - numeroHospedes);
 
-            emailComponent.notificaHospital();
+            emailComponent.notificaHospital(solicitacao);
 
             if (quarto.getLeitosDisponiveis() <= 0) {
                 quarto.setStatus(Quarto.Status.INDISPONIVEL.toString());

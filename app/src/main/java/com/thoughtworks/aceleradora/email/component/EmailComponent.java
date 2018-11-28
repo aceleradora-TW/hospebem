@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.email.component;
 
+import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
@@ -27,12 +28,12 @@ public class EmailComponent {
         }
     }
 
-    public void notificaHospital() {
+    public void notificaHospital(Solicitacao solicitacao) {
         SimpleMailMessage mensagem = new SimpleMailMessage();
 
         mensagem.setText("Status de uma solicitação foi alterado!");
-        mensagem.setTo("aceleradora14@gmail.com");
-        mensagem.setFrom("aceleradora14@gmail.com");
+        mensagem.setTo(solicitacao.getEmail());
+        mensagem.setFrom(solicitacao.getEmail());
 
         try {
             mailSender.send(mensagem);
