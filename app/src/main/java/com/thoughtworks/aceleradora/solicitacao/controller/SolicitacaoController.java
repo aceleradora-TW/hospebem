@@ -2,6 +2,8 @@ package com.thoughtworks.aceleradora.solicitacao.controller;
 
 import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +55,9 @@ public class SolicitacaoController {
 
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
+        model.addAttribute("usuarioLogado",auth.getName());
         model.addAttribute("solicitacoesHospital", solicitacaoRepository.findAll());
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
@@ -72,10 +76,10 @@ public class SolicitacaoController {
 
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("solicitante", solicitacao);
+            model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            model.addAttribute("solicitacao", solicitacao);
 
-            return "solicitacao/listaHospede/dadosSolicitante";
+            return "solicitacao/dadosSolicitacao";
         }
         return "404";
     }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-      xmlns:th="http://www.thymeleaf.org/">
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <title>Hospebem</title>
@@ -26,7 +25,7 @@
                     <div class="container">
                         <div class="section">
                             <div class="columns is-multiline is-lefty">
-                                <tr th:each="solicitacao : ${solicitacoesHospital}">
+                                <tr th:each="solicitacao : ${solicitacoesHospital}" th:if="${solicitacao.nomeSolicitante==usuarioLogado}">
                                     <div class="column">
                                         <div class="box">
                                             <strong><span>Nome:</span></strong>
@@ -53,23 +52,20 @@
                                                             <span class="icon is-small">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </span>
-                                                        </button>
-                                                    </a>
-                                                </div>
+                                                    </button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-
-
-
-                </div>
             </div>
         </div>
-    </main>
+    </div>
+    </div>
+    </div>
+</main>
 </body>
 </html>

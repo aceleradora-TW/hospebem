@@ -5,6 +5,7 @@
     <title>Formulario</title>
 </head>
 <body>
+
 <main>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())"> Você não tem autorização para acessar essa página</div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
@@ -234,6 +235,43 @@
                     </div>
                 </div>
                 <div class="column">
+                    <h4 class="title is-4">Dados do Solicitante</h4>
+                    <h5 class="subtitle is-6 campo-obrigatorio">Os campos com * são obrigatórios</h5>
+                </div>
+                <div class="column div-oculta">
+                    <div class="field">
+                        <div class="control">
+                            <span>*Nome do Solicitante:</span>
+                            <span id="logado" sec:authentication="name"></span>
+                            <input class="input input-fancy borda-arredondada" th:field="*{nomeSolicitante}" type="text" id="nomeSolicitante" >
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <span>*Hospital de Referência do Solicitante:</span>
+                            <input class="input input-fancy borda-arredondada" th:field="*{hospitalReferencia}" type="text" id="hospitalReferencia" >
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <span>*E-mail do Solicitante:</span>
+                            <input class="input input-fancy borda-arredondada" th:field="*{email}" type="text" id="email" >
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="field">
+                        <div class="control">
+                            <span>*Telefone do Solicitante:</span>
+                            <input class="input input-fancy borda-arredondada" th:field="*{telefoneSolicitante}" type="text" id="telefoneSolicitante" >
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
                     <div class="field">
                         <div class="control">
                             <button class="button verde-viavida borda-arredondada" value="Enviar Solicitação" type="submit">
@@ -264,3 +302,7 @@
 </main>
 </body>
 </html>
+<script>
+    var logado = document.getElementById("logado");
+    document.getElementById("nomeSolicitante").value=logado.innerText;
+</script>

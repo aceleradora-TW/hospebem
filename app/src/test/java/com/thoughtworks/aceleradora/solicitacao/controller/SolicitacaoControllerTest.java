@@ -1,14 +1,22 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
-import com.thoughtworks.aceleradora.solicitacao.dominio.*;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
+import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 
-import java.util.*;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -22,8 +30,12 @@ public class SolicitacaoControllerTest {
 
     private SolicitacaoController controller;
 
+
+    private Solicitacao solicitacao;
+
     @Mock
     private Model model;
+
 
     @Mock
     private SolicitacaoRepository repositorio;
@@ -45,8 +57,10 @@ public class SolicitacaoControllerTest {
 
     @Test
     public void salvaSolicitacaoNoBancoAtualizandoAsReferenciasDeCadaAcompanhante() {
-        Acompanhante umAcompanhante = new Acompanhante();
+
         Solicitacao umaSolicitacao = new Solicitacao();
+
+        Acompanhante umAcompanhante = new Acompanhante();
         umaSolicitacao.setAcompanhantes(singletonList(umAcompanhante));
 
         String paginaRenderizada = controller.salvaSolicitacao(umaSolicitacao);
@@ -74,6 +88,7 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
 
+
         verify(model).addAttribute("solicitacoesAceitas", solicitacoesAceitas);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
     }
@@ -82,9 +97,13 @@ public class SolicitacaoControllerTest {
     public void deveRenderizarListaSolicitacaoHospital() {
         List<Solicitacao> solicitacoesHospital = asList(new Solicitacao(), new Solicitacao());
         when(repositorio.findAll()).thenReturn(solicitacoesHospital);
+        Authentication auth = new UsernamePasswordAuthenticationToken("user1@example.com", "user1");
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        securityContext.setAuthentication(auth);
 
         String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
 
+        verify(model).addAttribute("usuarioLogado",auth.getName());
         verify(model).addAttribute("solicitacoesHospital", solicitacoesHospital);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoHospital"));
     }
@@ -96,10 +115,12 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.mostraDadosPaciente(model, 1L);
 
-        verify(model).addAttribute("solicitante", solicitacao);
-        assertThat(paginaRenderizada, equalTo("solicitacao/listaHospede/dadosSolicitante"));
+        model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        model.addAttribute("solicitante", solicitacao);
+        assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
+
     }
-    
+
     @Test
     public void exibeTelaDeNaoEncontrarQuandoPacienteNaoExistir() {
         when(repositorio.findById(1L)).thenReturn(Optional.empty());

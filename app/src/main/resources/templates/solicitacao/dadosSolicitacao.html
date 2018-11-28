@@ -5,7 +5,6 @@
 </head>
 <body>
 
-<div th:include="@{./partes/cabecalhoPadrao}"/>
 <main>
     <div class="card-content valign center has-text-centered">
         <div class="columns ">
@@ -18,7 +17,7 @@
                             <label class="label">Nome </label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="nome" th:value="${solicitacao.nome}" disabled>
+                            <input class="input input-fancy" type="text" name="nome" th:value="${solicitacao.nome}" disabled>
                         </div>
                     </div>
                 </div>
@@ -29,7 +28,7 @@
                             <label class="label">Gênero</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="genero" th:value="${solicitacao.genero}" disabled>
+                            <input class="input input-fancy" type="text" name="genero" th:value="${solicitacao.genero}" disabled>
                         </div>
                     </div>
                 </div>
@@ -40,7 +39,7 @@
                             <label class="label">Status</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="status" th:value="${solicitacao.status}" disabled>
+                            <input class="input input-fancy" type="text" name="status" th:value="${solicitacao.status}" disabled>
                         </div>
                     </div>
                 </div>
@@ -51,7 +50,7 @@
                             <label class="label">Situação</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="situacao" th:value="${solicitacao.situacao}" disabled>
+                            <input class="input input-fancy" type="text" name="situacao" th:value="${solicitacao.situacao}" disabled>
                         </div>
                     </div>
                 </div>
@@ -62,7 +61,7 @@
                             <label class="label">Órgão</label>
                         </div>
                         <div class="control">
-                            <!--<input class="validate input is-info" type="text" name="orgao" th:value="${solicitacao.orgao}" disabled>-->
+                            <input class="input input-fancy" type="text" name="orgao" th:value="${solicitacao.orgao}" disabled>
                         </div>
                     </div>
                 </div>
@@ -73,7 +72,7 @@
                             <label class="label">Data de Nascimento</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="dataNascimento" th:value="${solicitacao.dataNascimento.format(formata)}" disabled>
+                            <input class="input input-fancy" type="text" name="dataNascimento" th:value="${solicitacao.dataNascimento.format(formatar)}" disabled>
                         </div>
                     </div>
                 </div>
@@ -84,7 +83,7 @@
                             <label class="label">Telefone</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="telefone" th:value="${solicitacao.telefone}" disabled>
+                            <input class="input input-fancy" type="text" name="telefone" th:value="${solicitacao.telefone}" disabled>
                         </div>
                     </div>
                 </div>
@@ -95,7 +94,7 @@
                             <label class="label">Peso</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="peso" th:value="${solicitacao.peso}" disabled>
+                            <input class="input input-fancy" type="text" name="peso" th:value="${solicitacao.peso}" disabled>
                         </div>
                     </div>
                 </div>
@@ -106,7 +105,7 @@
                             <label class="label">Data de Entrada</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada.format(formata)}" disabled>
+                            <input class="input input-fancy" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada.format(formatar)}" disabled>
                         </div>
                     </div>
                 </div>
@@ -117,7 +116,7 @@
                             <label class="label">Data de Saída (Previsão)</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="dataSaida" th:value="${solicitacao.dataSaida.format(formata)}" disabled>
+                            <input class="input input-fancy" type="text" name="dataSaida"  th:value="${solicitacao.dataSaida.format(formatar)}" disabled>
                         </div>
                     </div>
                 </div>
@@ -130,7 +129,7 @@
                             <label class="label">Rua</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="rua" th:value="${solicitacao.endereco.rua}" disabled>
+                            <input class="input input-fancy" type="text" name="rua" th:value="${solicitacao.endereco.rua}" disabled>
                         </div>
                     </div>
                 </div>
@@ -141,7 +140,7 @@
                             <label class="label">Número</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="numero" th:value="${solicitacao.endereco.numero}" disabled>
+                            <input class="input input-fancy" type="text" name="numero" th:value="${solicitacao.endereco.numero}" disabled>
                         </div>
                     </div>
                 </div>
@@ -152,7 +151,7 @@
                             <label class="label">Cidade</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="cidade" th:value="${solicitacao.endereco.cidade}" disabled>
+                            <input class="input input-fancy" type="text" name="cidade" th:value="${solicitacao.endereco.cidade}" disabled>
                         </div>
                     </div>
                 </div>
@@ -163,7 +162,7 @@
                             <label class="label">Bairro</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="bairro" th:value="${solicitacao.endereco.bairro}" disabled>
+                            <input class="input input-fancy" type="text" name="bairro" th:value="${solicitacao.endereco.bairro}" disabled>
                         </div>
                     </div>
                 </div>
@@ -174,7 +173,7 @@
                             <label class="label">UF</label>
                         </div>
                         <div class="control">
-                            <input class="validate input is-info" type="text" name="uf" th:value="${solicitacao.endereco.uf}" disabled>
+                            <input class="input input-fancy" type="text" name="uf" th:value="${solicitacao.endereco.uf}" disabled>
                         </div>
                     </div>
                 </div>
@@ -192,7 +191,7 @@
                                     <label class="label">Nome</label>
                                 </div>
                                 <div class="control">
-                                    <input class="validate input is-info" type="text" name="nomeAcomp" th:value="${acomp.nome}" disabled>
+                                    <input class="input input-fancy" type="text" name="nomeAcomp" th:value="${acomp.nome}" disabled>
                                 </div>
                             </div>
                         </div>
@@ -203,7 +202,7 @@
                                     <label class="label">Gênero</label>
                                 </div>
                                 <div class="control">
-                                    <input class="validate input is-info" type="text" name="generoAcomp" th:value="(${acomp.genero} == 'F' ? 'Feminino' : (${acomp.genero} == 'M' ? 'Masculino') )" disabled>
+                                    <input class="input input-fancy" type="text" name="generoAcomp" th:value="(${acomp.genero} == 'F' ? 'Feminino' : (${acomp.genero} == 'M' ? 'Masculino') )" disabled>
                                 </div>
                             </div>
                         </div>
@@ -214,11 +213,56 @@
                                     <label class="label">Data de Nascimento</label>
                                 </div>
                                 <div class="control">
-                                    <input class="validate input is-info" type="text" name="dataNascimentoAcomp" th:value="${acomp.dataNascimento.format(formata)}" disabled>
+                                    <input class="input input-fancy" type="text" name="dataNascimentoAcomp" th:value="${acomp.dataNascimento.format(formatar)}" disabled>
                                 </div>
                             </div>
                         </div>
                     </ul>
+                </div>
+                <h2 class="title is-2">Dados Assistente Social</h2>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Nome</label>
+                        </div>
+                        <div class="control">
+                            <input class="input input-fancy" type="text" name="nomeSolicitante" th:value="${solicitacao.nomeSolicitante}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Email</label>
+                        </div>
+                        <div class="control">
+                            <input class="input input-fancy" type="text" name="hospitalReferencia" th:value="${solicitacao.hospitalReferencia}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Telefone</label>
+                        </div>
+                        <div class="control">
+                            <input class="input input-fancy" type="text" name="email" th:value="${solicitacao.email}" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-10">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Hospital</label>
+                        </div>
+                        <div class="control">
+                            <input class="input input-fancy" type="text" name="telefoneSolicitante" th:value="${solicitacao.telefoneSolicitante}" disabled>
+                        </div>
+                    </div>
                 </div>
             </ul>
         </div>
