@@ -119,8 +119,14 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.mostraDadosPaciente(model, 1L);
 
+<<<<<<< a6e17cc143156896113fb0737dc2818ad060b5f1
         verify(model).addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/listaHospede/dadosSolicitante"));
+=======
+        model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        model.addAttribute("solicitante", solicitacao);
+        assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
+>>>>>>> <@rfelipe,@marcos012>arruma testes
     }
 
     @Test
