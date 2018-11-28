@@ -10,6 +10,7 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
+
     <main>
         <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
             Você não tem autorização para acessar essa página</div>
