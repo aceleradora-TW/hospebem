@@ -15,7 +15,7 @@
             <div class="columns is-multiline is-lefty">
                 <div th:each="solicitacao : ${solicitacoesCasa}">
                     <div class="column">
-                        <div class="box">
+                        <div class="box box-shadow">
                             <strong><span>Nome:</span></strong>
                             <span th:text="${solicitacao.nome} + ' - '"></span>
                             <strong><span>Idade:</span></strong>
@@ -45,11 +45,15 @@
                     </div>
                 </div>
             </div>
-                <a href="/">
-                    <button type="submit" class="button verde-viavida borda-arredondada">
-                        Voltar
-                    </button>
-                </a>
+        <div class="section">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                    <li><a th:href="@{'/solicitacao/casa/lista'}">Solicitação</a></li>
+
+                </ul>
+            </nav>
+        </div>
         </div>
     </div>
 </main>

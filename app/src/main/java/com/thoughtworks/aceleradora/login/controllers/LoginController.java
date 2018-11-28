@@ -64,6 +64,6 @@ public class LoginController {
 
     @GetMapping(value = "/listahospital")
     public String paginaAssistente() {
-        return "/solicitacao/listagens/listaSolicitacaoHospital";
+        return "redirect:/solicitacao/hospital/lista";
     }
 }

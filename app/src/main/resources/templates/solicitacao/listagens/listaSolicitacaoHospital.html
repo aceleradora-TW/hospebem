@@ -27,7 +27,7 @@
                             <div class="columns is-multiline is-lefty">
                                 <tr th:each="solicitacao : ${solicitacoesHospital}" th:if="${solicitacao.nomeSolicitante==usuarioLogado}">
                                     <div class="column">
-                                        <div class="box">
+                                        <div class="box box-shadow">
                                             <strong><span>Nome:</span></strong>
                                             <span th:text="${solicitacao.nome} + ' - '"></span>
                                             <strong><span>Status:</span></strong>
