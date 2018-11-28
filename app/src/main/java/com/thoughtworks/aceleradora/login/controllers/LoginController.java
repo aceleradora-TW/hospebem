@@ -43,7 +43,7 @@ public class LoginController {
 
         usuarioService.salvar(usuario);
 
-        return "redirect:/login";
+        return "redirect:/registrar";
     }
 
     @GetMapping(value = "/login")

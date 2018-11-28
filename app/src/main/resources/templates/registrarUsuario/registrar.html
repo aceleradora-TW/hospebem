@@ -6,7 +6,6 @@
 <body>
 <main>
     <div class="container card-content valign center has-text-centered">
-        <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
         <div class="section">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
@@ -15,6 +14,7 @@
                 </ul>
             </nav>
         </div>
+        <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
         <form action="" th:action="@{/registrar}" th:object="${formUsuario}" method="post" onsubmit="return validaRegistrar(event)" id="registraAss">
             <div th:if="${#fields.hasAnyErrors()}">
                 <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>

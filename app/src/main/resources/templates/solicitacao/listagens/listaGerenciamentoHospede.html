@@ -9,18 +9,17 @@
         <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
         <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                        <li><a th:href="@{'/solicitacao/listagemHospede'}">Gerenciar Hóspedes</a></li>
+                    </ul>
+                </nav>
+            </div>
             <div class="is-mobile">
                 <div>
                     <h1 class="title is-half centralizar espacamento">Lista de Gerenciamento de Hospede</h1>
-
-                    <div class="section">
-                        <nav class="breadcrumb" aria-label="breadcrumbs">
-                            <ul>
-                                <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
-                                <li><a th:href="@{'/solicitacao/listagemHospede'}">Gerenciar Hóspedes</a></li>
-                            </ul>
-                        </nav>
-                    </div>
                     <div class="is-mobile is-centered">
                         <div class="is-mobile is-centered"></div>
                         <table class="table centralizar">

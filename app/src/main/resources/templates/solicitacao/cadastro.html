@@ -10,6 +10,14 @@
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())"> Você não tem autorização para acessar essa página</div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
     <div class="container">
+        <div class="section">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a th:href="@{'/solicitacao/hospital/lista'}" class="has-text-black" href="#" aria-current="page">Lista solicitações</a></li>
+                    <li><a th:href="@{'/solicitacao/cadastro'}">Solicitação de vaga</a></li>
+                </ul>
+            </nav>
+        </div>
         <div class="columns">
             <div class="column">
                 <h2 class="title is-2 center dados-paciente has-text-centered">Solicitação de Vaga</h2>

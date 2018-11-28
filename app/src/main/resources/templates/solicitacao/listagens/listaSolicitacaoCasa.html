@@ -10,7 +10,16 @@
 <main>
     <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
-    <div class="container">
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                        <li><a th:href="@{'/solicitacao/casa/lista'}">Solicitação</a></li>
+
+                    </ul>
+                </nav>
+            </div>
         <div class="section">
             <div class="columns is-multiline is-lefty">
                 <div th:each="solicitacao : ${solicitacoesCasa}">
@@ -45,15 +54,6 @@
                     </div>
                 </div>
             </div>
-        <div class="section">
-            <nav class="breadcrumb" aria-label="breadcrumbs">
-                <ul>
-                    <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
-                    <li><a th:href="@{'/solicitacao/casa/lista'}">Solicitação</a></li>
-
-                </ul>
-            </nav>
-        </div>
         </div>
     </div>
 </main>
