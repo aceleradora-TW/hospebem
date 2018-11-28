@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" th:fragment="layout(title, content)" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="pt-br" th:fragment="layout(title, content)" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -9,8 +8,8 @@
 
     <title th:replace="${title}"></title>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
     <link rel="stylesheet" href="https://unpkg.com/pikaday@1.7.0/css/pikaday.css">
     <link href="/css/style.css" rel="stylesheet">
@@ -25,21 +24,23 @@
 </head>
 
 <body>
-<header>
-    <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="/">
-                <p class="titulo-nav">HospeBem</p>
-            </a>
-        </div>
-        <button class="button canto-superior header-color borda-botao" id="botaoLogout">
-            <div class="navbar-end" sec:authorize="isAuthenticated()">
-                <a class="cor-texto-logout" th:href="@{/logout}">Logout</a>
+    <header>
+        <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <p class="titulo-nav">HospeBem</p>
+                </a>
             </div>
-        </button>
-    </nav>
-</header>
-<main th:replace="${content}"></main>
+            <a th:href="@{/logout}">
+                <button class="button canto-superior header-color cor-texto-logout borda-botao" id="botaoLogout">
+                    <div class="navbar-end" sec:authorize="isAuthenticated()">
+                        Logout
+                    </div>
+                </button>
+            </a>
+        </nav>
+    </header>
+    <main th:replace="${content}"></main>
 </body>
 
 <script type="text/javascript">
@@ -64,13 +65,13 @@
 
         if ($navbarBurgers.length > 0) {
 
-            $navbarBurgers.forEach( el => {
+            $navbarBurgers.forEach(el => {
                 el.addEventListener('click', () => {
-                const target = el.dataset.target;
+                    const target = el.dataset.target;
 
-                const $target = document.getElementById(target);
-                el.classList.toggle('is-active');
-                $target.classList.toggle('is-active');
+                    const $target = document.getElementById(target);
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
 
                 });
             });

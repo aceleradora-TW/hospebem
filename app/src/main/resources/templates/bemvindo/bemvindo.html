@@ -7,10 +7,10 @@
 <body>
 
 <main>
-    <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
     <div class="agrupadora has-text-centered">
         <h1 class="title is-1 espaco-titulo">Hospebem</h1>
+        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <section class="container">
             <div class="level-item">
                 <div class="columns is-multiline is-centered cards-container" id="sectioncontainer">
