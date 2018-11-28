@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Hospebem - Dados Paciente</title>
 </head>
 <body>
 
 <main>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
     <div class="card-content valign center has-text-centered">
         <div class="columns ">
             <ul th:object="${solicitacao}">
@@ -72,7 +74,7 @@
                             <label class="label">Data de Nascimento</label>
                         </div>
                         <div class="control">
-                            <input class="input input-fancy" type="text" name="dataNascimento" th:value="${solicitacao.dataNascimento.format(formatar)}" disabled>
+                            <input class="input input-fancy" type="text" name="dataNascimento" th:value="${solicitacao.dataNascimento} == null ? ' ' : ${solicitacao.dataNascimento.format(formatar)}" disabled>
                         </div>
                     </div>
                 </div>
@@ -105,7 +107,7 @@
                             <label class="label">Data de Entrada</label>
                         </div>
                         <div class="control">
-                            <input class="input input-fancy" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada} == null ? '' : ${solicitacao.dataEntrada.format(formatar)}" disabled>
+                            <input class="input input-fancy" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada} == null ? ' ' : ${solicitacao.dataEntrada.format(formatar)}" disabled>
                         </div>
                     </div>
                 </div>
@@ -116,7 +118,7 @@
                             <label class="label">Data de Saída (Previsão)</label>
                         </div>
                         <div class="control">
-                            <input class="input input-fancy" type="text" name="dataSaida"  th:value="${solicitacao.dataSaida} == null ? '' : ${solicitacao.dataSaida.format(formatar)}" disabled>
+                            <input class="input input-fancy" type="text" name="dataSaida"  th:value="${solicitacao.dataSaida} == null ? ' ' : ${solicitacao.dataSaida.format(formatar)}" disabled>
                         </div>
                     </div>
                 </div>
@@ -202,7 +204,7 @@
                                     <label class="label">Gênero</label>
                                 </div>
                                 <div class="control">
-                                    <input class="input input-fancy" type="text" th:value="${acomp.genero}" disabled>
+                                    <input class="input input-fancy" type="text" name="generoAcomp" th:value="${acomp.genero} == 'F' ? 'Feminino' : 'Masculino'" disabled>
                                 </div>
                             </div>
                         </div>
@@ -213,7 +215,7 @@
                                     <label class="label">Data de Nascimento</label>
                                 </div>
                                 <div class="control">
-                                    <input class="input input-fancy" type="text" name="dataNascimentoAcomp" th:value="${acomp.dataNascimento} == null ? '' : ${acomp.dataNascimento.format(formatar)}" disabled>
+                                    <input class="input input-fancy" type="text" name="dataNascimentoAcomp" th:value="${acomp.dataNascimento} == null ? ' ' : ${acomp.dataNascimento.format(formatar)}" disabled>
                                 </div>
                             </div>
                         </div>
