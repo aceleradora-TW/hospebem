@@ -53,7 +53,7 @@ public class QuartoHelper{
                 solicitacao = s;
             }
 
-            if (s.getStatus().equals(Solicitacao.Status.EX_HOSPEDE.toString())){
+            if (s.getStatus() == (Solicitacao.Status.EX_HOSPEDE.toString())) {
                 ocupantesQuarto.remove(s);
             }
         }

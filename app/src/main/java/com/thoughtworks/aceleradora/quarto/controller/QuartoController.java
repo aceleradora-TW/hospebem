@@ -1,7 +1,6 @@
 package com.thoughtworks.aceleradora.quarto.controller;
 
-import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
-import com.thoughtworks.aceleradora.quarto.dominio.QuartoRepository;
+import com.thoughtworks.aceleradora.quarto.dominio.*;
 import com.thoughtworks.aceleradora.quarto.helpers.QuartoHelper;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
@@ -56,12 +55,6 @@ public class QuartoController{
         if (solicitacaoOptional.isPresent() && quartoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
             Quarto quarto = quartoOptional.get();
-
-            System.out.printf("==================================================");
-            System.out.printf("==================================================");
-            System.out.printf("AQUI: "+quarto.leitosDisponiveis());
-            System.out.printf("==================================================");
-            System.out.printf("==================================================");
 
             model.addAttribute("numeroHospedes", quartoHelper.hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao" , solicitacao);

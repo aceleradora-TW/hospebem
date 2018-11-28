@@ -20,7 +20,6 @@ public class CheckinCheckoutController {
     private QuartoRepository quartoRepository;
     private SolicitacaoRepository solicitacaoRepository;
 
-
     @Autowired
     public CheckinCheckoutController(QuartoRepository repositorio, SolicitacaoRepository solicitacaoRepository) {
         this.quartoRepository = repositorio;
@@ -41,7 +40,7 @@ public class CheckinCheckoutController {
     }
 
     @PostMapping("/checkin/{id}")
-    public String aceitarHospede(@PathVariable Long id, Solicitacao solicitacaoCheckin) {
+    public String checkin (@PathVariable Long id, Solicitacao solicitacaoCheckin) {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
 
         solicitacao.setDataCheckin(solicitacaoCheckin.getDataCheckin());
@@ -52,14 +51,14 @@ public class CheckinCheckoutController {
     }
 
     @PostMapping("/checkout/{id}")
-    public String exHospede(@PathVariable Long id, Solicitacao solicitacaoCheckout) {
+    public String checkout (@PathVariable Long id, Solicitacao solicitacaoCheckout) {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
 
         solicitacao.setDataCheckout(solicitacaoCheckout.getDataCheckout());
         solicitacao.setStatus(Solicitacao.Status.EX_HOSPEDE.toString());
         solicitacao.setQuarto(null);
         solicitacaoRepository.save(solicitacao);
+        
         return "redirect:/listacheckincheckout";
     }
-
 }

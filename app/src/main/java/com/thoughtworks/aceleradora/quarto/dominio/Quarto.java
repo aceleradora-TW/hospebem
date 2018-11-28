@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.quarto.dominio;
 
+import com.thoughtworks.aceleradora.quarto.helpers.QuartoHelper;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 
 import javax.persistence.*;
@@ -34,20 +35,8 @@ public class Quarto {
     private List<Solicitacao> solicitacoes;
 
     public int leitosDisponiveis() {
-        List<Solicitacao> ocupantesQuarto = new ArrayList<>();
-        Solicitacao solicitacao = null;
-        for (Solicitacao s: solicitacoes) {
-            if (!s.equals(solicitacao)) {
-                ocupantesQuarto.add(s);
-                solicitacao = s;
-            }
-
-            if (s.getStatus() == (Solicitacao.Status.EX_HOSPEDE.toString())) {
-                ocupantesQuarto.remove(s);
-            }
-        }
-        System.out.println("==============================" +solicitacoes.size() +"==============================");
-        return quantidadeLeitos - (ocupantesQuarto.size() * 2);
+        QuartoHelper quartoHelper = new QuartoHelper();
+        return quantidadeLeitos - (quartoHelper.ocupantes(solicitacoes).size() * 2);
     }
 
     public Quarto() {
