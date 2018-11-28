@@ -1,6 +1,8 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
-import com.thoughtworks.aceleradora.solicitacao.dominio.*;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
+import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,15 +14,10 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 
-import java.util.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
-import static java.time.format.DateTimeFormatter.ofPattern;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -64,7 +61,6 @@ public class SolicitacaoControllerTest {
         Solicitacao umaSolicitacao = new Solicitacao();
 
         Acompanhante umAcompanhante = new Acompanhante();
-        Solicitacao umaSolicitacao = new Solicitacao();
         umaSolicitacao.setAcompanhantes(singletonList(umAcompanhante));
 
         String paginaRenderizada = controller.salvaSolicitacao(umaSolicitacao);
@@ -119,14 +115,10 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.mostraDadosPaciente(model, 1L);
 
-<<<<<<< a6e17cc143156896113fb0737dc2818ad060b5f1
-        verify(model).addAttribute("solicitante", solicitacao);
-        assertThat(paginaRenderizada, equalTo("solicitacao/listaHospede/dadosSolicitante"));
-=======
         model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         model.addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
->>>>>>> <@rfelipe,@marcos012>arruma testes
+
     }
 
     @Test
