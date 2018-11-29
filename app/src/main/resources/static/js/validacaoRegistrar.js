@@ -18,7 +18,7 @@ const validaTipoUsuario = () => {
 }
 
 const validaUsuarioSenha = () => {
-    let usuario = document.getElementById("first_name")
+    let usuario = document.getElementById("first-name")
     let senha = document.getElementById("password")
 
     if (usuario.value === '') {
@@ -30,12 +30,9 @@ const validaUsuarioSenha = () => {
     if (senha.value === '') {
         validaCampoVazio(senha)
         return false
-
     } else
         senha.classList.add('input-fancy')
     return true
-
-
 }
 
 const registraAssistente = () => {
@@ -57,9 +54,9 @@ const registraAssistente = () => {
 }
 
 const validaCampoVazio = (item) => {
-    alert('Preencha o campo obrigatorio!')
     item.classList.remove('input-fancy')
     item.classList.add('is-danger')
+    item.placeholder = 'Insira o campo requisitado'
     item.focus()
 }
 
@@ -68,26 +65,18 @@ const validaCamposAssistente = () => {
     let emailAssistente = document.getElementById('emailDaAssistente')
     let hospitalReferencia = document.getElementById('hospitalDeReferencia')
     let telefoneAssistente = document.getElementById('telefoneAssistente')
-
     let radioAssistente = document.getElementById('ASSISTENTE_SOCIAL')
-
     if (radioAssistente && radioAssistente.checked) {
-
         let campos = [nomeAssistente, emailAssistente, hospitalReferencia, telefoneAssistente]
-
         for (let i = 0; i < campos.length; i++) {
-
             if (!campos[i].value) {
                 validaCampoVazio(campos[i])
                 return false;
             }
-
             campos[i].classList.add('input-fancy')
         }
-
         return true
     }
-
     return true
 }
 
