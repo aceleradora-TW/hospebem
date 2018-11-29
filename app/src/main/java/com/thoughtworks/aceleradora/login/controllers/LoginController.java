@@ -58,7 +58,7 @@ public class LoginController {
         return "solicitacao/listagens/listaUsuarios";
     }
 
-    @RequestMapping(value = "{id}/editaUsuario", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/editaUsuario", method = RequestMethod.GET)
     public String editaUsuario(Model model, @PathVariable Long id) {
         Usuario usuario = usuarioRepository.findOneById(id);
         model.addAttribute("usuarios", usuario);
