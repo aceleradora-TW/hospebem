@@ -24,7 +24,7 @@
                 </form>
                 <div class="section">
                     <div class="columns is-multiline is-lefty">
-                        <div th:each="solicitacao : ${solicitacoesHospital}" th:if="${solicitacao.nomeSolicitante==usuarioLogado}">
+                        <div th:each="solicitacao : ${solicitacoesHospital}">
                             <div class="column">
                                 <div class="box">
                                     <strong><span>Nome:</span></strong>

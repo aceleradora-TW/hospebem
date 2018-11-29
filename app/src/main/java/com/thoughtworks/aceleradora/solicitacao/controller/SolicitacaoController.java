@@ -13,6 +13,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/solicitacao")
@@ -57,8 +58,14 @@ public class SolicitacaoController {
     public String listaSolicitacoesDoHospital(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
+        List <Solicitacao> solicitacoesHospital =
+                solicitacaoRepository.findAll()
+                        .stream()
+                        .filter(solicitacao -> solicitacao.getNomeSolicitante().equals(auth.getName()))
+                        .collect(Collectors.toList());
+
         model.addAttribute("usuarioLogado",auth.getName());
-        model.addAttribute("solicitacoesHospital", solicitacaoRepository.findAll());
+        model.addAttribute("solicitacoesHospital", solicitacoesHospital);
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
