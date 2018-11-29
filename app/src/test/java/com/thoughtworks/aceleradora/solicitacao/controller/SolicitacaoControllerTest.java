@@ -95,6 +95,7 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
 
+
         verify(model).addAttribute("solicitacoesAceitas", solicitacoesAceitas);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
     }
@@ -117,6 +118,7 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
 
+        verify(model).addAttribute("usuarioLogado",auth.getName());
         verify(model).addAttribute("solicitacoesHospital", solicitacoesHospital);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoHospital"));
     }
@@ -131,8 +133,9 @@ public class SolicitacaoControllerTest {
         model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         model.addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
+
     }
-    
+
     @Test
     public void exibeTelaDeNaoEncontrarQuandoPacienteNaoExistir() {
         when(repositorio.findById(1L)).thenReturn(Optional.empty());
