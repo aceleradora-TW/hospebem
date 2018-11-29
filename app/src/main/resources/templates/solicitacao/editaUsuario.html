@@ -3,30 +3,30 @@
 >
 
 <head>
-      <title>Formulario</title>
+    <title>Formulario</title>
 </head>
 <body>
 <main>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
     <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
-    <div class="card-content valign center has-text-centered">
-        <div class="column">
-            <h3 class="title is-3 v center has-text-centered"> Dados do paciente</h3>
-        </div>
-        <div class="columns is-mobile card-content">
-            <form  th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
-                  id="formSolicitacao">
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>Nome </span>
-                            <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
+        <div class="card-content valign center has-text-centered">
+            <div class="column">
+                <h3 class="title is-3 v center has-text-centered"> Dados do paciente</h3>
+            </div>
+            <div class="columns is-mobile card-content">
+                <form  th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
+                       id="formSolicitacao">
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Nome </span>
+                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 </main>
 </body>
 <script type="text/javascript">
