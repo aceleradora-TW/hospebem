@@ -19,10 +19,58 @@
                     <div class="column">
                         <div class="field">
                             <div class="control">
-                                <span>Nome </span>
+                                <span>Nome Usuário</span>
                                 <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
                             </div>
                         </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Senha</span>
+                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.senha}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Nome</span>
+                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nomeAssistente}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Email</span>
+                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.email}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Hospital de Refêrencia</span>
+                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.hospitalReferencia}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Telefone</span>
+                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.telefone}">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a th:href="@{/listaUsuarios}">
+                            <button type="submit" class="button verde-viavida borda-arredondada">
+                                <span>Salvar</span>
+                                <span class="icon is-small"><i class="fas fa-gavel"></i></span>
+                            </button>
+                        </a>
                     </div>
                 </form>
             </div>
