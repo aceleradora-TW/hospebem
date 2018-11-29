@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Hospebem</title>
+</head>
+
+<body>
+<main>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+        <div class="container">
+            <div class="is-mobile">
+                <div>
+                    <h1 class="title is-half centralizar espacamento">Lista de Gerenciamento de Usuários</h1>
+                    <div class="is-mobile is-centered">
+                        <div class="is-mobile is-centered"></div>
+                        <table class="table centralizar">
+                            <tr>
+                                <th>Nome</th>
+                            </tr>
+                            <tr th:each="usuarios : ${usuarios}">
+                                <td>
+                                    <a  class="has-text-centered"
+                                       th:text="${usuarios.nome}"></a>
+                                </td>
+                            </tr> th:href="@{/{id}/editaUsuarios(id=${usuarios.id})}"
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
