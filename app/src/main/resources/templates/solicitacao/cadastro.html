@@ -5,226 +5,46 @@
     <title>Formulario</title>
 </head>
 <body>
-
 <main>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())"> Você não tem autorização para acessar essa página</div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
-    <div class="container">
-        <div class="section">
-            <nav class="breadcrumb" aria-label="breadcrumbs">
-                <ul>
-                    <li><a th:href="@{'/solicitacao/hospital/lista'}" class="has-text-black" href="#" aria-current="page">Lista solicitações</a></li>
-                    <li><a th:href="@{'/solicitacao/cadastro'}">Solicitação de vaga</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="columns">
-            <div class="column">
-                <h2 class="title is-2 center dados-paciente has-text-centered">Solicitação de Vaga</h2>
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/solicitacao/hospital/lista'}" class="has-text-black" href="#" aria-current="page">Lista solicitações</a></li>
+                        <li><a th:href="@{'/solicitacao/cadastro'}">Solicitação de vaga</a></li>
+                    </ul>
+                </nav>
             </div>
-        </div>
-        <div class="column">
-            <h3 class="title is-3 v center has-text-centered"> Dados do paciente</h3>
-        </div>
-        <div class="columns is-mobile card-content">
-            <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post" onsubmit="return validaCadastroSolicitacao(event)" id="formSolicitacao">
+            <div class="columns">
                 <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>*Nome Completo:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{nome}" type="text" id="nome" >
-                        </div>
-                    </div>
+                    <h2 class="title is-2 center dados-paciente has-text-centered">Solicitação de Vaga</h2>
                 </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control input-radio margin-invisible" id="labelGenero">
-                            <label>
-                                <span>*</span>
-                                <input th:field="*{genero}" name= "opcao" type="radio" value="Feminino" id="genero1">
-                                <span>Feminino</span>
-                            </label>
-                            <label>
-                                <input th:field="*{genero}" name= "opcao" type="radio" value="Masculino" id="genero2">
-                                <span>Masculino</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="column">
+                <h3 class="title is-3 v center has-text-centered"> Dados do paciente</h3>
+            </div>
+            <div class="columns is-mobile card-content">
+                <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post" onsubmit="return validaCadastroSolicitacao(event)" id="formSolicitacao">
                     <div class="column">
                         <div class="field">
                             <div class="control">
-                                <span>*Data de nascimento:</span>
-                                <input id="dataNascimento" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                       type="text" class="input input-fancy datepicker-retroativo borda-arredondada" th:field="*{dataNascimento}"
-                                        onkeypress="return false" >
-                            </div>
-                        </div>
-                    </div>
-
-                        <div class="column">
-                            <div class="field">
-                                <div class="control">
-                                    <label>
-                                        <input type="checkbox" value="sim" id="cadeirante" th:field="*{cadeirante}">
-                                        <span>O hóspede é cadeirante</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <span class="display-none">Informe o peso:</span>
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input input-fancy display-none borda-arredondada" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso" value="0" >
-                                </div>
-                            </div>
-                        </div>
-
-                <div class="column">
-                    <div class="field">
-                        <div class="control input-radio situacao margin-invisible" id="labelSituacao">
-                            <span>*Situação do Hóspede:</span>
-                            <div>
-                            <label>
-                                <input th:field="*{situacao}" type="radio" value="pre-transplante" id="situacao.pre" >
-                                <span>Pré-transplante</span>
-                            </label>
-                            <label>
-                                <input th:field="*{situacao}" type="radio" value="pos-transplante" id="situacao.pos" >
-                                <span>Pós-transplante</span>
-                            </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns column">
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span>Data do transplante:</span>
-                                <input id="dataTransplante" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                       type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataTransplante}"
-                                       onkeypress="return false;">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column input-radio orgao margin-invisible" id="selectOrgao">
-                        <p>*Órgão:</p>
-                        <div class = "control">
-                            <div class="select">
-                                <select name="orgao" id="select">
-                                    <option disabled selected th:value="selecione">Selecione o órgão</option>
-                                    <option th:value="'coração'" th:text="Coração"></option>
-                                    <option th:value="'fígado'" th:text="Fígado"></option>
-                                    <option th:value="'medula'" th:text="Medula"></option>
-                                    <option th:value="'pâncreas'" th:text="Pâncreas"></option>
-                                    <option th:value="'pulmão'" th:text="Pulmão"></option>
-                                    <option th:value="'rins'" th:text="Rins"></option>
-                                    <option th:value="'tecidos'" th:text="Tecidos"></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns column">
-                    <div class="column">
-                        <span>*Data de entrada requerida:</span>
-                        <div class="field">
-                            <div class="control">
-                                <input id="dataEntrada" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                       type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataEntrada}"
-                                       onkeypress="return false;" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <span>Data de saída (previsão):</span>
-                        <div class="field">
-                            <div class="control">
-                                <input id="dataSaida" placeholder="Clique para selecionar uma data" autocomplete="off"
-                                       type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataSaida}"
-                                       onkeypress="return false;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>Telefone para Contato:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{telefone}" type="text">
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <h4 class="title is-4">Endereço</h4>
-                            <span>Logradouro:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{endereco.rua}" type="text">
-                        </div>
-                    </div>
-                </div>
-                <div class="columns column">
-                    <div class="column">
-                        <span>Número:</span>
-                        <div class="field">
-                            <div class="control">
-                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.numero}" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <span>Bairro:</span>
-                        <div class="field">
-                            <div class="control">
-                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.bairro}" type="text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns column">
-                    <div class="column">
-                        <span>Cidade:</span>
-                        <div class="field">
-                            <div class="control">
-                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.cidade}" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <span>UF:</span>
-                        <div class="field">
-                            <div class="control">
-                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.uf}" type="text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <h4 class="title is-4">Dados do Acompanhante</h4>
-                    <h5 class="subtitle is-6 campo-obrigatorio">(Os campos do acompanhante 1 são obrigatórios)</h5>
-                </div>
-                <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
-                                    <input class="input input-fancy nome borda-arredondada" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
-                                </p>
+                                <span>*Nome Completo:</span>
+                                <input class="input input-fancy borda-arredondada" th:field="*{nome}" type="text" id="nome" >
                             </div>
                         </div>
                     </div>
                     <div class="column">
                         <div class="field">
-                            <div class="control margin-invisible input-radio" id="labelAcomp">
+                            <div class="control input-radio margin-invisible" id="labelGenero">
                                 <label>
-                                    <input class="generoA1" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                    <span>*</span>
+                                    <input th:field="*{genero}" name= "opcao" type="radio" value="Feminino" id="genero1">
                                     <span>Feminino</span>
                                 </label>
                                 <label>
-                                    <input class="generoA2" type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                    <input th:field="*{genero}" name= "opcao" type="radio" value="Masculino" id="genero2">
                                     <span>Masculino</span>
                                 </label>
                             </div>
@@ -233,80 +53,257 @@
                     <div class="column">
                         <div class="field">
                             <div class="control">
-                                <p>Data de nascimento <span th:text="${acompIndex.index + 1}"></span>:
-                                    <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo borda-arredondada"
-                                           th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" autocomplete="off"
-                                           onkeypress="return false;">
-                                </p>
+                                <span>*Data de nascimento:</span>
+                                <input id="dataNascimento" placeholder="Clique para selecionar uma data" autocomplete="off"
+                                       type="text" class="input input-fancy datepicker-retroativo borda-arredondada" th:field="*{dataNascimento}"
+                                       onkeypress="return false" >
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="column">
-                    <h4 class="title is-4">Dados do Solicitante</h4>
-                    <h5 class="subtitle is-6 campo-obrigatorio">Os campos com * são obrigatórios</h5>
-                </div>
-                <div class="column div-oculta">
-                    <div class="field">
-                        <div class="control">
-                            <span>*Nome do Solicitante:</span>
-                            <span id="logado" sec:authentication="name"></span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{nomeSolicitante}" type="text" id="nomeSolicitante" >
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <label>
+                                    <input type="checkbox" value="sim" id="cadeirante" th:field="*{cadeirante}">
+                                    <span>O hóspede é cadeirante</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>*Hospital de Referência do Solicitante:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{hospitalReferencia}" type="text" id="hospitalReferencia" >
+                    <div class="column">
+                        <span class="display-none">Informe o peso:</span>
+                        <div class="field">
+                            <div class="control">
+                                <input class="input input-fancy display-none borda-arredondada" th:field="*{peso}" type="number" min="0" max="600" step="0.1" id="peso" value="0" >
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>*E-mail do Solicitante:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{email}" type="text" id="email" >
+                    <div class="column">
+                        <div class="field">
+                            <div class="control input-radio situacao margin-invisible" id="labelSituacao">
+                                <span>*Situação do Hóspede:</span>
+                                <div>
+                                    <label>
+                                        <input th:field="*{situacao}" type="radio" value="pre-transplante" id="situacao.pre" >
+                                        <span>Pré-transplante</span>
+                                    </label>
+                                    <label>
+                                        <input th:field="*{situacao}" type="radio" value="pos-transplante" id="situacao.pos" >
+                                        <span>Pós-transplante</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
-                            <span>*Telefone do Solicitante:</span>
-                            <input class="input input-fancy borda-arredondada" th:field="*{telefoneSolicitante}" type="text" id="telefoneSolicitante" >
+                    <div class="columns column">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Data do transplante:</span>
+                                    <input id="dataTransplante" placeholder="Clique para selecionar uma data" autocomplete="off"
+                                           type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataTransplante}"
+                                           onkeypress="return false;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column input-radio orgao margin-invisible" id="selectOrgao">
+                            <p>*Órgão:</p>
+                            <div class = "control">
+                                <div class="select">
+                                    <select name="orgao" id="select">
+                                        <option disabled selected th:value="selecione">Selecione o órgão</option>
+                                        <option th:value="'coração'" th:text="Coração"></option>
+                                        <option th:value="'fígado'" th:text="Fígado"></option>
+                                        <option th:value="'medula'" th:text="Medula"></option>
+                                        <option th:value="'pâncreas'" th:text="Pâncreas"></option>
+                                        <option th:value="'pulmão'" th:text="Pulmão"></option>
+                                        <option th:value="'rins'" th:text="Rins"></option>
+                                        <option th:value="'tecidos'" th:text="Tecidos"></option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="column">
-                    <div class="field">
-                        <div class="control">
+                    <div class="columns column">
+                        <div class="column">
+                            <span>*Data de entrada requerida:</span>
+                            <div class="field">
+                                <div class="control">
+                                    <input id="dataEntrada" placeholder="Clique para selecionar uma data" autocomplete="off"
+                                           type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataEntrada}"
+                                           onkeypress="return false;" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <span>Data de saída (previsão):</span>
+                            <div class="field">
+                                <div class="control">
+                                    <input id="dataSaida" placeholder="Clique para selecionar uma data" autocomplete="off"
+                                           type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataSaida}"
+                                           onkeypress="return false;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Telefone para Contato:</span>
+                                <input class="input input-fancy borda-arredondada" th:field="*{telefone}" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <h4 class="title is-4">Endereço</h4>
+                                <span>Logradouro:</span>
+                                <input class="input input-fancy borda-arredondada" th:field="*{endereco.rua}" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns column">
+                        <div class="column">
+                            <span>Número:</span>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input input-fancy borda-arredondada" th:field="*{endereco.numero}" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <span>Bairro:</span>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input input-fancy borda-arredondada" th:field="*{endereco.bairro}" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns column">
+                        <div class="column">
+                            <span>Cidade:</span>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input input-fancy borda-arredondada" th:field="*{endereco.cidade}" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <span>UF:</span>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input input-fancy borda-arredondada" th:field="*{endereco.uf}" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="title is-4">Dados do Acompanhante</h4>
+                        <h5 class="subtitle is-6 campo-obrigatorio">(Os campos do acompanhante 1 são obrigatórios)</h5>
+                    </div>
+                    <div th:each="acompanhante, acompIndex : ${solicitacao.acompanhantes}">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <p>Nome acompanhante <span th:text="${acompIndex.index + 1}"></span>:
+                                        <input class="input input-fancy nome borda-arredondada" type="text" th:field="*{acompanhantes[__${acompIndex.index}__].nome}">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <div class="control margin-invisible input-radio" id="labelAcomp">
+                                    <label>
+                                        <input class="generoA1" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                        <span>Feminino</span>
+                                    </label>
+                                    <label>
+                                        <input class="generoA2" type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                        <span>Masculino</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <p>Data de nascimento <span th:text="${acompIndex.index + 1}"></span>:
+                                        <input placeholder="Clique para selecionar uma data" class="data-nasc-acomp input input-fancy datepicker-retroativo borda-arredondada"
+                                               th:field="*{acompanhantes[__${acompIndex.index}__].dataNascimento}" autocomplete="off"
+                                               onkeypress="return false;">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="title is-4">Dados do Solicitante</h4>
+                        <h5 class="subtitle is-6 campo-obrigatorio">Os campos com * são obrigatórios</h5>
+                    </div>
+                    <div class="column div-oculta">
+                        <div class="field">
+                            <div class="control">
+                                <span>*Nome do Solicitante:</span>
+                                <span id="logado" sec:authentication="name"></span>
+                                <input class="input input-fancy borda-arredondada" th:field="*{nomeSolicitante}" type="text" id="nomeSolicitante" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>*Hospital de Referência do Solicitante:</span>
+                                <input class="input input-fancy borda-arredondada" th:field="*{hospitalReferencia}" type="text" id="hospitalReferencia" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>*E-mail do Solicitante:</span>
+                                <input class="input input-fancy borda-arredondada" th:field="*{email}" type="text" id="email" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>*Telefone do Solicitante:</span>
+                                <input class="input input-fancy borda-arredondada" th:field="*{telefoneSolicitante}" type="text" id="telefoneSolicitante" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
 
-                            <button class="button verde-viavida borda-arredondada" value="Enviar Solicitação" type="submit">
-                                <span>Enviar solicitação</span>
-                                <span class="icon is-small">
+                                <button class="button verde-viavida borda-arredondada" value="Enviar Solicitação" type="submit">
+                                    <span>Enviar solicitação</span>
+                                    <span class="icon is-small">
                                     <i class="fas fa-angle-right"></i>
                                 </span>
-                            </button>
+                                </button>
 
-                            <button class="button borda-arredondada" type="reset">
-                            <span>Limpar formulário</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-paint-brush"></i>
-                                </span>
-                            </button>
-
-                            <a class="button is-danger borda-arredondada" type="button" th:href="@{/solicitacao/hospital/lista}">
-                                <span>Cancelar</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-times"></i>
-                                </span>
-                            </a>
+                                <button class="button borda-arredondada" type="reset">
+                                    <span>Limpar formulário</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-paint-brush"></i>
+                                    </span>
+                                </button>
+                                <a class="button is-danger borda-arredondada" type="button" th:href="@{/solicitacao/hospital/lista}">
+                                    <span>Cancelar</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-times"></i>
+                                    </span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </main>

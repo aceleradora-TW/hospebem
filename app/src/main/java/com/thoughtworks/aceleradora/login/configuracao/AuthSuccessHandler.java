@@ -31,7 +31,7 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
         if(cargo.getAuthority().equals(Cargo.ADMINISTRADOR.getNome())) {
             this.redirectStrategy.sendRedirect(request, response, "/bemvindo");
         } else if(cargo.getAuthority().equals(Cargo.ASSISTENTE_SOCIAL.getNome())) {
-            this.redirectStrategy.sendRedirect(request, response, "/listahospital");
+            this.redirectStrategy.sendRedirect(request, response, "/solicitacao/hospital/lista");
         } else {
             this.redirectStrategy.sendRedirect(request, response, "/bemvindo");
         }

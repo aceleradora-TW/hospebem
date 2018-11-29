@@ -61,9 +61,4 @@ public class LoginController {
     public String paginaAdmin() {
         return "admin";
     }
-
-    @GetMapping(value = "/listahospital")
-    public String paginaAssistente() {
-        return "redirect:/solicitacao/hospital/lista";
-    }
 }
