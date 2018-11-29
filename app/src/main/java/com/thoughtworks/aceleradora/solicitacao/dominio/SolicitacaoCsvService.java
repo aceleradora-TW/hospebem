@@ -28,8 +28,8 @@ public class SolicitacaoCsvService {
 
         String listaSolicitacoesRelatorio = solicitacoes
                 .stream()
-                .filter(solicitacao -> solicitacao.getStatus().equalsIgnoreCase(Solicitacao.Status.HOSPEDE) ||
-                        solicitacao.getStatus().equalsIgnoreCase(Solicitacao.Status.EX_HOSPEDE) ||
+                .filter(solicitacao -> solicitacao.getStatus() == (Solicitacao.Status.HOSPEDE) ||
+                        solicitacao.getStatus() == (Solicitacao.Status.EX_HOSPEDE) ||
                         solicitacao.getStatus().equals(Solicitacao.Status.NEGADO)
                 )
                 .map(solicitacao -> juntar(

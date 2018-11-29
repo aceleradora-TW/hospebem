@@ -19,10 +19,6 @@ public class Solicitacao {
 
     public enum Status{
         PENDENTE, ACEITO, NEGADO, HOSPEDE, EX_HOSPEDE;
-
-        public boolean equalsIgnoreCase(Status status) {
-            return false;
-        }
     }
 
     @Id
