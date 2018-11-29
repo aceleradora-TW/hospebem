@@ -59,6 +59,6 @@ public class AuthSuccessHandlerTest {
 
         authSuccessHandler.onAuthenticationSuccess(request, response, authentication);
 
-        verify(redirectStrategy, times(1)).sendRedirect(request, response, "/listahospital");
+        verify(redirectStrategy, times(1)).sendRedirect(request, response, "/solicitacao/hospital/lista");
     }
 }

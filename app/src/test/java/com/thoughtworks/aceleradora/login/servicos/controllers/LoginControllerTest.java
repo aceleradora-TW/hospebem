@@ -59,9 +59,4 @@ public class LoginControllerTest {
     public void testePaginaAdmin() {
         assertThat(loginController.paginaAdmin()).isEqualTo("admin");
     }
-
-    @Test
-    public void testePaginaAssistente() {
-        assertThat(loginController.paginaAssistente()).isEqualTo("redirect:/solicitacao/hospital/lista");
-    }
 }
