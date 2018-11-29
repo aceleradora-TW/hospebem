@@ -46,7 +46,7 @@ public class LoginControllerTest {
         BindingResult bindingResult = mock(BindingResult.class);
         doNothing().when(usuarioValidador).validate(usuario, bindingResult);
         when(bindingResult.hasErrors()).thenReturn(false);
-        assertThat(loginController.registrar(usuario, bindingResult)).isEqualTo("redirect:/login");
+        assertThat(loginController.registrar(usuario, bindingResult)).isEqualTo("redirect:/registrar");
         verify(usuarioService, times(1)).salvar(usuario);
     }
 
@@ -58,10 +58,5 @@ public class LoginControllerTest {
     @Test
     public void testePaginaAdmin() {
         assertThat(loginController.paginaAdmin()).isEqualTo("admin");
-    }
-
-    @Test
-    public void testePaginaAssistente() {
-        assertThat(loginController.paginaAssistente()).isEqualTo("/solicitacao/listagens/listaSolicitacaoHospital");
     }
 }

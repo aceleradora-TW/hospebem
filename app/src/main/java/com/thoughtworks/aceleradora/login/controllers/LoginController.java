@@ -43,7 +43,7 @@ public class LoginController {
 
         usuarioService.salvar(usuario);
 
-        return "redirect:/login";
+        return "redirect:/registrar";
     }
 
     @GetMapping(value = "/login")
@@ -60,10 +60,5 @@ public class LoginController {
     @GetMapping(value = "/admin")
     public String paginaAdmin() {
         return "admin";
-    }
-
-    @GetMapping(value = "/listahospital")
-    public String paginaAssistente() {
-        return "/solicitacao/listagens/listaSolicitacaoHospital";
     }
 }

@@ -13,7 +13,6 @@
 <link href="/css/style.css" rel="stylesheet">
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
-
 <body>
 <header>
     <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
@@ -24,45 +23,34 @@
         </div>
     </nav>
 </header>
-<body>
-
 <main>
     <div class="container card-content valign center has-text-centered">
         <form th:action="@{/login}" method="POST" onsubmit="return validaLogin(event)">
             <h1 class="title is-1">HospeBem</h1>
-
-
             <div th:if="${param.error}" class="">
-               <p class="has-text-danger"> Usuário ou senha incorretos!</p>
+                <p class="has-text-danger"> Usuário ou senha incorretos!</p>
             </div>
-
             <div class="columns">
                 <div class="column is-half">
-                    <p class="control has-icons-left has-icons-right">
-                        <input class="validate input input-fancy borda-arredondada" id = "first_name" type="text" name="nome" placeholder="Usuário">
-                        <span class="icon is-small is-left">
-                              <i class="fas fa-user"></i>
-                        </span>
+                    <p class="control has-icons-left has-icons-right margin-left-10">
+                        <i class="fas fa-user"></i>
+                        <label for="first-name">Usuário</label>
+                    </p>
+                    <input class="validate input input-fancy borda-arredondada" id="first-name" type="text" name="nome">
                 </div>
             </div>
             <div class="columns">
                 <div class = "column is-half">
-                    <p class="control has-icons-left has-icons-right">
-                        <input class="validate input input-fancy borda-arredondada" id="password" type="password" name="senha" placeholder="Senha">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                         </span>
+                    <p class="control has-icons-left has-icons-right margin-left-10">
+                        <i class="fas fa-lock"></i>
+                        <label for="password">Senha</label>
                     </p>
+                    <input class="validate input input-fancy borda-arredondada" id="password" type="password" name="senha">
                 </div>
             </div>
-
-            <button class="button verde-viavida is-medium borda-arredondada" type="submit" name="action" onclick="">Entrar</button>
-
-                <div class="recuperar">
-                    <p><a href="#">Esqueci minha senha</a></p>
-                </div>
-            </form>
-        </div>
-    </main>
+            <button class="button verde-viavida is-medium borda-arredondada" type="submit" name="action">Entrar</button>
+        </form>
+    </div>
+</main>
 </body>
 </html>
