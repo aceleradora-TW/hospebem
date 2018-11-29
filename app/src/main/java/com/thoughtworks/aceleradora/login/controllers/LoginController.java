@@ -49,28 +49,21 @@ public class LoginController {
 
         return "registrarUsuario/usuarioSalvo";
     }
-    //@GetMapping("/listaUsuarios")
+
     @RequestMapping(value = "/listaUsuarios", method = RequestMethod.GET)
     public String buscarTodosUsuarios(Model model) {
         List<Usuario> usuarios = usuarioRepository.findAll();
-/*        for (int i = 0; i < usuarios.size(); i++) {
-            usuarios.remove(usuarios.get(i));
 
-        }*/
         model.addAttribute("usuarios", usuarios);
-        //model.addAttribute("usuario",new Usuario());
-        //model.addAttribute("nomeUsuario",usuarioRepository.getNomeUsuarioLogado());
         return "solicitacao/listagens/listaUsuarios";
     }
 
-//    @RequestMapping(value = "{id}/editaUsuario", method = RequestMethod.GET)
-//    //@GetMapping("{id}/editaUsuario")
-//    public String editaUsuario(Model model, @PathVariable Long id) {
-//        Usuario usuario = usuarioRepository.findOneById(id);
-//        model.addAttribute("usuarios", usuario);
-//        return "/solicitacao/editaUsuario";
-//    }
-
+    @RequestMapping(value = "{id}/editaUsuario", method = RequestMethod.GET)
+    public String editaUsuario(Model model, @PathVariable Long id) {
+        Usuario usuario = usuarioRepository.findOneById(id);
+        model.addAttribute("usuarios", usuario);
+        return "/solicitacao/editaUsuario";
+    }
 
     @GetMapping(value = "/login")
     public String login() {

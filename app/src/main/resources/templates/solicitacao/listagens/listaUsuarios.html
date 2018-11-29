@@ -23,10 +23,9 @@
                             </tr>
                             <tr th:each="usuarios : ${usuarios}">
                                 <td>
-                                    <a  class="has-text-centered"
-                                       th:text="${usuarios.nome}"></a>
+                                    <a  class="has-text-centered" th:text="${usuarios.nome}"></a>
                                 </td>
-                            </tr> th:href="@{/{id}/editaUsuarios(id=${usuarios.id})}"
+                            </tr>
                         </table>
                     </div>
                 </div>
