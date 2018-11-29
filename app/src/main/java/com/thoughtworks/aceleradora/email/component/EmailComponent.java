@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class EmailComponent {
 
     private JavaMailSender mailSender;
+    private String email = "hospebem@gmail.com";
 
     public EmailComponent(JavaMailSender mailSender) {
         this.mailSender = mailSender;
@@ -29,8 +30,8 @@ public class EmailComponent {
         "- Hospital de Referência: " + solicitacao.getHospitalReferencia() + "\n" +
         "- Telefone: " + solicitacao.getTelefoneSolicitante());
 
-        mensagem.setTo("hospebem@gmail.com");
-        mensagem.setFrom("hospebem@gmail.com");
+        mensagem.setFrom(this.email);
+        mensagem.setTo(this.email);
 
         try {
             mailSender.send(mensagem);
@@ -45,8 +46,9 @@ public class EmailComponent {
         mensagem.setSubject("Status de uma solicitação foi alterado!");
         mensagem.setText("Status de uma solicitação de: "+ solicitacao.getNome() + " foi alterado para: " +
                 solicitacao.getStatus() + "!");
+
+        mensagem.setFrom(this.email);
         mensagem.setTo(solicitacao.getEmail());
-        mensagem.setFrom(solicitacao.getEmail());
 
         try {
             mailSender.send(mensagem);
