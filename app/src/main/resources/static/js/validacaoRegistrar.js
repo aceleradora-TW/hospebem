@@ -21,7 +21,7 @@ const validaTipoUsuario = () => {
 }
 
 const validaUsuarioSenha = () => {
-    let usuario = document.getElementById("first-name")
+    let usuario = document.getElementById("firstName")
     let senha = document.getElementById("password")
 
     if (usuario.value === '') {
