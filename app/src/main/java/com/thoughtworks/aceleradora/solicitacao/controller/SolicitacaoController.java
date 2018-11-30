@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
+import com.thoughtworks.aceleradora.email.component.EmailComponent;
 import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -8,8 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.Period;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;
@@ -20,10 +20,12 @@ import java.util.stream.Collectors;
 public class SolicitacaoController {
 
     private SolicitacaoRepository solicitacaoRepository;
+    private EmailComponent emailComponent;
 
     @Autowired
-    public SolicitacaoController(SolicitacaoRepository repositorio) {
+    public SolicitacaoController(SolicitacaoRepository repositorio, EmailComponent emailComponent) {
         this.solicitacaoRepository = repositorio;
+        this.emailComponent = emailComponent;
     }
 
     @GetMapping("/cadastro")
@@ -38,6 +40,7 @@ public class SolicitacaoController {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
         solicitacaoRepository.save(solicitacao);
+        emailComponent.notificaCasa(solicitacao);
 
         return "redirect:/solicitacao/hospital/lista";
     }
@@ -116,7 +119,7 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
         solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-        
+
         for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
             acompanhante.setSolicitacao(solicitacaoAtualizada);
         }

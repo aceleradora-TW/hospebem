@@ -1,5 +1,6 @@
 package com.thoughtworks.aceleradora.quarto.controller;
 
+import com.thoughtworks.aceleradora.email.component.EmailComponent;
 import com.thoughtworks.aceleradora.quarto.dominio.*;
 import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,16 @@ import java.util.*;
 public class QuartoController {
     private QuartoRepository quartoRepository;
     private SolicitacaoRepository solicitacaoRepository;
+    private EmailComponent emailComponent;
 
     public QuartoController() {
     }
 
     @Autowired
-    public QuartoController(QuartoRepository repositorio, SolicitacaoRepository solicitacaoRepository) {
+    public QuartoController(QuartoRepository repositorio, SolicitacaoRepository solicitacaoRepository, EmailComponent emailComponent) {
         this.quartoRepository = repositorio;
         this.solicitacaoRepository = solicitacaoRepository;
+        this.emailComponent = emailComponent;
     }
 
     @GetMapping("/{idSolicitacao}/listaQuartos")
@@ -76,7 +79,9 @@ public class QuartoController {
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
             solicitacao.setStatus(Solicitacao.Status.NEGADO.toString());
+
             solicitacaoRepository.save(solicitacao);
+            emailComponent.notificaHospital(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
         }
@@ -102,6 +107,8 @@ public class QuartoController {
             solicitacao.setQuarto(quarto);
             quarto.getSolicitacoes().add(solicitacao);
             quarto.setLeitosDisponiveis(quarto.getLeitosDisponiveis() - numeroHospedes);
+
+            emailComponent.notificaHospital(solicitacao);
 
             if (quarto.getLeitosDisponiveis() <= 0) {
                 quarto.setStatus(Quarto.Status.INDISPONIVEL.toString());

@@ -6,3 +6,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/hospebem
     username: postgres
     password: hospebem
+
+  mail:
+    properties:
+      mail:
+        debug: true
