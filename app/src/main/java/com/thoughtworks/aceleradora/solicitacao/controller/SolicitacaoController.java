@@ -58,7 +58,7 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE));
+        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE.toString()));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
@@ -66,11 +66,9 @@ public class SolicitacaoController {
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        List <Solicitacao> solicitacoesHospital =
-                solicitacaoRepository.findAllByNomeSolicitante(auth.getName());
-
-        model.addAttribute("solicitacoesHospital", solicitacoesHospital);
+        List<Solicitacao> solicitacoes = solicitacaoRepository.findAllByOrderByIdDesc();
+        model.addAttribute("usuarioLogado", auth.getName());
+        model.addAttribute("solicitacoesHospital", solicitacoes);
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
@@ -88,6 +86,7 @@ public class SolicitacaoController {
 
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
+
             model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             model.addAttribute("solicitacao", solicitacao);
 
@@ -102,6 +101,7 @@ public class SolicitacaoController {
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
             solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
+
             model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             model.addAttribute("solicitacao", solicitacao);
             return "solicitacao/editaPaciente";
@@ -132,6 +132,7 @@ public class SolicitacaoController {
                         .collect(Collectors.toList()));
 
         solicitacaoRepository.save(solicitacaoAtualizada);
+
         return "redirect:/solicitacao/hospital/lista";
     }
 
