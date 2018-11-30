@@ -5,6 +5,8 @@ import com.thoughtworks.aceleradora.login.dominio.Usuario;
 import com.thoughtworks.aceleradora.login.dominio.UsuarioRepository;
 import com.thoughtworks.aceleradora.login.servicos.UsuarioService;
 import com.thoughtworks.aceleradora.login.validador.UsuarioValidador;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class LoginController {
@@ -50,7 +53,7 @@ public class LoginController {
         return "registrarUsuario/usuarioSalvo";
     }
 
-    @RequestMapping(value = "/listaUsuarios", method = RequestMethod.GET)
+    @GetMapping("/listaUsuarios")
     public String buscarTodosUsuarios(Model model) {
         List<Usuario> usuarios = usuarioRepository.findAll();
 
@@ -58,12 +61,67 @@ public class LoginController {
         return "solicitacao/listagens/listaUsuarios";
     }
 
-    @RequestMapping(value = "/{id}/editaUsuario", method = RequestMethod.GET)
+    @GetMapping("/{id}/editaUsuario")
     public String editaUsuario(Model model, @PathVariable Long id) {
-        Usuario usuario = usuarioRepository.findOneById(id);
-        model.addAttribute("usuarios", usuario);
-        return "/solicitacao/editaUsuario";
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+
+        if (usuarioOptional.isPresent()) {
+            Usuario usuarios = usuarioOptional.get();
+            model.addAttribute("usuarios", usuarios);
+            return "/solicitacao/editaUsuario";
+        }
+
+        return "404";
     }
+
+    @PostMapping("/{id}/editaUsuario")
+    public String salvarDadoEditadoUsuario(@PathVariable Long id, Usuario usuario) {
+        Usuario usuarioAtualizado = usuarioRepository.getOne(id);
+
+        usuarioAtualizado.setNome(usuario.getNome());
+        usuarioAtualizado.setNomeAssistente(usuario.getNomeAssistente());
+        usuarioAtualizado.setEmail(usuario.getEmail());
+        usuarioAtualizado.setHospitalReferencia(usuario.getHospitalReferencia());
+        usuarioAtualizado.setTelefone(usuario.getTelefone());
+        usuarioRepository.save(usuarioAtualizado);
+
+        return "redirect:/listaUsuarios";
+    }
+
+    @GetMapping("/{id}/editaSenhaUsuario")
+    public String editaSenhaUsuario(Model model, @PathVariable Long id) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+
+        if (usuarioOptional.isPresent()) {
+            Usuario usuarios = usuarioOptional.get();
+            usuarios.getSenha();
+
+            model.addAttribute("usuarios", usuarios);
+            return "/solicitacao/editaSenhaUsuario";
+        }
+
+        return "404";
+    }
+
+    @PostMapping("/{id}/editaSenhaUsuario")
+    public String salvarSenhaEditadoUsuario(@PathVariable Long id, Usuario usuario) {
+        Usuario senhaAtualizada = usuarioRepository.getOne(id);
+
+        senhaAtualizada.setSenha(usuario.getSenha());
+        usuarioService.salvar(senhaAtualizada);
+
+        return "redirect:/listaUsuarios";
+    }
+
+    @GetMapping("/{id}/excluir")
+    public String excluirUsuario(@PathVariable Long id) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+            if (usuarioOptional.isPresent()) {
+                usuarioRepository.deleteById(id);
+            }
+
+            return "redirect:/listaUsuarios";
+        }
 
     @GetMapping(value = "/login")
     public String login() {

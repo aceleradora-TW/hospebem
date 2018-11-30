@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
+
+<head>
+    <title>Formulario</title>
+</head>
+<body>
+<main>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+        <div class="card-content valign center has-text-centered">
+            <div class="column">
+                <h3 class="title is-3 v center has-text-centered"> Editar Senha do Usuario</h3>
+            </div>
+            <div class="columns is-mobile card-content">
+                <form th:action="@{/{id}/editaSenhaUsuario(id=${usuarios.id})}" method="post"
+                      id="senhaUsuario">
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <span>Senha</span>
+                                <input class="validate input input-fancy" type="text" th:field="*{usuarios.senha}">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a th:href="@{/listaUsuarios}">
+                            <button type="submit" class="button verde-viavida borda-arredondada">
+                                <span>Salvar</span>
+                                <span class="icon is-small"><i class="fas fa-gavel"></i></span>
+                            </button>
+                        </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+<script type="text/javascript">
+
+
+
+</script>
+
+</html>

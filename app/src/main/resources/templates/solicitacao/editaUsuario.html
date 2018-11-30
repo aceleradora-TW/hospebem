@@ -11,24 +11,16 @@
     <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="card-content valign center has-text-centered">
             <div class="column">
-                <h3 class="title is-3 v center has-text-centered"> Dados do paciente</h3>
+                <h3 class="title is-3 v center has-text-centered"> Dados do Usuario</h3>
             </div>
             <div class="columns is-mobile card-content">
-                <form  th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
-                       id="formSolicitacao">
+                <form th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
+                      id="listaUsuario">
                     <div class="column">
                         <div class="field">
                             <div class="control">
                                 <span>Nome Usuário</span>
                                 <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span>Senha</span>
-                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.senha}">
                             </div>
                         </div>
                     </div>
@@ -71,10 +63,27 @@
                                 <span class="icon is-small"><i class="fas fa-gavel"></i></span>
                             </button>
                         </a>
+                        <a th:action="@{/{id}/excluirUsuario(id=${usuarios.id})}">
+                            <button class="button is-danger borda-arredondada" type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">
+                                <span>Excluir</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
+                            </button>
+                        </a>
+                        <a th:href="@{/{id}/editaSenhaUsuario(id=${usuarios.id})}">
+                            <button class="button borda-arredondada" type="button">
+                                <span>Editar Senha</span>
+                                <span class="icon is-small">
+                                    <i class="fas fas fa-edit"></i>
+                                </span>
+                            </button>
+                        </a>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
 </main>
 </body>
 <script type="text/javascript">
