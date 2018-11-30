@@ -6,66 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-
     <main>
-            <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())"> Você não tem autorização para acessar essa página</div>
-            <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
-            <div class="is-mobile">
-                <div>
-                    <h1 class="title is-half centralizar espacamento">Lista de Solicitações</h1>
-                    <form th:action="@{/solicitacao/cadastro}" method="GET">
-                        <div class="is-centered is-half centralizar espacamento">
-                            <input type="submit" class="button verde-viavida borda-arredondada" value="Solicitar Vaga" />
-                        </div>
-                    </form>
-                    <div class="container">
-                        <div class="section">
-                            <div class="columns is-multiline is-lefty">
-                                <tr th:each="solicitacao : ${solicitacoesHospital}" th:if="${solicitacao.nomeSolicitante==usuarioLogado}">
-                                    <div class="column">
-                                        <div class="box box-shadow">
-                                            <strong><span>Nome:</span></strong>
-                                            <span th:text="${solicitacao.nome} + ' - '"></span>
-                                            <strong><span>Status:</span></strong>
-                                            <span th:text="${solicitacao.status}"></span>
-                                            <hr>
-                                            <strong><span>Data de atualização:</span></strong>
-                                            <span th:text="${solicitacao.formataData()}"></span>
-                                            <hr>
-                                            <div class="field has-addons">
-                                                <div class="control">
-                                                    <a th:href="@{/solicitacao/{id}/editar(id=${solicitacao.id})}">
-                                                        <button class="button" type="submit" th:if="${solicitacao.status}!='Aceito'">
-                                                            <span>Editar</span>
-                                                            <span class="icon is-small"><i class="fas fa-edit"></i></span>
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                                <div class="control">
-                                                    <a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">
-                                                        <button class="button is-danger" type="submit" th:if="${solicitacao.status}!='Aceito'" onclick="return confirm('Tem certeza que deseja excluir?');">
-                                                            <span>Excluir</span>
-                                                            <span class="icon is-small">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </span>
-                                                    </button>
-                                                </a>
-                                            </div>
+        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+            Você não tem autorização para acessar essa página</div>
+        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+            <div class="container">
+                <h1 class="title is-half centralizar espacamento has-text-centered">Lista de Solicitações</h1>
+                <form th:action="@{/solicitacao/cadastro}" method="GET">
+                    <div class="is-centered is-half centralizar espacamento">
+                        <input type="submit" class="button verde-viavida borda-arredondada" value="Solicitar Vaga" />
+                    </div>
+                </form>
+                <div class="section">
+                    <div class="columns is-multiline is-lefty">
+                        <div th:each="solicitacao : ${solicitacoesHospital}">
+                            <div class="column">
+                                <div class="box">
+                                    <strong><span>Nome:</span></strong>
+                                    <span th:text="${solicitacao.nome} + ' - '"></span>
+                                    <strong><span>Status:</span></strong>
+                                    <span th:text="${solicitacao.status}"></span>
+                                    <hr>
+                                    <strong><span>Data de atualização:</span></strong>
+                                    <span th:text="${solicitacao.formataData()}"></span>
+                                    <hr>
+                                    <div class="field has-addons">
+                                        <div class="control">
+                                            <a th:href="@{/solicitacao/{id}/editar}">
+                                                <button class="button" type="submit" th:if="${solicitacao.status}!='ACEITO'">
+                                                    <span>Editar</span>
+                                                    <span class="icon is-small"><i class="fas fa-edit"></i></span>
+                                                </button>
+                                            </a>
+                                        </div>
+                                        <div class="control">
+                                            <a th:href="@{/solicitacao/{id}/excluir}">
+                                                <button class="button is-danger" type="submit" th:if="${solicitacao.status}!='ACEITO'"
+                                                    onclick="return confirm('Tem certeza que deseja excluir?');">
+                                                    <span>Excluir</span>
+                                                    <span class="icon is-small"><i class="fas fa-trash-alt"></i></span>
+                                                </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-</main>
+    </main>
 </body>
 </html>

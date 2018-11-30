@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -95,15 +96,22 @@ public class SolicitacaoControllerTest {
 
     @Test
     public void deveRenderizarListaSolicitacaoHospital() {
-        List<Solicitacao> solicitacoesHospital = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAll()).thenReturn(solicitacoesHospital);
+        Solicitacao a = new Solicitacao();
+        Solicitacao b = new Solicitacao();
+        a.setNomeSolicitante("Teste1");
+        b.setNomeSolicitante("Teste2");
         Authentication auth = new UsernamePasswordAuthenticationToken("user1@example.com", "user1");
+
+        List<Solicitacao> solicitacoesHospital = asList(a, b)
+                .stream()
+                .filter(solicitacao -> solicitacao.getNomeSolicitante().equals(auth.getName()))
+                .collect(Collectors.toList());
+
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(auth);
 
         String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
 
-        verify(model).addAttribute("usuarioLogado",auth.getName());
         verify(model).addAttribute("solicitacoesHospital", solicitacoesHospital);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoHospital"));
     }

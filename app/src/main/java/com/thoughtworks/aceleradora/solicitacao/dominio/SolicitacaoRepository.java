@@ -11,5 +11,6 @@ import java.util.List;
 public interface SolicitacaoRepository
         extends JpaRepository<Solicitacao,Long> {
 List<Solicitacao> findAllByStatus(String title);
+List<Solicitacao> findAllByNomeSolicitante(String nome);
 
 }

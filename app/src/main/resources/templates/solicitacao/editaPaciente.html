@@ -7,8 +7,6 @@
 </head>
 <body>
 <main>
-    <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())"> Você não tem autorização para acessar essa página</div>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
     <div class="card-content valign center has-text-centered">
         <div class="section">
             <nav class="breadcrumb" aria-label="breadcrumbs">
@@ -144,7 +142,7 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <span>Cidade</label>
+                            <span>Cidade</span>
                         </div>
                         <div class="control">
                             <input class="validate input input-fancy borda-arredondada" type="text" name="cidade" th:field="*{endereco.cidade}">
