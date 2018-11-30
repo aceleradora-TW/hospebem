@@ -8,11 +8,14 @@ const validaRegistrar = (evento) => {
 }
 
 const validaTipoUsuario = () => {
+    let labelCargo = document.getElementById('labelCargo')
     let adminRadio = document.getElementById("ADMINISTRADOR")
     let assistenteRadio = document.getElementById("ASSISTENTE_SOCIAL")
     if (adminRadio.checked === false && assistenteRadio.checked === false) {
-        alert('Por favor, selecione o tipo')
+        labelCargo.classList.remove('margin-invisible')
         return false
+    }else{
+        labelCargo.classList.add('margin-invisible')
     }
     return true
 }

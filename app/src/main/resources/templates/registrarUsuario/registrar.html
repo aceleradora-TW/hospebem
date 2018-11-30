@@ -20,11 +20,13 @@
                 <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
             </div>
 
-            <div class="columns has-text-left" id="labelCargo">
+            <div class="columns has-text-left">
                 <div class = "column is-half">
+                    <div class = "control input-radio margin-invisible" id="labelCargo">
                     <label th:field="*{cargo}">Tipo:</label>
                     <input class="input-radio" th:id="${cargo}" th:each="cargo : ${cargos}" type="radio" name="cargo" th:value="${cargo}" th:text="${cargo.nome}">
                 </div>
+            </div>
             </div>
             <div class="display-none div-escondida">
                 <div class="columns has-text-left">
