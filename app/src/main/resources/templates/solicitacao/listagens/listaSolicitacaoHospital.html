@@ -37,7 +37,7 @@
                                     <hr>
                                     <div class="field has-addons">
                                         <div class="control">
-                                            <a th:href="@{/solicitacao/{id}/editar(id=${solicitacao.id})}">
+                                            <a th:href="@{/solicitacao/{id}/editar}">
                                                 <button class="button" type="submit" th:if="${solicitacao.status}!='ACEITO'">
                                                     <span>Editar</span>
                                                     <span class="icon is-small"><i class="fas fa-edit"></i></span>
@@ -45,7 +45,7 @@
                                             </a>
                                         </div>
                                         <div class="control">
-                                            <a th:href="@{/solicitacao/{id}/excluir(id=${solicitacao.id})}">
+                                            <a th:href="@{/solicitacao/{id}/excluir}">
                                                 <button class="button is-danger" type="submit" th:if="${solicitacao.status}!='ACEITO'"
                                                     onclick="return confirm('Tem certeza que deseja excluir?');">
                                                     <span>Excluir</span>

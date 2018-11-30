@@ -61,7 +61,6 @@ public class SolicitacaoController {
         List <Solicitacao> solicitacoesHospital =
                 solicitacaoRepository.findAllByNomeSolicitante(auth.getName());
 
-        model.addAttribute("usuarioLogado", auth.getName());
         model.addAttribute("solicitacoesHospital", solicitacoesHospital);
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
