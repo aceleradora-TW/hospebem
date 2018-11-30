@@ -36,25 +36,23 @@
                                     <span th:text="${solicitacao.formataData()}"></span>
                                     <hr>
                                     <div class="field has-addons">
-                                        <th:block th:if="${solicitacao.status.toString()} != 'ACEITO'">
-                                            <div class="control">
-                                                <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/editar'}">
-                                                    <button class="button" type="submit">
-                                                        <span>Editar</span>
-                                                        <span class="icon is-small"><i class="fas fa-edit"></i></span>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                            <div class="control">
-                                                <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/excluir'}">
-                                                    <button class="button is-danger" type="submit"
-                                                        onclick="return confirm('Tem certeza que deseja excluir?');">
-                                                        <span>Excluir</span>
-                                                        <span class="icon is-small"><i class="fas fa-trash-alt"></i></span>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </th:block>
+                                        <div class="control">
+                                            <a th:href="@{/solicitacao/{id}/editar}">
+                                                <button class="button" type="submit" th:if="${solicitacao.status}!='ACEITO'">
+                                                    <span>Editar</span>
+                                                    <span class="icon is-small"><i class="fas fa-edit"></i></span>
+                                                </button>
+                                            </a>
+                                        </div>
+                                        <div class="control">
+                                            <a th:href="@{/solicitacao/{id}/excluir}">
+                                                <button class="button is-danger" type="submit" th:if="${solicitacao.status}!='ACEITO'"
+                                                    onclick="return confirm('Tem certeza que deseja excluir?');">
+                                                    <span>Excluir</span>
+                                                    <span class="icon is-small"><i class="fas fa-trash-alt"></i></span>
+                                                </button>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
