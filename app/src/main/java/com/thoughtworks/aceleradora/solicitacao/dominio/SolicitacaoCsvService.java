@@ -30,7 +30,7 @@ public class SolicitacaoCsvService {
                 .stream()
                 .filter(solicitacao -> solicitacao.getStatus() == (Solicitacao.Status.HOSPEDE) ||
                         solicitacao.getStatus() == (Solicitacao.Status.EX_HOSPEDE) ||
-                        solicitacao.getStatus().equals(Solicitacao.Status.NEGADO)
+                        solicitacao.getStatus() == (Solicitacao.Status.NEGADO)
                 )
                 .map(solicitacao -> juntar(
                         paciente(solicitacao),
@@ -38,7 +38,6 @@ public class SolicitacaoCsvService {
                         acompanhantes(solicitacao))
                 )
                 .collect(joining("\n"));
-
 
         return String.join("\n", CABECALHO, listaSolicitacoesRelatorio);
     }
@@ -76,11 +75,10 @@ public class SolicitacaoCsvService {
 
     private String getAcompanhantesToString(Solicitacao solicitacao) {
         StringBuilder retorno = new StringBuilder(" ");
-        if(solicitacao !=null) {
 
+        if(solicitacao !=null) {
             for (Acompanhante acompanhante : solicitacao.getAcompanhantes()) {
                 if (acompanhante != null) {
-
                     retorno
                             .append(acompanhante.getNome())
                             .append(",")
