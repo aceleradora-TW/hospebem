@@ -16,6 +16,7 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     private Cargo cargo;
+
     @Column(name ="nome_assistente")
     private String nomeAssistente;
     private String email;
