@@ -8,19 +8,19 @@ function validaCadastroSolicitacao(evento) {
 }
 
 function camposPaciente() {
-    var nome = document.getElementById("nome")
-    var genero1 = document.getElementById("genero1")
-    var genero2 = document.getElementById("genero2")
-    var labelGenero = document.getElementById('labelGenero')
-    var dataNascimento = document.getElementById('dataNascimento')
-    var situacaoPre = document.getElementById("situacao.pre")
-    var situacaoPos = document.getElementById("situacao.pos")
-    var labelSituacao = document.getElementById('labelSituacao')
-    var checkBoxCadeirante = document.getElementById('cadeirante')
-    var pesoInput = document.getElementById('peso')
-    var dataEntrada = document.getElementById('dataEntrada')
-    var orgao = document.getElementById('select')
-    var selectOrgao = document.getElementById('selectOrgao')
+    let nome = document.getElementById("nome")
+    let genero1 = document.getElementById("genero1")
+    let genero2 = document.getElementById("genero2")
+    let labelGenero = document.getElementById('labelGenero')
+    let dataNascimento = document.getElementById('dataNascimento')
+    let situacaoPre = document.getElementById("situacao.pre")
+    let situacaoPos = document.getElementById("situacao.pos")
+    let labelSituacao = document.getElementById('labelSituacao')
+    let checkBoxCadeirante = document.getElementById('cadeirante')
+    let pesoInput = document.getElementById('peso')
+    let dataEntrada = document.getElementById('dataEntrada')
+    let orgao = document.getElementById('select')
+    let selectOrgao = document.getElementById('selectOrgao')
 
     if (nome.value === '') {
         validaInputErrado(nome)
@@ -35,7 +35,6 @@ function camposPaciente() {
     } else {
         labelGenero.classList.add('margin-invisible')
     }
-
 
     if (dataNascimento.value === '') {
         validaInputErrado(dataNascimento)
@@ -62,22 +61,20 @@ function camposPaciente() {
     } else
         selectOrgao.classList.add('margin-invisible')
 
-
     if (dataEntrada.value === '') {
         validaInputErrado(dataEntrada)
         return false
     } else
         dataEntrada.classList.add('input-fancy')
-
     return true
 }
 
 function camposAcompanhantes() {
-    var nomeAcomp = document.querySelector(".nome")
-    var genero1 = document.querySelector(".generoA1")
-    var genero2 = document.querySelector(".generoA2")
-    var dataNasciAcomp = document.querySelector(".data-nasc-acomp")
-    var labelAcomp = document.getElementById('labelAcomp')
+    let nomeAcomp = document.querySelector(".nome")
+    let genero1 = document.querySelector(".generoA1")
+    let genero2 = document.querySelector(".generoA2")
+    let dataNasciAcomp = document.querySelector(".data-nasc-acomp")
+    let labelAcomp = document.getElementById('labelAcomp')
 
     if (nomeAcomp.value === '') {
         nomeAcomp.placeholder = 'Insira o campo requisitado'
@@ -97,17 +94,15 @@ function camposAcompanhantes() {
         nomeAcomp.placeholder = 'Insira o campo requisitado'
         validaInputErrado(dataNasciAcomp)
         return false;
-
     }
     return true;
-
 }
 
 function camposSolicitante(){
-    var nomeSolicitante = document.getElementById('nomeSolicitante')
-    var hospitalReferencia = document.getElementById('hospitalReferencia')
-    var email = document.getElementById('email')
-    var telefoneSolicitante = document.getElementById('telefoneSolicitante')
+    let nomeSolicitante = document.getElementById('nomeSolicitante')
+    let hospitalReferencia = document.getElementById('hospitalReferencia')
+    let email = document.getElementById('email')
+    let telefoneSolicitante = document.getElementById('telefoneSolicitante')
 
     if (nomeSolicitante.value === '') {
         nomeSolicitante.placeholder = 'Insira o campo requisitado'
@@ -136,7 +131,6 @@ function camposSolicitante(){
         return false
     } else
         telefoneSolicitante.classList.add('input-fancy')
-
     return true;
 }
 
@@ -152,9 +146,9 @@ window.onload = function limpaInput() {
 }
 
 function pesoCadeirante() {
-    var textoPeso = document.querySelector('.display-none')
-    var checkBoxCadeirante = document.getElementById('cadeirante');
-    var pesoInput = document.getElementById('peso');
+    let textoPeso = document.querySelector('.display-none')
+    let checkBoxCadeirante = document.getElementById('cadeirante');
+    let pesoInput = document.getElementById('peso');
 
     checkBoxCadeirante.addEventListener('change', function () {
         if (this.checked) {
@@ -170,7 +164,6 @@ function pesoCadeirante() {
             textoPeso.classList.add('display-none');
             return false;
         }
-
     })
 
     pesoInput.addEventListener('change', function () {
