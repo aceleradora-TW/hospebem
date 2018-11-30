@@ -21,14 +21,15 @@ public class EmailComponent {
         mensagem.setSubject("Nova solicitação recebida!");
 
         mensagem.setText("Nova solicitação recebida!\n" + "\n" +
-        "- Hospede: " + solicitacao.getNome() + "\n" +
-        "- Data de Nascimento: " + solicitacao.getDataNascimento() + "\n" +
-        "\n ========================== \n" + "\n" +
-        " Dados da solicitante: " + "\n" +
-        "- Nome: " + solicitacao.getNomeSolicitante() + "\n" +
-        "- E-mail: " + solicitacao.getEmail() + "\n" +
-        "- Hospital de Referência: " + solicitacao.getHospitalReferencia() + "\n" +
-        "- Telefone: " + solicitacao.getTelefoneSolicitante());
+                        "- Hospede: " + solicitacao.getNome() + "\n" +
+                        "- Data de Nascimento: " + solicitacao.getDataNascimento() + "\n" +
+                        "\n ========================== \n" + "\n" +
+                        " Dados da solicitante: " + "\n" +
+                        "- Nome: " + solicitacao.getNomeSolicitante() + "\n" +
+                        "- E-mail: " + solicitacao.getEmail() + "\n" +
+                        "- Hospital de Referência: " + solicitacao.getHospitalReferencia() + "\n" +
+                        "- Telefone: " + solicitacao.getTelefoneSolicitante()
+        );
 
         mensagem.setFrom(this.email);
         mensagem.setTo(this.email);
@@ -44,8 +45,9 @@ public class EmailComponent {
         SimpleMailMessage mensagem = new SimpleMailMessage();
 
         mensagem.setSubject("Status de uma solicitação foi alterado!");
-        mensagem.setText("Status de uma solicitação de: "+ solicitacao.getNome() + " foi alterado para: " +
-                solicitacao.getStatus() + "!");
+        
+        mensagem.setText("Status de uma solicitação de: "+ solicitacao.getNome() +
+                " foi alterado para: " + solicitacao.getStatus() + "!");
 
         mensagem.setFrom(this.email);
         mensagem.setTo(solicitacao.getEmail());

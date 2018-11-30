@@ -38,8 +38,8 @@ public class SolicitacaoController {
     public String salvaSolicitacao(Solicitacao solicitacao) {
         solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
 
-        emailComponent.notificaCasa(solicitacao);
         solicitacaoRepository.save(solicitacao);
+        emailComponent.notificaCasa(solicitacao);
 
         return "redirect:/solicitacao/hospital/lista";
     }

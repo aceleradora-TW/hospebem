@@ -80,8 +80,8 @@ public class QuartoController {
             Solicitacao solicitacao = solicitacaoOptional.get();
             solicitacao.setStatus(Solicitacao.Status.NEGADO.toString());
 
-            emailComponent.notificaHospital(solicitacao);
             solicitacaoRepository.save(solicitacao);
+            emailComponent.notificaHospital(solicitacao);
 
             return "redirect:/solicitacao/casa/lista";
         }
