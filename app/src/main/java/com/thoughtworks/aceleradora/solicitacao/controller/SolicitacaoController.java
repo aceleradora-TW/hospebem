@@ -59,12 +59,9 @@ public class SolicitacaoController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         List <Solicitacao> solicitacoesHospital =
-                solicitacaoRepository.findAll()
-                        .stream()
-                        .filter(solicitacao -> solicitacao.getNomeSolicitante().equals(auth.getName()))
-                        .collect(Collectors.toList());
+                solicitacaoRepository.findAllByNomeSolicitante(auth.getName());
 
-        model.addAttribute("usuarioLogado",auth.getName());
+        model.addAttribute("usuarioLogado", auth.getName());
         model.addAttribute("solicitacoesHospital", solicitacoesHospital);
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
