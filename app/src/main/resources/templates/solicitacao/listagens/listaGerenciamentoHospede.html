@@ -28,7 +28,7 @@
                             </tr>
                             <tr th:each="solicitacao : ${solicitacoesAceitas}">
                                 <td>
-                                    <a th:href="@{/solicitacao/{id}/editar(id=${solicitacao.id})}" class="has-text-centered" th:text="${solicitacao.nome}" ></a>
+                                    <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/editar'}" class="has-text-centered" th:text="${solicitacao.nome}" ></a>
                                 </td>
                             </tr>
                         </table>
