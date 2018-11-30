@@ -41,7 +41,6 @@ public class SolicitacaoControllerTest {
     @Mock
     private Model model;
 
-
     @Mock
     private SolicitacaoRepository repositorio;
 
