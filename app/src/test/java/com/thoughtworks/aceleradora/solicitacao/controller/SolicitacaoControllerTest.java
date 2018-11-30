@@ -112,7 +112,6 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
 
-        verify(model).addAttribute("usuarioLogado",auth.getName());
         verify(model).addAttribute("solicitacoesHospital", solicitacoesHospital);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoHospital"));
     }
