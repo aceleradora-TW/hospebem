@@ -27,19 +27,17 @@ public class CheckinCheckoutController {
     }
 
     @GetMapping("/listacheckincheckout")
-    public String listaCheckinCheckout(Model model){
-        List<Solicitacao> solicitacoes = solicitacaoRepository.findAll();
-        solicitacoes.sort(Comparator.comparing(Solicitacao::getNome));
-
+    public String listaCheckinCheckout(Model model){ ;
         model.addAttribute("quartos", quartoRepository.findAll());
-        model.addAttribute("solicitacoes", solicitacoes);
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatusOrderByNome(Solicitacao.Status.ACEITO.toString()));
+        model.addAttribute("solicitacoesHospedes", solicitacaoRepository.findAllByStatusOrderByNome(Solicitacao.Status.HOSPEDE.toString()));
         model.addAttribute("solicitacao", new Solicitacao());
         model.addAttribute("formataData", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
         return "quarto/listagens/listaCheckinCheckout";
     }
 
-    @PostMapping("/checkin/{id}")
+    @PostMapping("/solicitacao/{id}/checkin")
     public String checkin (@PathVariable Long id, Solicitacao solicitacaoCheckin) {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
 
@@ -50,7 +48,7 @@ public class CheckinCheckoutController {
         return "redirect:/listacheckincheckout";
     }
 
-    @PostMapping("/checkout/{id}")
+    @PostMapping("/solicitacao/{id}/checkout")
     public String checkout (@PathVariable Long id, Solicitacao solicitacaoCheckout) {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
 

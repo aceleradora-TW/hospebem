@@ -71,7 +71,7 @@ public class QuartoController{
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
         Quarto quarto = quartoRepository.getOne(idQuarto);
 
-        quartoHelper.limitaQuartos(solicitacao, quarto, solicitacaoRepository, quartoRepository);
+        quartoHelper.limitaQuartos(solicitacao, quarto);
 
         return "redirect:/listacheckincheckout";
     }

@@ -5,6 +5,7 @@ import com.thoughtworks.aceleradora.quarto.dominio.QuartoRepository;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,7 +14,18 @@ import java.util.List;
 @Component
 public class QuartoHelper{
     private static final int NUMERO_MAXIMO_HOSPEDES = 3;
-    private QuartoRepository quartoRepo;
+    private QuartoRepository quartoRepository;
+    private SolicitacaoRepository solicitacaoRepository;
+
+    public QuartoHelper() { }
+
+    @Autowired
+    public QuartoHelper(QuartoRepository quartoRepository, SolicitacaoRepository solicitacaoRepository){
+
+        this.quartoRepository = quartoRepository;
+        this.solicitacaoRepository = solicitacaoRepository;
+
+    }
 
     public int hospedesPresentes(Solicitacao solicitacao){
         int numeroHospedes = 1;
@@ -26,7 +38,7 @@ public class QuartoHelper{
         return numeroHospedes;
     }
 
-    public void limitaQuartos(Solicitacao solicitacao, Quarto quarto, SolicitacaoRepository solicitacaoRepository, QuartoRepository quartoRepository){
+    public void limitaQuartos(Solicitacao solicitacao, Quarto quarto){
         int numeroHospedes = hospedesPresentes(solicitacao) == NUMERO_MAXIMO_HOSPEDES ? 2 : hospedesPresentes(solicitacao);
 
         if (numeroHospedes <= quarto.leitosDisponiveis()) {
@@ -61,7 +73,7 @@ public class QuartoHelper{
 
     public Quarto aumentaLeitosDisponiveis(Quarto quarto) {
         quarto.setQuantidadeLeitos(quarto.leitosDisponiveis() + 2);
-        quartoRepo.save(quarto);
+        quartoRepository.save(quarto);
         return quarto;
     }
 }

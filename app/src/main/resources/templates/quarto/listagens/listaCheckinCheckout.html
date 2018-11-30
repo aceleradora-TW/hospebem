@@ -20,7 +20,7 @@
 
         <div class="section">
             <div class="columns is-multiline is-lefty">
-                <th:block th:each="solicitacao : ${solicitacoes}" th:if="${solicitacao.status == 'HOSPEDE'}">
+                <th:block th:each="solicitacao : ${solicitacoesHospedes}">
                     <div class="column is-4">
                         <div class="box">
                             <a class="subtitle" th:href="@{/quartos/{id}/informacoes(id=${solicitacao.id})}"
@@ -37,7 +37,7 @@
                                 <span th:text="${solicitacao.formataData()}"></span>
                             </div>
                             <hr>
-                            <form th:action="@{/checkout/{id}(id = ${solicitacao.id})}"
+                            <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkout'}"
                                   th:object="${solicitacao}"
                                   method="POST" id="formCheckout">
 
@@ -63,7 +63,7 @@
 
         <div class="section">
             <div class="columns is-multiline is-lefty">
-                <th:block th:each="solicitacao : ${solicitacoes}" th:if="${solicitacao.status == 'ACEITO'}">
+                <th:block th:each="solicitacao : ${solicitacoesAceitas}">
                     <div class="column is-4">
                         <div class="box">
                             <a class="subtitle" th:href="@{/quartos/{id}/informacoes(id=${solicitacao.id})}"
@@ -76,7 +76,7 @@
                                 </li>
                             </ul>
                             <hr>
-                            <form th:action="@{/checkin/{id}(id = ${solicitacao.id})}"
+                            <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkin'}"
                                   th:object="${solicitacao}"
                                   method="POST" id="formCheckin">
 
