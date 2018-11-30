@@ -1,6 +1,6 @@
 const validaRegistrar = (evento) => {
     if (validaTipoUsuario() === true && validaCamposAssistente() === true && validaUsuarioSenha() === true) {
-        alert("registro efetuado!")
+        alert("Registro efetuado!")
         evento.currentTarget.submit()
         return true
     }
