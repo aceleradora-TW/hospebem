@@ -44,7 +44,6 @@ public class QuartoHelper{
     }
 
     public List<Solicitacao> ocupantes(List<Solicitacao> solicitacoes){
-        Quarto quarto = new Quarto();
         List<Solicitacao> ocupantesQuarto = new ArrayList<>();
         Solicitacao solicitacao = null;
         for (Solicitacao s: solicitacoes){
@@ -61,7 +60,7 @@ public class QuartoHelper{
     }
 
     public Quarto aumentaLeitosDisponiveis(Quarto quarto) {
-        quarto.setLeitosDisponiveis(quarto.leitosDisponiveis() + 2);
+        quarto.setQuantidadeLeitos(quarto.leitosDisponiveis() + 2);
         quartoRepo.save(quarto);
         return quarto;
     }

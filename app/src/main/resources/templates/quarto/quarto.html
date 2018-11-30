@@ -34,7 +34,7 @@
                 </div>
             </th:block>
         </div>
-        <div class="is-centered is-half centralizar espacamento" th:if="${quarto.getLeitosDisponiveis() > 0}">
+        <div class="is-centered is-half centralizar espacamento" th:if="${quarto.leitosDisponiveis() > 0}">
             <form th:action="@{/quarto/aceitar}" method="POST">
                 <input type="hidden" name="id" th:value="${solicitacao.id}">
                 <input type="hidden" name="idQuarto" th:value="${quarto.id}">
