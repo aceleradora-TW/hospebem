@@ -4,7 +4,6 @@ import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import com.thoughtworks.aceleradora.email.component.EmailComponent;
-import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +27,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class SolicitacaoControllerTest {
 
     private SolicitacaoController controller;
@@ -115,7 +114,6 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.listaSolicitacoesDoHospital(model);
 
-        verify(model).addAttribute("usuarioLogado",auth.getName());
         verify(model).addAttribute("solicitacoesHospital", solicitacoesHospital);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoHospital"));
     }
@@ -130,15 +128,5 @@ public class SolicitacaoControllerTest {
         model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         model.addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
-
-    }
-
-    @Test
-    public void exibeTelaDeNaoEncontrarQuandoPacienteNaoExistir() {
-        when(repositorio.findById(1L)).thenReturn(Optional.empty());
-
-        String paginaRenderizada = controller.mostraDadosPaciente(model, 1L);
-
-        assertThat(paginaRenderizada, equalTo("404"));
     }
 }

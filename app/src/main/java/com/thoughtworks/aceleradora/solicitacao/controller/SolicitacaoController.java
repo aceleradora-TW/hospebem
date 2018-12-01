@@ -58,7 +58,9 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE));
+        model.addAttribute("solicitacoesCasa",
+                solicitacaoRepository.findAllByStatusOrderByNome(
+                        Solicitacao.Status.PENDENTE));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
@@ -66,9 +68,9 @@ public class SolicitacaoController {
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        List<Solicitacao> solicitacoes = solicitacaoRepository.findAllByOrderByIdDesc();
-        model.addAttribute("usuarioLogado", auth.getName());
-        model.addAttribute("solicitacoesHospital", solicitacoes);
+
+        model.addAttribute("solicitacoesHospital",
+                solicitacaoRepository.findAllByOrderByIdDesc());
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
@@ -82,31 +84,21 @@ public class SolicitacaoController {
 
     @GetMapping("{id}/dados")
     public String mostraDadosPaciente(Model model, @PathVariable Long id) {
-        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+        model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        model.addAttribute("solicitacao", solicitacaoRepository.getOne(id));
 
-        if (solicitacaoOptional.isPresent()) {
-            Solicitacao solicitacao = solicitacaoOptional.get();
-
-            model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("solicitacao", solicitacao);
-
-            return "solicitacao/dadosSolicitacao";
-        }
-        return "404";
+        return "solicitacao/dadosSolicitacao";
     }
 
     @GetMapping("/{id}/editar")
     public String editaDadosHospede(Model model, @PathVariable Long id) {
-        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
-        if (solicitacaoOptional.isPresent()) {
-            Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
+        Solicitacao solicitacao = solicitacaoRepository.getOne(id);
+        solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
 
-            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("solicitacao", solicitacao);
-            return "solicitacao/editaPaciente";
-        }
-        return "404";
+        model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        model.addAttribute("solicitacao", solicitacao);
+
+        return "solicitacao/editaPaciente";
     }
 
     @PostMapping("/{id}/editar")
