@@ -19,7 +19,6 @@
     <script src="https://unpkg.com/pikaday@1.7.0/pikaday.js"></script>
     <script src="/js/calender.js"></script>
     <script src="/js/validaCadastroSolicitacao.js"></script>
-    <script src="/js/validaIdade.js"></script>
     <script src="/js/validacaoRegistrar.js"></script>
     <script src="/js/validaDataCheckinCheckout.js"></script>
 </head>
@@ -75,12 +74,6 @@
                 });
             });
         }
-
-        let formularioCheckin = document.querySelector("#formularioCheckin");
-        let formularioCheckout = document.querySelector("#formularioCheckout");
-
-        formularioCheckin.addEventListener("submit", validaForm('.data-checkin'));
-        formularioCheckout.addEventListener("submit", validaForm('.data-checkout'));
     });
 </script>
 

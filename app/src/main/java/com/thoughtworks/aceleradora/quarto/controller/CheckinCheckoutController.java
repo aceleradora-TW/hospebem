@@ -1,8 +1,6 @@
 package com.thoughtworks.aceleradora.quarto.controller;
 
-import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
 import com.thoughtworks.aceleradora.quarto.dominio.QuartoRepository;
-import com.thoughtworks.aceleradora.quarto.helpers.QuartoHelper;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -43,6 +38,7 @@ public class CheckinCheckoutController {
 
         solicitacao.setDataCheckin(solicitacaoCheckin.getDataCheckin());
         solicitacao.setStatus(Solicitacao.Status.HOSPEDE);
+
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/listacheckincheckout";
@@ -55,6 +51,7 @@ public class CheckinCheckoutController {
         solicitacao.setDataCheckout(solicitacaoCheckout.getDataCheckout());
         solicitacao.setStatus(Solicitacao.Status.EX_HOSPEDE);
         solicitacao.setQuarto(null);
+
         solicitacaoRepository.save(solicitacao);
         
         return "redirect:/listacheckincheckout";

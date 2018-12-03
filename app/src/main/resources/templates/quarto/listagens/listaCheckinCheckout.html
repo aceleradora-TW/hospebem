@@ -23,14 +23,14 @@
                 <th:block th:each="solicitacao : ${solicitacoesHospedes}">
                     <div class="column is-4">
                         <div class="box">
-                            <a class="subtitle" th:href="@{/quartos/{id}/informacoes(id=${solicitacao.id})}"
+                            <a class="subtitle" th:href="@{'/quartos/' + ${solicitacao.id} + '/informacoes'}"
                                th:text="${solicitacao.nome}">
                             </a>
                             <hr>
                             <ul>
-                                <li th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
+                                <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
                                     <label class="tag is-success" th:text="${quarto.nomeQuarto}"/>
-                                </li>
+                                </th:block>
                             </ul>
                             <div class="recuperar">
                                 <strong> Data Check-In: </strong>
@@ -66,14 +66,14 @@
                 <th:block th:each="solicitacao : ${solicitacoesAceitas}">
                     <div class="column is-4">
                         <div class="box">
-                            <a class="subtitle" th:href="@{/quartos/{id}/informacoes(id=${solicitacao.id})}"
+                            <a class="subtitle" th:href="@{'/quartos/' + ${solicitacao.id} + '/informacoes'}"
                                th:text="${solicitacao.nome}">
                             </a>
                             <hr>
                             <ul>
-                                <li th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
+                                <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
                                     <label class="tag is-success" th:text="${quarto.nomeQuarto}"/>
-                                </li>
+                                </th:block>
                             </ul>
                             <hr>
                             <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkin'}"

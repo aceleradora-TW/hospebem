@@ -1,35 +1,46 @@
-const validaForm = (seletor) => (evento) => {
-    const validaCampo = (campoData) => {
+document.addEventListener('DOMContentLoaded', function() {
 
-        if (!campoData) {
+    const validaForm = (seletor) => (evento) => {
+
+        evento.preventDefault()
+
+        const validaCampo = (campoData) => {
+
+            if (!campoData) {
+                return false;
+            }
+
+            if (campoData.value === '') {
+                campoData.focus();
+                return false;
+            }
+
+            campoData.classList.add('input-fancy');
+            return true;
+        }
+
+        if (!evento) {
             return false;
         }
 
-        if (campoData.value === '') {
-            campoData.focus();
+        let campoData = evento.srcElement.querySelector(seletor);
+
+        if (!validaCampo(campoData)) {
             return false;
         }
 
-        campoData.classList.add('input-fancy');
+        evento.currentTarget.submit();
         return true;
     }
 
-    if (!evento) {
-        return false;
+    let formularioCheckin = document.querySelector("#formCheckin");
+    let formularioCheckout = document.querySelector("#formCheckout");
+
+    if (formularioCheckin) {
+        formularioCheckin.addEventListener("submit", validaForm('.data-checkin'));
     }
 
-    let campoData = evento.srcElement.querySelector(seletor);
-
-    if (!validaCampo(campoData)) {
-        return false;
+    if (formularioCheckout) {
+        formularioCheckout.addEventListener("submit", validaForm('.data-checkout'));
     }
-
-    evento.currentTarget.submit();
-    return true;
-}
-
-let formularioCheckin = document.querySelector("#formCheckin");
-let formularioCheckout = document.querySelector("#formCheckout");
-
-formularioCheckin.addEventListener("submit", validaForm('.data-checkin'));
-formularioCheckout.addEventListener("submit", validaForm('.data-checkout'));
+});
