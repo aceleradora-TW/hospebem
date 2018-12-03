@@ -58,7 +58,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Peso:</span>
-                            <input class="validate input input-fancy borda-arredondada" placeholder="Só preencha se for cadeirante" type="number" min="0" max="600" step="0.1" id="peso" value="0"  th:field="*{peso}" >
+                            <input class="validate input input-fancy borda-arredondada" name="peso" th:value="${solicitacao.peso}" >
                         </div>
                     </div>
                 </div>
@@ -102,8 +102,7 @@
                     <div class="field">
                         <div class="control">
                             <span>Data de Entrada</span>
-                            <input class="validate input input-fancy datepicker-retroativo borda-arredondada" autocomplete="off" type="text" name="dataEntrada" th:field="*{dataEntrada}"
-                                   onkeypress="return false;">
+                            <input class="validate input input-fancy datepicker-retroativo borda-arredondada" name="dataEntrada" th:field="*{dataEntrada}">
                         </div>
                     </div>
                 </div>
