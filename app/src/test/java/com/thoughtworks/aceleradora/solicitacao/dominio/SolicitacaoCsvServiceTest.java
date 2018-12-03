@@ -7,9 +7,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Collections;
 
 import static com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao.Status.*;
 import static java.util.Arrays.asList;
@@ -101,13 +98,13 @@ public class SolicitacaoCsvServiceTest {
             setNome("ExHospede");
             setStatus(EX_HOSPEDE);
             setGenero("?");
-            setDataNascimento(LocalDate.parse("1998-12-22"));
+            setDataNascimento(null);
             setSituacao("PRE_TRANSPLANTE");
             setOrgao("Pele");
             setCadeirante("Sim");
             setTelefone("9999");
-            setDataEntrada(LocalDate.parse("2018-12-22"));
-            setDataSaida(LocalDate.parse("2019-01-20"));
+            setDataEntrada(null);
+            setDataSaida(null);
 
             setEndereco(new Endereco() {{
                 setRua("Rua dos biguas");
@@ -121,7 +118,7 @@ public class SolicitacaoCsvServiceTest {
                     new Acompanhante() {{
                         setNome("Acompanhante Ex Hospede");
                         setGenero("?");
-                        setDataNascimento(LocalDate.parse("1999-12-20"));
+                        setDataNascimento(null);
                     }}
             ));
         }};
@@ -149,9 +146,9 @@ public class SolicitacaoCsvServiceTest {
                         "2019-01-20,Rua das Caturritas,1000,Alvorada,Jardim Algarve,RS," +
                         "Acompanhante Hospede,?,1999-12-20" +
                         "\n" +
-                        "ExHospede,EX_HOSPEDE,?,1998-12-22,PRE_TRANSPLANTE,Pele,Sim,9999,2018-12-22," +
-                        "2019-01-20,Rua dos biguas,1000,Alvorada,Jardim Algarve,RS," +
-                        "Acompanhante Ex Hospede,?,1999-12-20"
+                        "ExHospede,EX_HOSPEDE,?,-,PRE_TRANSPLANTE,Pele,Sim,9999,-," +
+                        "-,Rua dos biguas,1000,Alvorada,Jardim Algarve,RS," +
+                        "Acompanhante Ex Hospede,?,-"
         ));
     }
 }

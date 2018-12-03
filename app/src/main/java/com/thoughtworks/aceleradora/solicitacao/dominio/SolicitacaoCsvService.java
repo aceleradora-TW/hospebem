@@ -3,7 +3,9 @@ package com.thoughtworks.aceleradora.solicitacao.dominio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao.Status.*;
@@ -48,10 +50,10 @@ public class SolicitacaoCsvService {
     private String paciente(Solicitacao solicitacao) {
         return juntar(
                 solicitacao.getNome(), solicitacao.getStatus().toString(),
-                solicitacao.getGenero(), solicitacao.getDataNascimento().toString(),
+                solicitacao.getGenero(), data(solicitacao.getDataNascimento()),
                 solicitacao.getSituacao(), solicitacao.getOrgao(), solicitacao.getCadeirante(),
-                solicitacao.getTelefone(), solicitacao.getDataEntrada().toString(),
-                solicitacao.getDataSaida().toString()
+                solicitacao.getTelefone(), data(solicitacao.getDataEntrada()),
+                data(solicitacao.getDataSaida())
         );
     }
 
@@ -68,8 +70,12 @@ public class SolicitacaoCsvService {
                 .stream()
                 .map(acompanhante -> juntar(
                         acompanhante.getNome(), acompanhante.getGenero(),
-                        acompanhante.getDataNascimento().toString()))
+                        data(acompanhante.getDataNascimento())))
                 .collect(joining(","));
+    }
+
+    private String data(LocalDate data) {
+        return Optional.ofNullable(data).map(LocalDate::toString).orElse("-");
     }
 
     private String juntar(String... valores) {
