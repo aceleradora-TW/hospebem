@@ -24,16 +24,22 @@
                     <h3 class="title is-3 v center has-text-centered"> Dados do Usuario</h3>
                 </div>
                 <div class="columns is-mobile card-content">
-                    <form th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
-                          id="listaUsuario">
+                    <form th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post">
+
+
                         <div class="column">
                             <div class="field">
                                 <div class="control">
-                                    <span>Nome Usuário</span>
+                                    <p class="control has-icons-left has-icons-right margin-left-10">
+                                        <i class="fas fa-user"></i>
+                                        <span>Usuário</span>
+                                    </p>
                                     <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
                                 </div>
                             </div>
                         </div>
+
+                        <div id="camposAssistenteHospital" th:class="${usuarios.cargo.toString() == 'ADMINISTRADOR'} ? 'display-none' : ''">
                         <div class="column">
                             <div class="field">
                                 <div class="control">
@@ -65,6 +71,8 @@
                                     <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.telefone}">
                                 </div>
                             </div>
+                        </div>
+
                         </div>
                         <div>
                             <a th:href="@{/listaUsuarios}">

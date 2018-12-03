@@ -35,18 +35,43 @@
                                     </div>
                                     <hr>
                                     <div class="centralizar">
-                                        <label th:text="${usuario.cargo}"></label>
+                                        <label id="tipoCargo" th:text="${usuario.cargo}"></label>
                                     </div>
                                     <hr>
+
+
+
+
+
+
+
+
                                     <div class="centralizar">
-                                        <a th:href="@{'/' + ${usuario.id} + '/editaUsuario'}">
-                                            <button class="button borda-arredondada is-mobile" type="button">
-                                                <label>Editar</label>
-                                                <label class="icon is-small">
-                                                     <i class="fas fas fa-edit"></i>
-                                                </label>
-                                            </button>
-                                        </a>
+                                        <div>
+                                            <!--<th:block th:if="${usuario.cargo.toString()} != 'ADMINISTRADOR'">-->
+
+                                                <div>
+                                                    <a th:href="@{'/' + ${usuario.id} + '/editaUsuario'}">
+                                                        <button class="button borda-arredondada is-mobile" type="button" onsubmit="return validaUsuario(event)">
+                                                            <label>Editar</label>
+                                                            <label class="icon is-small">
+                                                                <i class="fas fas fa-edit"></i>
+                                                            </label>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            <!--</th:block>-->
+                                        </div>
+
+
+
+
+
+
+
+
+
+
                                         <a th:href="@{'/' + ${usuario.id} + '/excluirUsuario'}">
                                             <button class="button is-danger borda-arredondada" type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">
                                                 <label>Excluir</label>
@@ -55,6 +80,7 @@
                                                 </label>
                                             </button>
                                         </a>
+
                                     </div>
                                 </div>
                             </div>
