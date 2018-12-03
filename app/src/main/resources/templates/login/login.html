@@ -27,7 +27,7 @@
     <div class="container card-content valign center has-text-centered">
         <form th:action="@{/login}" method="POST" onsubmit="return validaLogin(event)">
             <h1 class="title is-1">HospeBem</h1>
-            <div th:if="${param.error}" class="">
+            <div th:if="${param.error}">
                 <p class="has-text-danger"> Usuário ou senha incorretos!</p>
             </div>
             <div class="columns">

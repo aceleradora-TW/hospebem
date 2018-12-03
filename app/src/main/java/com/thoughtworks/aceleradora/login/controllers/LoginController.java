@@ -113,15 +113,15 @@ public class LoginController {
         return "redirect:/listaUsuarios";
     }
 
-    @GetMapping("/{id}/excluir")
+    @GetMapping("/{id}/excluirUsuario")
     public String excluirUsuario(@PathVariable Long id) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
-            if (usuarioOptional.isPresent()) {
-                usuarioRepository.deleteById(id);
-            }
-
+        if (usuarioOptional.isPresent()) {
+            usuarioRepository.deleteById(id);
             return "redirect:/listaUsuarios";
         }
+        return "404";
+    }
 
     @GetMapping(value = "/login")
     public String login() {

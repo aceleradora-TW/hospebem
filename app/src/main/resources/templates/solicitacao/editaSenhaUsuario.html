@@ -9,18 +9,29 @@
 <main>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
     <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                        <li><a th:href="@{'/listaUsuarios'}" class="has-text-black" href="#" aria-current="page">Lista de Usuários</a></li>
+                        <li><a th:href="@{'/' + ${usuarios.id} + '/editaUsuario'}" class="has-text-black">Dados do Usuário</a></li>
+                        <li><a th:href="@{'/' + ${usuarios.id} + '/editaSenhaUsuario'}">Senha do Usuário</a></li>
+
+                    </ul>
+                </nav>
+            </div>
         <div class="card-content valign center has-text-centered">
             <div class="column">
                 <h3 class="title is-3 v center has-text-centered"> Editar Senha do Usuario</h3>
             </div>
             <div class="columns is-mobile card-content">
-                <form th:action="@{/{id}/editaSenhaUsuario(id=${usuarios.id})}" method="post"
-                      id="senhaUsuario">
+                <form th:action="@{/{id}/editaSenhaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaSenhaUsuario(event)" id="senhaUsuario">
                     <div class="column">
                         <div class="field">
                             <div class="control">
                                 <span>Senha</span>
-                                <input class="validate input input-fancy" type="text" th:field="*{usuarios.senha}">
+                                <input class="validate input input-fancy" id="passwordUser" type="password" th:field="*{usuarios.senha}">
                             </div>
                         </div>
                     </div>
@@ -31,9 +42,11 @@
                                 <span class="icon is-small"><i class="fas fa-gavel"></i></span>
                             </button>
                         </a>
+                    </div>
                 </form>
             </div>
         </div>
+    </div>
     </div>
 </main>
 </body>

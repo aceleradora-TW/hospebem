@@ -9,78 +9,81 @@
 <main>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
     <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
-        <div class="card-content valign center has-text-centered">
-            <div class="column">
-                <h3 class="title is-3 v center has-text-centered"> Dados do Usuario</h3>
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                        <li><a th:href="@{'/listaUsuarios'}" class="has-text-black" href="#" aria-current="page">Lista de Usuários</a></li>
+                        <li><a th:href="@{'/' + ${usuarios.id} + '/editaUsuario'}">Dados do Usuário</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="columns is-mobile card-content">
-                <form th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
-                      id="listaUsuario">
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span>Nome Usuário</span>
-                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
+            <div class="card-content valign center has-text-centered">
+                <div class="column">
+                    <h3 class="title is-3 v center has-text-centered"> Dados do Usuario</h3>
+                </div>
+                <div class="columns is-mobile card-content">
+                    <form th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
+                          id="listaUsuario">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Nome Usuário</span>
+                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span>Nome</span>
-                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nomeAssistente}">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Nome</span>
+                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nomeAssistente}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span>Email</span>
-                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.email}">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Email</span>
+                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.email}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span>Hospital de Refêrencia</span>
-                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.hospitalReferencia}">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Hospital de Refêrencia</span>
+                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.hospitalReferencia}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <div class="control">
-                                <span>Telefone</span>
-                                <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.telefone}">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <span>Telefone</span>
+                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.telefone}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <a th:href="@{/listaUsuarios}">
-                            <button type="submit" class="button verde-viavida borda-arredondada">
-                                <span>Salvar</span>
-                                <span class="icon is-small"><i class="fas fa-gavel"></i></span>
-                            </button>
-                        </a>
-                        <a th:action="@{/{id}/excluirUsuario(id=${usuarios.id})}">
-                            <button class="button is-danger borda-arredondada" type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">
-                                <span>Excluir</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-trash-alt"></i>
-                                </span>
-                            </button>
-                        </a>
-                        <a th:href="@{/{id}/editaSenhaUsuario(id=${usuarios.id})}">
-                            <button class="button borda-arredondada" type="button">
-                                <span>Editar Senha</span>
-                                <span class="icon is-small">
+                        <div>
+                            <a th:href="@{/listaUsuarios}">
+                                <button type="submit" class="button verde-viavida borda-arredondada">
+                                    <span>Salvar</span>
+                                    <span class="icon is-small"><i class="fas fa-gavel"></i></span>
+                                </button>
+                            </a>
+                            <a th:href="@{'/' + ${usuarios.id} + '/editaSenhaUsuario'}">
+                                <button class="button borda-arredondada" type="button">
+                                    <span>Editar Senha</span>
+                                    <span class="icon is-small">
                                     <i class="fas fas fa-edit"></i>
                                 </span>
-                            </button>
-                        </a>
-                    </div>
-                </form>
+                                </button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

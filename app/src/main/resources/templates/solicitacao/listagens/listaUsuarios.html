@@ -12,22 +12,54 @@
     </div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
-            <div class="is-mobile">
-                <div>
-                    <h1 class="title is-half centralizar espacamento">Lista de Gerenciamento de Usuários</h1>
-                    <div class="is-mobile is-centered">
-                        <div class="is-mobile is-centered"></div>
-                        <table class="table centralizar">
-                            <tr>
-                                <th>Nome</th>
-                            </tr>
-                            <tr th:each="usuarios : ${usuarios}">
-                                <td>
-                                    <a th:href="@{/{id}/editaUsuario(id=${usuarios.id})}" class="has-text-centered" th:text="${usuarios.nome}"></a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                        <li><a th:href="@{'/listaUsuarios'}" class="has-text-black" href="#" aria-current="page">Lista de Usuários</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="column">
+                <h3 class="title is-3 v center has-text-centered">Lista de Gerenciamento de Usuários</h3>
+            </div>
+            <div class="section">
+                <div class="columns is-multiline is-lefty">
+                    <th:block th:each="usuario : ${usuarios}">
+                        <div class="column is-3 is-mobile">
+                            <div class="box box-shadow">
+                                <div class="column">
+                                    <div class="centralizar">
+                                        <strong>Nome </strong>
+                                        <label class="has-text-centered" th:text="${usuario.nome}"></label>
+                                    </div>
+                                    <hr>
+                                    <div class="centralizar">
+                                        <label th:text="${usuario.cargo}"></label>
+                                    </div>
+                                    <hr>
+                                    <div class="centralizar">
+                                        <a th:href="@{'/' + ${usuario.id} + '/editaUsuario'}">
+                                            <button class="button borda-arredondada is-mobile" type="button">
+                                                <label>Editar</label>
+                                                <label class="icon is-small">
+                                                     <i class="fas fas fa-edit"></i>
+                                                </label>
+                                            </button>
+                                        </a>
+                                        <a th:href="@{'/' + ${usuario.id} + '/excluirUsuario'}">
+                                            <button class="button is-danger borda-arredondada" type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">
+                                                <label>Excluir</label>
+                                                <label class="icon is-small">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </label>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
                 </div>
             </div>
         </div>

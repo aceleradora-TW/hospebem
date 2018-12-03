@@ -21,6 +21,7 @@
     <script src="/js/validaCadastroSolicitacao.js"></script>
     <script src="/js/validacaoRegistrar.js"></script>
     <script src="/js/validaDataCheckinCheckout.js"></script>
+    <script src="/js/validaSenhaUsuario.js"></script>
 </head>
 
 <body>
@@ -65,6 +66,9 @@
         }
 
         registraAssistente();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
 
         const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 

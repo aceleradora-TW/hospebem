@@ -6,7 +6,7 @@
 </head>
 <body>
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
             <div class="section">
@@ -47,7 +47,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </main>
 </body>
 </html>
