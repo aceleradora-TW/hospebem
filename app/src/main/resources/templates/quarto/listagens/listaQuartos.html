@@ -6,7 +6,9 @@
 </head>
 <body>
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
             <div class="section">
@@ -28,9 +30,9 @@
                         <div class="column is-3">
                             <div class="box box-shadow">
                                 <div class="column">
-                                    <a  class="centralizar" th:href="@{/quarto/{idSolicitacao}/quarto/{idQuarto}(idSolicitacao=${solicitacao.id}, idQuarto=${quarto.id})}">
+                                    <a  class="centralizar" th:href="@{'/quarto/' + ${solicitacao.id} + '/quarto/' + ${quarto.id}}">
                                         <button type="reset" class="button is-success red " th:if="${quarto.leitosDisponiveis() <= 0 || numeroHospedes > quarto.leitosDisponiveis()}" th:text="${quarto.nomeQuarto}"></button>
-                                        <button type="submit" class="button is-success"  th:if="${quarto.leitosDisponiveis() > 0 && numeroHospedes <= quarto.leitosDisponiveis()} " th:text="${quarto.nomeQuarto}"></button>
+                                        <button type="submit" class="button is-success"  th:if="${quarto.leitosDisponiveis() > 0 && numeroHospedes <= quarto.leitosDisponiveis()}" th:text="${quarto.nomeQuarto}"></button>
                                     </a>
                                     <div class="centralizar">
                                         <strong>Tipo:</strong>

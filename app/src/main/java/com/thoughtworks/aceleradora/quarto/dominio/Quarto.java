@@ -47,14 +47,12 @@ public class Quarto {
                   Status status,
                   String tipo,
                   int quantidadeLeitos,
-
                   List<Solicitacao> solicitacoes)
     {
         this.nomeQuarto = nomeQuarto;
         this.status = status;
         this.tipo = tipo;
         this.quantidadeLeitos = quantidadeLeitos;
-
         this.solicitacoes = solicitacoes;
     }
 

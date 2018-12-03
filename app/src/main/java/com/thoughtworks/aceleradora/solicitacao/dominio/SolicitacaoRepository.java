@@ -10,7 +10,6 @@ public interface SolicitacaoRepository
         extends JpaRepository<Solicitacao,Long> {
     List<Solicitacao> findAllByStatus(Solicitacao.Status title);
     List<Solicitacao> findAllByNomeSolicitante(String nome);
-    List<Solicitacao> findAllByOrderByNome();
     List<Solicitacao> findAllByStatusOrderByNome(Solicitacao.Status title);
 
 }

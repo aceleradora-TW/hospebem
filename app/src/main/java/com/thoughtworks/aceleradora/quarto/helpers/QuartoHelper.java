@@ -19,7 +19,9 @@ public class QuartoHelper{
     private QuartoRepository quartoRepository;
     private SolicitacaoRepository solicitacaoRepository;
 
-    public QuartoHelper() { }
+    public QuartoHelper() {
+
+    }
 
     @Autowired
     public QuartoHelper(QuartoRepository quartoRepository, SolicitacaoRepository solicitacaoRepository){
@@ -54,8 +56,6 @@ public class QuartoHelper{
     public Set<Solicitacao> ocupantes(List<Solicitacao> solicitacoes){
         return solicitacoes
                 .stream()
-                .filter(solicitacao -> solicitacao.getStatus() == Solicitacao.Status.EX_HOSPEDE)
-                .peek(solicitacao -> solicitacoes.remove(solicitacao))
                 .collect(Collectors.toSet());
     }
 
