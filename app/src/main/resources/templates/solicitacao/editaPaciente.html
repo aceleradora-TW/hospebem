@@ -101,8 +101,11 @@
                 <div class="column">
                     <div class="field">
                         <div class="control">
-                            <span>Data de Entrada</span>
-                            <input class="validate input input-fancy datepicker-retroativo borda-arredondada" name="dataEntrada" th:field="*{dataEntrada}">
+                            <div class="control">
+                                <input id="dataEntrada" placeholder="Clique para selecionar uma data" autocomplete="off"
+                                       type="text" class="input input-fancy datepicker-futuro borda-arredondada" th:field="*{dataEntrada}"
+                                       onkeypress="return false;" >
+                            </div>
                         </div>
                     </div>
                 </div>
