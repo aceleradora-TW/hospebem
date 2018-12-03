@@ -2,8 +2,11 @@ package com.thoughtworks.aceleradora.solicitacao.dominio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Stream;
+
+import static com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao.Status.*;
 import static java.util.stream.Collectors.joining;
 
 @Service
@@ -28,9 +31,9 @@ public class SolicitacaoCsvService {
 
         String listaSolicitacoesRelatorio = solicitacoes
                 .stream()
-                .filter(solicitacao -> solicitacao.getStatus() == (Solicitacao.Status.HOSPEDE) ||
-                        solicitacao.getStatus() == (Solicitacao.Status.EX_HOSPEDE) ||
-                        solicitacao.getStatus() == (Solicitacao.Status.NEGADO)
+                .filter(solicitacao -> solicitacao.getStatus() == HOSPEDE ||
+                        solicitacao.getStatus() == EX_HOSPEDE ||
+                        solicitacao.getStatus() == NEGADO
                 )
                 .map(solicitacao -> juntar(
                         paciente(solicitacao),
@@ -73,22 +76,4 @@ public class SolicitacaoCsvService {
         return Stream.of(valores).collect(joining(","));
     }
 
-    private String getAcompanhantesToString(Solicitacao solicitacao) {
-        StringBuilder retorno = new StringBuilder(" ");
-
-        if(solicitacao !=null) {
-            for (Acompanhante acompanhante : solicitacao.getAcompanhantes()) {
-                if (acompanhante != null) {
-                    retorno
-                            .append(acompanhante.getNome())
-                            .append(",")
-                            .append(acompanhante.getGenero())
-                            .append(",")
-                            .append(acompanhante.getDataNascimento().toString())
-                            .append(",");
-                }
-            }
-        }
-        return retorno.toString();
-    }
 }
