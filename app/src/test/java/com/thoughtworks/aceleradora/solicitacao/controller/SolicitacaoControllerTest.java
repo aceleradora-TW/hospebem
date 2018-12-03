@@ -130,7 +130,6 @@ public class SolicitacaoControllerTest {
         model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         model.addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
-
     }
     
     @Test

@@ -124,11 +124,12 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setDataSaida(solicitacao.getDataSaida());
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
-        solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-
-        for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
-            acompanhante.setSolicitacao(solicitacaoAtualizada);
-        }
+        solicitacaoAtualizada
+                .setAcompanhantes(solicitacao
+                        .getAcompanhantes()
+                        .stream()
+                        .peek(acompanhante -> acompanhante.setSolicitacao(solicitacaoAtualizada))
+                        .collect(Collectors.toList()));
 
         solicitacaoRepository.save(solicitacaoAtualizada);
         return "redirect:/solicitacao/hospital/lista";

@@ -29,8 +29,8 @@ public class CheckinCheckoutController {
     @GetMapping("/listacheckincheckout")
     public String listaCheckinCheckout(Model model){ ;
         model.addAttribute("quartos", quartoRepository.findAll());
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatusOrderByNome(Solicitacao.Status.ACEITO.toString()));
-        model.addAttribute("solicitacoesHospedes", solicitacaoRepository.findAllByStatusOrderByNome(Solicitacao.Status.HOSPEDE.toString()));
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatusOrderByNome(Solicitacao.Status.ACEITO));
+        model.addAttribute("solicitacoesHospedes", solicitacaoRepository.findAllByStatusOrderByNome(Solicitacao.Status.HOSPEDE));
         model.addAttribute("solicitacao", new Solicitacao());
         model.addAttribute("formataData", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
@@ -42,7 +42,7 @@ public class CheckinCheckoutController {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
 
         solicitacao.setDataCheckin(solicitacaoCheckin.getDataCheckin());
-        solicitacao.setStatus(Solicitacao.Status.HOSPEDE.toString());
+        solicitacao.setStatus(Solicitacao.Status.HOSPEDE);
         solicitacaoRepository.save(solicitacao);
 
         return "redirect:/listacheckincheckout";
@@ -53,7 +53,7 @@ public class CheckinCheckoutController {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
 
         solicitacao.setDataCheckout(solicitacaoCheckout.getDataCheckout());
-        solicitacao.setStatus(Solicitacao.Status.EX_HOSPEDE.toString());
+        solicitacao.setStatus(Solicitacao.Status.EX_HOSPEDE);
         solicitacao.setQuarto(null);
         solicitacaoRepository.save(solicitacao);
         
