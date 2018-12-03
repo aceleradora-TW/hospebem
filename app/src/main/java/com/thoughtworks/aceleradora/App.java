@@ -28,7 +28,7 @@ public class App {
     @Bean
     public MessageSource messageSource(){
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath: /mensagens/mensagens");
+        messageSource.setBasename("classpath:/mensagens/mensagens");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
