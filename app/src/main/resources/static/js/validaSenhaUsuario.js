@@ -7,12 +7,13 @@ function validaSenhaUsuario(event) {
 }
 
 function validarCampoSenhaUsuario() {
-    var senha = document.getElementById('passwordUser')
+    let senha = document.getElementById('passwordUser')
 
     if (senha.value === '') {
-        alert('Informe uma senha para autenticar')
+        senha.placeholder = 'Insira o campo requisitado'
         senha.classList.remove('input-fancy')
         senha.classList.add('is-danger')
+        senha.focus()
         return false
     }
     return true

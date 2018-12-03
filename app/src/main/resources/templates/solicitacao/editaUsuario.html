@@ -24,7 +24,7 @@
                     <h3 class="title is-3 v center has-text-centered"> Dados do Usuario</h3>
                 </div>
                 <div class="columns is-mobile card-content">
-                    <form th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post">
+                    <form th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaUsuario(event)">
 
 
                         <div class="column">
@@ -34,7 +34,7 @@
                                         <i class="fas fa-user"></i>
                                         <span>Usuário</span>
                                     </p>
-                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
+                                    <input id="usuario" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nome}">
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             <div class="field">
                                 <div class="control">
                                     <span>Nome</span>
-                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nomeAssistente}">
+                                    <input id="nome" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nomeAssistente}">
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                             <div class="field">
                                 <div class="control">
                                     <span>Email</span>
-                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.email}">
+                                    <input id="email" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.email}">
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                             <div class="field">
                                 <div class="control">
                                     <span>Hospital de Refêrencia</span>
-                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.hospitalReferencia}">
+                                    <input id="hospitalReferencia" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.hospitalReferencia}">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             <div class="field">
                                 <div class="control">
                                     <span>Telefone</span>
-                                    <input class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.telefone}">
+                                    <input id="telefone" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.telefone}">
                                 </div>
                             </div>
                         </div>

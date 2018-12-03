@@ -3,6 +3,7 @@ package com.thoughtworks.aceleradora.login.servicos.controllers;
 import com.thoughtworks.aceleradora.login.controllers.LoginController;
 import com.thoughtworks.aceleradora.login.dominio.Cargo;
 import com.thoughtworks.aceleradora.login.dominio.Usuario;
+import com.thoughtworks.aceleradora.login.dominio.UsuarioRepository;
 import com.thoughtworks.aceleradora.login.servicos.UsuarioService;
 import com.thoughtworks.aceleradora.login.validador.UsuarioValidador;
 import org.junit.Before;
@@ -23,6 +24,8 @@ public class LoginControllerTest {
     @Mock
     UsuarioService usuarioService;
     @Mock
+    UsuarioRepository usuarioRepository;
+    @Mock
     Model model;
 
     LoginController loginController;
@@ -30,7 +33,7 @@ public class LoginControllerTest {
     @Before
     public void setup() {
         initMocks(this);
-        loginController = new LoginController(usuarioValidador, usuarioService);
+        loginController = new LoginController(usuarioValidador, usuarioService, usuarioRepository);
     }
 
     @Test
