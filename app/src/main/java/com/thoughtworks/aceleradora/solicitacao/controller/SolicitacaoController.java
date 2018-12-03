@@ -37,14 +37,13 @@ public class SolicitacaoController {
 
     @PostMapping("/cadastro")
     public String salvaSolicitacao(Solicitacao solicitacao) {
-        solicitacao.getAcompanhantes().forEach(acompanhante -> acompanhante.setSolicitacao(solicitacao));
-
-        if (solicitacao.getAcompanhantes().size() == 2) {
-            Acompanhante acompanhante = solicitacao.getAcompanhantes().get(1);
-            if (acompanhante.getNome().isEmpty() || acompanhante.getDataNascimento() == null ) {
-                solicitacao.getAcompanhantes().remove(1);
-            }
-        }
+        solicitacao
+            .setAcompanhantes(solicitacao
+                .getAcompanhantes()
+                .stream()
+                .filter(acompanhante -> (acompanhante.getNome().isEmpty() || acompanhante.getDataNascimento() != null))
+                .peek(acompanhante -> acompanhante.setSolicitacao(solicitacao))
+                .collect(Collectors.toList()));
 
         solicitacaoRepository.save(solicitacao);
         emailComponent.notificaCasa(solicitacao);
