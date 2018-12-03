@@ -79,7 +79,7 @@ public class SolicitacaoControllerTest {
     @Test
     public void renderizaSolicitacoesDaCasaComTodasSolicitacoesPendentes() {
         List<Solicitacao> solicitacoesPendentes = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAllByStatus(Solicitacao.Status.PENDENTE.toString())).thenReturn(solicitacoesPendentes);
+        when(repositorio.findAllByStatus(Solicitacao.Status.PENDENTE)).thenReturn(solicitacoesPendentes);
 
         String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
 
@@ -90,7 +90,7 @@ public class SolicitacaoControllerTest {
     @Test
     public void deveRenderizarListaDeHospedes() {
         List<Solicitacao> solicitacoesAceitas = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAllByStatus(Solicitacao.Status.ACEITO.toString())).thenReturn(solicitacoesAceitas);
+        when(repositorio.findAllByStatus(Solicitacao.Status.ACEITO)).thenReturn(solicitacoesAceitas);
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
 
@@ -130,7 +130,6 @@ public class SolicitacaoControllerTest {
         model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         model.addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
-
     }
     
     @Test

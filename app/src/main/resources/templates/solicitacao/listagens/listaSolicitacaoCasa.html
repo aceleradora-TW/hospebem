@@ -36,14 +36,14 @@
                             <hr>
                             <div class="field has-addons">
                                 <div class="control">
-                                    <a th:href="@{/solicitacao/{id}/dados(id=${solicitacao.id})}">
+                                    <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/dados'}">
                                             <button type="submit" class="button borda-arredondada">
                                                 Ver informações
                                             </button>
                                         </a>
                                     </div>
                                     <div class="control">
-                                        <a th:href="@{/quarto/{id}/listaQuartos(id=${solicitacao.id})}">
+                                        <a th:href="@{'/quarto/' + ${solicitacao.id} + '/listaQuartos'}">
                                             <button type="submit" class="button verde-viavida borda-arredondada">
                                                 Selecionar quarto
                                             </button>

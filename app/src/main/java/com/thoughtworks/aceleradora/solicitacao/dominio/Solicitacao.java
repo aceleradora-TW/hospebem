@@ -35,7 +35,8 @@ public class Solicitacao {
 
     private String cadeirante;
 
-    private String status = Status.PENDENTE.toString();
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.PENDENTE;
 
     private Float peso;
 
@@ -91,7 +92,7 @@ public class Solicitacao {
                        String situacao,
                        String telefone,
                        String cadeirante,
-                       String status,
+                       Status status,
                        float peso,
                        LocalDate dataNascimento,
                        LocalDate dataEntrada,
@@ -244,11 +245,11 @@ public class Solicitacao {
         this.acompanhantes = acompanhantes;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

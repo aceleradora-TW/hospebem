@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/quarto")
@@ -82,7 +82,7 @@ public class QuartoController{
 
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacao.setStatus(Solicitacao.Status.NEGADO.toString());
+            solicitacao.setStatus(Solicitacao.Status.NEGADO);
 
             solicitacaoRepository.save(solicitacao);
             emailComponent.notificaHospital(solicitacao);

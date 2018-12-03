@@ -24,7 +24,8 @@ public class Quarto {
     private String nomeQuarto;
 
     @Column (name = "status_quartos")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     private String tipo;
 
@@ -43,7 +44,7 @@ public class Quarto {
     }
 
     public Quarto(String nomeQuarto,
-                  String status,
+                  Status status,
                   String tipo,
                   int quantidadeLeitos,
 
@@ -69,11 +70,11 @@ public class Quarto {
         this.nomeQuarto = nomeQuarto;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

@@ -58,7 +58,7 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE.toString()));
+        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
@@ -77,7 +77,7 @@ public class SolicitacaoController {
 
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(Solicitacao.Status.ACEITO.toString()));
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(Solicitacao.Status.ACEITO));
 
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
@@ -124,11 +124,12 @@ public class SolicitacaoController {
         solicitacaoAtualizada.setDataSaida(solicitacao.getDataSaida());
         solicitacaoAtualizada.setEndereco(solicitacao.getEndereco());
 
-        solicitacaoAtualizada.setAcompanhantes(solicitacao.getAcompanhantes());
-
-        for (Acompanhante acompanhante : solicitacaoAtualizada.getAcompanhantes()) {
-            acompanhante.setSolicitacao(solicitacaoAtualizada);
-        }
+        solicitacaoAtualizada
+                .setAcompanhantes(solicitacao
+                        .getAcompanhantes()
+                        .stream()
+                        .peek(acompanhante -> acompanhante.setSolicitacao(solicitacaoAtualizada))
+                        .collect(Collectors.toList()));
 
         solicitacaoRepository.save(solicitacaoAtualizada);
         return "redirect:/solicitacao/hospital/lista";
