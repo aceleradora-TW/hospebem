@@ -34,7 +34,7 @@
                             </ul>
                             <div class="recuperar">
                                 <strong> Data Check-In: </strong>
-                                <span th:text="${solicitacao.formataData()}"></span>
+                                <span th:text="${solicitacao.dataCheckin.format(formataData)}"></span>
                             </div>
                             <hr>
                             <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkout'}"
