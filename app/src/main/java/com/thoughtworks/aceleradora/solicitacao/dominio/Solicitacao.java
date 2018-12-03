@@ -5,7 +5,9 @@ import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import static java.time.format.DateTimeFormatter.ofPattern;
 import static javax.persistence.CascadeType.ALL;

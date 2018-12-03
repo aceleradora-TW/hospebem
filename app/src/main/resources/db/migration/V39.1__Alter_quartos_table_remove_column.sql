@@ -1,0 +1,1 @@
+ALTER TABLE quartos DROP COLUMN leitos_disponiveis;

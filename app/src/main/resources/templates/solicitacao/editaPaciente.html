@@ -20,7 +20,7 @@
             <h3 class="title is-3 v center has-text-centered"> Dados do paciente</h3>
         </div>
         <div class="columns is-mobile card-content">
-            <form th:object="${solicitacao}" th:action="@{/solicitacao/{id}/editar(id=${solicitacao.id})}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
+            <form th:object="${solicitacao}" th:action="@{'/solicitacao/' + ${solicitacao.id} + '/editar'}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
                   id="formSolicitacao">
                 <div class="column">
                     <div class="field">

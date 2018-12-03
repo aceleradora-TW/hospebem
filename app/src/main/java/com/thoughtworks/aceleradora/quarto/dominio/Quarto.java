@@ -1,8 +1,10 @@
 package com.thoughtworks.aceleradora.quarto.dominio;
 
+import com.thoughtworks.aceleradora.quarto.helpers.QuartoHelper;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -29,11 +31,13 @@ public class Quarto {
     @Column (name = "quantidade_leitos")
     private int quantidadeLeitos;
 
-    @Column (name = "leitos_disponiveis")
-    private int leitosDisponiveis;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "quarto")
     private List<Solicitacao> solicitacoes;
+
+    public int leitosDisponiveis() {
+        QuartoHelper quartoHelper = new QuartoHelper();
+        return quantidadeLeitos - (quartoHelper.ocupantes(solicitacoes).size() * 2);
+    }
 
     public Quarto() {
     }
@@ -42,14 +46,14 @@ public class Quarto {
                   String status,
                   String tipo,
                   int quantidadeLeitos,
-                  int leitosDisponiveis,
+
                   List<Solicitacao> solicitacoes)
     {
         this.nomeQuarto = nomeQuarto;
         this.status = status;
         this.tipo = tipo;
         this.quantidadeLeitos = quantidadeLeitos;
-        this.leitosDisponiveis = leitosDisponiveis;
+
         this.solicitacoes = solicitacoes;
     }
 
@@ -85,16 +89,9 @@ public class Quarto {
         return quantidadeLeitos;
     }
 
-    public void setQuantidadeLeitos(int quantidadeLeitos) {
+    public int setQuantidadeLeitos(int quantidadeLeitos) {
         this.quantidadeLeitos = quantidadeLeitos;
-    }
-
-    public int getLeitosDisponiveis() {
-        return leitosDisponiveis;
-    }
-
-    public void setLeitosDisponiveis(int leitosDisponiveis) {
-        this.leitosDisponiveis = leitosDisponiveis;
+        return quantidadeLeitos;
     }
 
     public List<Solicitacao> getSolicitacoes() {
