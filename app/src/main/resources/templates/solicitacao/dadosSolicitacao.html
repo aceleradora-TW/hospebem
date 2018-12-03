@@ -105,7 +105,7 @@
                             <label class="label">Data de Entrada</label>
                         </div>
                         <div class="control">
-                            <input class="input input-fancy" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada.format(formatar)}" disabled>
+                            <input class="input input-fancy" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada} == null ? '' : ${solicitacao.dataEntrada.format(formatar)}" disabled>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                             <label class="label">Data de Saída (Previsão)</label>
                         </div>
                         <div class="control">
-                            <input class="input input-fancy" type="text" name="dataSaida"  th:value="${solicitacao.dataSaida.format(formatar)}" disabled>
+                            <input class="input input-fancy" type="text" name="dataSaida"  th:value="${solicitacao.dataSaida} == null ? '' : ${solicitacao.dataSaida.format(formatar)}" disabled>
                         </div>
                     </div>
                 </div>
@@ -213,7 +213,7 @@
                                     <label class="label">Data de Nascimento</label>
                                 </div>
                                 <div class="control">
-                                    <input class="input input-fancy" type="text" name="dataNascimentoAcomp" th:value="${acomp.dataNascimento.format(formatar)}" disabled>
+                                    <input class="input input-fancy" type="text" name="dataNascimentoAcomp" th:value="${acomp.dataNascimento} == null ? '' : ${acomp.dataNascimento.format(formatar)}" disabled>
                                 </div>
                             </div>
                         </div>
