@@ -8,10 +8,20 @@
 <main>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+    <div class="container">
+        <div class="section">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Inicio</a></li>
+                    <li><a th:href="@{'/solicitacao/casa/lista'}" class="has-text-black">Lista de Solicitações</a></li>
+                    <li><a th:href="@{'/solicitacao' + '/' + ${solicitacao.id} + '/dados'}">Dados do Usuário</a></li>
+                </ul>
+            </nav>
+        </div>
     <div class="card-content valign center has-text-centered">
         <div class="columns ">
             <ul th:object="${solicitacao}">
-                <h2 class="title is-2">Dados Paciente</h2>
+                <h2 class="title is-2">Dados do Paciente</h2>
 
                 <div class="column is-10">
                     <div class="field is-horizontal">
@@ -268,6 +278,8 @@
                 </div>
             </ul>
         </div>
+    </div>
+    </div>
     </div>
 </main>
 </body>

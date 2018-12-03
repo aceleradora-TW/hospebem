@@ -14,7 +14,7 @@
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
-                        <li><a th:href="@{'/listaUsuarios'}" class="has-text-black" href="#" aria-current="page">Lista de Usuários</a></li>
+                        <li><a th:href="@{'/listaUsuarios'}" class="has-text-black" aria-current="page">Lista de Usuários</a></li>
                         <li><a th:href="@{'/' + ${usuarios.id} + '/editaUsuario'}" class="has-text-black">Dados do Usuário</a></li>
                         <li><a th:href="@{'/' + ${usuarios.id} + '/editaSenhaUsuario'}">Senha do Usuário</a></li>
 

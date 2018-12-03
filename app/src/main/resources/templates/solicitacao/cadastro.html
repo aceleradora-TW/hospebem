@@ -12,7 +12,7 @@
             <div class="section">
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
-                        <li><a th:href="@{'/solicitacao/hospital/lista'}" class="has-text-black" href="#" aria-current="page">Lista solicitações</a></li>
+                        <li><a th:href="@{'/solicitacao/hospital/lista'}" class="has-text-black" aria-current="page">Lista solicitações</a></li>
                         <li><a th:href="@{'/solicitacao/cadastro'}">Solicitação de vaga</a></li>
                     </ul>
                 </nav>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="column">
-                <h3 class="title is-3 v center has-text-centered"> Dados do paciente</h3>
+                <h3 class="title is-3 v center has-text-centered"> Dados do Paciente</h3>
             </div>
             <div class="columns is-mobile card-content">
                 <form action="" th:action="@{/solicitacao/cadastro}" th:object="${solicitacao}" method="post" onsubmit="return validaCadastroSolicitacao(event)" id="formSolicitacao">
