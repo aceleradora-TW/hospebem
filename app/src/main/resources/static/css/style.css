@@ -3,6 +3,10 @@ body {
     font-size: 17px;
 }
 
+.board-item:hover{
+    text-decoration: underline;
+}
+
 .borda-arredondada {
     border-radius: 11px;
 }
