@@ -19,10 +19,14 @@
                 </ul>
             </nav>
         </div>
-    <div th:include="@{./partes/cabecalhoDadosSolicitante}"/>
-        <h1 class="title is-half centralizar espacamento-titulo" th:text="'Quarto: ' + ${quarto.nomeQuarto}"></h1>
-        <div class="is-mobile is-centered">
-            <h2 class="title is-2 is-half centralizar espacamento-titulo">Ocupado por:</h2>
+        <div th:include="@{./partes/cabecalhoDadosSolicitante}"/>
+
+            <div class="columns is-multiline is-lefty">
+                <span class="tag is-success is-medium" th:text="${quarto.nomeQuarto}"></span>
+            </div>
+
+            <div class="is-mobile is-centered">
+            <h2 class="title is-5 is-half centralizar espacamento-titulo">Ocupado por:</h2>
             <th:block th:each="ocupante : ${ocupantes}">
                 <div class="centralizar">
                     <p>
