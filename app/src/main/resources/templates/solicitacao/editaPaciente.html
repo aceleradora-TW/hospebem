@@ -234,15 +234,12 @@
 </main>
 </body>
 <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded',  () => {
+        let datepickerFields = document.getElementsByClassName('datepicker');
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var datepickerFields = document.getElementsByClassName('datepicker');
-
-        for (var i = 0; i < datepickerFields.length; i++) {
+        for (let i = 0; i < datepickerFields.length; i++) {
             seletorDeData(datepickerFields[i]);
         }
     })
-
 </script>
-
 </html>

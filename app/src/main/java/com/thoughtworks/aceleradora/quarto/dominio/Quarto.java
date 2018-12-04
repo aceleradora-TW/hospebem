@@ -4,7 +4,6 @@ import com.thoughtworks.aceleradora.quarto.helpers.QuartoHelper;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;

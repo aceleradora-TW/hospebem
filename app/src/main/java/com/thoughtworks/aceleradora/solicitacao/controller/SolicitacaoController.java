@@ -1,17 +1,23 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
 import com.thoughtworks.aceleradora.email.component.EmailComponent;
-import com.thoughtworks.aceleradora.solicitacao.dominio.*;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
+import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -58,19 +64,18 @@ public class SolicitacaoController {
                 .getYears();
 
         model.addAttribute("calculadoraIdade", calculadoraIdade);
-        model.addAttribute("solicitacoesCasa", solicitacaoRepository.findAllByStatus(Solicitacao.Status.PENDENTE));
+        model.addAttribute("solicitacoesCasa",
+                solicitacaoRepository.findAllByStatusOrderByNome(
+                        Solicitacao.Status.PENDENTE));
 
         return "solicitacao/listagens/listaSolicitacaoCasa";
     }
 
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        List <Solicitacao> solicitacoesHospital =
-                solicitacaoRepository.findAllByNomeSolicitante(auth.getName());
-
-        model.addAttribute("solicitacoesHospital", solicitacoesHospital);
+        model.addAttribute("solicitacoesHospital",
+                solicitacaoRepository.findAllByOrderByIdDesc());
 
         return "solicitacao/listagens/listaSolicitacaoHospital";
     }
@@ -84,29 +89,21 @@ public class SolicitacaoController {
 
     @GetMapping("{id}/dados")
     public String mostraDadosPaciente(Model model, @PathVariable Long id) {
-        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+        model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        model.addAttribute("solicitacao", solicitacaoRepository.getOne(id));
 
-        if (solicitacaoOptional.isPresent()) {
-            Solicitacao solicitacao = solicitacaoOptional.get();
-            model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("solicitacao", solicitacao);
-
-            return "solicitacao/dadosSolicitacao";
-        }
-        return "404";
+        return "solicitacao/dadosSolicitacao";
     }
 
     @GetMapping("/{id}/editar")
     public String editaDadosHospede(Model model, @PathVariable Long id) {
-        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
-        if (solicitacaoOptional.isPresent()) {
-            Solicitacao solicitacao = solicitacaoOptional.get();
-            solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
-            model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            model.addAttribute("solicitacao", solicitacao);
-            return "solicitacao/editaPaciente";
-        }
-        return "404";
+        Solicitacao solicitacao = solicitacaoRepository.getOne(id);
+        solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
+
+        model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        model.addAttribute("solicitacao", solicitacao);
+
+        return "solicitacao/editaPaciente";
     }
 
     @PostMapping("/{id}/editar")
@@ -132,6 +129,7 @@ public class SolicitacaoController {
                         .collect(Collectors.toList()));
 
         solicitacaoRepository.save(solicitacaoAtualizada);
+
         return "redirect:/solicitacao/hospital/lista";
     }
 

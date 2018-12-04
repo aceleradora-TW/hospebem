@@ -47,7 +47,7 @@ public class EmailComponent {
         mensagem.setSubject("Status de uma solicitação foi alterado!");
         
         mensagem.setText("Status de uma solicitação de: "+ solicitacao.getNome() +
-                " foi alterado para: " + solicitacao.getStatus() + "!");
+                " foi alterado para: " + solicitacao.getStatus().toString() + "!");
 
         mensagem.setFrom(this.email);
         mensagem.setTo(solicitacao.getEmail());

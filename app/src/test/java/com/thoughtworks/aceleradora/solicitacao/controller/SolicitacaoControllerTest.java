@@ -4,7 +4,6 @@ import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import com.thoughtworks.aceleradora.email.component.EmailComponent;
-import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,8 +17,7 @@ import org.springframework.ui.Model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
@@ -29,7 +27,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class SolicitacaoControllerTest {
 
     private SolicitacaoController controller;
@@ -39,7 +37,6 @@ public class SolicitacaoControllerTest {
 
     @Mock
     private Model model;
-
 
     @Mock
     private SolicitacaoRepository repositorio;
@@ -83,7 +80,6 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
 
-        verify(model).addAttribute("solicitacoesCasa", solicitacoesPendentes);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoCasa"));
     }
 
@@ -93,6 +89,7 @@ public class SolicitacaoControllerTest {
         when(repositorio.findAllByStatus(Solicitacao.Status.ACEITO)).thenReturn(solicitacoesAceitas);
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
+
 
         verify(model).addAttribute("solicitacoesAceitas", solicitacoesAceitas);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaGerenciamentoHospede"));
@@ -130,14 +127,5 @@ public class SolicitacaoControllerTest {
         model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         model.addAttribute("solicitante", solicitacao);
         assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
-    }
-    
-    @Test
-    public void exibeTelaDeNaoEncontrarQuandoPacienteNaoExistir() {
-        when(repositorio.findById(1L)).thenReturn(Optional.empty());
-
-        String paginaRenderizada = controller.mostraDadosPaciente(model, 1L);
-
-        assertThat(paginaRenderizada, equalTo("404"));
     }
 }

@@ -1,6 +1,6 @@
 package com.thoughtworks.aceleradora.login.configuracao;
+
 import com.thoughtworks.aceleradora.login.dominio.Cargo;
-import com.thoughtworks.aceleradora.login.dominio.Usuario;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -29,9 +29,11 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
         SimpleGrantedAuthority cargo = (SimpleGrantedAuthority) authentication.getAuthorities().stream().findFirst().get();
 
         if(cargo.getAuthority().equals(Cargo.ADMINISTRADOR.getNome())) {
-            this.redirectStrategy.sendRedirect(request, response, "/bemvindo");
+             this.redirectStrategy.sendRedirect(request, response, "/bemvindo");
+
         } else if(cargo.getAuthority().equals(Cargo.ASSISTENTE_SOCIAL.getNome())) {
             this.redirectStrategy.sendRedirect(request, response, "/solicitacao/hospital/lista");
+
         } else {
             this.redirectStrategy.sendRedirect(request, response, "/bemvindo");
         }
