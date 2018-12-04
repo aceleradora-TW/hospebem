@@ -54,8 +54,6 @@ public class QuartoHelper{
     public Set<Solicitacao> ocupantes(List<Solicitacao> solicitacoes){
         return solicitacoes
                 .stream()
-                .filter(solicitacao -> solicitacao.getStatus() == Solicitacao.Status.EX_HOSPEDE)
-                .peek(solicitacao -> solicitacoes.remove(solicitacao))
                 .collect(Collectors.toSet());
     }
 

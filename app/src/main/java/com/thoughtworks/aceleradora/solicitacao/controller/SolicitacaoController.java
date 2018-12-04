@@ -41,7 +41,7 @@ public class SolicitacaoController {
             .setAcompanhantes(solicitacao
                 .getAcompanhantes()
                 .stream()
-                .filter(acompanhante -> (acompanhante.getNome().isEmpty() || acompanhante.getDataNascimento() != null))
+                .filter(acompanhante -> (!acompanhante.getNome().isEmpty() || acompanhante.getDataNascimento() != null))
                 .peek(acompanhante -> acompanhante.setSolicitacao(solicitacao))
                 .collect(Collectors.toList()));
 
