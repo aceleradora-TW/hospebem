@@ -37,12 +37,12 @@ public class LoginController {
         usuarioValidador.validate(usuario, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "registrarUsuario/registrar";
+            return "registrarUsuario/usuarioError";
         }
 
         usuarioService.salvar(usuario);
 
-        return "redirect:/registrar";
+        return "registrarUsuario/usuarioSalvo";
     }
 
     @GetMapping(value = "/login")
