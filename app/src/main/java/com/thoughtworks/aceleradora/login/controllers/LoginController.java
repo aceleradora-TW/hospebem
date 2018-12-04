@@ -1,6 +1,5 @@
 package com.thoughtworks.aceleradora.login.controllers;
 
-
 import com.thoughtworks.aceleradora.login.dominio.Cargo;
 import com.thoughtworks.aceleradora.login.dominio.Usuario;
 import com.thoughtworks.aceleradora.login.servicos.UsuarioService;
@@ -50,7 +49,6 @@ public class LoginController {
     public String login() {
         return "login/login";
     }
-
 
     @GetMapping(value = "/bemvindo")
     public String bemVindo(@ModelAttribute Usuario usuario) {

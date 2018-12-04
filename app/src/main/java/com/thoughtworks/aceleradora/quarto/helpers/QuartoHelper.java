@@ -2,15 +2,11 @@ package com.thoughtworks.aceleradora.quarto.helpers;
 
 import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
 import com.thoughtworks.aceleradora.quarto.dominio.QuartoRepository;
-import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
 import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
