@@ -2,8 +2,13 @@ package com.thoughtworks.aceleradora.solicitacao.dominio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
+
+import static com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao.Status.*;
 import static java.util.stream.Collectors.joining;
 
 @Service
@@ -28,9 +33,9 @@ public class SolicitacaoCsvService {
 
         String listaSolicitacoesRelatorio = solicitacoes
                 .stream()
-                .filter(solicitacao -> solicitacao.getStatus() == (Solicitacao.Status.HOSPEDE) ||
-                        solicitacao.getStatus() == (Solicitacao.Status.EX_HOSPEDE) ||
-                        solicitacao.getStatus() == (Solicitacao.Status.NEGADO)
+                .filter(solicitacao -> solicitacao.getStatus() == HOSPEDE ||
+                        solicitacao.getStatus() == EX_HOSPEDE ||
+                        solicitacao.getStatus() == NEGADO
                 )
                 .map(solicitacao -> juntar(
                         paciente(solicitacao),
@@ -45,10 +50,10 @@ public class SolicitacaoCsvService {
     private String paciente(Solicitacao solicitacao) {
         return juntar(
                 solicitacao.getNome(), solicitacao.getStatus().toString(),
-                solicitacao.getGenero(), solicitacao.getDataNascimento().toString(),
+                solicitacao.getGenero(), data(solicitacao.getDataNascimento()),
                 solicitacao.getSituacao(), solicitacao.getOrgao(), solicitacao.getCadeirante(),
-                solicitacao.getTelefone(), solicitacao.getDataEntrada().toString(),
-                solicitacao.getDataSaida().toString()
+                solicitacao.getTelefone(), data(solicitacao.getDataEntrada()),
+                data(solicitacao.getDataSaida())
         );
     }
 
@@ -65,30 +70,16 @@ public class SolicitacaoCsvService {
                 .stream()
                 .map(acompanhante -> juntar(
                         acompanhante.getNome(), acompanhante.getGenero(),
-                        acompanhante.getDataNascimento().toString()))
+                        data(acompanhante.getDataNascimento())))
                 .collect(joining(","));
+    }
+
+    private String data(LocalDate data) {
+        return Optional.ofNullable(data).map(LocalDate::toString).orElse("-");
     }
 
     private String juntar(String... valores) {
         return Stream.of(valores).collect(joining(","));
     }
 
-    private String getAcompanhantesToString(Solicitacao solicitacao) {
-        StringBuilder retorno = new StringBuilder(" ");
-
-        if(solicitacao !=null) {
-            for (Acompanhante acompanhante : solicitacao.getAcompanhantes()) {
-                if (acompanhante != null) {
-                    retorno
-                            .append(acompanhante.getNome())
-                            .append(",")
-                            .append(acompanhante.getGenero())
-                            .append(",")
-                            .append(acompanhante.getDataNascimento().toString())
-                            .append(",");
-                }
-            }
-        }
-        return retorno.toString();
-    }
 }
