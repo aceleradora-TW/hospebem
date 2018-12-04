@@ -6,11 +6,15 @@
 <body>
 <main>
     <div class="container card-content valign center has-text-centered">
-        <div class="section">
+        <div class="box section">
             <nav class="breadcrumb" aria-label="breadcrumbs">
-                <ul><div><span>Ja existe um registro com este nome de usuario </span></div>
-                    <li><a th:href="@{'/registrar'}">Registrar</a></li>
-                </ul>
+                <div>
+                    <span>Já existe um registro com este nome de usuário. Por favor, insira um nome de usuário válido. </span>
+                </div>
+                <div>
+                    <button class="button verde-viavida borda-arredondada" ><a th:href="@{'/registrar'}">Registrar novamente</a></button>
+
+                </div>
             </nav>
         </div>
     </div>
