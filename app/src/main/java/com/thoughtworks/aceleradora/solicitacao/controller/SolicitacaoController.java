@@ -70,7 +70,12 @@ public class SolicitacaoController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         List <Solicitacao> solicitacoesHospital =
-                solicitacaoRepository.findAllByNomeSolicitante(auth.getName());
+                solicitacaoRepository.findAllByNomeSolicitante(auth.getName())
+                .stream()
+                .filter(solicitacao -> solicitacao.getStatus() == Solicitacao.Status.ACEITO ||
+                        solicitacao.getStatus() == Solicitacao.Status.NEGADO ||
+                        solicitacao.getStatus() == Solicitacao.Status.PENDENTE)
+                .collect(Collectors.toList());
 
         model.addAttribute("solicitacoesHospital", solicitacoesHospital);
 

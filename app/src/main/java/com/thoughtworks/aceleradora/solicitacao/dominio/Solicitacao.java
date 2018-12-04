@@ -74,7 +74,7 @@ public class Solicitacao {
     private Quarto quarto;
 
     @Column(name="nome_solicitante")
-    private String nomeSolicitante ;
+    private String nomeSolicitante;
 
     @Column(name="hospital_referencia")
     private String hospitalReferencia;
