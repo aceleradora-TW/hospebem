@@ -33,7 +33,7 @@ public class LoginControllerTest {
     @Before
     public void setup() {
         initMocks(this);
-        loginController = new LoginController(usuarioValidador, usuarioService, usuarioRepository);
+        loginController = new LoginController(usuarioValidador, usuarioService);
     }
 
     @Test
