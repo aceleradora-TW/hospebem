@@ -84,11 +84,11 @@
                                 <span>*Situação do Hóspede:</span>
                                 <div>
                                     <label>
-                                        <input th:field="*{situacao}" type="radio" value="pre-transplante" id="situacao.pre" >
+                                        <input th:field="*{situacao}" type="radio" value="Pré-transplante" id="situacao.pre" >
                                         <span>Pré-transplante</span>
                                     </label>
                                     <label>
-                                        <input th:field="*{situacao}" type="radio" value="pos-transplante" id="situacao.pos" >
+                                        <input th:field="*{situacao}" type="radio" value="Pós-transplante" id="situacao.pos" >
                                         <span>Pós-transplante</span>
                                     </label>
                                 </div>
@@ -217,11 +217,11 @@
                             <div class="field">
                                 <div class="control margin-invisible input-radio" id="labelAcomp">
                                     <label>
-                                        <input class="generoA1" type="radio" value="F" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                        <input class="generoA1" type="radio" value="Feminino" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
                                         <span>Feminino</span>
                                     </label>
                                     <label>
-                                        <input class="generoA2" type="radio" value="M" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
+                                        <input class="generoA2" type="radio" value="Masculino" th:field="*{acompanhantes[__${acompIndex.index}__].genero}">
                                         <span>Masculino</span>
                                     </label>
                                 </div>
