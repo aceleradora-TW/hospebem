@@ -67,6 +67,7 @@ public class SolicitacaoController {
 
     @GetMapping("/hospital/lista")
     public String listaSolicitacoesDoHospital(Model model) {
+
         model.addAttribute("solicitacoesHospital",
                 solicitacaoRepository.findAllByOrderByIdDesc());
 

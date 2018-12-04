@@ -37,17 +37,18 @@
                                     <hr>
                                     <div class="field has-addons">
                                         <div class="control">
-                                            <a th:href="@{/solicitacao/{id}/editar}">
-                                                <button class="button" type="submit" th:if="${solicitacao.status}!='ACEITO'">
+                                            <a th:href="@{/solicitacao/{id}/editar(id = ${solicitacao.id})}">
+                                                <button class="button" type="submit" th:if="${solicitacao.status.toString()}!='ACEITO'">
                                                     <span>Editar</span>
                                                     <span class="icon is-small"><i class="fas fa-edit"></i></span>
                                                 </button>
                                             </a>
                                         </div>
                                         <div class="control">
-                                            <a th:href="@{/solicitacao/{id}/excluir}">
-                                                <button class="button is-danger" type="submit" th:if="${solicitacao.status}!='ACEITO'"
-                                                    onclick="return confirm('Tem certeza que deseja excluir?');">
+                                            <a th:href="@{/solicitacao/{id}/excluir(id = ${solicitacao.id})}">
+                                                <button class="button is-danger" type="submit" th:if="${solicitacao.status.toString()44444444444444p00ppp-k
+                                                ,}!='ACEITO'"
+                                                        onclick="return confirm('Tem certeza que deseja excluir?');">
                                                     <span>Excluir</span>
                                                     <span class="icon is-small"><i class="fas fa-trash-alt"></i></span>
                                                 </button>
