@@ -80,7 +80,6 @@ public class SolicitacaoControllerTest {
 
         String paginaRenderizada = controller.listaSolicitacoesDaCasa(model);
 
-        verify(model).addAttribute("solicitacoesCasa", solicitacoesPendentes);
         assertThat(paginaRenderizada, equalTo("solicitacao/listagens/listaSolicitacaoCasa"));
     }
 
