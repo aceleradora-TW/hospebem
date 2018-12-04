@@ -14,8 +14,8 @@
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Início</a></li>
-                        <li><a th:href="@{'/listaUsuarios'}" class="has-text-black" href="#" aria-current="page">Lista de Usuários</a></li>
-                        <li><a th:href="@{'/' + ${usuarios.id} + '/editaUsuario'}">Dados do Usuário</a></li>
+                        <li><a th:href="@{'/usuario/listaUsuarios'}" class="has-text-black" href="#" aria-current="page">Lista de Usuários</a></li>
+                        <li><a th:href="@{'/usuario/' + ${usuarios.id} + '/editaUsuario'}">Dados do Usuário</a></li>
                     </ul>
                 </nav>
             </div>
@@ -24,7 +24,7 @@
                     <h3 class="title is-3 v center has-text-centered"> Dados do Usuario</h3>
                 </div>
                 <div class="columns is-mobile card-content">
-                    <form th:action="@{/{id}/editaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaUsuario(event)">
+                    <form th:action="@{'/usuario/' + ${usuarios.id} + '/editaUsuario'}" method="post" onsubmit="return validaUsuario(event)">
                         <div class="column">
                             <div class="field">
                                 <div class="control">
@@ -37,51 +37,51 @@
                             </div>
                         </div>
                         <div id="camposAssistenteHospital" th:class="${usuarios.cargo.toString() == 'ADMINISTRADOR'} ? 'display-none' : ''">
-                        <div class="column">
-                            <div class="field">
-                                <div class="control">
-                                    <span>*</span>
-                                    <span>Nome</span>
-                                    <input id="nome" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nomeAssistente}">
+                            <div class="column">
+                                <div class="field">
+                                    <div class="control">
+                                        <span>*</span>
+                                        <span>Nome</span>
+                                        <input id="nome" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.nomeAssistente}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="field">
-                                <div class="control">
-                                    <span>*</span>
-                                    <span>Email</span>
-                                    <input id="email" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.email}">
+                            <div class="column">
+                                <div class="field">
+                                    <div class="control">
+                                        <span>*</span>
+                                        <span>Email</span>
+                                        <input id="email" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.email}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="field">
-                                <div class="control">
-                                    <span>*</span>
-                                    <span>Hospital de Refêrencia</span>
-                                    <input id="hospitalReferencia" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.hospitalReferencia}">
+                            <div class="column">
+                                <div class="field">
+                                    <div class="control">
+                                        <span>*</span>
+                                        <span>Hospital de Refêrencia</span>
+                                        <input id="hospitalReferencia" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.hospitalReferencia}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="column">
-                            <div class="field">
-                                <div class="control">
-                                    <span>*</span>
-                                    <span>Telefone</span>
-                                    <input id="telefone" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.telefone}">
+                            <div class="column">
+                                <div class="field">
+                                    <div class="control">
+                                        <span>*</span>
+                                        <span>Telefone</span>
+                                        <input id="telefone" class="validate input input-fancy borda-arredondada" type="text" th:field="*{usuarios.telefone}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                         <div>
-                            <a th:href="@{/listaUsuarios}">
+                            <a th:href="@{'/usuario/' + ${usuarios.id} + '/listaUsuarios'}">
                                 <button type="submit" class="button verde-viavida borda-arredondada">
                                     <span>Salvar</span>
                                     <span class="icon is-small"><i class="fas fa-gavel"></i></span>
                                 </button>
                             </a>
-                            <a th:href="@{'/' + ${usuarios.id} + '/editaSenhaUsuario'}">
+                            <a th:href="@{'/usuario/' + ${usuarios.id} + '/editaSenhaUsuario'}">
                                 <button class="button borda-arredondada" type="button">
                                     <span>Editar Senha</span>
                                     <span class="icon is-small">

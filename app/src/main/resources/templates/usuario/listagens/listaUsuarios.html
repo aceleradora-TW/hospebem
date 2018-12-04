@@ -16,7 +16,7 @@
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Início</a></li>
-                        <li><a th:href="@{'/listaUsuarios'}" class="has-text-black" href="#" aria-current="page">Lista de Usuários</a></li>
+                        <li><a th:href="@{'/usuario/listaUsuarios'}" class="has-text-black" href="#" aria-current="page">Lista de Usuários</a></li>
                     </ul>
                 </nav>
             </div>
@@ -30,49 +30,28 @@
                             <div class="box box-shadow">
                                 <div class="column">
                                     <div class="centralizar">
-                                        <strong>Nome </strong>
+                                        <strong>Nome:</strong>
                                         <label class="has-text-centered" th:text="${usuario.nome}"></label>
                                     </div>
                                     <hr>
                                     <div class="centralizar">
-                                        <label id="tipoCargo" th:text="${usuario.cargo}"></label>
+                                        <label id="tipoCargo" th:text="${usuario.cargo.toString()} == 'ADMINISTRADOR' ? 'Administrador' : 'Assitente Social'"></label>
                                     </div>
                                     <hr>
-
-
-
-
-
-
-
-
                                     <div class="centralizar">
                                         <div>
-                                            <!--<th:block th:if="${usuario.cargo.toString()} != 'ADMINISTRADOR'">-->
-
-                                                <div>
-                                                    <a th:href="@{'/' + ${usuario.id} + '/editaUsuario'}">
-                                                        <button class="button borda-arredondada is-mobile" type="button" onsubmit="return validaUsuario(event)">
-                                                            <label>Editar</label>
-                                                            <label class="icon is-small">
-                                                                <i class="fas fas fa-edit"></i>
-                                                            </label>
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                            <!--</th:block>-->
+                                            <div>
+                                                <a th:href="@{'/usuario/' + ${usuario.id} + '/editaUsuario'}">
+                                                    <button class="button borda-arredondada is-mobile" type="button" onsubmit="return validaUsuario(event)">
+                                                        <label>Editar</label>
+                                                        <label class="icon is-small">
+                                                            <i class="fas fas fa-edit"></i>
+                                                        </label>
+                                                    </button>
+                                                </a>
+                                            </div>
                                         </div>
-
-
-
-
-
-
-
-
-
-
-                                        <a th:href="@{'/' + ${usuario.id} + '/excluirUsuario'}">
+                                        <a th:href="@{'/usuario/' + ${usuario.id} + '/excluirUsuario'}">
                                             <button class="button is-danger borda-arredondada" type="submit" onclick="return confirm('Tem certeza que deseja excluir?');">
                                                 <label>Excluir</label>
                                                 <label class="icon is-small">

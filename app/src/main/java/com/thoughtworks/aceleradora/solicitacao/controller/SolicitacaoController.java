@@ -1,7 +1,6 @@
 package com.thoughtworks.aceleradora.solicitacao.controller;
 
 import com.thoughtworks.aceleradora.email.component.EmailComponent;
-import com.thoughtworks.aceleradora.login.dominio.Cargo;
 import com.thoughtworks.aceleradora.solicitacao.dominio.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -93,19 +92,55 @@ public class SolicitacaoController {
         return "solicitacao/dadosSolicitacao";
     }
 
-    @GetMapping("/{id}/editar")
+    @GetMapping("/{id}/editarPaciente")
+    public String editaDadosPaciente(Model model, @PathVariable Long id) {
+        editarGet(model, id);
+
+        return "solicitacao/editaPaciente";
+    }
+
+    @PostMapping("/{id}/editarPaciente")
+    public String salvarDadoEditadoPaciente(Solicitacao solicitacao, @PathVariable Long id) {
+        editarPost(solicitacao, id);
+
+        return "redirect:/solicitacao/hospital/lista";
+    }
+
+    @GetMapping("/{id}/editarHospede")
     public String editaDadosHospede(Model model, @PathVariable Long id) {
+        editarGet(model, id);
+
+        return "solicitacao/editaHospede";
+    }
+
+    @PostMapping("/{id}/editarHospede")
+    public String salvarDadoEditadoHospede(Solicitacao solicitacao, @PathVariable Long id) {
+        editarPost(solicitacao, id);
+
+        return "redirect:/solicitacao/listagemHospede";
+    }
+
+    @GetMapping("/{id}/excluir")
+    public String excluirSolicitacaoHospital(@PathVariable Long id) {
+        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
+
+        if (solicitacaoOptional.isPresent()) {
+            solicitacaoRepository.deleteById(id);
+
+            return "redirect:/solicitacao/hospital/lista";
+        }
+        return "404";
+    }
+
+    private void editarGet(Model model, Long id) {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
         solicitacao.getAcompanhantes().sort(Comparator.comparing(Acompanhante::getId));
 
         model.addAttribute("formata", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         model.addAttribute("solicitacao", solicitacao);
-
-        return "solicitacao/editaPaciente";
     }
 
-    @PostMapping("/{id}/editar")
-    public String salvarDadoEditadoHospede(@PathVariable Long id, Solicitacao solicitacao) {
+    private void editarPost(Solicitacao solicitacao, Long id){
         Solicitacao solicitacaoAtualizada = solicitacaoRepository.getOne(id);
 
         solicitacaoAtualizada.setNome(solicitacao.getNome());
@@ -127,19 +162,5 @@ public class SolicitacaoController {
                         .collect(Collectors.toList()));
 
         solicitacaoRepository.save(solicitacaoAtualizada);
-
-        return "redirect:/solicitacao/hospital/lista";
-    }
-
-    @GetMapping("/{id}/excluir")
-    public String excluirSolicitacaoHospital(@PathVariable Long id) {
-        Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(id);
-
-        if (solicitacaoOptional.isPresent()) {
-            solicitacaoRepository.deleteById(id);
-
-            return "redirect:/solicitacao/hospital/lista";
-        }
-        return "404";
     }
 }

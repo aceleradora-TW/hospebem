@@ -14,9 +14,9 @@
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Incio</a></li>
-                        <li><a th:href="@{'/listaUsuarios'}" class="has-text-black" aria-current="page">Lista de Usuários</a></li>
-                        <li><a th:href="@{'/' + ${usuarios.id} + '/editaUsuario'}" class="has-text-black">Dados do Usuário</a></li>
-                        <li><a th:href="@{'/' + ${usuarios.id} + '/editaSenhaUsuario'}">Senha do Usuário</a></li>
+                        <li><a th:href="@{'/usuario/listaUsuarios'}" class="has-text-black" aria-current="page">Lista de Usuários</a></li>
+                        <li><a th:href="@{'/usuario/' + ${usuarios.id} + '/editaUsuario'}" class="has-text-black">Dados do Usuário</a></li>
+                        <li><a th:href="@{'/usuario/' + ${usuarios.id} + '/editaSenhaUsuario'}">Senha do Usuário</a></li>
 
                     </ul>
                 </nav>
@@ -26,7 +26,7 @@
                     <h3 class="title is-3 v center has-text-centered"> Editar Senha do Usuario</h3>
                 </div>
                 <div class="columns is-mobile card-content">
-                    <form th:action="@{/{id}/editaSenhaUsuario(id=${usuarios.id})}" method="post" onsubmit="return validaSenhaUsuario(event)" id="senhaUsuario">
+                    <form th:action="@{'/usuario/' + ${usuarios.id} + '/editaSenhaUsuario'}" method="post" onsubmit="return validaSenhaUsuario(event)" id="senhaUsuario">
                         <div class="column">
                             <div class="field">
                                 <div class="control">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div>
-                            <a th:href="@{/listaUsuarios}">
+                            <a th:href="@{/usuario/listaUsuarios}">
                                 <button type="submit" class="button verde-viavida borda-arredondada">
                                     <span>Salvar</span>
                                     <span class="icon is-small"><i class="fas fa-gavel"></i></span>

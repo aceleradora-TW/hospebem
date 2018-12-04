@@ -21,15 +21,11 @@ public class LoginController {
 
     private UsuarioValidador usuarioValidador;
     private UsuarioService usuarioService;
-    private UsuarioRepository usuarioRepository;
-
 
     @Autowired
-    public LoginController(UsuarioValidador usuarioValidador, UsuarioService usuarioService, UsuarioRepository usuarioRepository) {
+    public LoginController(UsuarioValidador usuarioValidador, UsuarioService usuarioService) {
         this.usuarioValidador = usuarioValidador;
         this.usuarioService = usuarioService;
-        this.usuarioRepository = usuarioRepository;
-
     }
 
     @GetMapping(value = "/registrar")
@@ -51,76 +47,6 @@ public class LoginController {
         usuarioService.salvar(usuario);
 
         return "registrarUsuario/usuarioSalvo";
-    }
-
-    @GetMapping("/listaUsuarios")
-    public String buscarTodosUsuarios(Model model) {
-        List<Usuario> usuarios = usuarioRepository.findAll();
-
-        model.addAttribute("usuarios", usuarios);
-        return "solicitacao/listagens/listaUsuarios";
-    }
-
-    @GetMapping("/{id}/editaUsuario")
-    public String editaUsuario(Model model, @PathVariable Long id) {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
-
-        if (usuarioOptional.isPresent()) {
-            Usuario usuarios = usuarioOptional.get();
-            model.addAttribute("usuarios", usuarios);
-            return "/solicitacao/editaUsuario";
-        }
-
-        return "404";
-    }
-
-    @PostMapping("/{id}/editaUsuario")
-    public String salvarDadoEditadoUsuario(@PathVariable Long id, Usuario usuario) {
-        Usuario usuarioAtualizado = usuarioRepository.getOne(id);
-
-        usuarioAtualizado.setNome(usuario.getNome());
-        usuarioAtualizado.setNomeAssistente(usuario.getNomeAssistente());
-        usuarioAtualizado.setEmail(usuario.getEmail());
-        usuarioAtualizado.setHospitalReferencia(usuario.getHospitalReferencia());
-        usuarioAtualizado.setTelefone(usuario.getTelefone());
-        usuarioRepository.save(usuarioAtualizado);
-
-        return "redirect:/listaUsuarios";
-    }
-
-    @GetMapping("/{id}/editaSenhaUsuario")
-    public String editaSenhaUsuario(Model model, @PathVariable Long id) {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
-
-        if (usuarioOptional.isPresent()) {
-            Usuario usuarios = usuarioOptional.get();
-            usuarios.getSenha();
-
-            model.addAttribute("usuarios", usuarios);
-            return "/solicitacao/editaSenhaUsuario";
-        }
-
-        return "404";
-    }
-
-    @PostMapping("/{id}/editaSenhaUsuario")
-    public String salvarSenhaEditadoUsuario(@PathVariable Long id, Usuario usuario) {
-        Usuario senhaAtualizada = usuarioRepository.getOne(id);
-
-        senhaAtualizada.setSenha(usuario.getSenha());
-        usuarioService.salvar(senhaAtualizada);
-
-        return "redirect:/listaUsuarios";
-    }
-
-    @GetMapping("/{id}/excluirUsuario")
-    public String excluirUsuario(@PathVariable Long id) {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
-        if (usuarioOptional.isPresent()) {
-            usuarioRepository.deleteById(id);
-            return "redirect:/listaUsuarios";
-        }
-        return "404";
     }
 
     @GetMapping(value = "/login")
