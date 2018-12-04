@@ -27,9 +27,16 @@
     <header>
         <nav class="navbar is-mobile " role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="/">
-                    <p class="titulo-nav">HospeBem</p>
-                </a>
+                <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+                    <a class="navbar-item" href="/solicitacao/hospital/lista">
+                        <p class="titulo-nav">HospeBem</p>
+                    </a>
+                </div>
+                <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+                    <a class="navbar-item" href="/bemvindo">
+                        <p class="titulo-nav">HospeBem</p>
+                    </a>
+                </div>
             </div>
             <a th:href="@{/logout}">
                 <button class="button canto-superior header-color cor-texto-logout borda-botao" id="botaoLogout">
