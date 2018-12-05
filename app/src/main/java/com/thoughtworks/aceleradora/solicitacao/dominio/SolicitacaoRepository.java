@@ -6,9 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SolicitacaoRepository
-        extends JpaRepository<Solicitacao,Long> {
+public interface SolicitacaoRepository extends JpaRepository<Solicitacao,Long> {
     List<Solicitacao> findAllByStatus(Solicitacao.Status title);
     List<Solicitacao> findAllByStatusOrderByNome(Solicitacao.Status title);
-    List<Solicitacao> findAllByOrderByIdDesc();
+    List<Solicitacao> findAllByNomeSolicitante(String title);
 }

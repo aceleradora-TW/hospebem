@@ -19,8 +19,11 @@ public class Usuario {
 
     @Column(name ="nome_assistente")
     private String nomeAssistente;
+
     private String email;
+
     private String telefone;
+
     @Column(name="hospital_referencia")
     private String hospitalReferencia;
 
@@ -35,6 +38,8 @@ public class Usuario {
         this.telefone = telefone;
         this.hospitalReferencia = hospitalReferencia;
     }
+
+    public Long getId(){ return id;}
 
     public void setId(Long id) {
         this.id = id;

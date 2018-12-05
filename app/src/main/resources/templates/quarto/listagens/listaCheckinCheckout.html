@@ -1,104 +1,109 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layout :: layout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Hospebem</title>
 </head>
 
 <body>
 <main>
-    <div class="container">
-        <div class="section">
-            <nav class="breadcrumb" aria-label="breadcrumbs">
-                <ul>
-                    <li><a th:href="@{/solicitacao/casa/lista}">Lista de solicitações da casa</a></li>
-                    <li><a class="has-text-black" href="#" aria-current="page">Check-in e Check-out</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <h1 class="title is-half centralizar espacamento">Lista de Hospedes</h1>
-
-        <div class="section">
-            <div class="columns is-multiline is-lefty">
-                <th:block th:each="solicitacao : ${solicitacoesHospedes}">
-                    <div class="column is-4">
-                        <div class="box">
-                            <a class="subtitle" th:href="@{/quartos/{id}/informacoes(id=${solicitacao.id})}"
-                               th:text="${solicitacao.nome}">
-                            </a>
-                            <hr>
-                            <ul>
-                                <li th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                    <label class="tag is-success  is-info is-large" th:text="${quarto.nomeQuarto}"/>
-                                </li>
-                            </ul>
-                            <div class="recuperar">
-                                <strong> Data Check-In: </strong>
-                                <span th:text="${solicitacao.dataCheckin.format(formataData)}"></span>
-                            </div>
-                            <hr>
-                            <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkout'}"
-                                  th:object="${solicitacao}"
-                                  method="POST" id="formCheckout">
-
-                                <div class="field has-addons">
-                                    <div class="control">
-                                        <input placeholder="Selecione uma data" autocomplete="off"
-                                               type="text" class="data-checkout input input-fancy datepicker-retroativo"
-                                               th:field="*{dataCheckout}"
-                                               onkeypress="return false;">
-                                    </div>
-                                    <div class="control">
-                                        <button type="submit" class="button is-info  ">Check-Out</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </th:block>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{/bemvindo}" class="has-text-black">Início </a></li>
+                        <li><a th:href="@{/solicitacao/casa/lista}" class="has-text-black">Lista de Solicitações</a></li>
+                        <li><a th:href="@{/listacheckincheckout}" aria-current="page">Check-in e Check-out</a></li>
+                    </ul>
+                </nav>
             </div>
-        </div>
 
-        <h1 class="title is-half centralizar espacamento">Lista de Aceitos</h1>
+            <h1 class="title is-half centralizar espacamento">Lista de Hospedes</h1>
 
-        <div class="section">
-            <div class="columns is-multiline is-lefty">
-                <th:block th:each="solicitacao : ${solicitacoesAceitas}">
-                    <div class="column is-4">
-                        <div class="box">
-                            <a class="subtitle" th:href="@{/quartos/{id}/informacoes(id=${solicitacao.id})}"
-                               th:text="${solicitacao.nome}">
-                            </a>
-                            <hr>
-                            <ul>
-                                <li th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                    <label class="tag is-success is-info is-large" th:text="${quarto.nomeQuarto}"/>
-                                </li>
-                            </ul>
-                            <hr>
-                            <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkin'}"
-                                  th:object="${solicitacao}"
-                                  method="POST" id="formCheckin">
-
-                                <div class="field has-addons">
-                                    <div class="control">
-                                        <input placeholder="Selecione uma data" autocomplete="off"
-                                               type="text" class="data-checkin input input-fancy datepicker-retroativo "
-                                               th:field="*{dataCheckin}"
-                                               onkeypress="return false;">
-                                    </div>
-                                    <div class="control">
-                                        <button type="submit" class="botao-checkin button is-info  ">Check-In</button>
-                                    </div>
+            <div class="section">
+                <div class="columns is-multiline is-lefty">
+                    <th:block th:each="solicitacao : ${solicitacoesHospedes}">
+                        <div class="column is-4">
+                            <div class="box">
+                                <a class="subtitle" th:href="@{'/quartos/' + ${solicitacao.id} + '/informacoes'}"
+                                   th:text="${solicitacao.nome}">
+                                </a>
+                                <hr>
+                                <ul>
+                                    <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
+                                        <label class="tag is-success  is-info is-large" th:text="${quarto.nomeQuarto}"/>
+                                    </th:block>
+                                </ul>
+                                <div class="recuperar">
+                                    <strong> Data Check-In: </strong>
+                                    <span th:text="${solicitacao.dataCheckin.format(formataData)}"></span>
                                 </div>
-                            </form>
+                                <hr>
+                                <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkout'}"
+                                      th:object="${solicitacao}"
+                                      method="POST" id="formCheckout">
+
+                                    <div class="field has-addons">
+                                        <div class="control">
+                                            <input placeholder="Selecione uma data" autocomplete="off"
+                                                   type="text" class="data-checkout input input-fancy datepicker-retroativo"
+                                                   th:field="*{dataCheckout}"
+                                                   onkeypress="return false;">
+                                        </div>
+                                        <div class="control">
+                                            <button type="submit" class="button is-info  ">Check-Out</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </th:block>
+                    </th:block>
+                </div>
+            </div>
+
+            <h1 class="title is-half centralizar espacamento">Lista de Aceitos</h1>
+
+            <div class="section">
+                <div class="columns is-multiline is-lefty">
+                    <th:block th:each="solicitacao : ${solicitacoesAceitas}">
+                        <div class="column is-4">
+                            <div class="box">
+                                <a class="subtitle" th:href="@{'/quartos/' + ${solicitacao.id} + '/informacoes'}"
+                                   th:text="${solicitacao.nome}">
+                                </a>
+                                <hr>
+                                <ul>
+                                    <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
+                                        <label class="tag is-success is-info is-large" th:text="${quarto.nomeQuarto}"/>
+                                    </th:block>
+                                </ul>
+                                <hr>
+                                <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkin'}"
+                                      th:object="${solicitacao}"
+                                      method="POST" id="formCheckin">
+
+                                    <div class="field has-addons">
+                                        <div class="control">
+                                            <input placeholder="Selecione uma data" autocomplete="off"
+                                                   type="text" class="data-checkin input input-fancy datepicker-retroativo "
+                                                   th:field="*{dataCheckin}"
+                                                   onkeypress="return false;">
+                                        </div>
+                                        <div class="control">
+                                            <button type="submit" class="botao-checkin button is-info  ">Check-In</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
             </div>
         </div>
     </div>
 </main>
-
 </body>
 </html>

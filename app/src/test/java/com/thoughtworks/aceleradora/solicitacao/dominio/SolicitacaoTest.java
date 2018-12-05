@@ -13,7 +13,6 @@ public class SolicitacaoTest {
 
     @Test
     public void formataDataHoraNoPadraoBrasileiro() {
-
         LocalDate data = LocalDate.parse("2018-12-21");
         LocalTime hora = LocalTime.of(10, 30);
 

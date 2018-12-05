@@ -1,8 +1,7 @@
 package com.thoughtworks.aceleradora.login.servicos.controllers;
 
 import com.thoughtworks.aceleradora.login.controllers.LoginController;
-import com.thoughtworks.aceleradora.login.dominio.Cargo;
-import com.thoughtworks.aceleradora.login.dominio.Usuario;
+import com.thoughtworks.aceleradora.login.dominio.*;
 import com.thoughtworks.aceleradora.login.servicos.UsuarioService;
 import com.thoughtworks.aceleradora.login.validador.UsuarioValidador;
 import org.junit.Before;
@@ -20,8 +19,13 @@ import static org.mockito.MockitoAnnotations.initMocks;
 public class LoginControllerTest {
     @Mock
     UsuarioValidador usuarioValidador;
+
     @Mock
     UsuarioService usuarioService;
+
+    @Mock
+    UsuarioRepository usuarioRepository;
+
     @Mock
     Model model;
 

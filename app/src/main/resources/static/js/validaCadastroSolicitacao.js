@@ -77,7 +77,6 @@ function camposAcompanhantes() {
     let labelAcomp = document.getElementById('labelAcomp')
 
     if (nomeAcomp.value === '') {
-        nomeAcomp.placeholder = 'Insira o campo requisitado'
         validaInputErrado(nomeAcomp)
         return false
     } else
@@ -91,7 +90,6 @@ function camposAcompanhantes() {
     }
 
     if (dataNasciAcomp.value === '') {
-        nomeAcomp.placeholder = 'Insira o campo requisitado'
         validaInputErrado(dataNasciAcomp)
         return false;
     }
@@ -105,28 +103,23 @@ function camposSolicitante(){
     let telefoneSolicitante = document.getElementById('telefoneSolicitante')
 
     if (nomeSolicitante.value === '') {
-        nomeSolicitante.placeholder = 'Insira o campo requisitado'
-        validaInputErrado(nomeSolicitante)
         return false
     } else
         nomeSolicitante.classList.add('input-fancy')
 
     if (hospitalReferencia.value === '') {
-        hospitalReferencia.placeholder = 'Insira o campo requisitado'
         validaInputErrado(hospitalReferencia)
         return false
     } else
         hospitalReferencia.classList.add('input-fancy')
 
     if (email.value === '') {
-        email.placeholder = 'Insira o campo requisitado'
         validaInputErrado(email)
         return false
     } else
         email.classList.add('input-fancy')
 
     if (telefoneSolicitante.value === '') {
-        telefoneSolicitante.placeholder = 'Insira o campo requisitado'
         validaInputErrado(telefoneSolicitante)
         return false
     } else
@@ -173,4 +166,3 @@ function pesoCadeirante() {
     })
     return true;
 }
-

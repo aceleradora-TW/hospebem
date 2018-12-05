@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>HospeBem Registrar</title>
 </head>
+
 <body>
 <main>
     <div class="container card-content valign center has-text-centered">
         <div class="section">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
-                    <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                    <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Início</a></li>
                     <li><a th:href="@{'/registrar'}">Registrar</a></li>
                 </ul>
             </nav>
         </div>
         <h1 class="title titulo-h1">Formulário de Registro do Hospebem</h1>
-        <form action="" th:action="@{/registrar}" th:object="${formUsuario}" method="post" onsubmit="return validaRegistrar(event)" id="registraAss">
+        <form th:action="@{/registrar}" th:object="${formUsuario}" method="post" onsubmit="return validaRegistrar(event)" id="registraAss">
             <div th:if="${#fields.hasAnyErrors()}">
                 <p th:each="err : ${#fields.errors()}" th:text="${err}"></p>
             </div>
-
             <div class="columns has-text-left">
                 <div class = "column is-half">
                     <div class = "control input-radio margin-invisible" id="labelCargo">

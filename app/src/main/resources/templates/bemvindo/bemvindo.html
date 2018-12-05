@@ -4,60 +4,66 @@
 <head>
     <title>Hospebem - Inicio </title>
 </head>
-<body>
 
+<body>
 <main>
     <div class="agrupadora has-text-centered">
         <h1 class="title is-1 espaco-titulo">Hospebem</h1>
-        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+            Você não tem autorização para acessar essa página
+        </div>
         <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
-        <section class="container">
-            <div class="level-item">
-                <div class="columns is-multiline is-centered cards-container" id="sectioncontainer">
-                    <div class="column is-narrow tamanho-board">
-                        <article class="message ">
-                            <div class="message-header header-heigth header-color">
-                                <div sec:authorize="isAuthenticated()">
-                                    <div>
-                                        <p> Seja bem-vindo: <strong><span sec:authentication="name"></span></strong></p>
+            <section class="container">
+                <div class="level-item">
+                    <div class="columns is-multiline is-centered cards-container" id="sectioncontainer">
+                        <div class="column is-narrow tamanho-board">
+                            <article class="message ">
+                                <div class="message-header header-heigth header-color">
+                                    <div sec:authorize="isAuthenticated()">
+                                        <div>
+                                            <p> Seja bem-vindo: <strong><span sec:authentication="name"></span></strong></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="message-body espaco-linhas">
-                                <div class="board-item">
-                                    <div class="board-item-content"><a href="/solicitacao/casa/lista">Lista de solicitações</a></div>
-                                </div>
-                                <div class="board-item">
-                                    <div class="board-item-content"><a href="/solicitacao/listagemHospede">Gerenciar Hospedes</a></div>
-                                </div>
-                                <div class="board-item">
-                                    <div class="board-item-content"><a href="/registrar">Registrar usuários</a></div>
-                                </div>
-                                <div class="board-item">
-                                    <div class="board-item-content"><a href="/listacheckincheckout">Lista Check-in/Check-out</a></div>
-                                </div>
-                                <div class="board-item">
-                                    <div class="board-item-content">
-                                        <a th:href="@{/solicitacao/csv}">Exportar dados da Solicitação para EXCEL</a>
+                                <div class="message-body espaco-linhas">
+                                    <div class="board-item">
+                                        <div class="board-item-content"><a th:href="@{/solicitacao/casa/lista}">Lista de solicitações</a></div>
+                                    </div>
+                                    <div class="board-item">
+                                        <div class="board-item-content"><a th:href="@{/solicitacao/listagemHospede}">Gerenciar Hospedes</a></div>
+                                    </div>
+                                    <div class="board-item">
+                                        <div class="board-item-content"><a th:href="@{/usuario/listaUsuarios}">Gerenciar Usuários</a></div>
+                                    </div>
+                                    <div class="board-item">
+                                        <div class="board-item-content"><a th:href="@{/registrar}">Registrar usuários</a></div>
+                                    </div>
+                                    <div class="board-item">
+                                        <div class="board-item-content"><a th:href="@{/listacheckincheckout}">Lista Check-in/Check-out</a></div>
+                                    </div>
+                                    <div class="board-item">
+                                        <div class="board-item-content">
+                                            <a th:href="@{/solicitacao/csv}">Exportar dados da Solicitação para EXCEL</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
+                        </div>
                     </div>
                 </div>
+            </section>
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login">
+                    <div>Logar</div>
+                </a>
+                <a href="/registrar">
+                    <div>Registrar</div>
+                </a>
             </div>
-        </section>
-        <div sec:authorize="!isAuthenticated()">
-            <a href="/login">
-                <div>Logar</div>
-            </a>
-            <a href="/registrar">
-                <div>Registrar</div>
-            </a>
         </div>
     </div>
-    </div>
 </main>
+</body>
 <script>
     (function () {
         let burger = document.querySelector('.burger');
@@ -68,6 +74,6 @@
             nav.classList.toggle('is-hoverable');
             return burger;
         });
-    };
+    });
 </script>
 </html>

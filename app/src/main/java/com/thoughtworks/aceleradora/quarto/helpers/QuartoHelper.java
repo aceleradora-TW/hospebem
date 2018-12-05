@@ -6,6 +6,7 @@ import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import com.thoughtworks.aceleradora.solicitacao.dominio.SolicitacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -51,11 +52,5 @@ public class QuartoHelper{
         return solicitacoes
                 .stream()
                 .collect(Collectors.toSet());
-    }
-
-    public Quarto aumentaLeitosDisponiveis(Quarto quarto) {
-        quarto.setQuantidadeLeitos(quarto.leitosDisponiveis() + 2);
-        quartoRepository.save(quarto);
-        return quarto;
     }
 }

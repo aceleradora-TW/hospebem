@@ -2,15 +2,19 @@ package com.thoughtworks.aceleradora.login.controllers;
 
 import com.thoughtworks.aceleradora.login.dominio.Cargo;
 import com.thoughtworks.aceleradora.login.dominio.Usuario;
+import com.thoughtworks.aceleradora.login.dominio.UsuarioRepository;
 import com.thoughtworks.aceleradora.login.servicos.UsuarioService;
 import com.thoughtworks.aceleradora.login.validador.UsuarioValidador;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Acompanhante;
+import com.thoughtworks.aceleradora.solicitacao.dominio.Solicitacao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class LoginController {

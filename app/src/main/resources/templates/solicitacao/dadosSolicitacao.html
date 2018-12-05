@@ -1,272 +1,286 @@
 <!DOCTYPE html>
 <html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <title>Hospebem - Dados Paciente</title>
+    <title>Hospebem</title>
 </head>
 <body>
 
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
-    <div class="card-content valign center has-text-centered">
-        <div class="columns ">
-            <ul th:object="${solicitacao}">
-                <h2 class="title is-2">Dados Paciente</h2>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Nome </label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="nome" th:value="${solicitacao.nome}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Gênero</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="genero" th:value="${solicitacao.genero}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Status</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="status" th:value="${solicitacao.status}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Situação</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="situacao" th:value="${solicitacao.situacao}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Órgão</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="orgao" th:value="${solicitacao.orgao}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Data de Nascimento</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="dataNascimento" th:value="${solicitacao.dataNascimento} == null ? ' ' : ${solicitacao.dataNascimento.format(formatar)}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Telefone</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="telefone" th:value="${solicitacao.telefone}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Peso</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="peso" th:value="${solicitacao.peso}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Data de Entrada</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada} == null ? ' ' : ${solicitacao.dataEntrada.format(formatar)}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Data de Saída (Previsão)</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="dataSaida"  th:value="${solicitacao.dataSaida} == null ? ' ' : ${solicitacao.dataSaida.format(formatar)}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="title is-2">Endereço</h2>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Rua</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="rua" th:value="${solicitacao.endereco.rua}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Número</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="numero" th:value="${solicitacao.endereco.numero}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Cidade</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="cidade" th:value="${solicitacao.endereco.cidade}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Bairro</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="bairro" th:value="${solicitacao.endereco.bairro}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">UF</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="uf" th:value="${solicitacao.endereco.uf}" disabled>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="title is-2">Dados Acompanhante</h2>
-
-                <div th:each="acomp, index : ${solicitacao.acompanhantes}">
-                    <ul th:if="${acomp.nome} != ''">
-                        <h5 class="title is-5">Acompanhante
-                            <span th:text="${index.index + 1}"></span>:
-                        </h5>
-                        <div class="column is-10">
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Nome</label>
-                                </div>
-                                <div class="control">
-                                    <input class="input input-fancy" type="text" name="nomeAcomp" th:value="${acomp.nome}" disabled>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column is-10">
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Gênero</label>
-                                </div>
-                                <div class="control">
-                                    <input class="input input-fancy" type="text" name="generoAcomp" th:value="${acomp.genero} == 'F' ? 'Feminino' : 'Masculino'" disabled>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column is-10">
-                            <div class="field is-horizontal">
-                                <div class="field-label is-normal">
-                                    <label class="label">Data de Nascimento</label>
-                                </div>
-                                <div class="control">
-                                    <input class="input input-fancy" type="text" name="dataNascimentoAcomp" th:value="${acomp.dataNascimento} == null ? ' ' : ${acomp.dataNascimento.format(formatar)}" disabled>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Início</a></li>
+                        <li><a th:href="@{'/solicitacao/casa/lista'}" class="has-text-black">Lista de Solicitações</a></li>
+                        <li><a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/dados'}">Dados do Usuário</a></li>
                     </ul>
-                </div>
-                <h2 class="title is-2">Dados Assistente Social</h2>
+                </nav>
+            </div>
+        </div>
+        <div class="card-content valign center has-text-centered">
+            <div class="columns ">
+                <th:block th:object="${solicitacao}">
+                    <h2 class="title is-2">Dados do Paciente</h2>
 
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Nome</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="nomeSolicitante" th:value="${solicitacao.nomeSolicitante}" disabled>
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Nome </label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="nome" th:value="${solicitacao.nome}" disabled>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Email</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="hospitalReferencia" th:value="${solicitacao.hospitalReferencia}" disabled>
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Gênero</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="genero" th:value="${solicitacao.genero}" disabled>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Telefone</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="email" th:value="${solicitacao.email}" disabled>
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Status</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="status" th:value="${solicitacao.status}" disabled>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="column is-10">
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Hospital</label>
-                        </div>
-                        <div class="control">
-                            <input class="input input-fancy" type="text" name="telefoneSolicitante" th:value="${solicitacao.telefoneSolicitante}" disabled>
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Situação</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="situacao" th:value="${solicitacao.situacao}" disabled>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </ul>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Órgão</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="orgao" th:value="${solicitacao.orgao}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Data de Nascimento</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="dataNascimento" th:value="${solicitacao.dataNascimento} == null ? ' ' : ${solicitacao.dataNascimento.format(formatar)}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Telefone</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="telefone" th:value="${solicitacao.telefone}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Peso</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="peso" th:value="${solicitacao.peso}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Data de Entrada</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="dataEntrada" th:value="${solicitacao.dataEntrada} == null ? ' ' : ${solicitacao.dataEntrada.format(formatar)}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Data de Saída (Previsão)</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="dataSaida"  th:value="${solicitacao.dataSaida} == null ? ' ' : ${solicitacao.dataSaida.format(formatar)}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="title is-2">Endereço</h2>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Rua</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="rua" th:value="${solicitacao.endereco.rua}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Número</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="numero" th:value="${solicitacao.endereco.numero}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Cidade</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="cidade" th:value="${solicitacao.endereco.cidade}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Bairro</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="bairro" th:value="${solicitacao.endereco.bairro}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">UF</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="uf" th:value="${solicitacao.endereco.uf}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="title is-2">Dados do Acompanhante</h2>
+
+                    <th:block th:each="acomp, index : ${solicitacao.acompanhantes}">
+                        <th:block th:if="${acomp.nome} != ''">
+                            <h5 class="title is-5">Acompanhante
+                                <span th:text="${index.index + 1}"></span>:
+                            </h5>
+                            <div class="column is-10">
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Nome</label>
+                                    </div>
+                                    <div class="control">
+                                        <input class="input input-fancy" type="text" name="nomeAcomp" th:value="${acomp.nome}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column is-10">
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Gênero</label>
+                                    </div>
+                                    <div class="control">
+                                        <input class="input input-fancy" type="text" th:value="${acomp.genero}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column is-10">
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Data de Nascimento</label>
+                                    </div>
+                                    <div class="control">
+                                        <input class="input input-fancy" type="text" name="dataNascimentoAcomp" th:value="${acomp.dataNascimento} == null ? ' ' : ${acomp.dataNascimento.format(formatar)}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                    </th:block>
+                    <h2 class="title is-2">Dados Assistente Social</h2>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Nome</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="nomeSolicitante" th:value="${solicitacao.nomeSolicitante}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Email</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="hospitalReferencia" th:value="${solicitacao.hospitalReferencia}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Telefone</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="email" th:value="${solicitacao.email}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-10">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Hospital</label>
+                            </div>
+                            <div class="control">
+                                <input class="input input-fancy" type="text" name="telefoneSolicitante" th:value="${solicitacao.telefoneSolicitante}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
         </div>
     </div>
 </main>

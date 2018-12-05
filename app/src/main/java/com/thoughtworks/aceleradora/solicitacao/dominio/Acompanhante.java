@@ -77,16 +77,6 @@ public class Acompanhante {
     }
 
     @Override
-    public String toString() {
-        return "Acompanhante{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", genero='" + genero + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -100,7 +90,6 @@ public class Acompanhante {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, nome, genero, dataNascimento, solicitacao);
     }
 }

@@ -3,28 +3,29 @@
 >
 
 <head>
-    <title>Hospebem</title>
+    <title>Formulario</title>
 </head>
 <body>
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
         Você não tem autorização para acessar essa página
     </div>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+    <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
             <div class="section">
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
-                        <li><a th:href="@{'/solicitacao/hospital/lista'}" class="has-text-black" aria-current="page">Lista de Solicitações</a></li>
-                        <li><a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/editarPaciente'}">Editar Solicitação</a></li>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Início</a></li>
+                        <li><a th:href="@{'/solicitacao/listagemHospede'}" class="has-text-black" aria-current="page">Lista de Solicitações</a></li>
+                        <li><a th:href="@{'/solicitacao' + '/' + ${solicitacao.id}+ '/editarHospede'}">Editar Solicitação</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="column">
-                <h3 class="title is-3 v center has-text-centered"> Dados do paciente</h3>
+                <h3 class="title is-3 v center has-text-centered"> Dados do Hóspede</h3>
             </div>
             <div class="columns is-mobile card-content">
-                <form th:object="${solicitacao}" th:action="@{'/solicitacao/' + ${solicitacao.id} + '/editarPaciente'}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
+                <form th:object="${solicitacao}" th:action="@{'/solicitacao/' + ${solicitacao.id} + '/editarHospede'}" method="post" onsubmit="return validaCadastroSolicitacao(event)"
                       id="formSolicitacao">
                     <div class="column">
                         <div class="field">
@@ -237,12 +238,14 @@
 </main>
 </body>
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded',  () => {
-        let datepickerFields = document.getElementsByClassName('datepicker');
 
-        for (let i = 0; i < datepickerFields.length; i++) {
+    document.addEventListener('DOMContentLoaded', function () {
+        var datepickerFields = document.getElementsByClassName('datepicker');
+
+        for (var i = 0; i < datepickerFields.length; i++) {
             seletorDeData(datepickerFields[i]);
         }
     })
+
 </script>
 </html>

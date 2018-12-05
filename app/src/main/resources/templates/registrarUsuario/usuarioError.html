@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>HospeBem Registrar</title>
 </head>
+
 <body>
 <main>
     <div class="container card-content valign center has-text-centered">
@@ -12,8 +14,11 @@
                     <span>Já existe um registro com este nome de usuário. Por favor, insira um nome de usuário válido. </span>
                 </div>
                 <div>
-                    <button class="button verde-viavida borda-arredondada" ><a th:href="@{'/registrar'}">Registrar novamente</a></button>
-
+                    <button class="button verde-viavida borda-arredondada" >
+                        <a th:href="@{'/registrar'}">
+                            Registrar novamente
+                        </a>
+                    </button>
                 </div>
             </nav>
         </div>

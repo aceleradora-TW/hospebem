@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <title>Hospebem</title>
+</head>
+<body>
+<main>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Incio</a></li>
+                        <li><a th:href="@{'/usuario/listaUsuarios'}" class="has-text-black" aria-current="page">Lista de Usuários</a></li>
+                        <li><a th:href="@{'/usuario/' + ${usuarios.id} + '/editaUsuario'}" class="has-text-black">Dados do Usuário</a></li>
+                        <li><a th:href="@{'/usuario/' + ${usuarios.id} + '/editaSenhaUsuario'}">Senha do Usuário</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="card-content valign center has-text-centered">
+                <div class="column">
+                    <h3 class="title is-3 v center has-text-centered"> Editar Senha do Usuario</h3>
+                </div>
+                <div class="columns is-mobile card-content">
+                    <form th:action="@{'/usuario/' + ${usuarios.id} + '/editaSenhaUsuario'}" method="post" onsubmit="return validaSenhaUsuario(event)" id="senhaUsuario">
+                        <div class="column">
+                            <div class="field">
+                                <div class="control">
+                                    <p class="control has-icons-left has-icons-right margin-left-10">
+                                        <i class="fas fa-lock"></i>
+                                        <span>Senha</span>
+                                    </p>
+                                    <input class="validate input input-fancy" id="passwordUser" type="password" th:field="*{usuarios.senha}">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <a th:href="@{/usuario/listaUsuarios}">
+                                <button type="submit" class="button verde-viavida borda-arredondada">
+                                    <span>Salvar</span>
+                                    <span class="icon is-small"><i class="fas fa-gavel"></i></span>
+                                </button>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -5,14 +5,16 @@
 </head>
 
 <body>
-    <main>
-        <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
-        <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+<main>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
             <div class="section">
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
-                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Inicio</a></li>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Início</a></li>
                         <li><a th:href="@{'/solicitacao/listagemHospede'}">Gerenciar Hóspedes</a></li>
                     </ul>
                 </nav>
@@ -28,7 +30,7 @@
                             </tr>
                             <tr th:each="solicitacao : ${solicitacoesAceitas}">
                                 <td>
-                                    <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/editar'}" class="has-text-centered" th:text="${solicitacao.nome}" ></a>
+                                    <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/editarHospede'}" class="has-text-centered" th:text="${solicitacao.nome}" ></a>
                                 </td>
                             </tr>
                         </table>
@@ -36,7 +38,7 @@
                 </div>
             </div>
         </div>
-        </div>
-    </main>
+    </div>
+</main>
 </body>
 </html>

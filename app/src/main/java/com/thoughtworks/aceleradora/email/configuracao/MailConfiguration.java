@@ -57,6 +57,7 @@ public class MailConfiguration {
         props.put("mail.smtp.auth", mailConfig.auth);
         props.put("mail.smtp.starttls.enable", mailConfig.starttlsEnable);
         props.put("mail.debug", mailConfig.debug);
+
         return sender;
     }
 }
