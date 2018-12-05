@@ -37,9 +37,6 @@
                                         <label class="tag is-success  is-info is-large" th:text="${quarto.nomeQuarto}"/>
                                     </th:block>
                                 </ul>
-                                <div class="recuperar">
-                                    <span th:text="${solicitacao.dataCheckin} == null ? '' : ${solicitacao.dataCheckin.format(formataData)}"></span>
-                                </div>
                                 <hr>
                                 <form th:action="@{'/solicitacao/' + ${solicitacao.id} + '/checkout'}"
                                       th:object="${solicitacao}"
