@@ -46,5 +46,4 @@ public class SecurityWebConfigTest {
         verify(authentication, times(1)).userDetailsService(userDetails);
         verify(daoAuthenticationConfigurer, times(1)).passwordEncoder(bCryptPasswordEncoder);
     }
-
 }

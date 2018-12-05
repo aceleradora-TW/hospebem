@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="tipoUsuario" th:text="${usuarios.cargo.toString()}">
+                        <input type="hidden" id="tipoUsuario" th:field="*{usuarios.cargo}">
                         <div id="camposAssistenteHospital" th:class="${usuarios.cargo.toString() == 'ADMINISTRADOR'} ? 'display-none' : ''">
                             <div class="column">
                                 <div class="field">
@@ -109,5 +109,4 @@
     })
 
 </script>
-
 </html>

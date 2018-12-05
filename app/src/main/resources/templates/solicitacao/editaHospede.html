@@ -7,11 +7,13 @@
 </head>
 <body>
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">Você não tem autorização para acessar essa página</div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
     <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
-    <div class="container">
-        <div class="section">
-            <nav class="breadcrumb" aria-label="breadcrumbs">
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Início</a></li>
                         <li><a th:href="@{'/solicitacao/listagemHospede'}" class="has-text-black" aria-current="page">Lista de Solicitações</a></li>
@@ -246,5 +248,4 @@
     })
 
 </script>
-
 </html>

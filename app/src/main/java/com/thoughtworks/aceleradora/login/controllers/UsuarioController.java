@@ -31,6 +31,7 @@ public class UsuarioController {
         List<Usuario> usuarios = usuarioRepository.findAll();
 
         model.addAttribute("usuarios", usuarios);
+
         return "/usuario/listagens/listaUsuarios";
     }
 
@@ -56,6 +57,7 @@ public class UsuarioController {
         usuarioAtualizado.setEmail(usuario.getEmail());
         usuarioAtualizado.setHospitalReferencia(usuario.getHospitalReferencia());
         usuarioAtualizado.setTelefone(usuario.getTelefone());
+
         usuarioRepository.save(usuarioAtualizado);
 
         return "redirect:/usuario/listaUsuarios";
@@ -68,7 +70,9 @@ public class UsuarioController {
         if (usuarioOptional.isPresent()) {
             Usuario usuarios = usuarioOptional.get();
             usuarios.getSenha();
+
             model.addAttribute("usuarios", usuarios);
+
             return "/usuario/editaSenhaUsuario";
         }
 
@@ -80,6 +84,7 @@ public class UsuarioController {
         Usuario senhaAtualizada = usuarioRepository.getOne(id);
 
         senhaAtualizada.setSenha(usuario.getSenha());
+
         usuarioService.salvar(senhaAtualizada);
 
         return "redirect:/usuario/listaUsuarios";
@@ -88,8 +93,10 @@ public class UsuarioController {
     @GetMapping("/{id}/excluirUsuario")
     public String excluirUsuario(@PathVariable Long id) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+
         if (usuarioOptional.isPresent()) {
             usuarioRepository.deleteById(id);
+
             return "redirect:/usuario/listaUsuarios";
         }
         return "404";

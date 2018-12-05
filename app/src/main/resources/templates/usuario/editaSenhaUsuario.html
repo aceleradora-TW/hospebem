@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
->
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
-    <title>Formulario</title>
+    <title>Hospebem</title>
 </head>
 <body>
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
-    <div  sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
             <div class="section">
                 <nav class="breadcrumb" aria-label="breadcrumbs">
@@ -17,7 +18,6 @@
                         <li><a th:href="@{'/usuario/listaUsuarios'}" class="has-text-black" aria-current="page">Lista de Usuários</a></li>
                         <li><a th:href="@{'/usuario/' + ${usuarios.id} + '/editaUsuario'}" class="has-text-black">Dados do Usuário</a></li>
                         <li><a th:href="@{'/usuario/' + ${usuarios.id} + '/editaSenhaUsuario'}">Senha do Usuário</a></li>
-
                     </ul>
                 </nav>
             </div>
@@ -53,10 +53,4 @@
     </div>
 </main>
 </body>
-<script type="text/javascript">
-
-
-
-</script>
-
 </html>

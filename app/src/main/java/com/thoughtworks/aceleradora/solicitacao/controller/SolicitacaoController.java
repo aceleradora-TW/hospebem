@@ -31,7 +31,9 @@ public class SolicitacaoController {
     @GetMapping("/cadastro")
     public String formularioCadastro(Model model, Solicitacao novaSolicitacao) {
         novaSolicitacao.setAcompanhantes(Arrays.asList(new Acompanhante(), new Acompanhante()));
+
         model.addAttribute("solicitacao", novaSolicitacao);
+
         return "solicitacao/cadastro";
     }
 
@@ -76,6 +78,8 @@ public class SolicitacaoController {
                         solicitacao.getStatus() == Solicitacao.Status.NEGADO ||
                         solicitacao.getStatus() == Solicitacao.Status.PENDENTE)
                 .collect(Collectors.toList());
+
+        solicitacoesHospital.sort(Comparator.comparing(Solicitacao::getId));
 
         model.addAttribute("solicitacoesHospital", solicitacoesHospital);
 

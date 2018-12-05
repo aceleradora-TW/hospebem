@@ -1,13 +1,11 @@
 function validaUsuario(event) {
     if (camposUsuario()) {
-        alert("Solicitação efetuada!")
+        alert("Atualização efetuada!")
         event.currentTarget.submit()
         return true;
     }
     return false;
 }
-
-
 
 function camposUsuario(){
     let usuario = document.getElementById('usuario')
@@ -17,7 +15,7 @@ function camposUsuario(){
     let email = document.getElementById('email')
     let telefone = document.getElementById('telefone')
 
-    if (tipoUsuario != 'ADMINISTRADOR') {
+    if (tipoUsuario.value != 'ADMINISTRADOR') {
         if (usuario.value === '') {
             validaInputErrado(usuario)
             return false

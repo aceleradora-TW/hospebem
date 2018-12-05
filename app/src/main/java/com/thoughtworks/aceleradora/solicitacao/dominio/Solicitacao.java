@@ -5,9 +5,7 @@ import com.thoughtworks.aceleradora.quarto.dominio.Quarto;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 import static java.time.format.DateTimeFormatter.ofPattern;
 import static javax.persistence.CascadeType.ALL;
@@ -332,35 +330,6 @@ public class Solicitacao {
     @PreUpdate
     protected void onUpdate() {
         dataAtualizacao = LocalDateTime.now();
-    }
-
-    @Override
-    public String toString() {
-        return "Solicitacao{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", genero='" + genero + '\'' +
-                ", situacao='" + situacao + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", cadeirante='" + cadeirante + '\'' +
-                ", peso=" + peso +
-                ", orgao='" + orgao + '\'' +
-                ", dataNascimento=" + dataNascimento +
-                ", dataEntrada=" + dataEntrada +
-                ", dataSaida=" + dataSaida +
-                ", dataTransplante=" + dataTransplante +
-                ", dataAtualizacao=" + dataAtualizacao +
-                ", dataCheckin=" + dataCheckin +
-                ", dataCheckout=" + dataCheckout +
-                ", endereco=" + endereco +
-                ", status=" + status +
-                ", acompanhantes=" + acompanhantes +
-                ", quarto=" + quarto +
-                ", nomeSolicitante='" + nomeSolicitante + '\'' +
-                ", hospitalReferencia='" + hospitalReferencia + '\'' +
-                ", email='" + email + '\'' +
-                ", telefoneSolicitante='" + telefoneSolicitante + '\'' +
-                '}';
     }
 
     @Override

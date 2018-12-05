@@ -8,7 +8,9 @@
 <body>
 
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
         <div class="container">
             <div class="section">
@@ -16,27 +18,26 @@
                     <ul>
                         <li><a th:href="@{'/bemvindo'}" class="has-text-black" aria-current="page">Início</a></li>
                         <li><a th:href="@{'/solicitacao/casa/lista'}">Lista de Solicitações</a></li>
-
                     </ul>
                 </nav>
             </div>
             <p class="title is-half centralizar has-text-centered espacamento">Lista de Solicitações</p>
             <div class="section">
-            <div class="columns is-multiline is-lefty">
-                <div th:each="solicitacao : ${solicitacoesCasa}">
-                    <div class="column">
-                        <div class="box box-shadow">
-                            <strong><span>Nome:</span></strong>
-                            <span th:text="${solicitacao.nome} + ' - '"></span>
-                            <strong><span>Idade:</span></strong>
-                            <span th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></span>
-                            <hr>
-                            <strong><span>Data de solicitação:</span></strong>
-                            <span th:text="${solicitacao.formataData()}"></span>
-                            <hr>
-                            <div class="field has-addons">
-                                <div class="control">
-                                    <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/dados'}">
+                <div class="columns is-multiline is-lefty">
+                    <div th:each="solicitacao : ${solicitacoesCasa}">
+                        <div class="column">
+                            <div class="box box-shadow">
+                                <strong><span>Nome:</span></strong>
+                                <span th:text="${solicitacao.nome} + ' - '"></span>
+                                <strong><span>Idade:</span></strong>
+                                <span th:text="${calculadoraIdade.apply(solicitacao.dataNascimento)}"></span>
+                                <hr>
+                                <strong><span>Data de solicitação:</span></strong>
+                                <span th:text="${solicitacao.formataData()}"></span>
+                                <hr>
+                                <div class="field has-addons">
+                                    <div class="control">
+                                        <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/dados'}">
                                             <button type="submit" class="button borda-arredondada">
                                                 Ver informações
                                             </button>

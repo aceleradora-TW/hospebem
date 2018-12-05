@@ -32,7 +32,6 @@ public class SolicitacaoControllerTest {
 
     private SolicitacaoController controller;
 
-
     private Solicitacao solicitacao;
 
     @Mock
@@ -126,6 +125,7 @@ public class SolicitacaoControllerTest {
 
         model.addAttribute("formatar", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         model.addAttribute("solicitante", solicitacao);
+
         assertThat(paginaRenderizada, equalTo("solicitacao/dadosSolicitacao"));
     }
 }

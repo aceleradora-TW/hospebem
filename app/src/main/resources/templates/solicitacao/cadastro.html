@@ -6,7 +6,9 @@
 </head>
 <body>
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())"> Você não tem autorização para acessar essa página</div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
     <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
         <div class="container">
             <div class="section">
@@ -112,13 +114,13 @@
                                 <div class="select">
                                     <select name="orgao" id="select">
                                         <option disabled selected th:value="selecione">Selecione o órgão</option>
-                                        <option th:value="'coração'" th:text="Coração"></option>
-                                        <option th:value="'fígado'" th:text="Fígado"></option>
-                                        <option th:value="'medula'" th:text="Medula"></option>
-                                        <option th:value="'pâncreas'" th:text="Pâncreas"></option>
-                                        <option th:value="'pulmão'" th:text="Pulmão"></option>
-                                        <option th:value="'rins'" th:text="Rins"></option>
-                                        <option th:value="'tecidos'" th:text="Tecidos"></option>
+                                        <option th:value="'Coração'" th:text="Coração"></option>
+                                        <option th:value="'Fígado'" th:text="Fígado"></option>
+                                        <option th:value="'Medula'" th:text="Medula"></option>
+                                        <option th:value="'Pâncreas'" th:text="Pâncreas"></option>
+                                        <option th:value="'Pulmão'" th:text="Pulmão"></option>
+                                        <option th:value="'Rins'" th:text="Rins"></option>
+                                        <option th:value="'Tecidos'" th:text="Tecidos"></option>
                                     </select>
                                 </div>
                             </div>

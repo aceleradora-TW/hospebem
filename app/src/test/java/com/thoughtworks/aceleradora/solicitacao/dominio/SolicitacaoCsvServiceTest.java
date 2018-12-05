@@ -33,7 +33,6 @@ public class SolicitacaoCsvServiceTest {
         Solicitacao aceita = new Solicitacao() {{
             setNome("Aceita");
             setStatus(ACEITO);
-
         }};
 
         Solicitacao negada = new Solicitacao() {{
