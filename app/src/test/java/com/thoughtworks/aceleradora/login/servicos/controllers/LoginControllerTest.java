@@ -24,9 +24,6 @@ public class LoginControllerTest {
     UsuarioService usuarioService;
 
     @Mock
-    UsuarioRepository usuarioRepository;
-
-    @Mock
     Model model;
 
     LoginController loginController;
