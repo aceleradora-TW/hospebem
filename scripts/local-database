@@ -1,0 +1,113 @@
+#!/bin/bash -eu
+
+readonly CONTAINER_NAME=hospebem-db
+readonly DATABASE_NAME=hospebem
+readonly DATABASE_PASSWORD=hospebem
+readonly DATABASE_PORT='5432'
+
+container_run() {
+    docker run \
+          --name ${CONTAINER_NAME}\
+          --publish ${DATABASE_PORT}:${DATABASE_PORT} \
+          --env POSTGRES_PASSWORD=${DATABASE_PASSWORD} \
+          --detach postgres
+}
+
+container_start() {
+    docker start ${CONTAINER_NAME}
+    docker ps
+}
+
+container_remove() {
+    docker rm ${CONTAINER_NAME} || echo 'Container nao pode ser removido pois nao foi encontrado.'
+}
+
+container_stop() {
+    docker stop ${CONTAINER_NAME} || echo 'Container nao pode ser parado pois nao foi encontrado.'
+}
+
+db_console() {
+    docker exec -it ${CONTAINER_NAME} psql -U postgres -d ${DATABASE_NAME}
+}
+
+db_create() {
+    docker exec ${CONTAINER_NAME} psql -U postgres -c "CREATE DATABASE ${DATABASE_NAME}"
+}
+
+setup() {
+    echo
+    echo "Parando container ${CONTAINER_NAME} (caso esteja rodando)."
+    echo
+    container_stop
+    echo
+
+    echo
+    echo "Removendo container ${CONTAINER_NAME}"
+    echo
+    container_remove
+    echo
+
+    echo
+    echo "Inicializando novo container ${CONTAINER_NAME}..."
+    echo
+    container_run
+    echo
+
+    sleep 5
+
+    echo
+    echo "Criando banco de dados ${DATABASE_NAME}"
+    echo
+    db_create
+    echo
+
+    echo
+    echo "Inicializacao finalizada:"
+    echo
+    docker ps --filter name=${CONTAINER_NAME}
+}
+
+case ${1:-''} in
+
+  start)
+    container_start
+  ;;
+
+  setup)
+    setup
+  ;;
+
+  create)
+    db_create
+  ;;
+
+  console)
+    db_console
+  ;;
+
+  stop)
+    container_stop
+  ;;
+
+  remove)
+    container_remove
+  ;;
+
+  *)
+    echo
+    echo "Opcao invalida. Tente:"
+    echo
+    echo -e "\t start: Reinicia container parado."
+    echo
+    echo -e "\t setup: Inicia novo container docker com imagem do Postgres chamado ${CONTAINER_NAME} e cria um banco de dados vazio chamado ${DATABASE_NAME}"
+    echo
+    echo -e "\t create: Cria banco de dados dentro de um container postgres que ja esteja executando"
+    echo
+    echo -e "\t console: Abre cliente psql conectado ao banco containerizado"
+    echo
+    echo -e "\t stop: Para container se este estiver executando"
+    echo
+    echo -e "\t remove: Remove o container, deletando todos os dados persistidos"
+    echo
+  ;;
+esac
