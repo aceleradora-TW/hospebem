@@ -1,4 +1,4 @@
-function validaSenhaUsuario(event) {/registrar
+function validaSenhaUsuario(event) {
     if (validarCampoSenhaUsuario()){
         event.currentTarget.submit()
         return true
