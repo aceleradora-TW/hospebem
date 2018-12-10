@@ -32,12 +32,12 @@
                                 <div class="field has-addons">
                                     <th:block th:if="${solicitacao.status.toString()} != 'ACEITO'">
                                         <div class="control">
-                                            <button class="button" type="submit">
-                                                <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/editarPaciente'}">
+                                            <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/editarPaciente'}">
+                                                <button class="button" type="submit">
                                                     <span>Editar</span>
                                                     <span class="icon is-small"><i class="fas fa-edit"></i></span>
-                                                </a>
-                                            </button>
+                                                </button>
+                                            </a>
                                         </div>
                                         <div class="control">
                                             <a th:href="@{'/solicitacao/' + ${solicitacao.id} + '/excluir'}">
