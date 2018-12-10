@@ -60,8 +60,6 @@ public class QuartoController{
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
 
-            Iterable<Quarto> quartos = quartoRepository.findAll();
-
             model.addAttribute("numeroHospedes", quartoHelper.hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao", solicitacao);
             model.addAttribute("listaQuartos", quartoRepository.findAll());
