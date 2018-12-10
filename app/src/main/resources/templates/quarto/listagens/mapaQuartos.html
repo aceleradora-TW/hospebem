@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <title>HospeBem - Lista Quartos</title>
+</head>
+
+<body>
+<main>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
+        Você não tem autorização para acessar essa página
+    </div>
+    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
+        <div class="container">
+            <div class="section">
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <ul>
+                        <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Início</a></li>
+                        <li><a th:href="@{'/quarto/mapaQuartos'}">Mapa de Quartos</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="column">
+                <h3 class="title is-3 v center has-text-centered">Quartos</h3>
+            </div>
+            <div class="section">
+                <div class="columns is-multiline is-lefty">
+                    <th:block th:each="quarto : ${listaQuartos}">
+                        <div class="column is-3">
+                            <div class="box box-shadow">
+                                <div class="column">
+                                    <a  class="centralizar" th:href="@{/quarto/umQuarto/{idQuarto}(idQuarto=${quarto.id})}">
+                                        <button type="reset" class="button is-success red " th:if="${quarto.leitosDisponiveis() <= 0}" th:text="${quarto.nomeQuarto}"></button>
+                                        <button type="submit" class="button is-success"  th:if="${quarto.leitosDisponiveis() > 0} " th:text="${quarto.nomeQuarto}"></button>
+                                    </a>
+                                    <div class="centralizar">
+                                        <strong>Tipo:</strong>
+                                        <label th:text="${quarto.tipo}"></label>
+                                    </div>
+                                    <div class="centralizar">
+                                        <strong>Leitos Disponíveis: </strong>
+                                        <label  th:text="${quarto.leitosDisponiveis()}"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -31,6 +31,28 @@ public class QuartoController{
         this.emailComponent = emailComponent;
     }
 
+    @GetMapping("/mapaQuartos")
+    public String mapaQuartos(Model model) {
+            model.addAttribute("listaQuartos", quartoRepository.findAll());
+
+            return "quarto/listagens/mapaQuartos";
+    }
+
+    @GetMapping("/umQuarto/{idQuarto}")
+    public String umQuarto (Model model, @PathVariable Long idQuarto){
+        Optional<Quarto> quartoOptional = quartoRepository.findById(idQuarto);
+
+        if (quartoOptional.isPresent()) {
+            Quarto quarto = quartoOptional.get();
+
+            model.addAttribute("quarto" , quarto);
+            model.addAttribute("ocupantes", quartoHelper.ocupantes(quarto.getSolicitacoes()));
+
+            return "quarto/umQuarto";
+        }
+        return "404";
+    }
+
     @GetMapping("/{idSolicitacao}/listaQuartos")
     public String listaQuartos(Model model, @PathVariable Long idSolicitacao) {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(idSolicitacao);
@@ -38,9 +60,13 @@ public class QuartoController{
         if (solicitacaoOptional.isPresent()) {
             Solicitacao solicitacao = solicitacaoOptional.get();
 
+            Iterable<Quarto> quartos = quartoRepository.findAll();
+
             model.addAttribute("numeroHospedes", quartoHelper.hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao", solicitacao);
             model.addAttribute("listaQuartos", quartoRepository.findAll());
+
+
 
             return "quarto/listagens/listaQuartos";
         }
