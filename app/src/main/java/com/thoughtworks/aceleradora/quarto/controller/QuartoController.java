@@ -31,14 +31,14 @@ public class QuartoController{
         this.emailComponent = emailComponent;
     }
 
-    @GetMapping("/mapaQuartos")
+    @GetMapping("/quartos")
     public String mapaQuartos(Model model) {
             model.addAttribute("listaQuartos", quartoRepository.findAll());
 
             return "quarto/listagens/mapaQuartos";
     }
 
-    @GetMapping("/umQuarto/{idQuarto}")
+    @GetMapping("/quartos/{idQuarto}")
     public String umQuarto (Model model, @PathVariable Long idQuarto){
         Optional<Quarto> quartoOptional = quartoRepository.findById(idQuarto);
 
@@ -63,8 +63,6 @@ public class QuartoController{
             model.addAttribute("numeroHospedes", quartoHelper.hospedesPresentes(solicitacao) - 1);
             model.addAttribute("solicitacao", solicitacao);
             model.addAttribute("listaQuartos", quartoRepository.findAll());
-
-
 
             return "quarto/listagens/listaQuartos";
         }
