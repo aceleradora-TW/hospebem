@@ -30,7 +30,7 @@
                         <div class="column is-3">
                             <div class="box box-shadow">
                                 <div class="column">
-                                    <a  class="centralizar" th:href="@{/quarto/quartos/{idQuarto}(idQuarto=${quarto.id})}">
+                                    <a  class="centralizar" th:href="@{/quarto/quarto/{idQuarto}(idQuarto=${quarto.id})}">
                                         <button type="reset" class="button is-danger borda-arredondada" th:if="${quarto.leitosDisponiveis() <= 0}" th:text="${quarto.nomeQuarto}"></button>
                                         <button type="submit" class="button verde-viavida borda-arredondada"  th:if="${quarto.leitosDisponiveis() > 0} " th:text="${quarto.nomeQuarto}"></button>
                                     </a>

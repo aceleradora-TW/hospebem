@@ -38,7 +38,7 @@ public class QuartoController{
             return "quarto/listagens/mapaQuartos";
     }
 
-    @GetMapping("/quartos/{idQuarto}")
+    @GetMapping("/quarto/{idQuarto}")
     public String umQuarto (Model model, @PathVariable Long idQuarto){
         Optional<Quarto> quartoOptional = quartoRepository.findById(idQuarto);
 
@@ -53,7 +53,7 @@ public class QuartoController{
         return "404";
     }
 
-    @GetMapping("/{idSolicitacao}/listaQuartos")
+    @GetMapping("/{idSolicitacao}/quartos")
     public String listaQuartos(Model model, @PathVariable Long idSolicitacao) {
         Optional<Solicitacao> solicitacaoOptional = solicitacaoRepository.findById(idSolicitacao);
 
