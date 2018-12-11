@@ -1,6 +1,7 @@
 body {
     font-family: arial, sans-serif;
     font-size: 17px;
+
 }
 
 .board-item:hover{
@@ -204,4 +205,9 @@ button {
 
 .box-shadow {
     box-shadow: 0 6px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+.imagem-config{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2%;
 }

@@ -12,8 +12,8 @@ function alerta(){
 }
 
 function validarCampoSenha() {
-    var user = document.getElementById('first_name')
-    var senha = document.getElementById('password')
+    let user = document.getElementById('first_name')
+    let senha = document.getElementById('password')
 
     if (user.value === '') {
         alert('Informe um nome para autenticar')

@@ -1,23 +1,13 @@
 <!DOCTYPE HTML>
+<link href="/css/style.css" rel="stylesheet">
 <html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Aceleradora Ágil</title>
 </head>
 <body>
-    <br>
-    <div class="agrupadora">
-        <nav class="navegacao">
-            <ul>
-                <a href="/"><li>Início</li></a>
-                <a href="/bemvindo"><li>Bem vindo</li></a>
-                <a href="/solicitacao/cadastro"><li>Cadastro solicitação </li></a>
-                <a href="/solicitacao/casa/lista"><li>Lista geral de solicitações casa</li></a>
-                <a href="/solicitacao/hospital/lista"><li>Lista geral de solicitações hospital</li></a>
-                <a href="/solicitacao/listagemHospede"><li>Gerenciar Hospede</li></a>
-                <a href="/registrar"><li>Registrar</li></a>
-                <a href="/login"><li>Login</li></a>
-            </ul>
-        </nav>
+    <div class="imagem-config">
+    <a href="/login"><img th:src="@{/imagem/hospebem.png}" title="CLIQUE AQUI!"></a>
     </div>
 </body>
 </html>
