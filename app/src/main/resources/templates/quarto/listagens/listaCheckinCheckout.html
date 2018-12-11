@@ -34,7 +34,7 @@
                                 <hr>
                                 <ul>
                                     <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                        <label class="tag is-success  is-info is-large" th:text="${quarto.nomeQuarto}"/>
+                                        <label class="button verde-viavida borda-arredondada" th:text="${quarto.nomeQuarto}"/>
                                     </th:block>
                                 </ul>
                                 <hr>
@@ -50,7 +50,7 @@
                                                    onkeypress="return false;">
                                         </div>
                                         <div class="control">
-                                            <button type="submit" class="button is-info  ">Check-Out</button>
+                                            <button type="submit" class="button header-color cor-texto-logout  borda-arredondada">Check-Out</button>
                                         </div>
                                     </div>
                                 </form>
@@ -73,7 +73,7 @@
                                 <hr>
                                 <ul>
                                     <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                        <label class="tag is-success is-info is-large" th:text="${quarto.nomeQuarto}"/>
+                                        <label class="button verde-viavida borda-arredondada" th:text="${quarto.nomeQuarto}"/>
                                     </th:block>
                                 </ul>
                                 <hr>
@@ -89,7 +89,7 @@
                                                    onkeypress="return false;">
                                         </div>
                                         <div class="control">
-                                            <button type="submit" class="botao-checkin button is-info  ">Check-In</button>
+                                            <button type="submit" class="button header-color cor-texto-logout  borda-arredondada">Check-In</button>
                                         </div>
                                     </div>
                                 </form>

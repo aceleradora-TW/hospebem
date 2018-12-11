@@ -16,12 +16,11 @@
                 <nav class="breadcrumb" aria-label="breadcrumbs">
                     <ul>
                         <li><a th:href="@{'/bemvindo'}" class="has-text-black" href="#" aria-current="page">Início</a></li>
-                        <li><a th:href="@{'/solicitacao/casa/lista'}" class="has-text-black" href="#" aria-current="page">Lista de Solicitações</a></li>
-                        <li><a th:href="@{'/quarto/' + ${solicitacao.id} + '/quartos'}">Lista de Quartos</a></li>
+                        <li><a th:href="@{'/quarto/quartos'}">Mapa de Quartos</a></li>
+
                     </ul>
                 </nav>
             </div>
-            <div th:include="@{./partes/cabecalhoDadosSolicitante}"/>
             <div class="column">
                 <h3 class="title is-3 v center has-text-centered">Quartos</h3>
             </div>
@@ -31,9 +30,9 @@
                         <div class="column is-3">
                             <div class="box box-shadow">
                                 <div class="column">
-                                    <a  class="centralizar" th:href="@{/quarto/{idSolicitacao}/quarto/{idQuarto}(idSolicitacao=${solicitacao.id}, idQuarto=${quarto.id})}">
-                                        <button type="reset" class="button is-danger borda-arredondada" th:if="${quarto.leitosDisponiveis() <= 0 || numeroHospedes > quarto.leitosDisponiveis()}" th:text="${quarto.nomeQuarto}"></button>
-                                        <button type="submit" class="button verde-viavida borda-arredondada"  th:if="${quarto.leitosDisponiveis() > 0 && numeroHospedes <= quarto.leitosDisponiveis()} " th:text="${quarto.nomeQuarto}"></button>
+                                    <a  class="centralizar" th:href="@{/quarto/quarto/{idQuarto}(idQuarto=${quarto.id})}">
+                                        <button type="reset" class="button is-danger borda-arredondada" th:if="${quarto.leitosDisponiveis() <= 0}" th:text="${quarto.nomeQuarto}"></button>
+                                        <button type="submit" class="button verde-viavida borda-arredondada"  th:if="${quarto.leitosDisponiveis() > 0} " th:text="${quarto.nomeQuarto}"></button>
                                     </a>
                                     <div class="centralizar">
                                         <strong>Tipo:</strong>
