@@ -7,15 +7,23 @@
 
 <body>
 <main>
-    <div class="container card-content valign center has-text-centered">
+    <div class="container card-content has-text-centered">
         <div class="box section">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <div>
                     <span>Usuário registrado com sucesso!</span>
                 </div>
-                <div>
-                    <button class="button verde-viavida borda-arredondada"><a th:href="@{'/registrar'}">Registrar</a></button>
-                    <button class="button verde-viavida borda-arredondada"><a th:href="@{'/bemvindo'}">Tela inicial</a></button>
+                <div class="centralizar">
+                    <div>
+                        <a th:href="@{'/registrar'}">
+                            <button class="button verde-viavida borda-arredondada">Registrar</button>
+                        </a>
+                    </div>
+                    <div>
+                        <a th:href="@{'/bemvindo'}">
+                            <button class="button verde-viavida borda-arredondada">Tela inicial</button>
+                        </a>
+                    </div>
                 </div>
             </nav>
         </div>
