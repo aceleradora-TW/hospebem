@@ -32,7 +32,7 @@ public class UsuarioController {
 
         model.addAttribute("usuarios", usuarios);
 
-        return "/usuario/listagens/listaUsuarios";
+        return "usuario/listagens/listaUsuarios";
     }
 
     @GetMapping("/{id}/editaUsuario")
@@ -42,7 +42,7 @@ public class UsuarioController {
         if (usuarioOptional.isPresent()) {
             Usuario usuarios = usuarioOptional.get();
             model.addAttribute("usuarios", usuarios);
-            return "/usuario/editaUsuario";
+            return "usuario/editaUsuario";
         }
 
         return "404";
@@ -73,7 +73,7 @@ public class UsuarioController {
 
             model.addAttribute("usuarios", usuarios);
 
-            return "/usuario/editaSenhaUsuario";
+            return "usuario/editaSenhaUsuario";
         }
 
         return "404";
