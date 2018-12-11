@@ -85,7 +85,7 @@ public class SolicitacaoControllerTest {
     @Test
     public void deveRenderizarListaDeHospedes() {
         List<Solicitacao> solicitacoesAceitas = asList(new Solicitacao(), new Solicitacao());
-        when(repositorio.findAllByStatus(Solicitacao.Status.ACEITO)).thenReturn(solicitacoesAceitas);
+        when(repositorio.findAllByStatus(Solicitacao.Status.HOSPEDE)).thenReturn(solicitacoesAceitas);
 
         String paginaRenderizada = controller.listaGerenciamentoHospede(model);
 
