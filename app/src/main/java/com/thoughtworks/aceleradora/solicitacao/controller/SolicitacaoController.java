@@ -88,7 +88,7 @@ public class SolicitacaoController {
 
     @GetMapping("/listagemHospede")
     public String listaGerenciamentoHospede(Model model) {
-        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(Solicitacao.Status.ACEITO));
+        model.addAttribute("solicitacoesAceitas", solicitacaoRepository.findAllByStatus(Solicitacao.Status.HOSPEDE));
 
         return "solicitacao/listagens/listaGerenciamentoHospede";
     }
