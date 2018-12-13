@@ -92,8 +92,10 @@ public class QuartoController{
     public String aceitaSolicitacao(Long id, Long idQuarto) {
         Solicitacao solicitacao = solicitacaoRepository.getOne(id);
         Quarto quarto = quartoRepository.getOne(idQuarto);
+        solicitacao.setStatus(Solicitacao.Status.ACEITO);
 
         quartoHelper.limitaQuartos(solicitacao, quarto);
+        emailComponent.notificaHospital(solicitacao);
 
         return "redirect:/listacheckincheckout";
     }
