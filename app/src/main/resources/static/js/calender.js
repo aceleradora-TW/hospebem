@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () =>{
     let  datepickerRetroativo = document.getElementsByClassName('datepicker-retroativo');
     let  datepickerFuturo = document.getElementsByClassName('datepicker-futuro');
+    let  datepicker = document.getElementsByClassName('datepicker');
 
     for(let i = 0; i < datepickerRetroativo.length; i++) {
         if (document.getElementById("formSolicitacao") != null) {
@@ -25,6 +26,13 @@ document.addEventListener('DOMContentLoaded', () =>{
             seletorDataMenorQueHoje(datepickerRetroativo[i]);
         }
     }
+
+    for(let i = 0; i < datepicker.length; i++) {
+        if (document.getElementById("formSolicitacao") != null) {
+            seletorDataPi(datepicker[i]);
+        }
+    }
+
 })
 const data = new Date()
 
@@ -62,6 +70,21 @@ const seletorData = (elemento) =>{
 const seletorDataMenorQueHoje = (elemento) =>{
     return new Pikaday({
         maxDate: data,
+        yearRange: [1900, 2100],
+        field: elemento,
+        format: 'DD/MM/YYYY',
+        i18n: {
+            previousMonth : 'Mês Anterior',
+            months        : ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+            weekdays      : ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+            weekdaysShort : ['Dom','Seg','Ter','Qua','Qui','Sex','Sab']
+        }
+    });
+}
+
+const seletorDataPi = (elemento) =>{
+    return new Pikaday({
+        maxDate: new Date(2100, 12, 31),
         yearRange: [1900, 2100],
         field: elemento,
         format: 'DD/MM/YYYY',
