@@ -33,7 +33,7 @@
                                 <hr>
                                 <ul>
                                     <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                        <label class="button verde-viavida borda-arredondada" th:text="${quarto.nomeQuarto}"/>
+                                        <label class="button-quarto" th:text="${quarto.nomeQuarto}"/>
                                     </th:block>
                                 </ul>
                                 <hr>
@@ -71,7 +71,7 @@
                                 <hr>
                                 <ul>
                                     <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                        <label class="button verde-viavida borda-arredondada" th:text="${quarto.nomeQuarto}"/>
+                                        <label class="button-quarto" th:text="${quarto.nomeQuarto}"/>
                                     </th:block>
                                 </ul>
                                 <hr>

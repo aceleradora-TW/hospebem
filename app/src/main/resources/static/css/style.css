@@ -210,3 +210,10 @@ button {
     margin-left: 20%;
     margin-top: 2%;
 }
+.button-quarto{
+    background-color: rgba(141, 198, 63, 1);
+    border-color: transparent;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
