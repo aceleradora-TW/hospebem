@@ -7,10 +7,6 @@
 </head>
 <body>
 <main>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ASSISTENTE_SOCIAL.getNome())">
-        Você não tem autorização para acessar essa página
-    </div>
-    <div sec:authorize="hasAuthority(T(com.thoughtworks.aceleradora.login.dominio.Cargo).ADMINISTRADOR.getNome())">
     <div class="container card-content valign center has-text-centered">
         <div class="section">
             <nav class="breadcrumb" aria-label="breadcrumbs">
@@ -81,7 +77,6 @@
             </div>
             <input class="button is-medium verde-viavida borda-arredondada" type="submit" value="Enviar">
         </form>
-    </div>
     </div>
 </main>
 </body>
