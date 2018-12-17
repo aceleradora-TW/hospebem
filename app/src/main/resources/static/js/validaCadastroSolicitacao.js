@@ -1,5 +1,5 @@
 function validaCadastroSolicitacao(evento) {
-    if (camposPaciente() && camposAcompanhantes() && camposSolicitante()) {
+    if (camposPaciente() && campoEndereco() && camposAcompanhantes() && camposSolicitante()){
         alert("Solicitação efetuada!");
         evento.currentTarget.submit();
         return true;
@@ -18,14 +18,16 @@ function camposPaciente() {
     let labelSituacao = document.getElementById('labelSituacao');
     let checkBoxCadeirante = document.getElementById('cadeirante');
     let pesoInput = document.getElementById('peso');
-    let dataEntrada = document.getElementById('dataEntrada');
     let orgao = document.getElementById('select');
     let selectOrgao = document.getElementById('selectOrgao');
+    let dataEntrada = document.getElementById('dataEntrada');
+
     if (nome.value === '') {
         validaInputErrado(nome);
         return false
-    } else
+    } else {
         nome.classList.add('input-fancy');
+    }
 
     if (genero1.checked === false && genero2.checked === false) {
         labelGenero.classList.remove('margin-invisible');
@@ -38,8 +40,9 @@ function camposPaciente() {
     if (dataNascimento.value === '') {
         validaInputErrado(dataNascimento);
         return false
-    } else
+    } else {
         dataNascimento.classList.add('input-fancy');
+    }
 
     if (checkBoxCadeirante.checked === true && pesoInput.value === '') {
         return false
@@ -57,15 +60,29 @@ function camposPaciente() {
         selectOrgao.classList.remove('margin-invisible');
         orgao.focus();
         return false
-    } else
+    } else {
         selectOrgao.classList.add('margin-invisible');
+    }
 
     if (dataEntrada.value === '') {
         validaInputErrado(dataEntrada);
         return false
-    } else
+    } else {
         dataEntrada.classList.add('input-fancy');
-    return true
+        return true
+    }
+}
+
+function campoEndereco() {
+    let UF = document.getElementById("uf")
+
+    if (UF.value === '') {
+        validaInputErrado(UF);
+        return false
+    } else {
+        UF.classList.add('input-fancy');
+        return true
+    }
 }
 
 function camposAcompanhantes() {
@@ -78,8 +95,9 @@ function camposAcompanhantes() {
     if (nomeAcomp.value === '') {
         validaInputErrado(nomeAcomp);
         return false
-    } else
+    } else {
         nomeAcomp.classList.add('input-fancy');
+    }
 
     if (genero1.checked === false && genero2.checked === false) {
         labelAcomp.classList.remove('margin-invisible');
@@ -103,27 +121,31 @@ function camposSolicitante(){
 
     if (nomeSolicitante.value === '') {
         return false
-    } else
+    } else {
         nomeSolicitante.classList.add('input-fancy');
+    }
 
     if (hospitalReferencia.value === '') {
         validaInputErrado(hospitalReferencia);
         return false
-    } else
+    } else {
         hospitalReferencia.classList.add('input-fancy');
+    }
 
     if (email.value === '') {
         validaInputErrado(email);
         return false
-    } else
+    } else {
         email.classList.add('input-fancy');
+    }
 
     if (telefoneSolicitante.value === '') {
         validaInputErrado(telefoneSolicitante);
         return false
-    } else
+    } else {
         telefoneSolicitante.classList.add('input-fancy');
-    return true;
+        return true;
+    }
 }
 
 function validaInputErrado(item) {
