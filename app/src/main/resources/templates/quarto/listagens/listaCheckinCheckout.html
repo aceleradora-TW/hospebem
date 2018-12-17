@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="pt-br" th:replace="~{layout :: layout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Hospebem</title>
 </head>
@@ -28,13 +28,12 @@
                     <th:block th:each="solicitacao : ${solicitacoesHospedes}">
                         <div class="column is-4">
                             <div class="box">
-                                <a class="subtitle" th:href="@{'/quartos/' + ${solicitacao.id} + '/informacoes'}"
-                                   th:text="${solicitacao.nome}">
-                                </a>
+                                <div th:text="${solicitacao.nome}">
+                                </div>
                                 <hr>
                                 <ul>
                                     <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                        <label class="button verde-viavida borda-arredondada" th:text="${quarto.nomeQuarto}"/>
+                                        <label class="button-quarto" th:text="${quarto.nomeQuarto}"/>
                                     </th:block>
                                 </ul>
                                 <hr>
@@ -46,10 +45,10 @@
                                         <div class="control">
                                             <input placeholder="Selecione uma data" autocomplete="off"
                                                    type="text" class="data-checkout input input-fancy datepicker-retroativo"
-                                                   th:field="*{dataCheckout}"
-                                                   onkeypress="return false;">
+                                                   th:field="*{dataCheckout}" required/>
                                         </div>
                                         <div class="control">
+
                                             <button type="submit" class="button header-color cor-texto-logout  borda-arredondada">Check-Out</button>
                                         </div>
                                     </div>
@@ -67,13 +66,12 @@
                     <th:block th:each="solicitacao : ${solicitacoesAceitas}">
                         <div class="column is-4">
                             <div class="box">
-                                <a class="subtitle" th:href="@{'/quartos/' + ${solicitacao.id} + '/informacoes'}"
-                                   th:text="${solicitacao.nome}">
-                                </a>
+                                <div th:text="${solicitacao.nome}">
+                                </div>
                                 <hr>
                                 <ul>
                                     <th:block th:each="quarto: ${quartos}" th:if="${quarto.id == solicitacao.quarto.id}">
-                                        <label class="button verde-viavida borda-arredondada" th:text="${quarto.nomeQuarto}"/>
+                                        <label class="button-quarto" th:text="${quarto.nomeQuarto}"/>
                                     </th:block>
                                 </ul>
                                 <hr>
@@ -85,11 +83,10 @@
                                         <div class="control">
                                             <input placeholder="Selecione uma data" autocomplete="off"
                                                    type="text" class="data-checkin input input-fancy datepicker-retroativo "
-                                                   th:field="*{dataCheckin}"
-                                                   onkeypress="return false;">
+                                                   th:field="*{dataCheckin}" required/>
                                         </div>
                                         <div class="control">
-                                            <button type="submit" class="button header-color cor-texto-logout  borda-arredondada">Check-In</button>
+                                            <button  type="submit" class="button header-color cor-texto-logout  borda-arredondada">Check-In</button>
                                         </div>
                                     </div>
                                 </form>
