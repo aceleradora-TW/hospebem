@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::body})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>HospeBem</title>
+</head>
+<body>
+<main>
+    <div class="container card-content valign center has-text-centered">
+        <div class="box section">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <div>
+                    <span>Já existe um registro com este nome de usuário. Por favor, insira um nome de usuário válido. </span>
+                </div>
+                <div>
+                    <a th:href="@{'/usuario/listaUsuarios'}">
+                        <button class="button verde-viavida cor-texto-logout borda-arredondada" >
+                            <label>Voltar</label>
+                        </button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</main>
+</body>
+</html>

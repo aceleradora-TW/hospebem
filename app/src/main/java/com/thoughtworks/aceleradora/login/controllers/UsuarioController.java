@@ -3,9 +3,11 @@ package com.thoughtworks.aceleradora.login.controllers;
 import com.thoughtworks.aceleradora.login.dominio.Usuario;
 import com.thoughtworks.aceleradora.login.dominio.UsuarioRepository;
 import com.thoughtworks.aceleradora.login.servicos.UsuarioService;
+import com.thoughtworks.aceleradora.login.validador.UsuarioValidador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,11 +21,13 @@ import java.util.Optional;
 public class UsuarioController {
     private UsuarioService usuarioService;
     private UsuarioRepository usuarioRepository;
+    private UsuarioValidador usuarioValidador;
 
     @Autowired
-    public UsuarioController(UsuarioService usuarioService, UsuarioRepository usuarioRepository) {
+    public UsuarioController(UsuarioService usuarioService, UsuarioRepository usuarioRepository,UsuarioValidador usuarioValidador) {
         this.usuarioService = usuarioService;
         this.usuarioRepository = usuarioRepository;
+        this.usuarioValidador = usuarioValidador;
     }
 
     @GetMapping("/listaUsuarios")
@@ -39,6 +43,7 @@ public class UsuarioController {
     public String editaUsuario(Model model, @PathVariable Long id) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
 
+
         if (usuarioOptional.isPresent()) {
             Usuario usuarios = usuarioOptional.get();
             model.addAttribute("usuarios", usuarios);
@@ -49,7 +54,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/{id}/editaUsuario")
-    public String salvarDadoEditadoUsuario(@PathVariable Long id, Usuario usuario) {
+    public String salvarDadoEditadoUsuario(@PathVariable Long id, Usuario usuario, BindingResult bindingResult) {
+        usuarioValidador.validate(usuario, bindingResult);
         Usuario usuarioAtualizado = usuarioRepository.getOne(id);
 
         usuarioAtualizado.setNome(usuario.getNome());
@@ -57,6 +63,10 @@ public class UsuarioController {
         usuarioAtualizado.setEmail(usuario.getEmail());
         usuarioAtualizado.setHospitalReferencia(usuario.getHospitalReferencia());
         usuarioAtualizado.setTelefone(usuario.getTelefone());
+
+        if (bindingResult.hasErrors()) {
+            return "usuario/editaUsuarioError";
+        }
 
         usuarioRepository.save(usuarioAtualizado);
 
